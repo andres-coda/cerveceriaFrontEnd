@@ -1,0 +1,123 @@
+<mxfile host="app.diagrams.net" modified="2023-08-28T22:46:38.906Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="aeOMbB8yFADfdJKrb7Ko" version="21.6.9" type="device">
+  <diagram name="Página-1" id="vm1mbeuZoK0YxSPZnYFw">
+    <mxGraphModel dx="988" dy="1812" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-1" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+          <mxGeometry x="1140" y="-250" width="260" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-2" value="menu" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="-210" width="240" height="266" as="geometry">
+            <mxRectangle x="670" y="-210" width="80" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-3" value="id : number" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="26" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-4" value="&lt;ul style=&quot;list-style: none; margin: 0px 0px 0px 2em; padding: 0px; font-family: monospace; font-size: 14.3px;&quot; class=&quot;obj collapsible&quot;&gt;&lt;li style=&quot;position: relative;&quot;&gt;&lt;span style=&quot;font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].title&quot; class=&quot;prop&quot;&gt;&lt;span style=&quot;display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;title&lt;span style=&quot;display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;:&lt;span style=&quot;color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="56" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-5" value="&lt;span style=&quot;font-family: monospace; font-size: 14.3px; background-color: initial; border-color: var(--border-color); font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].category&quot; class=&quot;prop&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;category&lt;span style=&quot;border-color: var(--border-color); display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-family: monospace; font-size: 14.3px; background-color: initial;&quot;&gt;:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-family: monospace; font-size: 14.3px; background-color: initial; border-color: var(--border-color); color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;align=left;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="86" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-8" value="&lt;ul style=&quot;list-style: none; margin: 0px 0px 0px 2em; padding: 0px; font-family: monospace; font-size: 14.3px;&quot; class=&quot;obj collapsible&quot;&gt;&lt;li style=&quot;position: relative;&quot;&gt;img&lt;span style=&quot;font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].img&quot; class=&quot;prop&quot;&gt;&lt;/span&gt;: &lt;span style=&quot;color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="116" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-9" value="&lt;div&gt;&lt;ul style=&quot;border-color: var(--border-color); list-style: none; margin: 0px 0px 0px 2em; padding: 0px; font-family: monospace; font-size: 14.3px;&quot; class=&quot;obj collapsible&quot;&gt;&lt;li style=&quot;border-color: var(--border-color); position: relative;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].description&quot; class=&quot;prop&quot;&gt;description&lt;/span&gt;:&amp;nbsp;&lt;span style=&quot;border-color: var(--border-color); color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="146" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-10" value="&lt;div&gt;&lt;ul style=&quot;border-color: var(--border-color); list-style: none; margin: 0px 0px 0px 2em; padding: 0px; font-family: monospace; font-size: 14.3px;&quot; class=&quot;obj collapsible&quot;&gt;&lt;li style=&quot;border-color: var(--border-color); position: relative;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].price&quot; class=&quot;prop&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;price&lt;span style=&quot;border-color: var(--border-color); display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;:&amp;nbsp;&lt;span style=&quot;border-color: var(--border-color); color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="176" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-11" value="&lt;div&gt;&lt;ul style=&quot;border-color: var(--border-color); list-style: none; margin: 0px 0px 0px 2em; padding: 0px; font-family: monospace; font-size: 14.3px;&quot; class=&quot;obj collapsible&quot;&gt;&lt;li style=&quot;border-color: var(--border-color); position: relative;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].valoration&quot; class=&quot;prop&quot;&gt;valoration&lt;/span&gt;:&amp;nbsp;&lt;span style=&quot;border-color: var(--border-color); color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="206" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-12" value="&lt;div&gt;&lt;ul style=&quot;border-color: var(--border-color); list-style: none; margin: 0px 0px 0px 2em; padding: 0px; font-family: monospace; font-size: 14.3px;&quot; class=&quot;obj collapsible&quot;&gt;&lt;li style=&quot;border-color: var(--border-color); position: relative;&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].tipo&quot; class=&quot;prop&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;tipo&lt;span style=&quot;border-color: var(--border-color); display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;:&amp;nbsp;&lt;span style=&quot;border-color: var(--border-color); color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-2" vertex="1">
+          <mxGeometry y="236" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-7" value="&lt;ul style=&quot;list-style: none; margin: 0px 0px 0px 2em; padding: 0px; font-family: monospace; font-size: 14.3px;&quot; class=&quot;obj collapsible&quot;&gt;&lt;li style=&quot;position: relative;&quot;&gt;&lt;span style=&quot;font-weight: bold;&quot; title=&quot;&lt;root&gt;[0].title&quot; class=&quot;prop&quot;&gt;&lt;span style=&quot;display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;title&lt;span style=&quot;display: inline-block; width: 0px; color: transparent;&quot; class=&quot;q&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;:&lt;span style=&quot;color: green;&quot; class=&quot;string&quot;&gt;string&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="-154" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-13" value="NavegadorPc" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="110" y="-490" width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-14" value="No tiene parametros&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-13" vertex="1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-15" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="S5UoNabtVAA3acH-Fp-7-13" vertex="1">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-16" value="Debería ser el componente de navegación. Aquí irían los linck y el logo. Usando toda la pantalla." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-13" vertex="1">
+          <mxGeometry y="60" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-17" value="NavegadorCel" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="-490" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-18" value="No tiene parametros&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-17" vertex="1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="S5UoNabtVAA3acH-Fp-7-17" vertex="1">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-20" value="Debería tener el logo en el medio y al costado un menú hamburguesa que se desplieguen todos los linck del navegador en formato vertical" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-17" vertex="1">
+          <mxGeometry y="60" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-21" value="Formulario + Nombre del formulario" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="210" y="-290" width="250" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-22" value="No tiene parametros&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-21" vertex="1">
+          <mxGeometry y="26" width="250" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-23" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="S5UoNabtVAA3acH-Fp-7-21" vertex="1">
+          <mxGeometry y="52" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-24" value="Variables de estado: Va a tener una variable de estado con los datos que se necesiten para el from." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-21" vertex="1">
+          <mxGeometry y="60" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-26" value="Funciones: Va a tener la función onChange que va a modificar la variable de estado anterior cada vez que se modifique alguno de los input.&amp;nbsp;&lt;br&gt;La funcion de enviarDatos, que va a enviar los datos del formulario para hacer lo que requiera la pagina" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-21" vertex="1">
+          <mxGeometry y="110" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-25" value="En estructura va a tener un from con la clase &quot;formulario&quot; y adentro los componentes &amp;lt;Subtitulo ({texto}) /&amp;gt; Con el titulo de la pg y un &amp;lt;InputFormulario ({type, id, clase, texto, onChan }) /&amp;gt;&amp;nbsp;&lt;br&gt;con los parametros que correspondan.&lt;br&gt;Los botones que necesite debajo." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-21" vertex="1">
+          <mxGeometry y="230" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-27" value="&amp;lt;InputFormulario ({type, id, clase, texto, onChan }) /&amp;gt;&amp;nbsp;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="530" y="-290" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-28" value="type, id, clase, texto, onChan" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-27" vertex="1">
+          <mxGeometry y="26" width="360" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-29" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="S5UoNabtVAA3acH-Fp-7-27" vertex="1">
+          <mxGeometry y="52" width="360" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="S5UoNabtVAA3acH-Fp-7-32" value="Va a tener un leabel y un input del formulario.&lt;br&gt;El type va a ser utilizado para el type del input.&lt;br&gt;El id va tanto en el id del input como en el name del leable&lt;br&gt;la clase se refuere a la clase del leabel y del input&lt;br&gt;el texto se refiere al texto que se muestra en el leabel como a la marca de agua del input" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="S5UoNabtVAA3acH-Fp-7-27" vertex="1">
+          <mxGeometry y="60" width="360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-1" value="TarjetaMenu ({dato, onClick})" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="80" width="250" height="208" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-2" value="dato que es el dato a mostrar, y onClick es para la función que se dispara al precionar un boton o algo&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Qo9b5eQV8wTb_9UkI1Yd-1">
+          <mxGeometry y="26" width="250" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="Qo9b5eQV8wTb_9UkI1Yd-1">
+          <mxGeometry y="80" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-6" value="va a tener un div clickeable que le abra un modal. y que tenga como onclick la función onClick que pasa como parametro.&lt;br&gt;Va a tener la imagen que saca de dato, un &amp;lt;h3&amp;gt; con el titulo y un &amp;lt;p&amp;gt; con el precio." style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Qo9b5eQV8wTb_9UkI1Yd-1">
+          <mxGeometry y="88" width="250" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-7" value="Categorias (texto)" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="320" width="250" height="208" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-8" value="parametro, texto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Qo9b5eQV8wTb_9UkI1Yd-7">
+          <mxGeometry y="26" width="250" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-9" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="Qo9b5eQV8wTb_9UkI1Yd-7">
+          <mxGeometry y="80" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Qo9b5eQV8wTb_9UkI1Yd-10" value="va a ser un h5 al margen izquierdo de la pagina para dividir las tarjetas&lt;br&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="Qo9b5eQV8wTb_9UkI1Yd-7">
+          <mxGeometry y="88" width="250" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
