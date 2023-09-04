@@ -4,4 +4,4 @@ function Parrafo({texto }) {
     );
 };
 
-export  default Parrafo;
+export default Parrafo;
