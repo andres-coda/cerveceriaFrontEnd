@@ -1,14 +1,20 @@
 import './App.css'
 import { contexto } from './componentes/contexto/contexto'
 import { useContext } from 'react'
+import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
+
 function App() {
   const {datos } = useContext(contexto);
 
 
   return (
     <>
+      <div className='app'>
+      <Map/>
+      </div>
+
       <BrowserRouter>
         <header>
         </header>
@@ -18,6 +24,7 @@ function App() {
       </BrowserRouter>
 
       {console.log(datos.data)}
+
     </>
   )
 }
