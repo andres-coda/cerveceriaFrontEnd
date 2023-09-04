@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 export const contexto = createContext({});
-export const ProvedorContexto = ({children}) => {
+export const ProveedorContexto = ({children}) => {
     const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], usuario:[], usuarioActivo: {usuario:"perfil"}});
     useEffect(()=>{
         fetch('http://localhost:3000/menu')
