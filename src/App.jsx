@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      {console.log(datos)}
+      {console.log(datos.data)}
     </>
   )
 }
