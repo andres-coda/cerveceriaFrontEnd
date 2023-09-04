@@ -1,6 +1,7 @@
 import './App.css'
 import { contexto } from './componentes/contexto/contexto'
 import { useContext } from 'react'
+import Map from './componentes/Mapa/Mapa';
 
 function App() {
   const {datos } = useContext(contexto);
@@ -8,7 +9,10 @@ function App() {
 
   return (
     <>
-      {console.log(datos)}
+      {console.log(datos.data)}
+      <div className='app'>
+      <Map/>
+      </div>
     </>
   )
 }
