@@ -1,0 +1,16 @@
+.menuTarjeta{
+    width: 150px;
+    height: 250px;
+    padding:  0.5rem;
+    margin: 0.5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px black;
+}
+
+.menuTarjeta img {
+    max-width: 90%;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px black;
+}
