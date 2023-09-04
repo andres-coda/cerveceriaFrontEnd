@@ -11,15 +11,12 @@ function App() {
 
   return (
     <>
-      <div className='app'>
-      <Map/>
-      </div>
-
       <BrowserRouter>
         <header>
         </header>
         <Routes>
           <Route path='/' element={<Menu />}/>
+          <Route path='/map' element={<Map />} />
         </Routes>
       </BrowserRouter>
 
