@@ -2,14 +2,17 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: center;
-    
+    justify-content: left;
+}
+
+.menu h5{
+    text-align: start;
 }
 
 .menu .menuCategoria {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: right;
     justify-content: center;
 }
 
