@@ -6,19 +6,20 @@ function Menu() {
     const { datos } = useContext(contexto);
     return (
         <div className='menu'>
-            {datos.categorias.map((dato)=>(
-                <>
+            {datos.categorias.map((dato)=> ( dato !== "todas" && dato !== "Comida Vegetariana" ? (
+                <div key={dato}>
                     <h5> {dato} </h5>
                     <div className='menuCategoria'>
                     {datos.data.map((menu)=>{
                         if (menu.category === dato) {
-                            return <MenuTarjeta dato={menu} /> 
+                            return <MenuTarjeta key={menu.id} dato={menu} /> 
                         } else {
                             return null
                         }
                     })}
                     </div>
-                </>
+                </div>
+                ) : (null)
             ))}
         
         </div>

@@ -15,7 +15,7 @@ function App() {
         <header>
         </header>
         <Routes>
-          <Route path='/' element={<Menu />}/>
+          <Route path='/menu' element={<Menu />}/>
           <Route path='/map' element={<Map />} />
         </Routes>
       </BrowserRouter>
