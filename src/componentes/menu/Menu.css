@@ -1,18 +1,59 @@
 .menu {
+    max-width: 94vw;
     display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-content: left;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #1D1D1B;
+    overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
-.menu h5{
-    text-align: start;
+.menu .menuCatYTitulo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.menu h4{
+    display: inline;
+    white-space: nowrap; 
+    margin-right: 100%;
+    margin-left: 0.1rem;
+    padding: 0.1rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #c19f71;
+    box-shadow: 2px 2px 4px transparent;
+    background-color: #F1D69d;
+    color: black;
+}
+
+.menu h4:hover{
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px #F1F1EF;
+    background-color: #c19f71;
 }
 
 .menu .menuCategoria {
+    max-width: 90vw;
     display: flex;
-    flex-direction: row;
-    align-items: right;
-    justify-content: center;
+    flex-wrap: nowrap;
+    margin: 0.5rem 1rem;
+    padding: 1rem 0.2rem;
+    overflow-y: hidden;
+    overflow-x: auto;
 }
 
+
+
+.menu .menuCategoria::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color:  #F1F1EF;
+    border-radius: 10px;
+}
+
+.menu .menuCategoria::-webkit-scrollbar-thumb {
+    background-color: #c19f71;
+    border-radius: 10px;
+}
