@@ -5,6 +5,7 @@ import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
+import { Login, Registro } from './componentes/auth';
 
 function App() {
   const {datos } = useContext(contexto);
@@ -23,6 +24,8 @@ function App() {
           })}
           <Route path='/menu' element={<Menu />}/>
           <Route path='/map' element={<Map />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/registro' element={<Registro />} />
         </Routes>
       </BrowserRouter>
 
