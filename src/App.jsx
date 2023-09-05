@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
+import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 
 function App() {
   const {datos } = useContext(contexto);
@@ -15,6 +16,11 @@ function App() {
         <header>
         </header>
         <Routes>
+          {datos.data.map((dato)=>{
+            return (
+              <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato}/>} key={dato.id}/>
+            )
+          })}
           <Route path='/menu' element={<Menu />}/>
           <Route path='/map' element={<Map />} />
         </Routes>
