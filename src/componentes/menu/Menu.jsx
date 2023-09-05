@@ -8,7 +8,7 @@ function Menu() {
         <div className='menu'>
             {datos.categorias.map((dato)=> ( dato !== "todas" && dato !== "Comida Vegetariana" ? (
                 <div key={dato} className='menuCatYTitulo'>
-                    <h4> {dato} </h4>
+                    <h4> {dato.toUpperCase()} </h4>
                     <div className='menuCategoria'>
                     {datos.data.map((menu)=>{
                         if (menu.category === dato) {
