@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
+import CarouselImg from './componentes/Carousel/Carousel';
 
 function App() {
   const {datos } = useContext(contexto);
@@ -14,7 +15,9 @@ function App() {
       <div className='app'>
       <Map/>
       </div>
-
+      <div id='carrusel'>
+        <CarouselImg/>
+      </div>
       <BrowserRouter>
         <header>
         </header>
