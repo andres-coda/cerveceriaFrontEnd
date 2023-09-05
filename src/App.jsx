@@ -5,6 +5,7 @@ import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
 import CarouselImg from './componentes/Carousel/Carousel';
+import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 
 function App() {
   const {datos } = useContext(contexto);
@@ -12,17 +13,18 @@ function App() {
 
   return (
     <>
-      <div className='app'>
-      <Map/>
-      </div>
-      <div id='carrusel'>
-        <CarouselImg/>
-      </div>
       <BrowserRouter>
         <header>
         </header>
         <Routes>
-          <Route path='/' element={<Menu />}/>
+          {datos.data.map((dato)=>{
+            return (
+              <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato}/>} key={dato.id}/>
+            )
+          })}
+          <Route path='/menu' element={<Menu />}/>
+          <Route path='/map' element={<Map />} />
+          <Route path='/carousel' element={ <CarouselImg/>} />
         </Routes>
       </BrowserRouter>
 
