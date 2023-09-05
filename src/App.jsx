@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
+import CarouselImg from './componentes/Carousel/Carousel';
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           })}
           <Route path='/menu' element={<Menu />}/>
           <Route path='/map' element={<Map />} />
+          <Route path='/carousel' element={ <CarouselImg/>} />
         </Routes>
       </BrowserRouter>
 
