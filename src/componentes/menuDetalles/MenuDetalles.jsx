@@ -35,12 +35,12 @@ function MenuDetalles( {dato} ) {
                 <h3> { dato.title } </h3>
                 <div className='menuFotoDescripcion'>
                     <img src={dato.img} alt={dato.title} />
-                    <Parrafo texto={dato.description} />
+                    <Parrafo texto={`DESCRIPCIÓN: ${dato.description}`} />
+                    <Parrafo texto={`INGREDIENTES: ${dato.ingredients}`}/>
                 </div>
-                <Parrafo texto={dato.ingredients}/>
                 <div className='valoracionPrecio'>
                     <Parrafo texto={`VARLORACION: ${dato.valoration}`}/>
-                    <Parrafo texto={`$ ${dato.price}`}/>
+                    <Parrafo texto={`PRECIO: $${dato.price}`}/>
                 </div>
                 <div className='botonesMasMenos'>
                     <Boton btn={{id:"menos", clase:"comun", texto: "-"}} btnClick={btnClick}/>
@@ -48,7 +48,7 @@ function MenuDetalles( {dato} ) {
                     <Boton btn={{id:"mas", clase:"comun", texto: "+"}} btnClick={btnClick}/>
                 </div>
                 <div className='total'>
-                    <Parrafo texto={`$ ${cantidad*dato.price}`} />
+                    <Parrafo texto={`TOTAL: $${cantidad*dato.price}`} />
                     <Boton btn={{id:"aceptar", clase:"comun", texto: "añadir al carrito"}} btnClick={btnClick}/>
                 </div>
                 <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : `x`}} btnClick={btnClick} />
