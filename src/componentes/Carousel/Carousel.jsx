@@ -1,97 +1,76 @@
-import React, { useState } from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption,
-} from 'reactstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useRef, useState } from 'react'
+import { imgCarousel } from './imgCarousel'; 
+import './Carousel.css'
 
-const items = [
-  {
-    src: 'https://s7e6w6d2.rocketcdn.me/wp-content/uploads/2013/02/Antares--696x463.jpg',
-    altText: 'Green Beer',
-    caption: 'Pasión por lo que hacemos desde 1999 ',
-    key: 1,
-  },
-  {
-    src: 'https://toledodiario.es/wp-content/uploads/2019/04/Fabrica-cervezas-Sagra_EDIIMA20190416_0721_20.jpg',
-    altText: 'Naturalmente Artesanal',
-    caption: 'El componente más importante del producto acabado son nuestras manos. Desde que empezamos con la idea de una receta, hasta que llega el producto a los barriles',
-    key: 2,
-  },
-  {
-    src: 'https://fotos.perfil.com/2023/02/21/trim/1280/720/cerveza-artesanal-sector-en-riesgo-por-falta-de-lupulo-1513243.jpg',
-    altText: 'Slide 3',
-    caption: 'Slide 3',
-    key: 3,
-  },
-];
 
-function CarouselImg(args) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
+function CarouselImg(){
+  const listRef = useRef();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const next = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
-  };
 
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
-  };
+  useEffect(() => {
+    const listNode = listRef.current;
+    const imgNode = listNode.querySelectorAll("li > img")[currentIndex];
 
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  };
+    if (imgNode) {
+      imgNode.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
 
-  const slides = items.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} width={"100%"} height={"750px"}/>
-        <CarouselCaption
-          captionText={item.caption}
-          captionHeader={item.caption}
-        />
-      </CarouselItem>
-    );
-  });
+  }, [currentIndex]);
+
+
+  const scrollToImage = (direction) => {
+    if (direction === 'prev') {
+      setCurrentIndex(curr => {
+        const isFirstSlide = currentIndex === 0;
+        return isFirstSlide ? 0 : curr - 1;
+      })
+    } else {
+      const isLastSlide = currentIndex === imgCarousel.length - 1;
+      if (!isLastSlide) {
+        setCurrentIndex(curr => curr + 1);
+      }
+    }
+  }
+
+  const goToSlide = (slideIndex) => {
+    setCurrentIndex(slideIndex);
+  }
 
   return (
-    <Carousel
-      activeIndex={activeIndex}
-      next={next}
-      previous={previous}
-      {...args}
-    >
-      <CarouselIndicators
-        items={items}
-        activeIndex={activeIndex}
-        onClickHandler={goToIndex}
-      />
-      {slides}
-      <CarouselControl
-        direction="prev"
-        directionText="Previous"
-        onClickHandler={previous}
-      />
-      <CarouselControl
-        direction="next"
-        directionText="Next"
-        onClickHandler={next}
-      />
-    </Carousel>
-  );
+    <div className="main-container">
+      <div className="slider-container">
+        <div className='leftArrow' onClick={() => scrollToImage('prev')}>&#10092;</div>
+        <div className='rightArrow' onClick={() => scrollToImage('next')}>&#10093;</div>
+        <div className="container-images">
+          <ul ref={listRef}>
+            {
+              imgCarousel.map((item) => {
+                return <li key={item.id}>
+                  <img src={item.imgUrl} width={'100%'} height={'280px'} />
+                 <p>{item.caption}</p>
+                 <p>{item.caption2}</p>
+                </li>
+              })
+            }
+          </ul>
+        </div>
+        <div className="dots-container">
+          {
+            imgCarousel.map((_, idx) => (
+              <div key={idx}
+                className={`dot-container-item ${idx === currentIndex ? "active" : ""}`}
+                onClick={() => goToSlide(idx)}>
+                &#9865;
+              </div>))
+          }
+        </div>
+      </div>
+    </div >
+  )
 }
 
-export default CarouselImg;
 
+export default CarouselImg;
