@@ -1,18 +1,18 @@
-ul,
-li {
+.main-container ul,
+.main-container li {
   list-style: none;
   white-space: nowrap;
 }
 
-li {
+.main-container li {
   display: inline;
 }
 
-img {
+.main-container img {
   margin-top: -16px;
 }
 
-p {
+.main-container p {
     position:absolute;
 }
 /* Main container */
