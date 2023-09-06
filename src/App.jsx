@@ -28,7 +28,6 @@ function App() {
           <Route path='/map' element={<Map />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
-
           <Route path='/carousel' element={ <CarouselImg/>} /> 
         </Routes>
       </BrowserRouter>
