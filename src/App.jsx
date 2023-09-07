@@ -4,10 +4,14 @@ import { useContext } from 'react'
 import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
-import CarouselImg from './componentes/Carousel/Carousel';
+
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 import { Login, Registro } from './componentes/auth';
+
 import Footer from './componentes/footer/Footer';
+
+import  Home  from './componentes/Home/Home';
+
 
 function App() {
   const {datos } = useContext(contexto);
@@ -15,6 +19,7 @@ function App() {
 
   return (
     <>
+ 
       <BrowserRouter>
         <header>
         </header>
@@ -24,11 +29,16 @@ function App() {
               <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato}/>} key={dato.id}/>
             )
           })}
+         <Route path='/' element={<Home />}/>
           <Route path='/menu' element={<Menu />}/>
           <Route path='/map' element={<Map />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
+
           <Route path='/carousel' element={ <CarouselImg/>} /> 
+
+      
+
         </Routes>
       </BrowserRouter>
 
