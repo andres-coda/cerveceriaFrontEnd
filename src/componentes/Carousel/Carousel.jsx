@@ -11,11 +11,13 @@ function CarouselImg(){
   useEffect(() => {
     const listNode = listRef.current;
     const imgNode = listNode.querySelectorAll("li > img")[currentIndex];
+  
 
     if (imgNode) {
       imgNode.scrollIntoView({
         behavior: "smooth"
       });
+    
     }
 
   }, [currentIndex]);
@@ -28,7 +30,7 @@ function CarouselImg(){
         return isFirstSlide ? 0 : curr - 1;
       })
     } else {
-      const isLastSlide = currentIndex === imgCarousel.length - 1;
+      const isLastSlide = currentIndex === imgCarousel.length - 1 ;
       if (!isLastSlide) {
         setCurrentIndex(curr => curr + 1);
       }
@@ -42,17 +44,18 @@ function CarouselImg(){
   return (
     <div className="main-container">
       <div className="slider-container">
-        <div className='leftArrow' onClick={() => scrollToImage('prev')}>&#10092;</div>
-        <div className='rightArrow' onClick={() => scrollToImage('next')}>&#10093;</div>
+        <div className='leftArrow' onClick={() => scrollToImage('prev')}>&#8593;</div>
+        <div className='rightArrow' onClick={() => scrollToImage('next')}>&#8595;</div>
         <div className="container-images">
           <ul ref={listRef}>
             {
               imgCarousel.map((item) => {
                 return <li key={item.id}>
-                  <img src={item.imgUrl} width={'100%'} height={'280px'} />
+                  <img src={item.imgUrl} width={'120%'} height={'480px'} />
                  <p>{item.caption}</p>
                  <p>{item.caption2}</p>
-                </li>
+                 </li>
+                
               })
             }
           </ul>
