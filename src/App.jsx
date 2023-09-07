@@ -7,7 +7,11 @@ import Menu from './componentes/menu/Menu';
 
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 import { Login, Registro } from './componentes/auth';
+
+import Footer from './componentes/footer/Footer';
+
 import  Home  from './componentes/Home/Home';
+
 
 function App() {
   const {datos } = useContext(contexto);
@@ -30,11 +34,16 @@ function App() {
           <Route path='/map' element={<Map />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
+
+          <Route path='/carousel' element={ <CarouselImg/>} /> 
+
       
+
         </Routes>
       </BrowserRouter>
 
       {console.log(datos.data)}
+      <Footer />
 
     </>
   )
