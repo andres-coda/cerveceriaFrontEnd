@@ -49,10 +49,10 @@ function CarouselImg(){
         <div className="container-images">
           <ul ref={listRef}>
             {
-              imgCarousel.map((item) => {
+              imgCarousel.map((item) => {//recorre cada obj. del archivo js
                 return <li key={item.id}>
-                  <img src={item.imgUrl} width={'120%'} height={'480px'} />
-                 <p>{item.caption}</p>
+                  <img src={item.imgUrl} width={'1100vw'} height={'480px'} />
+                 <h1>{item.caption}</h1>
                  <p>{item.caption2}</p>
                  </li>
                 

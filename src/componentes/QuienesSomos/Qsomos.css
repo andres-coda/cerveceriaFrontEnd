@@ -1,0 +1,95 @@
+/*contenedor principal*/
+.container-all {
+    width: 100vw;
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    margin-bottom: 3vw;
+    margin-top: 3vw;
+
+}
+
+/*titulo quienes somos*/
+.portada h1:before {
+    border-top: 3px solid #F1F1EF;
+    content: "";
+    margin: 0 auto;
+    position:absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 93vw;
+    z-index: -1;
+  }
+  .portada h1 span {
+    background-color: #1D1D1B;
+    padding: 0 15px;
+  }
+ 
+
+  .portada h1 {
+    z-index: 1;
+    position: relative;
+    width: 94vw;
+    font-size: xx-large;
+    letter-spacing: 0.5em;
+    text-align: center;
+    color: #F1F1EF;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: #f5f5d7 0px 0px 6px 6px;
+    margin-top: 10vw;
+}
+
+hr {
+    color: #F1F1EF;
+    width: 93vw;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+/*contenedor de img*/
+.img-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 93vw;
+    height: auto;
+    background-color: #F1F1EF;
+    border-radius: 20px;
+    padding: 20px; /* Añade espacio interno para el contenido */
+}
+/*img*/
+.img-container img {
+    width: 80vw; /* Ajusta el ancho de las imágenes */
+    max-width: 40vw; /* Establece un ancho máximo para mantener la legibilidad en pantallas grandes */
+    margin: 10px 0; /* Agrega espacio entre las imágenes */
+}
+/*logo*/
+.logo img {
+    border-radius: 100%;
+    width: 20vw;
+    
+}
+/*titulo de contenedor de img*/
+.img-container h1 {
+    color: black;
+    font-size: 2rem;
+    
+}
+/*parrafo de conten. img*/
+.img-container p {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    background-color: #F1F1EF;
+    box-shadow: none;
+    font-size: 2em;
+}
+/*contenedor sintacc*/
+.container-img-sintacc {
+    display: flex;
+    flex-wrap: wrap;
+}

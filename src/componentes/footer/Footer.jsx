@@ -1,6 +1,6 @@
 import logo from '../logo/Logo.png'
 
-function footer() {
+function Footer() {
   return (
     <footer className="footer">
       <div className="footer-left">
@@ -24,5 +24,5 @@ function footer() {
   );
 }
 
-export default footer;
+export default Footer;
 
