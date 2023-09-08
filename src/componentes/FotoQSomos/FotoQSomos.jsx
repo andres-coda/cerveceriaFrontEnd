@@ -1,6 +1,6 @@
 import React from 'react'
 
-export  function FotoQSomos({props}){
+function FotoQSomos({props}){
   return (
     <div>
              <img src={props}  />
@@ -9,5 +9,5 @@ export  function FotoQSomos({props}){
   )
 }
 
-
+export default FotoQSomos;
 

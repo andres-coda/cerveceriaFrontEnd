@@ -4,13 +4,11 @@ import { useContext } from 'react'
 import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
-
+import QuienesSomos from './componentes/QuienesSomos/QuienesSomos';
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 import { Login, Registro } from './componentes/auth';
-
-import Footer from './componentes/footer/Footer';
-
 import  Home  from './componentes/Home/Home';
+import Footer from './componentes/footer/Footer'
 
 
 function App() {
@@ -34,22 +32,22 @@ function App() {
           <Route path='/map' element={<Map />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
+          <Route path='/quienes somos' element={<QuienesSomos />}/>
 
-          <Route path='/carousel' element={ <CarouselImg/>} /> 
-
-      
+            
 
         </Routes>
       </BrowserRouter>
+      <Footer />
 
       {console.log(datos.data)}
-      <Footer />
+
 
     </>
   )
 }
 
-export default App
+export default App;
 
 
 /* {datos.categorias.map((categoria)=> (

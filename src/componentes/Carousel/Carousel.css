@@ -1,4 +1,6 @@
 
+
+
 .main-container ul,
 li {
   list-style: none;
@@ -15,10 +17,16 @@ li {
   position: relative;
 }
 
+.main-container li h1 {
+  text-align: center;
+font-size: 1.5rem;
+ padding: 0%;
+
+}
 .main-container li p {
   text-align: center;
-  margin-left: 10%;
-  padding: 0%;
+  font-style: oblique;
+ padding: 0%;
 
 }
 
@@ -28,7 +36,7 @@ li {
 
 .main-container {
   width: 80%;
-  height: 560px;
+  height: 595px;
   margin: 0 auto;
 }
 
@@ -92,5 +100,3 @@ div.active {
   height: 15px;
   border-radius: 50%;
 } 
-
-
