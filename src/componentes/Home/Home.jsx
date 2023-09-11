@@ -4,7 +4,7 @@ import CarouselImg from '../Carousel/Carousel';
 
 function Home() {
   return (
-    <div>
+    <div className='conteinerGeneral'>
         <CarouselImg/>
   
     </div>

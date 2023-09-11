@@ -17,10 +17,10 @@
     background: #1D1D1Bff;
     transition: all 0.5s;
     z-index: 997;
-    height: 16vw;      
+    height: 8vw;      
 }
 .header .logoHeader img {
-    width: 15vw;
+    width: 8vw;
     margin-left: 2vw;
 }
 .header .btn-book-a-table,
