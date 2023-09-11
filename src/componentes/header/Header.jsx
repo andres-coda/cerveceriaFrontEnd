@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Header.css';
-import logo from "../../assets/logo_Green_Beer.png"
+import logo from "../../assets/Logo.png"
 import BurguerButton from '../burguerButton/BurguerButton';
 
 
