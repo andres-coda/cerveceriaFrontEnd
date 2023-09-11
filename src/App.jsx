@@ -9,8 +9,7 @@ import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 import { Login, Registro } from './componentes/auth';
 import  Home  from './componentes/Home/Home';
 import Footer from './componentes/footer/Footer'
-
-
+import Header from './componentes/header/Header'
 function App() {
   const {datos } = useContext(contexto);
 
@@ -19,15 +18,14 @@ function App() {
     <>
  
       <BrowserRouter>
-        <header>
-        </header>
+        <Header /> 
         <Routes>
           {datos.data.map((dato)=>{
             return (
               <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato}/>} key={dato.id}/>
             )
           })}
-         <Route path='/' element={<Home />}/>
+         {/* <Route path='/' element={<Home />}/> */}
           <Route path='/menu' element={<Menu />}/>
           <Route path='/map' element={<Map />} />
           <Route path='/login' element={<Login />} />
@@ -36,7 +34,7 @@ function App() {
 
         </Routes>
       </BrowserRouter>
-      <Footer />
+      {/* <Footer /> */}
 
       {console.log(datos.data)}
 
