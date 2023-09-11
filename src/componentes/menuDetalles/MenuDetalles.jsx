@@ -1,12 +1,8 @@
 import './MenuDetalles.css'
-import { useContext, useState, useEffect } from "react";
-import { contexto } from '../contexto/contexto';
-import { useNavigate } from 'react-router-dom';
+import {  useState } from "react";
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
-function MenuDetalles( {dato} ) {
-    const { datos, setDatos } = useContext(contexto);
-    const navigate = useNavigate();
+function MenuDetalles( {dato, setMenuDetalles } ) {
     let [cantidad, setCantidad] = useState(0);
     const btnClick =(e) => {
         const btn = e.target.id;
@@ -21,7 +17,7 @@ function MenuDetalles( {dato} ) {
                 console.log("preciono aceptar");
                 break;
             case "cerrar" :
-                navigate('/menu');
+                setMenuDetalles(undefined);
                 break;
             default:
                 console.log("boton todavía no implementado");
@@ -30,26 +26,28 @@ function MenuDetalles( {dato} ) {
     }
     return (
         <div className="transparente">
-            <div className='menuDetalle'>
-                <h2> { dato.category } </h2>
-                <h3> { dato.title } </h3>
-                <div className='menuFotoDescripcion'>
-                    <img src={dato.img} alt={dato.title} />
-                    <Parrafo texto={`DESCRIPCIÓN: ${dato.description}`} />
-                    <Parrafo texto={`INGREDIENTES: ${dato.ingredients}`}/>
-                </div>
-                <div className='valoracionPrecio'>
-                    <Parrafo texto={`VARLORACION: ${dato.valoration}`}/>
-                    <Parrafo texto={`PRECIO: $${dato.price}`}/>
-                </div>
-                <div className='botonesMasMenos'>
-                    <Boton btn={{id:"menos", clase:"comun", texto: "-"}} btnClick={btnClick}/>
-                    <Parrafo texto={cantidad} />
-                    <Boton btn={{id:"mas", clase:"comun", texto: "+"}} btnClick={btnClick}/>
-                </div>
-                <div className='total'>
-                    <Parrafo texto={`TOTAL: $${cantidad*dato.price}`} />
-                    <Boton btn={{id:"aceptar", clase:"comun", texto: "añadir al carrito"}} btnClick={btnClick}/>
+            <div className='menuDetalleElementos'>            
+                <div className='menuDetalle'>
+                    <h3> { dato.category } </h3>
+                    <h2> { dato.title } </h2>
+                    <div className='menuFotoDescripcion'>
+                        <img src={dato.img} alt={dato.title} />
+                        <Parrafo texto={`DESCRIPCIÓN: ${dato.description}`} />
+                        <Parrafo texto={`INGREDIENTES: ${dato.ingredients}`}/>
+                    </div>
+                    <div className='valoracionPrecio'>
+                        <Parrafo texto={`VARLORACION: ${dato.valoration}`}/>
+                        <Parrafo texto={`PRECIO: $${dato.price}`}/>
+                    </div>
+                    <div className='botonesMasMenos'>
+                        <Boton btn={{id:"menos", clase:"comun", texto: "-"}} btnClick={btnClick}/>
+                        <Parrafo texto={cantidad} />
+                        <Boton btn={{id:"mas", clase:"comun", texto: "+"}} btnClick={btnClick}/>
+                    </div>
+                    <div className='total'>
+                        <Parrafo texto={`TOTAL: $${cantidad*dato.price}`} />
+                        <Boton btn={{id:"aceptar", clase:"comun", texto: "añadir al carrito"}} btnClick={btnClick}/>
+                    </div>
                 </div>
                 <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : `x`}} btnClick={btnClick} />
             </div>

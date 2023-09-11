@@ -1,14 +1,14 @@
 import './Menu.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { contexto } from '../contexto/contexto';
-import { useNavigate } from 'react-router-dom';
 import MenuTarjeta from '../menuTarjeta/MenuTarjeta';
+import MenuDetalles from '../menuDetalles/MenuDetalles';
 function Menu() {
     const { datos } = useContext(contexto);
-    const navigate = useNavigate();
+    const [ menuDetalle, setMenuDetalle ] = useState(undefined);
     const btnClick = (e) => {
         const btn = e.currentTarget.id;
-        if (btn) navigate(`/menu/${btn}`);
+        setMenuDetalle(datos.data.find((dato)=> Number(dato.id)===Number(btn)));
     }
     return (
         <div className='menu'>
@@ -27,6 +27,7 @@ function Menu() {
                 </div>
                 ) : (null)
             ))}
+            {menuDetalle != undefined ? (<MenuDetalles dato={menuDetalle} setMenuDetalles={setMenuDetalle}/>) : (null)} 
         
         </div>
     );
