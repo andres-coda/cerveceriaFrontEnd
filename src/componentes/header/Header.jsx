@@ -12,7 +12,7 @@ function Header() {
     }
 
     return (
-        <header id="header" className="header">
+        <div id="header" className="header">
             
 
 
@@ -47,7 +47,7 @@ function Header() {
                 </div>
 
             
-        </header>
+        </div>
     )
 }
 export default Header;

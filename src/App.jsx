@@ -16,16 +16,17 @@ function App() {
 
   return (
     <>
- 
-      <BrowserRouter>
+      <header>
         <Header /> 
+      </header>
+      <BrowserRouter>
         <Routes>
           {datos.data.map((dato)=>{
             return (
               <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato}/>} key={dato.id}/>
             )
           })}
-         {/* <Route path='/' element={<Home />}/> */}
+          <Route path='/' element={<Home />}/>
           <Route path='/menu' element={<Menu />}/>
           <Route path='/map' element={<Map />} />
           <Route path='/login' element={<Login />} />
@@ -34,7 +35,7 @@ function App() {
 
         </Routes>
       </BrowserRouter>
-      {/* <Footer /> */}
+      <Footer />
 
       {console.log(datos.data)}
 
