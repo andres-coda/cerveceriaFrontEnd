@@ -1,11 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FormularioInput from '../formularioInput/FormularioInput';
+import Boton from "../boton/Boton";
 
-export const Login = () => {
+function Login () {
+  const [ login, setLogin ] = useState({})
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navegarAlRegistro = useNavigate();
+
+  const onChan = (e) => {
+    setLogin({
+      ...login,
+      [e.target.name] : e.target.value
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +34,7 @@ export const Login = () => {
           <hr />
           <form onSubmit={handleSubmit} className="separarFormulario">
             <div className="form-group">
+              <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico: "} onChan={onChan}/>
               <label htmlFor="email">Correo Electrónico:</label>
               <input
                 type="email"
@@ -36,6 +47,7 @@ export const Login = () => {
               />
             </div>
             <div className="form-group">
+            <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña: "} onChan={onChan}/>
               <label htmlFor="password">Contraseña:</label>
               <input
                 type="password"
@@ -50,6 +62,7 @@ export const Login = () => {
             <button type="submit" className="btn botonEnviar">
               Iniciar Sesión
             </button>
+            <Boton btn={{id:"enviar", clase: "comun", texto: "Iniciar Sesión"}} btnClick={handleSubmit}/>
           </form>
           <button onClick={irARegistro} className="btn botonEnviar mt-3">
             Registrarse
@@ -59,4 +72,6 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;
 
