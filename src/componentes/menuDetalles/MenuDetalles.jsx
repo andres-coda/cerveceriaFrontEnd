@@ -1,9 +1,20 @@
 import './MenuDetalles.css'
-import {  useState } from "react";
+import {  useContext, useState, useEffect } from "react";
+import { contexto } from '../contexto/contexto';
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 function MenuDetalles( {dato, setMenuDetalles } ) {
-    let [cantidad, setCantidad] = useState(0);
+    const {datos,setDatos} = useContext(contexto);
+    const [cantidad, setCantidad] = useState(0);
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.id===dato.id));
+    useEffect(()=>{
+        if (indice!=-1) {
+            setCantidad(datos.carrito[indice].cantidad); 
+        } else {
+            setCantidad(0);
+        }
+    }, [datos.carrito, indice]);
+
     const btnClick =(e) => {
         const btn = e.target.id;
         switch(btn){
@@ -14,7 +25,15 @@ function MenuDetalles( {dato, setMenuDetalles } ) {
                 setCantidad((prev)=>(prev+=1));
                 break;
             case "aceptar":
-                console.log("preciono aceptar");
+                const newCarrito = datos.carrito.slice();
+                if (indice===-1){
+                    const newObjet = { ...dato, cantidad};
+                    newCarrito.push(newObjet);
+                } else {
+                    newCarrito[indice].cantidad=cantidad;
+                }
+                setDatos((prev)=>({...prev, carrito:newCarrito}));
+                setMenuDetalles(undefined);
                 break;
             case "cerrar" :
                 setMenuDetalles(undefined);

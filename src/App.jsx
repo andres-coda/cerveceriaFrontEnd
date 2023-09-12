@@ -11,6 +11,7 @@ import Registro from './componentes/auth/Registro';
 import  Home  from './componentes/Home/Home';
 import Footer from './componentes/footer/Footer'
 import Header from './componentes/header/Header'
+import Carrito from './componentes/carrito/Carrito';
 function App() {
   const {datos } = useContext(contexto);
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>
+          <Route path='/carrito' element={<Carrito />}/>
 
         </Routes>
       </BrowserRouter>
