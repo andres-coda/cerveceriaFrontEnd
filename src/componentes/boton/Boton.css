@@ -2,14 +2,13 @@
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 1px 1px 2px black;
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.8rem;
     margin: 0.2rem 0.3rem;
     cursor: pointer;
 }
 
 .comun{
     background-color: #c19f71;
-
 }
 
 .comun:hover {
