@@ -1,5 +1,5 @@
 import './Carrito.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { contexto } from '../contexto/contexto';
 import MenuCarrito from '../menuCarrito/MenuCarrito';
 import Parrafo from '../parrafo/Parrafo';
@@ -11,6 +11,7 @@ function Carrito(){
     const btnClick = (e) => {
         console.log(e.target.id);
     }
+    console.log(`carrito: ${datos.carrito}`);
     return (
         <div className='carrito'>
             {datos.carrito.map((dato)=>{
