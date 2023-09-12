@@ -40,9 +40,7 @@ function QuienesSomos() {
 <div className='container-all'>
         <div className='img-container'>
        <h1>Y nuestro orgullo cervecero Sin TACC</h1>
-       <Parrafo texto={'Creada para ofrecer a los celíacos una alternativa que conserva el mismo sabor de su cerveza hermana'}/>
-        <Parrafo texto={'Encontralas en sus tres sabores: IPa, Lambic y Dunkel'}/>
-        <Parrafo texto={'Sus ingredientes incluyen agua, malta de cebada, maíz, levadura y lúpulo, que aportan aromas afrutados y un ligero amargor. Tiene una graduación alcohólica del 5,5%.'} />
+       <Parrafo texto={'Creadas para ofrecer a los celíacos una alternativa que conserva el mismo sabor de su cerveza hermana. Encontralas en sus tres sabores: IPa, Lambic y Dunkel'}/>
         <FotoQSomos  props={'https://www.recetas-sin-gluten.com/base/stock/Post/30-image/30-image_small.jpg.webp'}/>
    </div>
    </div>

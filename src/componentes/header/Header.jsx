@@ -23,7 +23,7 @@ function Header() {
                 </a>
                 <nav id="navbar" className={`navbar ${clicked ? 'active' : ''}`}>
                     <ul>
-                        <li><a href="/home">Inicio</a></li>
+                        <li><a href="/">Inicio</a></li>
                         <li><a href="/buscar">Buscar</a></li>
                         <li><a href="/nosotros">Nosotros</a></li>
                         <li className={`dropdown ${isDropdownActive ? 'active' : ''}`}
