@@ -28,8 +28,8 @@ function Login () {
 
   return (
     <div className="container">
-      <div className="row justify-content-center mt-5 formularioLogin">
-        <div className="col-md-6 text-white ">
+      <div className="formularioLogin">
+        <div>
           <h2>Iniciar Sesión</h2>
           <hr />
           <form onSubmit={handleSubmit} className="separarFormulario">
