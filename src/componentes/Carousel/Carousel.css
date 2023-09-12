@@ -21,12 +21,15 @@ li {
   text-align: center;
 font-size: 1.5rem;
  padding: 0%;
+color: #F1F1EF;
 
 }
 .main-container li p {
   text-align: center;
   font-style: oblique;
   padding: 0%;
+  font-size: 1.5em;
+
 }
 
 
@@ -35,7 +38,7 @@ font-size: 1.5rem;
 
 .main-container {
   width: 80%;
-  height: 74vh;
+  height: 56vh;
   margin: 0 auto;
 }
 
@@ -99,3 +102,28 @@ div.active {
   height: 15px;
   border-radius: 50%;
 } 
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 412px) {
+  .main-container {
+    width: 100%; /* Hacer el carousel ocupar el 100% del ancho */
+    height: auto; /* Ajustar la altura automáticamente según el contenido */
+  }
+
+  .main-container li h1 {
+    text-align: center;
+  font-size: 1rem;
+   padding: 0%;
+  color: #F1F1EF;
+  
+  }
+  .main-container li p {
+    text-align: center;
+    font-style: oblique;
+    padding: 0%;
+    font-size: 0.5em;
+  
+  }
+
+
+}

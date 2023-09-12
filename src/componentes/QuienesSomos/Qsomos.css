@@ -5,10 +5,17 @@
     align-items: center; /* Centra verticalmente los elementos */
     margin-bottom: 3vw;
     margin-top: 3vw;
-
 }
+/* }@font-face {
+    font-family: 'selima';
+    src: url('src/assets/fonts/selima_.otf') format('opentype');
+  } */
+
 
 /*titulo quienes somos*/
+.portada {
+    margin-top: 15vw;
+}
 .portada h1:before {
     border-top: 3px solid #F1F1EF;
     content: "";
@@ -21,24 +28,28 @@
     width: 93vw;
     z-index: -1;
   }
-  .portada h1 span {
+  .portada span {
     background-color: #1D1D1B;
-    padding: 0 15px;
-  }
- 
+    padding: 0;
+    
+}
 
-  .portada h1 {
+
+
+.portada h1 {
     z-index: 1;
     position: relative;
     width: 94vw;
-    font-size: xx-large;
+    height: 65px;
     letter-spacing: 0.5em;
     text-align: center;
     color: #F1F1EF;
     border: 2px solid black;
     border-radius: 20px;
     box-shadow: #f5f5d7 0px 0px 6px 6px;
-    margin-top: 10vw;
+    padding: 10px;
+    
+    
 }
 
 hr {
@@ -50,12 +61,13 @@ hr {
     padding: 0;
 }
 /*contenedor de img*/
+
 .img-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    width: 93vw;
+    width: 98vw;
     height: auto;
     background-color: #F1F1EF;
     border-radius: 20px;
@@ -76,7 +88,8 @@ hr {
 /*titulo de contenedor de img*/
 .img-container h1 {
     color: black;
-    font-size: 2rem;
+    font-size: 1.8em;
+    margin-top: 50px;
     
 }
 /*parrafo de conten. img*/
@@ -87,9 +100,19 @@ hr {
     background-color: #F1F1EF;
     box-shadow: none;
     font-size: 2em;
+
 }
 /*contenedor sintacc*/
 .container-img-sintacc {
     display: flex;
     flex-wrap: wrap;
 }
+
+::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento vertical */
+    background-color: #c19f71;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background-color: #F1F1EF;
+  }
