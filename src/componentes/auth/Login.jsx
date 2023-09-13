@@ -16,7 +16,7 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Te Logueaste con exito");
+   console.log(login);
   };
 
   return (
