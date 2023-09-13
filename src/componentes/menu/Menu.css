@@ -2,14 +2,13 @@
     max-width: 94vw;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
     background-color: #1D1D1B;
     overflow-y: auto; 
     overflow-x: hidden; 
 }
 
-.menu .menuCatYTitulo{
+.menuCatYTitulo{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -17,7 +16,7 @@
 
 .menu h4{
     display: inline;
-    white-space: nowrap; 
+    white-space: nowrap;
     margin-right: 100%;
     margin-left: 0.1rem;
     padding: 0.1rem 1rem;
@@ -35,13 +34,17 @@
 }
 
 .menu .menuCategoria {
-    max-width: 90vw;
+    width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
     margin: 0.5rem 1rem;
     padding: 1rem 0.2rem;
-    overflow-y: hidden;
-    overflow-x: auto;
+}
+
+.menu p{
+    color: #1D1D1B;
 }
 
 

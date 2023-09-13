@@ -6,7 +6,7 @@ function MenuTarjeta( { dato, click } ){
         <div className="menuTarjeta" onClick={click} id={dato.id}>
             <h5>{dato.title}</h5>
             <img src={dato.img} alt={dato.title} />
-            <Parrafo texto={`$ ${dato.price}`} />
+            <Parrafo texto={`$ ${dato.price}`} clase={"menuParrafo"} />
         </div>
     );
 };

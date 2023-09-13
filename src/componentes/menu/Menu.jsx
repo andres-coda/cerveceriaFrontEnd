@@ -11,6 +11,7 @@ function Menu() {
         setMenuDetalle(datos.data.find((dato)=> Number(dato.id)===Number(btn)));
     }
     return (
+        <div className='conteinerGeneral'>
         <div className='menu'>
             {datos.categorias.map((dato)=> ( dato !== "todas" && dato !== "Comida Vegetariana" ? (
                 <div key={dato} className='menuCatYTitulo'>
@@ -29,6 +30,7 @@ function Menu() {
             ))}
             {menuDetalle != undefined ? (<MenuDetalles dato={menuDetalle} setMenuDetalles={setMenuDetalle}/>) : (null)} 
         
+        </div>
         </div>
     );
 };
