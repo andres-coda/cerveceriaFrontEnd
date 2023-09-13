@@ -37,7 +37,7 @@ function Header() {
                                 <li><a href="/comida sin tacc">Comida Sin TACC</a></li>
                             </ul>
                         </li>
-                        <li><a href="/registro">Registro</a></li>
+                        <li><a href="/login">Login</a></li>
                     </ul>
                 </nav>
 

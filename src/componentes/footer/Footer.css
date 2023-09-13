@@ -1,0 +1,26 @@
+/*estilo del Foot*/
+footer {
+    color: var(--color2);
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 3rem;
+    justify-content: center;
+    padding: 0 1rem;
+    }
+    
+    .footer-right {
+      display:flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+    
+    .logoDeFooter {
+      width: 50px;
+    }
+    
+    .footer-center {
+      display: grid;
+      place-items: center;
+    }
