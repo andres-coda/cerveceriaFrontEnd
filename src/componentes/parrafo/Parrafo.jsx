@@ -1,7 +1,7 @@
 import './Parrafo.css'
-function Parrafo({texto }) {
+function Parrafo({texto, clase }) {
     return (
-        <p>{texto}</p>
+        <p className={clase}>{texto}</p>
     );
 };
 

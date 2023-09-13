@@ -1,9 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 export const contexto = createContext({});
+const URL = 'http://localhost:3000/menu';
 export const ProveedorContexto = ({children}) => {
     const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], usuario:[], usuarioActivo: {usuario:"perfil"}});
     useEffect(()=>{
-        fetch('http://localhost:3000/menu')
+        fetch(URL)
         .catch(error =>{
             console.error(`Error en el fetch: `, error);
             throw error;

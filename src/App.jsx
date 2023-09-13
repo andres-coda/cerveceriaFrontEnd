@@ -18,10 +18,10 @@ function App() {
 
   return (
     <>
+      <BrowserRouter>
       <header>
         <Header /> 
       </header>
-      <BrowserRouter>
         <Routes>
           {datos.data.map((dato)=>{
             return (
@@ -37,8 +37,8 @@ function App() {
           <Route path='/carrito' element={<Carrito />}/>
 
         </Routes>
-      </BrowserRouter>
       <Footer />
+      </BrowserRouter>
 
       {console.log(datos.data)}
 

@@ -18,7 +18,7 @@ function Carrito(){
                 setCantidad((prev)=>{prev+dato.price*dato.cantidad});
                 return <MenuCarrito key={dato.id} dato={dato} click={btnClick}/> 
             })}
-            <Parrafo texto={`Total: $${cantidad}`} />
+            <Parrafo clase={"menuParrafo"} texto={`Total: $${cantidad}`} />
             <Boton btn={{id:"comprar", clase: "comun", texto:"comprar"}} btnClick={btnClick} />
         </div>
     );

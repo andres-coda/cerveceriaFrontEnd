@@ -1,4 +1,4 @@
-.comun, .cerrar{
+.comun, .cerrar, .mas-menos{
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 1px 1px 2px black;
@@ -7,11 +7,11 @@
     cursor: pointer;
 }
 
-.comun{
+.comun, .mas-menos{
     background-color: #c19f71;
 }
 
-.comun:hover {
+.comun:hover, .mas-menos:hover {
     box-shadow: 2px 2px 4px black;
     background-color:  #F1D69D;
 }
@@ -24,7 +24,12 @@
     color: black;
 }
 
-.cerrar:hover {
+.cerrar:hover{
     box-shadow: 2px 2px 4px black;
     background-color:  rgb(240, 49, 49);
+}
+
+.mas-menos{
+    font-size: 1.4em;
+    font-weight: bold;
 }

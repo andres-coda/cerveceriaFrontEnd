@@ -6,7 +6,19 @@ import Boton from '../boton/Boton';
 function MenuDetalles( {dato, setMenuDetalles } ) {
     const {datos,setDatos} = useContext(contexto);
     const [cantidad, setCantidad] = useState(0);
+    const [datoCorroborado, setDatoCorroborado] = useState({});
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.id===dato.id));
+    useEffect(()=>{
+        fetch(`http://localhost:3000/menu/${dato.id}`)
+        .catch(error =>{
+            console.error(`Error en el fetch: `, error);
+            throw error;
+        })
+        .then(res=> res.json())
+        .then(data =>{
+            setDatoCorroborado(data);
+    });
+    },[]);
     useEffect(()=>{
         if (indice!=-1) {
             setCantidad(datos.carrito[indice].cantidad); 
@@ -47,24 +59,24 @@ function MenuDetalles( {dato, setMenuDetalles } ) {
         <div className="transparente">
             <div className='menuDetalleElementos'>            
                 <div className='menuDetalle'>
-                    <h3> { dato.category } </h3>
-                    <h2> { dato.title } </h2>
+                    <h3> { datoCorroborado.category } </h3>
+                    <h2> { datoCorroborado.title } </h2>
                     <div className='menuFotoDescripcion'>
-                        <img src={dato.img} alt={dato.title} />
-                        <Parrafo texto={`DESCRIPCIÓN: ${dato.description}`} />
-                        <Parrafo texto={`INGREDIENTES: ${dato.ingredients}`}/>
+                        <img src={datoCorroborado.img} alt={datoCorroborado.title} />
+                        <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ${datoCorroborado.description}`} />
+                        <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ${datoCorroborado.ingredients}`}/>
                     </div>
                     <div className='valoracionPrecio'>
-                        <Parrafo texto={`VARLORACION: ${dato.valoration}`}/>
-                        <Parrafo texto={`PRECIO: $${dato.price}`}/>
+                        <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${datoCorroborado.valoration}`}/>
+                        <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${datoCorroborado.price}`}/>
                     </div>
                     <div className='botonesMasMenos'>
-                        <Boton btn={{id:"menos", clase:"comun", texto: "-"}} btnClick={btnClick}/>
-                        <Parrafo texto={cantidad} />
-                        <Boton btn={{id:"mas", clase:"comun", texto: "+"}} btnClick={btnClick}/>
+                        <Boton btn={{id:"menos", clase:"mas-menos", texto: "-"}} btnClick={btnClick}/>
+                        <Parrafo clase={"menuParrafo"} texto={cantidad} />
+                        <Boton btn={{id:"mas", clase:"mas-menos", texto: "+"}} btnClick={btnClick}/>
                     </div>
                     <div className='total'>
-                        <Parrafo texto={`TOTAL: $${cantidad*dato.price}`} />
+                        <Parrafo clase={"menuParrafo"} texto={`TOTAL: $${cantidad*datoCorroborado.price}`} />
                         <Boton btn={{id:"aceptar", clase:"comun", texto: "añadir al carrito"}} btnClick={btnClick}/>
                     </div>
                 </div>
