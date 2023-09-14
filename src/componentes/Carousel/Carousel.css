@@ -17,19 +17,24 @@ li {
   position: relative;
 }
 
+
 .main-container li h1 {
   text-align: center;
-font-size: 1.5rem;
- padding: 0%;
-color: #F1F1EF;
+  font-size: 1.5vw;
+  max-height: 20vh ;
+  padding: 1%;
+  color: #F1F1EF;
 
 }
+
+
 .main-container li p {
   text-align: center;
   font-style: oblique;
   padding: 0%;
-  font-size: 1.5em;
-
+  font-size: 1.8vw; /* Tamaño de fuente relativo */
+  background-color: #F1F1EF;
+  max-height: 40vh; /* Altura máxima relativa */
 }
 
 
