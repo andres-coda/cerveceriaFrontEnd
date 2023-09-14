@@ -1,0 +1,42 @@
+.subtitulo h1:before {
+    border-top: 3px solid #F1F1EF;
+    content: "";
+    margin: 0 auto;
+    position:absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 93vw;
+    z-index: -1;
+  }
+  .subtitulo span {
+    background-color: #1D1D1B;
+    padding: 0;
+    
+}
+
+.subtitulo h1 {
+    z-index: 1;
+    position: relative;
+    width: 94vw;
+    height: 65px;
+    letter-spacing: 0.5em;
+    text-align: center;
+    color: #F1F1EF;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: #f5f5d7 0px 0px 6px 6px;
+    padding: 10px;
+    
+    
+}
+
+.subtitulo hr {
+    color: #F1F1EF;
+    width: 93vw;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}

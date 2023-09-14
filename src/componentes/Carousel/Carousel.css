@@ -39,7 +39,7 @@ color: #F1F1EF;
 .main-container {
   width: 80%;
   height: 56vh;
-  margin: 0 auto;
+  margin-top: 1rem;
 }
 
 /* Slider container */

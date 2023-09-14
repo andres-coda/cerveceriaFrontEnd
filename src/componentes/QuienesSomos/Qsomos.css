@@ -1,6 +1,6 @@
 /*contenedor principal*/
 .container-all {
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center; /* Centra verticalmente los elementos */
     margin-bottom: 3vw;
@@ -12,7 +12,7 @@
   } */
 
 
-/*titulo quienes somos*/
+/*titulo quienes somos
 .portada {
     margin-top: 15vw;
 }
@@ -60,22 +60,21 @@ hr {
     margin: 0;
     padding: 0;
 }
+
+*/
 /*contenedor de img*/
 
 .img-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     flex-wrap: wrap;
-    width: 98vw;
-    height: auto;
+    justify-content: space-around;
     background-color: #F1F1EF;
     border-radius: 20px;
     padding: 20px; /* Añade espacio interno para el contenido */
 }
 /*img*/
 .img-container img {
-    width: 80vw; /* Ajusta el ancho de las imágenes */
+    width: 40vw; /* Ajusta el ancho de las imágenes */
     max-width: 40vw; /* Establece un ancho máximo para mantener la legibilidad en pantallas grandes */
     margin: 10px 0; /* Agrega espacio entre las imágenes */
 }

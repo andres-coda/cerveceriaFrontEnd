@@ -1,3 +1,4 @@
+import './FormularioInput.css'
 function FormularioInput ({id, tipo, texto, onChan}){
     return (
         <>

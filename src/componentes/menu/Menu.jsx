@@ -3,19 +3,39 @@ import { useContext, useState } from 'react';
 import { contexto } from '../contexto/contexto';
 import MenuTarjeta from '../menuTarjeta/MenuTarjeta';
 import MenuDetalles from '../menuDetalles/MenuDetalles';
-function Menu() {
+import { Link } from 'react-router-dom';
+function Menu({categoria}) {
     const { datos } = useContext(contexto);
     const [ menuDetalle, setMenuDetalle ] = useState(undefined);
     const btnClick = (e) => {
         const btn = e.currentTarget.id;
         setMenuDetalle(datos.data.find((dato)=> Number(dato.id)===Number(btn)));
     }
+    
+  const setSeccionPorCategoria = () => {
+    switch (categoria) {
+      case "bebida":
+        return ["Cerveza", "Vino", "Agua"];
+      case "clasica":
+        return ["Menu"];
+      case "sandwich":
+        return ["Sándwich"];
+      case "sintacc":
+        return ["Sin TACC"];
+      case "vegetariana":
+        return ["Comida Vegetariana"];
+      default:
+        return [categoria];
+    }
+  };
+
+  const seccion = setSeccionPorCategoria();
     return (
         <div className='conteinerGeneral'>
         <div className='menu'>
-            {datos.categorias.map((dato)=> ( dato !== "todas" && dato !== "Comida Vegetariana" ? (
+            {datos.categorias.map((dato)=> ( seccion.includes(dato) || categoria === undefined ?(
                 <div key={dato} className='menuCatYTitulo'>
-                    <h4> {dato.toUpperCase()} </h4>
+                    <Link to={`/menu/${dato}`}><h4> {dato.toUpperCase()} </h4></Link>
                     <div className='menuCategoria'>
                     {datos.data.map((menu)=>{
                         if (menu.category === dato) {
