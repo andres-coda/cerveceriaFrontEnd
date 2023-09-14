@@ -2,11 +2,12 @@ import React from 'react'
 import FotoQSomos from '../FotoQSomos/FotoQSomos'
 import './Qsomos.css'
 import Parrafo from '../parrafo/Parrafo'
+import Subtitulo from '../subtitulo/Subtitulo'
 
 function QuienesSomos() {
   return (
-    <section>
-    <div className='portada'><h1><span>¿Quiénes somos?</span></h1></div>
+    <section className='conteinerGeneral'>
+      <Subtitulo clase={"subtitulo"} texto={"¿Quiénes somos?"} />
   <div className='container-all'>
     <div className='img-container'>
     <div className='logo'>

@@ -6,6 +6,13 @@
 } 
 
 .conteinerGeneral{
-  margin-top: 8vw;
+  margin-top: 9vh;
+  max-width: 99vw;
+  padding: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 

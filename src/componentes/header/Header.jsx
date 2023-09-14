@@ -28,13 +28,13 @@ function Header() {
                         <li><a href="/nosotros">Nosotros</a></li>
                         <li className={`dropdown ${isDropdownActive ? 'active' : ''}`}
                             onClick={() => setIsDropdownActive(!isDropdownActive)}>
-                            <a href="#"><span>Carta</span></a>
+                            <a href="/menu"><span>Carta</span></a>
                             <ul className={isDropdownActive ? 'active' : ''}>
-                                <li><a href="/bebidas">Bebidas</a></li>
-                                <li><a href="/comida clasica">Comida Clasica</a></li>
-                                <li><a href="/sandwiches">Sandwiches</a></li>
-                                <li><a href="/comida vegetariana">Comida Vegetariana</a></li>
-                                <li><a href="/comida sin tacc">Comida Sin TACC</a></li>
+                                <li><a href="/menu/bebida">Bebidas</a></li>
+                                <li><a href="/menu/clasica">Comida Clasica</a></li>
+                                <li><a href="/menu/sandwich">Sandwiches</a></li>
+                                <li><a href="/menu/vegetariana">Comida Vegetariana</a></li>
+                                <li><a href="/menu/sintacc">Comida Sin TACC</a></li>
                             </ul>
                         </li>
                         <li><a href="/login">Login</a></li>
