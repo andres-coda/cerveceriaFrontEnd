@@ -26,7 +26,7 @@ function Login() {
     navegate("/registro");
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if ([email, password].includes("")) {
       setMensaje({
@@ -35,13 +35,16 @@ function Login() {
       });
       return;
     }
+    
+    //Logueo con la base de datos? POST?
+   
 
-    // Aca puede ir validacion si existe el usuario?
-    if (datos.usuario.some((user)=>(user.email===email && user.password===password))) {
+    if (datos.usuario.some((user) => (user.email === email && user.password === password))) {
       setMensaje({
         msj: "Inicio de sesión exitoso",
         error: false
       });
+
     } else {
       setMensaje({
         msj: "El usuario o la contraseña son incorrectas",
@@ -58,12 +61,12 @@ function Login() {
       <form onSubmit={handleSubmit} className="formulario">
         <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico "} onChan={onChan} />
         <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan} />
-      
+
         <div className="botonera" >
           <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar Sesión" }} btnClick={handleSubmit} />
           <Boton btn={{ id: "enviar", clase: "comun", texto: "Registro" }} btnClick={registro} />
         </div>
-          
+
       </form >
       {
         mensaje.msj && <Alerta mensaje={mensaje} />
