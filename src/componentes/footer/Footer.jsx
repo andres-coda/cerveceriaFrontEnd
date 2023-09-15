@@ -6,9 +6,7 @@ function Footer() {
       <div className="footer-left">
         <img src={logo} alt="Logo de la página" className='logoDeFooter'/>
       </div>
-      <div className="footer-center">
         <p>&copy; {new Date().getFullYear()} Green Beer - Todos los derechos reservados</p>
-      </div>
       <div className="footer-right">
         <a href="https://www.instagram.com/your-instagram" target="_blank" rel="noopener noreferrer">
           <i className="fab fa-instagram"></i>

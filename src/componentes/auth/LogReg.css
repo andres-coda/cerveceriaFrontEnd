@@ -3,16 +3,15 @@
     flex-direction: column;
     justify-content: center;
     color: var(--color3);
-    height: 70vh;
     margin-top: 5rem;
-    gap: 2rem;
+
 }
 
 .formulario {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     align-items: center;
+    width: 90%;
 }
 
 .login p{
@@ -30,4 +29,11 @@
 
 .login input {
     border-radius: 0.5rem;
+}
+
+.botonera{
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+    margin: 1rem;
 }

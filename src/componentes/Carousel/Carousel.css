@@ -13,7 +13,6 @@ li {
 }
 
 .main-container img {
-  margin-top: 10px;
   position: relative;
 }
 
@@ -43,7 +42,7 @@ li {
 
 .main-container {
   width: 80%;
-  height: 56vh;
+  height: 76vh;
   margin-top: 1rem;
 }
 
@@ -112,14 +111,15 @@ div.active {
 @media (max-width: 412px) {
   .main-container {
     width: 100%; /* Hacer el carousel ocupar el 100% del ancho */
-    height: auto; /* Ajustar la altura automáticamente según el contenido */
+    /*height: auto;  Ajustar la altura automáticamente según el contenido */
+    overflow: hidden;
   }
 
   .main-container li h1 {
     text-align: center;
-  font-size: 1rem;
-   padding: 0%;
-  color: #F1F1EF;
+    font-size: 1rem;
+    padding: 0%;
+    color: #F1F1EF;
   
   }
   .main-container li p {

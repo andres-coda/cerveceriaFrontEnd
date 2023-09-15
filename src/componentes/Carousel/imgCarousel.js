@@ -7,7 +7,7 @@ export const imgCarousel = [
   },
   {
     id: 2, imgUrl: 'https://thecookandthewine.files.wordpress.com/2019/04/cerveza-artesanal_opt.jpg',
-    caption: 'El ezfuerzo de lo natural',
+    caption: 'El esfuerzo de lo natural',
     caption2: 'El componente más importante del producto acabado son nuestras manos. ' 
   },
   {

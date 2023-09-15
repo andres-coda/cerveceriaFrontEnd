@@ -17,7 +17,6 @@ function CarouselImg(){
       imgNode.scrollIntoView({
         behavior: "smooth"
       });
-    
     }
 
   }, [currentIndex]);
@@ -42,6 +41,7 @@ function CarouselImg(){
   }
 
   return (
+    <div className='conteinerGeneral'>
     <div className="main-container">
       <div className="slider-container">
         <div className='leftArrow' onClick={() => scrollToImage('prev')}>&#8593;</div>
@@ -72,6 +72,7 @@ function CarouselImg(){
         </div>
       </div>
     </div >
+    </div>
   )
 }
 

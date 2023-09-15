@@ -7,7 +7,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    width: 93vw;
+    width: 70vw;
     z-index: -1;
   }
   .subtitulo span {
@@ -19,9 +19,10 @@
 .subtitulo h1 {
     z-index: 1;
     position: relative;
-    width: 94vw;
-    height: 65px;
-    letter-spacing: 0.5em;
+    width: 70vw;
+    height: 52px;
+    letter-spacing: 0.1em;
+    font-size: 1.5em;
     text-align: center;
     color: #F1F1EF;
     border: 2px solid black;
@@ -34,7 +35,7 @@
 
 .subtitulo hr {
     color: #F1F1EF;
-    width: 93vw;
+    width: 70vw;
     display: flex;
     align-items: center;
     margin: 0;
