@@ -32,7 +32,7 @@ function QuienesSomos() {
       <div className='container-all'>
         <div className='img-container'>
          <h1>Contamos con seis variedades de cervezas totalmente artesanales</h1>
-         <Parrafo texto={'Green Ipa - Green Pale Ale - Green Lambic - Green Lager - Green Bock - Green Dunkel - Green Plisner'}/>
+         <Parrafo clase={"quienesSomos"} texto={'Green Ipa - Green Pale Ale - Green Lambic - Green Lager - Green Bock - Green Dunkel - Green Plisner'}/>
         <FotoQSomos  props={'https://t1.uc.ltmcdn.com/es/posts/4/3/5/tipos_de_cerveza_52534_orig.jpg'}/>
         </div>
       </div>
@@ -41,7 +41,7 @@ function QuienesSomos() {
 <div className='container-all'>
         <div className='img-container'>
        <h1>Y nuestro orgullo cervecero Sin TACC</h1>
-       <Parrafo texto={'Creadas para ofrecer a los celíacos una alternativa que conserva el mismo sabor de su cerveza hermana. Encontralas en sus tres sabores: IPa, Lambic y Dunkel'}/>
+       <Parrafo clase={"quienesSomos"} texto={'Creadas para ofrecer a los celíacos una alternativa que conserva el mismo sabor de su cerveza hermana. Encontralas en sus tres sabores: IPa, Lambic y Dunkel'}/>
         <FotoQSomos  props={'https://www.recetas-sin-gluten.com/base/stock/Post/30-image/30-image_small.jpg.webp'}/>
    </div>
    </div>

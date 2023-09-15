@@ -78,29 +78,27 @@ hr {
     max-width: 40vw; /* Establece un ancho máximo para mantener la legibilidad en pantallas grandes */
     margin: 10px 0; /* Agrega espacio entre las imágenes */
 }
+@media (max-width: 520px) {
+    .img-container img {
+        width: 80vw; /* Ajusta el ancho de las imágenes */
+        max-width: 80vw; /* Establece un ancho máximo para mantener la legibilidad en pantallas grandes */
+        margin: 10px 0; /* Agrega espacio entre las imágenes */
+    }
+}
 /*logo*/
 .logo img {
     border-radius: 100%;
-    width: 20vw;
-    
+    width: 20vw; 
 }
 /*titulo de contenedor de img*/
 .img-container h1 {
     color: black;
-    font-size: 1.8em;
+    font-size: 1.3em;
     margin-top: 50px;
     
 }
 /*parrafo de conten. img*/
-.img-container p {
-    display: flex;
-    justify-content: space-between;
-    border: none;
-    background-color: #F1F1EF;
-    box-shadow: none;
-    font-size: 2em;
 
-}
 /*contenedor sintacc*/
 .container-img-sintacc {
     display: flex;
