@@ -13,6 +13,7 @@ import Footer from './componentes/footer/Footer'
 import Header from './componentes/header/Header'
 import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
+import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
 function App() {
   const { datos } = useContext(contexto);
 
@@ -47,7 +48,7 @@ function App() {
           <Route path='/quienessomos' element={<QuienesSomos />}/>
           <Route path='/carrito' element={<Carrito />}/>
           <Route path='/cargarmenu' element={ <MenuCargar />}/>
-
+          <Route path='/sugcarrusel' element={ <SugerenciaCarrusel />} />
         </Routes>
       <Footer />
       </BrowserRouter>

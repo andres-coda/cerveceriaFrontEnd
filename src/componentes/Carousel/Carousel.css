@@ -1,29 +1,18 @@
-
-
-
 .main-container ul,
 li {
   list-style: none;
   white-space: nowrap;
 }
 
-.main-container li {
-  display: inline;
-
-}
-
 .main-container img {
   position: relative;
 }
 
-
 .main-container li h1 {
   text-align: center;
   font-size: 1.5vw;
-  max-height: 20vh ;
   padding: 1%;
   color: #F1F1EF;
-
 }
 
 
@@ -33,10 +22,7 @@ li {
   padding: 0%;
   font-size: 1.8vw; /* Tamaño de fuente relativo */
   background-color: #F1F1EF;
-  max-height: 40vh; /* Altura máxima relativa */
 }
-
-
 
 /* Main container */
 
@@ -66,11 +52,10 @@ li {
 }
 
 /* Arrows */
-.leftArrow {
+.leftArrow, .rightArrow{
   position: absolute;
   top: 10%;
   transform: translate(0, -50%);
-  left: 32px;
   font-size: 50px;
   font-weight: 700;
   color: #fff;
@@ -78,16 +63,12 @@ li {
   cursor: pointer;
 }
 
+.leftArrow{
+  left: 32px;
+}
+
 .rightArrow {
-  position: absolute;
-  top: 10%;
-  transform: translate(0, -50%);
   right: 32px;
-  font-size: 50px;
-  font-weight: 700;
-  color: #fff;
-  z-index: 1;
-  cursor: pointer;
 }
 
 .container-images {
@@ -131,4 +112,9 @@ div.active {
   }
 
 
+}
+
+.imgCarrusel{
+  width: 1150vw;
+  height: 480vw;
 }
