@@ -7,7 +7,8 @@
 /*-- Header --*/
 
 .header {
-    width: 100vw;    
+    width: 100vw; 
+    padding-top: 1vw;   
     position: fixed;
     top: 0;
     left: 0;
@@ -17,12 +18,13 @@
     background: #1D1D1Bff;
     transition: all 0.5s;
     z-index: 997;
-    height: 8vh;      
+    height: auto;         
 }
 .header .logoHeader img {
-    height: 8vh;
+    width: 10vw;
     margin-left: 2vw;
-    border-radius: 50px;
+    margin-right: 8vw;
+    padding-left: 1vw;
 }
 .header .btn-book-a-table,
 .header .btn-book-a-table:focus {
@@ -41,7 +43,7 @@
     color: #1D1D1Bff;
     background: #F1D69d;
 }
-
+/* #c19f71 */
 
 /*-- Desktop Navigation --*/
 
@@ -51,6 +53,8 @@
     }
     .navbar {
         padding: 0;
+        display: flex;
+        justify-content: space-between;
     }
     .navbar ul {
         margin: 0;
@@ -74,22 +78,26 @@
         align-items: center;
         justify-content: space-around;
         padding: 0 3px;                
-        font-size: 3vw;
+        font-size: 2.5vw;
         font-weight: 400;
-        color: #c19f71;
+        color: white;
         white-space: nowrap;
         transition: 0.3s;
         position: relative;
         margin-right: 2.5vw;
         text-decoration: none;
+        border-radius: 50px;
+        padding: 5px 15px;
     }
    
     .navbar a:hover,
     .navbar.active,
     .navbar.active:focus,
     .navbar li:hover>a {
-        color: #F1D69d;
+        color: #1D1D1Bff;
+    background: #F1D69d;
     }
+    /* color: #F1D69d; */
 
     .navbar .dropdown ul {
         display: block;
@@ -127,6 +135,22 @@
         top: 100%;
         visibility: visible;
     }
+    .cart-icon {
+        /* background-color: white;  */
+        border-radius: 50%; 
+        padding: 10px; 
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .cart-item-count {
+        margin-left: 5px; 
+        font-size: 18px; 
+        color: white; 
+      }
+      
 }
 
 /*-- Mobile Navigation --*/

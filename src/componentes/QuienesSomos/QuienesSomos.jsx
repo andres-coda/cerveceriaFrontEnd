@@ -1,10 +1,15 @@
 import React from 'react'
+import { useEffect } from 'react'
 import FotoQSomos from '../FotoQSomos/FotoQSomos'
 import './Qsomos.css'
 import Parrafo from '../parrafo/Parrafo'
 import Subtitulo from '../subtitulo/Subtitulo'
 
 function QuienesSomos() {
+  useEffect(() => {
+    // Scroll a la parte superior de la página cuando el componente se monta
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className='conteinerGeneral'>
       <Subtitulo clase={"subtitulo"} texto={"¿Quiénes somos?"} />

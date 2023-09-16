@@ -42,8 +42,13 @@ li {
 
 .main-container {
   width: 80%;
+<<<<<<< Updated upstream
   height: 76vh;
   margin-top: 1rem;
+=======
+  height: 70vh;
+  margin: 0 auto;
+>>>>>>> Stashed changes
 }
 
 /* Slider container */
