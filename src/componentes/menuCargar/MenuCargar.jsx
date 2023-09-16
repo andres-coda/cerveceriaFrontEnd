@@ -3,26 +3,69 @@ import './MenuCargar.css'
 import FormularioInput from '../formularioInput/FormularioInput';
 import Boton from '../boton/Boton';
 import Subtitulo from '../subtitulo/Subtitulo';
+import Alerta from '../alerta/alerta';
+
 function MenuCargar(){
-    const [menu, setMenu] = useState({
-        title: "",
-        category: "",
-        img: "",
-        description: "",
-        ingredients: "",
-        price:"",
-        valoration: "",
-        tipo: "",
-    });
-    const btnClick = (e)=>{
-        e.preventDefault();
-    }
+    const [menu, setMenu] = useState({});
+    const [mensaje, setMensaje] = useState({});
+    const { title, category, img, description, ingredients, price, valoration, tipo} = menu; 
+  
     const onChange = (e) =>{
         setMenu({
             ...menu,
             [e.target.name]: e.target.value
         });
     };
+
+    const btnClick = async (e) => {
+        e.preventDefault();
+        if ([title, category, img, description, ingredients, price, valoration, tipo].includes("")) {
+            setMensaje({
+                msj: "Los campos deben Completarse",
+                error: true
+            })
+            return;
+        }
+
+        // Enviar a la base de datos
+        try {
+            const response = await fetch("http://localhost:3031/menu/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title,
+                    category,
+                    img,
+                    description,
+                    ingredients,
+                    price,
+                    valoration,
+                    tipo,
+                }),
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                setMensaje({
+                    msj: `${data.title} Cargada correctamente`,
+                    error: false,
+                });
+            } else {
+                // Maneja el caso de respuesta no exitosa aquí.
+                console.log("Error en la solicitud HTTP:", response.status, response.statusText);
+            }
+        } catch (error) {
+            setMensaje({
+                msj: "Error al Registar el Menu",
+                error: true,
+              })
+        }
+    };
+
+
+
     return(
         <div className='conteinerGeneral'>
             <div className='cargarMenu'>
@@ -38,9 +81,12 @@ function MenuCargar(){
                     <FormularioInput id={"tipo"} tipo={"text"} texto={"Tipo del menu"} onChan={onChange} />
                     <Boton btn={{ id: "enviar", clase: "comun", texto: "Cargar menu" }} btnClick={btnClick} />
                 </form>
+                {
+                mensaje.msj && <Alerta mensaje={mensaje} />
+            }
             </div>
         </div>
     );
-};
+}
 
 export default MenuCargar;
