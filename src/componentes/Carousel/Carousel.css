@@ -42,8 +42,8 @@ li {
 
 .main-container {
   width: 80%;
-  height: 76vh;
-  margin-top: 1rem;
+  height: 70vh;
+  margin: 0 auto;
 }
 
 /* Slider container */
