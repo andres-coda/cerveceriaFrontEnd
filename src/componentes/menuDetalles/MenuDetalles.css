@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     transform: translate(0%, 0%);
-    z-index: 9980;
+    z-index: 9960;
     width: 100%;
     height: 100%;
     background-color: #1410109a;
@@ -14,7 +14,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 9990;
+    z-index: 9970;
     float: inline-start;
     min-width: 210px;
     width: 60%;
@@ -83,20 +83,6 @@
     box-shadow: none;
 }
 
-.botonesMasMenos{
-    display: inline-flex;
-}
-
-.total{
-    padding-top: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.total p{
-    display: inline-flex;
-}
 
 
 
