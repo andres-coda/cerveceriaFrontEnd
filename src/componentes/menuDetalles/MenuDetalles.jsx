@@ -3,10 +3,17 @@ import {  useContext, useState, useEffect } from "react";
 import { contexto } from '../contexto/contexto';
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
+import MenuDetallesBotoneraCliente from '../menuDetallesBotonera/MenuDetallesBotoneraCliente';
+import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAdministrador';
+import { useNavigate } from 'react-router-dom';
+import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
 function MenuDetalles( {dato, setMenuDetalles } ) {
     const {datos,setDatos} = useContext(contexto);
     const [cantidad, setCantidad] = useState(0);
     const [datoCorroborado, setDatoCorroborado] = useState({});
+    const navegate = useNavigate();
+    const [ admin, setAdmin ] = useState(datos.usuarioActivo.administrador);
+    const [ alerta, setAlerta ] = useState(false);
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.id===dato.id));
     useEffect(()=>{
         fetch(`http://localhost:3000/menu/${dato.id}`)
@@ -47,6 +54,16 @@ function MenuDetalles( {dato, setMenuDetalles } ) {
                 setDatos((prev)=>({...prev, carrito:newCarrito}));
                 setMenuDetalles(undefined);
                 break;
+            case "original" :
+                setAdmin(false);
+                break;
+            case "editar" :
+                setDatos((prev)=>({...prev, datoAEditar : dato }));
+                navegate('/cargarmenu');             
+                break;
+            case "eliminar" :
+                setAlerta(true);
+                break;
             case "cerrar" :
                 setMenuDetalles(undefined);
                 break;
@@ -70,17 +87,16 @@ function MenuDetalles( {dato, setMenuDetalles } ) {
                         <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${datoCorroborado.valoration}`}/>
                         <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${datoCorroborado.price}`}/>
                     </div>
-                    <div className='botonesMasMenos'>
-                        <Boton btn={{id:"menos", clase:"mas-menos", texto: "-"}} btnClick={btnClick}/>
-                        <Parrafo clase={"menuParrafo"} texto={cantidad} />
-                        <Boton btn={{id:"mas", clase:"mas-menos", texto: "+"}} btnClick={btnClick}/>
-                    </div>
-                    <div className='total'>
-                        <Parrafo clase={"menuParrafo"} texto={`TOTAL: $${cantidad*datoCorroborado.price}`} />
-                        <Boton btn={{id:"aceptar", clase:"comun", texto: "añadir al carrito"}} btnClick={btnClick}/>
-                    </div>
+                    {!datos.usuarioActivo.administrador ? (
+                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} datoCorroborado={datoCorroborado} />
+                    ):(
+                        <MenuDetallesBotonera btnClick={btnClick} />
+                    )}
                 </div>
                 <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : `x`}} btnClick={btnClick} />
+                { alerta ? (
+                    <EliminarAlerta setAlerta={setAlerta} dato={dato} />
+                ) : (null)}
             </div>
         </div>
     );

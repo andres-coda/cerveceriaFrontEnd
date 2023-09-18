@@ -1,9 +1,9 @@
 import './FormularioInput.css'
-function FormularioInput ({id, tipo, texto, onChan}){
+function FormularioInput ({id, tipo, texto, onChan, value}){
     return (
         <>
             <label htmlFor={id}>{texto.toUpperCase()}</label>
-            <input id={id} type={tipo}placeholder={texto} name={id} onChange={onChan} required></input>
+            <input id={id} type={tipo}placeholder={texto} name={id} onChange={onChan} value={value} required></input>
         </>
     );
 };

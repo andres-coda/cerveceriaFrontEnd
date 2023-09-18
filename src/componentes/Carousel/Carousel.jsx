@@ -51,7 +51,7 @@ function CarouselImg(){
             {
               imgCarousel.map((item) => {//recorre cada obj. del archivo js
                 return <li key={item.id}>
-                  <img src={item.imgUrl}/>
+                  <img src={item.imgUrl} className='imgCarrusel' />
                  <h1>{item.caption}</h1>
                  <p>{item.caption2}</p>
                  </li>

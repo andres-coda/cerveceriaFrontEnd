@@ -41,11 +41,11 @@ function Header() {
             // className={`dropdown ${isDropdownActive ? 'active' : ''}`}
           >
             <div className='back-drop'>
-              <NavDropdown.Item className='drop-item' href="/menu">Bebidas</NavDropdown.Item>
-              <NavDropdown.Item className='drop-item' href="/menu">Comida Clásica</NavDropdown.Item>
-              <NavDropdown.Item className='drop-item' href="/menu">Sandwiches</NavDropdown.Item>
-              <NavDropdown.Item className='drop-item' href="/menu">Comida Vegetariana</NavDropdown.Item>
-              <NavDropdown.Item className='drop-item' href="/menu">Comida Sin TACC</NavDropdown.Item>
+              <NavDropdown.Item className='drop-item' href="/menu/bebida">Bebidas</NavDropdown.Item>
+              <NavDropdown.Item className='drop-item' href="/menu/clasica">Comida Clásica</NavDropdown.Item>
+              <NavDropdown.Item className='drop-item' href="/menu/sandwich">Sandwiches</NavDropdown.Item>
+              <NavDropdown.Item className='drop-item' href="/menu/vegetariana">Comida Vegetariana</NavDropdown.Item>
+              <NavDropdown.Item className='drop-item' href="/menu/sintacc">Comida Sin TACC</NavDropdown.Item>
             </div>
           </NavDropdown>
           <li><Link to="/registro">Login</Link></li>

@@ -53,8 +53,6 @@ function App() {
       <Footer />
       </BrowserRouter>
 
-      {console.log(datos.data)}
-
 
     </>
   )

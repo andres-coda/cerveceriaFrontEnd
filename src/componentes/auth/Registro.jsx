@@ -36,7 +36,7 @@ function Registro() {
         }
         //Enviar a la base de datos
         try {
-            const response = await fetch("http://localhost:3031/users/", {
+            const response = await fetch("http://localhost:3000/users/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
