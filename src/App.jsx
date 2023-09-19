@@ -43,7 +43,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/menu' element={<Menu categoria={undefined}/>}/>
           <Route path='/map' element={<Map />} />
-          {/* <Route path='/login' element={<Login />} /> */}
+          <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>
           <Route path='/carrito' element={<Carrito />}/>
