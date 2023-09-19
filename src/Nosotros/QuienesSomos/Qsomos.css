@@ -1,11 +1,16 @@
 /*contenedor principal*/
 .container-all {
-    width: 100%;
+    width: 80%;
     display: flex;
     align-items: center; /* Centra verticalmente los elementos */
     margin-bottom: 3vw;
     margin-top: 3vw;
 }
+.logo img{
+    width: 30%;
+    border-radius: 100%;
+    margin-bottom: 30px;
+  }
 /* }@font-face {
     font-family: 'selima';
     src: url('src/assets/fonts/selima_.otf') format('opentype');
@@ -51,7 +56,7 @@
     
     
 }
-
+*/
 hr {
     color: #F1F1EF;
     width: 93vw;
@@ -61,7 +66,7 @@ hr {
     padding: 0;
 }
 
-*/
+
 /*contenedor de img*/
 
 .img-container {
@@ -74,7 +79,7 @@ hr {
 }
 /*img*/
 .img-container img {
-    width: 40vw; /* Ajusta el ancho de las imágenes */
+    width: 30vw; /* Ajusta el ancho de las imágenes */
     max-width: 40vw; /* Establece un ancho máximo para mantener la legibilidad en pantallas grandes */
     margin: 10px 0; /* Agrega espacio entre las imágenes */
 }

@@ -1,0 +1,53 @@
+{
+    "sucursales":[
+        {
+            "id": 1,
+            "name": "Green Beer, Saladillo",
+            "direccion": "Alvear 345",
+            "tel": "2264-45852130",
+            "e-mail": "greenbeersaladillo@gmail.com",
+            "instagram": "@greenbeersaladillo",
+            "facebook": "greenbeersaladillo79",
+            "img": ""
+        },
+        {
+            "id":2,
+            "name": "Green Beer, Junín",
+            "direccion": "Monte verde 1455",
+            "tel": "2874-45664864",
+            "e-mail": "greenbeerjunin@gmail.com",
+            "instagram": "@greenbeerjunin",
+            "facebook": "greenbeerjunin79",
+            "img": ""
+        },
+        {
+            "id":3,
+            "name": "Green Beer, Tandil",
+            "direccion": "Azul 785",
+            "tel": "22844-4553233130",
+            "e-mail": "greenbeertandil@gmail.com",
+            "instagram": "@greenbeertandil",
+            "facebook": "greenbeertandil79",
+            "img": ""
+        },
+        {
+            "id":4,
+            "name": "Green Beer, Lobos",
+            "direccion": "Rocallosa 1345",
+            "tel": "2227-479462130",
+            "e-mail": "greenbeerlobos@gmail.com",
+            "instagram": "@greenbeerlobos",
+            "facebook": "greenbeerlobos79",
+            "img":""        },
+        {
+            "id":5,
+            "name": "Green Beer, La plata",
+            "direccion": "Calle 82 5345",
+            "tel": "221-45852130",
+            "e-mail": "greenbeerlaplata@gmail.com",
+            "instagram": "@greenbeerlaplata",
+            "facebook": "greenbeerlaplata79",
+            "img":""
+        }
+    ]
+}
