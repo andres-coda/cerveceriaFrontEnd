@@ -4,6 +4,8 @@ const URL_MENU = 'http://localhost:3000/menu';
 const URL_USER = 'http://localhost:3000/users';
 export const ProveedorContexto = ({children}) => {
     const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], tipo:[], usuario:[], usuarioActivo: {usuario:"perfil", administrador: true}, datoAEditar: undefined });
+    const [ auth, setAuth ] = useState (false);
+
     useEffect(()=>{
         fetch(URL_USER)
         .catch(error =>{
@@ -46,7 +48,7 @@ export const ProveedorContexto = ({children}) => {
     },[]);
 
     return (
-        <contexto.Provider value={{datos, setDatos } } >
+        <contexto.Provider value={{datos, setDatos, auth, setAuth } } >
             { children }
         </contexto.Provider>
     )
