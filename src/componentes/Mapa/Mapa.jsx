@@ -12,7 +12,7 @@ const center = {
 };
 -36.013343, -59.086687
 
-function Map() {
+function Map({props}) {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyCHw2xJlvgFHe-5hFA_urPi30oZouFMkNY"
@@ -33,7 +33,7 @@ function Map() {
   }, [])
 
   return isLoaded ? (
-      <GoogleMap
+      <GoogleMap id={props}
         mapContainerStyle={containerStyle}
         center={center}
         zoom={10}

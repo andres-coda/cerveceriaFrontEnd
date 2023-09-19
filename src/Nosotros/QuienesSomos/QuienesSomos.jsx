@@ -1,9 +1,9 @@
 import React from 'react'
 import { useEffect } from 'react'
-import FotoQSomos from '../FotoQSomos/FotoQSomos'
+import FotoQSomos from '../../componentes/FotoQSomos/FotoQSomos'
 import './Qsomos.css'
-import Parrafo from '../parrafo/Parrafo'
-import Subtitulo from '../subtitulo/Subtitulo'
+import Parrafo from '../../componentes/parrafo/Parrafo'
+import Subtitulo from '../../componentes/subtitulo/Subtitulo'
 
 function QuienesSomos() {
   useEffect(() => {
@@ -16,7 +16,7 @@ function QuienesSomos() {
   <div className='container-all'>
     <div className='img-container'>
     <div className='logo'>
-    <FotoQSomos  props={'./src/assets/Logo.png'}/> 
+    <FotoQSomos  props={'./src/assets/Logo.png'}/>
     </div>
     <h1>Green Beer, nació en 1969 en una localidad de la provincia de Buenos Aires, cuando tres amigos deciden incursionar en un microemprendimiento sin saber que hoy iban a ser una de las cervezas más elegidas en todo el país</h1>
     <FotoQSomos  props={'https://santafemibarrio.com.ar/wp-content/uploads/2020/11/B-SCHNEIDER_ser-santafesino_05.jpg'}/>

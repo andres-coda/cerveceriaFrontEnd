@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
-import QuienesSomos from './componentes/QuienesSomos/QuienesSomos';
+import QuienesSomos from './Nosotros/QuienesSomos/QuienesSomos';
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 import Login from './componentes/auth/Login';
 import Registro from './componentes/auth/Registro';
@@ -13,7 +13,10 @@ import Footer from './componentes/footer/Footer'
 import Header from './componentes/header/Header'
 import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
-import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
+//import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
+import CarouselImg from './componentes/Carousel/Carousel';
+import DondeEstamos  from './Nosotros/DondeEstamos/DondeEstamos';
+import SucursalProvider from './Nosotros/DondeEstamos/contextoSucursales/SucursalProvider';
 function App() {
   const { datos } = useContext(contexto);
 
@@ -21,7 +24,7 @@ function App() {
   return (
     <>
       
-      
+   
       <BrowserRouter>
         <Header /> 
         <Routes>
@@ -46,9 +49,10 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>
+          <Route path='/dondeestamos' element={<DondeEstamos />}/>
           <Route path='/carrito' element={<Carrito />}/>
           <Route path='/cargarmenu' element={ <MenuCargar />}/>
-          <Route path='/sugcarrusel' element={ <SugerenciaCarrusel />} />
+          <Route path='/sugcarrusel' element={ <CarouselImg />} />
         </Routes>
       <Footer />
       </BrowserRouter>
