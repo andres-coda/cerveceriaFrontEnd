@@ -10,7 +10,7 @@ function Menu({categoria}) {
     const btnClick = (e) => {
         const btn = e.currentTarget.id;
         setMenuDetalle(datos.data.find((dato)=> Number(dato.id)===Number(btn)));
-    }
+    }    
     
   const setSeccionPorCategoria = () => {
     switch (categoria) {
