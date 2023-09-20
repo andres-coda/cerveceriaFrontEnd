@@ -1,8 +1,8 @@
 import './App.css'
 import { contexto } from './componentes/contexto/contexto'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import Map from './componentes/Mapa/Mapa';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
 import QuienesSomos from './Nosotros/QuienesSomos/QuienesSomos';
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
@@ -19,8 +19,6 @@ import DondeEstamos  from './Nosotros/DondeEstamos/DondeEstamos';
 import SucursalProvider from './Nosotros/DondeEstamos/contextoSucursales/SucursalProvider';
 function App() {
   const { datos } = useContext(contexto);
-
-
   return (
     <>
       
@@ -30,7 +28,7 @@ function App() {
         <Routes>
           {datos.data.map((dato)=>{
             return (
-              <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato}/>} key={dato.id}/>
+              <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato} setMenuDetalles="app"/>} key={dato.id}/>
             )
           })}
           {datos.categorias.map((categorias)=>{

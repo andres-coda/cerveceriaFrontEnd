@@ -22,18 +22,7 @@ function MenuCargar(){
     });
     const btnClick = async (e)=>{
         e.preventDefault();
-        const newMenu = {
-            title: menu.title,
-            category: menu.category,
-            img: menu.img,
-            description: menu.description,
-            ingredients: menu.ingredients,
-            price: menu.price.toString(),
-            valoration: menu.valoration.toString(),
-            tipo: menu.tipo,
-        }
-
-        setMenu(newMenu);
+    
         if (editar === true ){
             try {
                 const response = await fetch(`${URL}${datos.datoAEditar.id}`, {
@@ -93,7 +82,7 @@ function MenuCargar(){
     const onChange = (e) =>{
         setMenu({
             ...menu,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value.toString()
         });
     };
     return(
