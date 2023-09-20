@@ -68,9 +68,9 @@ function Login() {
 
 
 return (
-  <div className="conteinerGeneral login">
+  <div className="conteinerGeneral">
+  <div className="login">
     <Subtitulo clase={"subtitulo"} texto={"Iniciar Sesión"} />
-    <hr />
     <form onSubmit={handleSubmit} className="formulario">
       <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico "} onChan={onChan} />
       <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan} />
@@ -84,6 +84,7 @@ return (
       mensaje.msj && <Alerta mensaje={mensaje} />
     }
   </div >
+  </div>
 );
 
 }

@@ -13,7 +13,7 @@ import Footer from './componentes/footer/Footer'
 import Header from './componentes/header/Header'
 import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
-//import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
+import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
 import CarouselImg from './componentes/Carousel/Carousel';
 import DondeEstamos  from './Nosotros/DondeEstamos/DondeEstamos';
 import SucursalProvider from './Nosotros/DondeEstamos/contextoSucursales/SucursalProvider';
@@ -52,7 +52,7 @@ function App() {
           <Route path='/dondeestamos' element={<DondeEstamos />}/>
           <Route path='/carrito' element={<Carrito />}/>
           <Route path='/cargarmenu' element={ <MenuCargar />}/>
-          <Route path='/sugcarrusel' element={ <CarouselImg />} />
+          <Route path='/sugcarrusel' element={ <SugerenciaCarrusel />} />
         </Routes>
       <Footer />
       </BrowserRouter>
