@@ -71,9 +71,9 @@ function Registro() {
     }
 
     return (
-        <div className="conteinerGeneral login">
+        <div className="conteinerGeneral">
+        <div className="login">
             <h2>Registro</h2>
-            <hr />
             <form onSubmit={handleSubmit} className="formulario">
                 <FormularioInput id={`name`} tipo={`text`} texto={"Nombre"} onChan={onChan} />
                 <FormularioInput id={`lastName`} tipo={`text`} texto={"Apellido"} onChan={onChan} />
@@ -91,6 +91,7 @@ function Registro() {
                 mensaje.msj && <Alerta mensaje={mensaje} />
             }
 
+        </div>
         </div>
     )
 }

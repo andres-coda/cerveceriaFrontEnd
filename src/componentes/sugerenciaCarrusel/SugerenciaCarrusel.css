@@ -1,4 +1,4 @@
-.carruselConteiner{
+.carruselConteiner {
     position: relative;
     background-color: transparent;
     overflow: hidden;
@@ -6,25 +6,44 @@
     border-radius: 10px;
     border: 1px solid var(--color2);
     width: 60%;
-}
-.flechaDerecha, .flechaIzauierda{
+    max-height: 70vh;
+    padding: 0;
+  }
+  
+  .flechaDerecha,
+  .flechaIzquierda {
     position: absolute;
     z-index: 9990;
     top: 30%;
-    color: white;
+    color: var(--color2);
     font-size: 5em;
     cursor: pointer;
-}
-.flechaDerecha{
-    right:0;
-}
-
-.flechaIzauierda{
+  }
+  
+  .flechaDerecha {
+    right: 0;
+  }
+  
+  .flechaIzquierda {
     left: 0;
-}
-
-.carruselConteiner img{
+  }
+  
+  .carruselConteiner ul {
+    padding: 0;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carruselConteiner .principal {
+    flex: 0 0 100%;
+    margin: auto;
+  }
+  
+  .principal img {
     width: 100%;
-    transform: translateX(0); 
-    transition: transform 0.2s ease-in-out; 
-}
+  }
+  
+
+  @media (max-width: 600px) {
+
+  }

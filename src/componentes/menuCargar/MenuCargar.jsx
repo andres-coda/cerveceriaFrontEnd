@@ -46,8 +46,33 @@ function MenuCargar(){
             
                 if (response.ok) {
                     const data = await response.json();
-                    navegate(`/menu/${datos.datoAEditar.id}`);
                     setDatos((prev)=>({...prev, datoAEditar: undefined}));
+                    navegate('/menu')
+                    navegate(`/menu/${datos.datoAEditar.id}`);
+                } else {
+                    // Manejar el caso de respuesta no exitosa aquí
+                    console.log("Error en la solicitud HTTP:", response.status, response.statusText);
+                }
+            } catch (error) {
+              setMensaje({
+                msj: "No se pudo cargar el menu",
+                error: true,
+              })
+              console.log(error);
+            }
+        } else {
+            try {
+                const response = await fetch(URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(menu),
+                });
+            
+                if (response.ok) {
+                    const data = await response.json();
+                    navegate(`/menu/`);
                 } else {
                     // Manejar el caso de respuesta no exitosa aquí
                     console.log("Error en la solicitud HTTP:", response.status, response.statusText);

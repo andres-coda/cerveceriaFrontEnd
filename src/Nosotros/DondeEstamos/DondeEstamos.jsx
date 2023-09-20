@@ -6,6 +6,7 @@ import './DondeEstamos.css'
 import Parrafo from '../../componentes/parrafo/Parrafo';
 import FotoQSomos from '../../componentes/FotoQSomos/FotoQSomos';
 import SucursalProvider, { sucursalContext } from './contextoSucursales/SucursalProvider';
+import { FaShoppingCart } from 'react-icons/fa';
 
 
 
@@ -19,14 +20,8 @@ function DondeEstamos() {
     return (
 
         <section className='conteinerGeneral'>
-            <div className='subtitulo'>
-                <Subtitulo clase={"subtitulo-para"} texto={"¿Dónde estamos?"} />
-
-            </div>
+            <Subtitulo clase={"subtitulo-para"} texto={"¿Dónde estamos?"} />
             <div className='container-all-map'>
-                <div className='ubicacion'>
-                    <Map />
-                </div>
                 <div className='texto'>
                     <div>
                         <FotoQSomos props={'./src/assets/Logo.png'} />
@@ -36,11 +31,14 @@ function DondeEstamos() {
                     <h1>Nuestra cede cervercera se encuentra en Bernando de Irigoyen 450 Las Flores, pcia. de Buenos Aires</h1>
                     <h2>Contamos con 12 sucursales en la provicia, y nuestro mayor sueño es expandir nuestro negocio al país.</h2>
                 </div>
+                <div className='ubicacion'>
+                    <Map />
+                </div>
             </div>
             <div className='container-all-map'>
                 {sucursalesData.map((sucursales) => {
                     return (
-                        <div className='cards-sucursal' key={sucursales.id}>
+                        <div className='cards-sucursal' key={sucursales.id}>   
                             <img className='card-img' src={sucursales.img} />
                             <h1 className='card-h1'>{sucursales.name}</h1>
                             <h3 className='card-h3'>{sucursales.direccion}</h3>
