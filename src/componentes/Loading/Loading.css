@@ -1,0 +1,30 @@
+.custom-loader {
+    width:80px;
+    height:40px;
+    border:2px solid  #F1F1EF;
+    border-right-color: transparent;
+    padding:3px;
+    background: 
+      repeating-linear-gradient(90deg, #F1F1EF 0 10px,#0000 0 15px) 
+      left/0% 100% no-repeat content-box content-box;
+    position: relative;
+    animation:p5 2s infinite steps(6);
+  }
+  .custom-loader::before {
+    content:"";
+    position: absolute;
+    top:-2px;
+    bottom:-2px;
+    left:100%;
+    width:10px;
+    background:
+      linear-gradient(
+          #0000   calc(50% - 7px),#F1F1EF 0 calc(50% - 5px),
+          #0000 0 calc(50% + 5px), #F1F1EF 0 calc(50% + 7px),#0000 0) left /100% 100%,
+      linear-gradient( #F1F1EF calc(50% - 5px),#0000        0 calc(50% + 5px), #F1F1EF 0) left /2px 100%,
+      linear-gradient(#0000        calc(50% - 5px), #F1F1EF 0 calc(50% + 5px),#0000        0) right/2px 100%;
+    background-repeat:no-repeat;
+  }
+  @keyframes p5 {
+      100% {background-size:120% 100%}
+  }
