@@ -50,7 +50,6 @@ function App() {
           <Route path='/dondeestamos' element={<DondeEstamos />}/>
           <Route path='/carrito' element={<Carrito />}/>
           <Route path='/cargarmenu' element={ <MenuCargar />}/>
-          <Route path='/sugcarrusel' element={ <SugerenciaCarrusel />} />
         </Routes>
       <Footer />
       </BrowserRouter>
