@@ -4,7 +4,7 @@ import { useContext, useState } from 'react'
 import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
-import QuienesSomos from './Nosotros/QuienesSomos/QuienesSomos';
+import QuienesSomos from './componentes/QuienesSomos/QuienesSomos';
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
 import Login from './componentes/auth/Login';
 import Registro from './componentes/auth/Registro';
@@ -13,10 +13,9 @@ import Footer from './componentes/footer/Footer'
 import Header from './componentes/header/Header'
 import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
-import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
-import CarouselImg from './componentes/Carousel/Carousel';
-import DondeEstamos  from './Nosotros/DondeEstamos/DondeEstamos';
-import SucursalProvider from './Nosotros/DondeEstamos/contextoSucursales/SucursalProvider';
+import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
+import Contacto from './componentes/Contacto/Contacto'
+
 function App() {
   const { datos } = useContext(contexto);
   return (
@@ -48,6 +47,7 @@ function App() {
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>
           <Route path='/dondeestamos' element={<DondeEstamos />}/>
+          <Route path='/contacto' element={<Contacto />}/>
           <Route path='/carrito' element={<Carrito />}/>
           <Route path='/cargarmenu' element={ <MenuCargar />}/>
         </Routes>
