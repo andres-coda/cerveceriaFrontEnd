@@ -1,8 +1,8 @@
 import './App.css'
 import { contexto } from './componentes/contexto/contexto'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import Map from './componentes/Mapa/Mapa';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
 import QuienesSomos from './componentes/QuienesSomos/QuienesSomos';
 import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
@@ -15,10 +15,12 @@ import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
 import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
 import Contacto from './componentes/Contacto/Contacto'
+import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
+import CarouselImg from './componentes/Carousel/Carousel';
+import DondeEstamos  from './Nosotros/DondeEstamos/DondeEstamos';
+import SucursalProvider from './Nosotros/DondeEstamos/contextoSucursales/SucursalProvider';
 function App() {
   const { datos } = useContext(contexto);
-
-
   return (
     <>
       
@@ -28,7 +30,7 @@ function App() {
         <Routes>
           {datos.data.map((dato)=>{
             return (
-              <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato}/>} key={dato.id}/>
+              <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato} setMenuDetalles="app"/>} key={dato.id}/>
             )
           })}
           {datos.categorias.map((categorias)=>{
@@ -44,7 +46,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/menu' element={<Menu categoria={undefined}/>}/>
           <Route path='/map' element={<Map />} />
-          {/* <Route path='/login' element={<Login />} /> */}
+          <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>
           <Route path='/dondeestamos' element={<DondeEstamos />}/>

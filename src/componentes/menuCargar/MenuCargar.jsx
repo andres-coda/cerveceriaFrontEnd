@@ -22,18 +22,7 @@ function MenuCargar(){
     });
     const btnClick = async (e)=>{
         e.preventDefault();
-        const newMenu = {
-            title: menu.title,
-            category: menu.category,
-            img: menu.img,
-            description: menu.description,
-            ingredients: menu.ingredients,
-            price: menu.price.toString(),
-            valoration: menu.valoration.toString(),
-            tipo: menu.tipo,
-        }
-
-        setMenu(newMenu);
+    
         if (editar === true ){
             try {
                 const response = await fetch(`${URL}${datos.datoAEditar.id}`, {
@@ -46,8 +35,33 @@ function MenuCargar(){
             
                 if (response.ok) {
                     const data = await response.json();
-                    navegate(`/menu/${datos.datoAEditar.id}`);
                     setDatos((prev)=>({...prev, datoAEditar: undefined}));
+                    navegate('/menu')
+                    navegate(`/menu/${datos.datoAEditar.id}`);
+                } else {
+                    // Manejar el caso de respuesta no exitosa aquí
+                    console.log("Error en la solicitud HTTP:", response.status, response.statusText);
+                }
+            } catch (error) {
+              setMensaje({
+                msj: "No se pudo cargar el menu",
+                error: true,
+              })
+              console.log(error);
+            }
+        } else {
+            try {
+                const response = await fetch(URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(menu),
+                });
+            
+                if (response.ok) {
+                    const data = await response.json();
+                    navegate(`/menu/`);
                 } else {
                     // Manejar el caso de respuesta no exitosa aquí
                     console.log("Error en la solicitud HTTP:", response.status, response.statusText);
@@ -68,7 +82,7 @@ function MenuCargar(){
     const onChange = (e) =>{
         setMenu({
             ...menu,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value.toString()
         });
     };
     return(
