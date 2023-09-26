@@ -1,5 +1,5 @@
 import React from 'react'
-import CarouselImg from '../Carousel/Carousel';
+import Slider from '../CarouselDeImagenes/Carousel2'
 import { useEffect } from 'react';
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
   }, []);
   return (
     <div className='conteinerGeneral'>
-        <CarouselImg/>
+  <Slider />
   
     </div>
   )

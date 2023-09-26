@@ -1,94 +1,89 @@
-@font-face {
-    font-family: 'selima';
-    src: url('src/assets/fonts/selima_.otf') format('opentype');
-  }
 
 .contenedor {
-    position: relative;
-  }
-  
-  .lupulo {
-    width: 100%; /* Ajusta el ancho según sea necesario */
-  }
-  
-  .titulo{
-    position: absolute;
-    top: 10%; /* Coloca el título en el centro vertical */
-    left: 50%; /* Coloca el título en el centro horizontal */
-    transform: translate(-50%, -50%); /* Centra el título */
-   background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente para mayor legibilidad */
-    color: white; /* Color del texto del título */
-    padding: 10px; /* Espaciado interno del título */
-    border-radius: 20px;
-  }
+  position: relative;
+}
 
-  .titulo h1{
-    font-size: 2em;
-    font-family: 'selima';
-    letter-spacing: 8px;
-    color: black;
-    background-color: #F1F1EF;
-    
-  }
-  .titulo span{
-    background-color: #F1F1EF;
-    
-  }
+.lupulo {
+  width: 100%; /* Ajusta el ancho según sea necesario */
+}
 
+.titulo{
+  position: absolute;
+  top: 10%; /* Coloca el título en el centro vertical */
+  left: 50%; /* Coloca el título en el centro horizontal */
+  transform: translate(-50%, -50%); /* Centra el título */
+ background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente para mayor legibilidad */
+  color: white; /* Color del texto del título */
+  padding: 10px; /* Espaciado interno del título */
+  border-radius: 20px;
+}
+
+.titulo h1{
+  font-size: 1.5em;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  letter-spacing: 8px;
+  color: black;
+  background-color: #F1F1EF;
+  
+}
+.titulo span{
+  background-color: #F1F1EF;
+  
+}
+
+.titulo h1:before{
+  border-top: solid black;
+  width: 79vw;
+}
+
+.form{
+  position: absolute;
+  margin-top: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  top: 10%; /* Coloca el título en el centro vertical */
+  left: 30%;
+}
+.form p{
+  font-size: 1em;
+  color: #F1F1EF;
+}
+.form input{
+  width: 100%;
+}
+.textarea{
+  width: 100%;
+  min-height: 50vh;
+  border-radius: 10px;
+}
+
+@media (max-width:768px){
   .titulo h1:before{
-    border-top: solid black;
-    width: 79vw;
+      width: 69vw;
   }
-
   .form{
-    position: absolute;
-    margin-top: 150px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    width: 40%;
-    top: 10%; /* Coloca el título en el centro vertical */
-    left: 30%;
-  }
- .form p{
-    font-size: 1em;
-    color: #F1F1EF;
- }
-  .form input{
-    width: 100%;
-  }
-  .textarea{
-    width: 100%;
-    min-height: 50vh;
-    border-radius: 10px;
-  }
-
-  @media (max-width:768px){
-    .titulo h1:before{
-        width: 69vw;
+      position: absolute;
+      margin-top: 150px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      width: 40%;
+      top: 10%; /* Coloca el título en el centro vertical */
+      left: 40%;
     }
-    .form{
-        position: absolute;
-        margin-top: 150px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
-        width: 40%;
-        top: 10%; /* Coloca el título en el centro vertical */
-        left: 40%;
-      }
-      .form p{
-        font-size: 0.8em;
-        color: #F1F1EF;
-   
-     }
-      .form input{
-        width: 50%;
-      }
-      .textarea{
-        width:50%;
-      }
-  }
-  
+    .form p{
+      font-size: 0.8em;
+      color: #F1F1EF;
+ 
+   }
+    .form input{
+      width: 50%;
+    }
+    .textarea{
+      width:50%;
+    }
+}

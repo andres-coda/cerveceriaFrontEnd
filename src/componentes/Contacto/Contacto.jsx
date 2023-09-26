@@ -1,7 +1,7 @@
 import React from 'react'
 import FotoQSomos from '../FotoQSomos/FotoQSomos'
 import './Contacto.css'
-import Subtitulo from '../Subtitulo/subtitulo'
+import Subtitulo from '../subtitulo/Subtitulo'
 import FormularioInput from '../formularioInput/FormularioInput';
 import Parrafo from '../parrafo/Parrafo';
 

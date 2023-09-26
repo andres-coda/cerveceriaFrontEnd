@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { ProveedorContexto } from './componentes/contexto/contexto.jsx'
-import SucursalProvider from './Nosotros/DondeEstamos/contextoSucursales/SucursalProvider.jsx'
+import SucursalProvider from './componentes/DondeEstamos/contextoSucursales/SucursalProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
