@@ -15,10 +15,7 @@ import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
 import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
 import Contacto from './componentes/Contacto/Contacto'
-import SugerenciaCarrusel from './componentes/sugerenciaCarrusel/SugerenciaCarrusel';
-import CarouselImg from './componentes/Carousel/Carousel';
-import DondeEstamos  from './Nosotros/DondeEstamos/DondeEstamos';
-import SucursalProvider from './Nosotros/DondeEstamos/contextoSucursales/SucursalProvider';
+
 function App() {
   const { datos } = useContext(contexto);
   return (
