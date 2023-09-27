@@ -33,3 +33,10 @@
     font-size: 1.4em;
     font-weight: bold;
 }
+
+@media (max-width: 600px) {
+    .comun, .cerrar, .mas-menos {
+        font-size: 0.8em;
+        margin: 0.5rem 0;
+    }
+}

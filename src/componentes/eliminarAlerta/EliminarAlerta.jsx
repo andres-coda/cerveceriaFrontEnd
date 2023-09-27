@@ -27,7 +27,7 @@ function EliminarAlerta({dato, setAlerta}){
     return (
         <div className='transparenteAlerta'>
             <div className='alertaEliminar'>
-                <Parrafo clase={"comun"} texto={texto.texto} />
+                <Parrafo clase={"alertaParrafo"} texto={texto.texto} />
                 {texto.condicion ? (
                     <div className='botonSiNo'>
                         <Boton btn={{id:"si", clase:"comun", texto: "Eliminar"}} btnClick={btnClick}/>
