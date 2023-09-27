@@ -3,6 +3,7 @@ import "./LogReg.css";
 import FormularioInput from "../formularioInput/FormularioInput";
 import Boton from "../boton/Boton";
 import Alerta from "../alerta/alerta";
+import Subtitulo from "../subtitulo/Subtitulo";
 
 
 function Registro() {
@@ -73,7 +74,7 @@ function Registro() {
     return (
         <div className="conteinerGeneral">
         <div className="login">
-            <h2>Registro</h2>
+            <Subtitulo clase={"subtitulo"} texto={"Registro"} />
             <form onSubmit={handleSubmit} className="formulario">
                 <FormularioInput id={`name`} tipo={`text`} texto={"Nombre"} onChan={onChan} />
                 <FormularioInput id={`lastName`} tipo={`text`} texto={"Apellido"} onChan={onChan} />

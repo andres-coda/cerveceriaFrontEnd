@@ -82,7 +82,7 @@ function MenuCargar(){
     const onChange = (e) =>{
         setMenu({
             ...menu,
-            [e.target.name]: e.target.value.toString()
+            [e.target.name]: e.target.value
         });
     };
     return(

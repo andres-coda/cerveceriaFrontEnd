@@ -18,7 +18,7 @@
     width: 60%;
     overflow: hidden;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: auto;
     justify-content: space-around;
     background-color: #F1F1EF;
@@ -33,4 +33,10 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 1rem 2rem;
+}
+
+@media (max-width: 600px) {
+     .botonSiNo{
+        padding: 0.6rem;
+    }
 }
