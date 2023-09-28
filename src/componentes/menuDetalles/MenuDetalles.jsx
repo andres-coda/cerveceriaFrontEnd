@@ -51,7 +51,10 @@ function MenuDetalles( {dato, setMenuDetalles } ) {
                 } else {
                     newCarrito[indice].cantidad=cantidad;
                 }
-                setDatos((prev)=>({...prev, carrito:newCarrito}));
+                const filterCarrito = newCarrito.filter((dato)=>{
+                    if(dato.cantidad>0) return dato;
+                })
+                setDatos((prev)=>({...prev, carrito:filterCarrito}));
                 setMenuDetalles(undefined);
                 break;
             case "original" :
@@ -76,6 +79,7 @@ function MenuDetalles( {dato, setMenuDetalles } ) {
                 console.log("boton todavía no implementado");
                 break;
         }
+
     }
     return (
         <div className="transparente">

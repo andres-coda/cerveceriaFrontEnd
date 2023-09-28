@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { contexto } from '../contexto/contexto';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from "../../assets/Logo.png"
@@ -8,6 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 
 function Header() {
+  const { datos } = useContext(contexto);
   const [clicked, setClicked] = useState(false);
   const [isDropdownActive, setIsDropdownActive] = useState(false);
   const handleClick = () => {
@@ -53,7 +55,7 @@ function Header() {
       </nav>
       <div className="cart-icon">         
         <Link to="/carrito" className='cart'><FaShoppingCart/></Link>       
-        <span className="cart-item-count">3</span> 
+        <span className="cart-item-count">{datos.carrito.length}</span> 
       </div>
 
       <Link to="/reservas" className="btn-book-a-table">Reservas</Link>

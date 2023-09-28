@@ -1,3 +1,6 @@
+.subtitulo{
+    margin: 1rem;
+}
 .subtitulo h1:before {
     border-top: 3px solid #F1F1EF;
     content: "";

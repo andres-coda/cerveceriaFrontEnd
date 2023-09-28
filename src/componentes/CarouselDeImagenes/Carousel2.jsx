@@ -19,7 +19,6 @@ const Slider = () => {
 
 
   return (
-    <div className="conteinerGeneral">
       <div className="contenedor-flexible">
 
       <div className="container">
@@ -49,7 +48,6 @@ const Slider = () => {
         </div>
       </div>
     </div>
-          </div>
   );
 };
 

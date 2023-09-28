@@ -7,7 +7,7 @@ function MenuCarrito({ menu, click}){
             <Parrafo clase={'menuParrafo'} texto={menu.cantidad} />
             <h5>{menu.title}</h5>
             <img src={menu.img} alt={menu.title} />
-            <Parrafo clase={'menuParrafo'}  texto={`$ ${menu.price*menu.cantidad}`} />
+            <Parrafo clase={'menuParrafo'}  texto={`$${menu.price*menu.cantidad}`} />
         </div>
     );
 };
