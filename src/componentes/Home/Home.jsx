@@ -9,8 +9,7 @@ function Home() {
   }, []);
   return (
     <div className='conteinerGeneral'>
-  <Slider />
-  
+      <Slider />
     </div>
   )
 }

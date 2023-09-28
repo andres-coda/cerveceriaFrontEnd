@@ -3,11 +3,13 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  display: inline; 
 } 
 
 .conteinerGeneral{
   margin-top: 16vh;
   max-width: 99vw;
+  min-height: 77vh;
   padding: 1rem;
   overflow: hidden;
   display: flex;
