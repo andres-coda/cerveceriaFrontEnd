@@ -1,89 +1,139 @@
-
 .contenedor {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100%;
 }
 
+/*imagen de fondo*/
 .lupulo {
-  width: 100%; /* Ajusta el ancho según sea necesario */
+  width: 100%;
+
 }
 
-.titulo{
+/*subtitulo*/
+.titulo {
   position: absolute;
-  top: 10%; /* Coloca el título en el centro vertical */
-  left: 50%; /* Coloca el título en el centro horizontal */
-  transform: translate(-50%, -50%); /* Centra el título */
- background: rgba(0, 0, 0, 0.2); /* Fondo semitransparente para mayor legibilidad */
-  color: white; /* Color del texto del título */
-  padding: 10px; /* Espaciado interno del título */
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 10px;
   border-radius: 20px;
 }
 
-.titulo h1{
+.titulo h1 {
   font-size: 1.5em;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   letter-spacing: 8px;
   color: black;
   background-color: #F1F1EF;
-  
-}
-.titulo span{
-  background-color: #F1F1EF;
-  
 }
 
-.titulo h1:before{
+.titulo span {
+  background-color: #F1F1EF;
+}
+
+.titulo h1:before {
   border-top: solid black;
   width: 79vw;
 }
 
-.form{
+/**contenedor formulario*/
+.container-form {
   position: absolute;
-  margin-top: 150px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+   
+}
+
+/*confirmación de mensaje enviado */
+.mensaje-Enviado {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
-  width: 40%;
-  top: 10%; /* Coloca el título en el centro vertical */
-  left: 30%;
-}
-.form p{
-  font-size: 1em;
-  color: #F1F1EF;
-}
-.form input{
   width: 100%;
-}
-.textarea{
-  width: 100%;
-  min-height: 50vh;
-  border-radius: 10px;
+  text-align: center;
+  background: rgba(164, 164, 164, 0.7);
+  padding: 20px;
+
 }
 
-@media (max-width:768px){
-  .titulo h1:before{
-      width: 69vw;
+/*icono de cerbeza*/
+.beer-icon {
+  width: 20px;
+}
+
+
+.form label {
+  color: #F1F1EF;
+  text-align: left;
+  font-size: 1em;
+  background: rgba(164, 164, 164, 0.7);
+  width: 5vw;
+  text-align: center;
+
+}
+
+.container-form p {
+  font-size: 1.5em;
+  color:#F1F1EF;
+  background-color:#F1F1EF;
+  background: rgba(164, 164, 164, 0.7);
+}
+
+
+
+.textarea {
+min-width: 55%;
+  min-height: 50vh;
+  border-radius: 10px;
+  padding: 10px;
+ }
+
+.container-form button{
+  width: 20%;
+
+}
+
+@media (max-width:770px) {
+  .titulo h1:before {
+    width: 69vw;
   }
-  .form{
-      position: absolute;
-      margin-top: 150px;
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: column;
-      justify-content: center;
-      width: 40%;
-      top: 10%; /* Coloca el título en el centro vertical */
-      left: 40%;
-    }
-    .form p{
-      font-size: 0.8em;
-      color: #F1F1EF;
+
+  .container-form {
+    position: absolute;
+    margin-top: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+
+
+  }
+
+  .mensaje-Enviado {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 150%;
+    text-align: center;
+    background: rgba(164, 164, 164, 0.7);
+    padding: 20px;
+  }
+  .container-form button{
+    width: 30%;
+  }
  
-   }
-    .form input{
-      width: 50%;
-    }
-    .textarea{
-      width:50%;
-    }
+  .textarea {
+    width: 90%;
+    height: 40vh;
+  }
 }
