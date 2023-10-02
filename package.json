@@ -10,15 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< Updated upstream
     "@babel/plugin-transform-class-properties": "^7.22.5",
     "@babel/plugin-transform-nullish-coalescing-operator": "^7.22.11",
     "@babel/plugin-transform-numeric-separator": "^7.22.11",
     "@babel/plugin-transform-optional-chaining": "^7.23.0",
     "@babel/plugin-transform-private-methods": "^7.22.5",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
-=======
->>>>>>> Stashed changes
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@googlemaps/markerclusterer": "^2.4.0",
@@ -33,13 +30,9 @@
     "react-datepicker": "^4.18.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
-<<<<<<< Updated upstream
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.15.0",
     "react-scripts": "^5.0.1",
-=======
-    "react-router-dom": "^6.16.0",
->>>>>>> Stashed changes
     "react-slick": "^0.29.0",
     "reactstrap": "^9.2.0",
     "slick-carousel": "^1.8.1",
