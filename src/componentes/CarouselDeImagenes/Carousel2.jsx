@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import "./Carousel2.css";
@@ -31,12 +31,12 @@ const Slider = () => {
             key={item.id}
               className="item"
               style={{ backgroundImage: `url(${item.imgUrl})` }}
-            >
+              >
               <div className="content">
                 <h1 className="name">{item.name}</h1>
                 <h2 className="des">{item.desc}</h2>
+              </div>
                 </div>
-            </div>
           ))}
         </div>
         <div className="buttons">
