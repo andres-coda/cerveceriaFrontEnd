@@ -3,9 +3,10 @@
     font-family: 'selima';
     src: url('../../assets/fonts/selima_.otf') format('opentype');
 }
- /*-- Desktop Navigation --*/
 
-      /*-- Header --*/
+/*-- Desktop Navigation --*/
+
+/*-- Header --*/
 
 @media (min-width: 601px) {
     .header {
@@ -22,78 +23,91 @@
         z-index: 997;
         height: auto;
     }
+
     .header .logoHeader img {
-        width: 10vw;
+        width: clamp(0.8rem, 9vw + 0.5rem, 15rem);
         margin-left: 2vw;
-        margin-right: 8vw;
+        margin-right: 0;
         padding-left: 1vw;
+        transition: transform .3s;
     }
-    .header .btn-book-a-table,
-    .header .btn-book-a-table:focus {
-        font-family: 'Selima';
-        font-size: 2.5vw;
-        color: #c19f71;
-        padding: 0.1rem 2.5rem;
-        margin-left: 30px;
-        border-radius: 50px;
-        transition: 0.3s;
-        margin-right: 2vw;
+
+    .header .logoHeader img:hover {
+        transform: scale(.8);
     }
-    .header .btn-book-a-table:hover,
-    .header .btn-book-a-table:focus:hover {
-        color: #1D1D1Bff;
-        background: #F1D69d;
-    }
+
     .burguer {
         display: none;
     }
+
     .navbar {
         padding: 0;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        width: 100%;
     }
+
     .navbar ul {
         margin: 0;
         padding: 0;
         display: flex;
+        width: 100%;
         list-style: none;
+        justify-content: space-evenly;
         align-items: center;
         font-family: 'Selima';
     }
+
     .navbar li {
         position: relative;
     }
+
     .navbar>ul>li {
         white-space: nowrap;
-        padding: 10px 0 10px 28px;
+        padding: 10px 0 10px 0px;
     }
+
     .navbar a,
     .navbar a:focus {
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
         padding: 0 3px;
-        font-size: 2.5vw;
+        font-size: clamp(1rem, 1.5vw + 0.5rem, 2rem);
         font-weight: 400;
         color: white;
         white-space: nowrap;
         transition: 0.3s;
         position: relative;
-        margin-right: 2.5vw;
+        margin-right: 0;
         text-decoration: none;
         border-radius: 50px;
-        padding: 5px 15px;
+        padding: 0px 15px 0px 15px;
     }
+
+    .navbar a.active {
+        color: #1D1D1Bff;
+        background: #F1D69d;
+        opacity: .80;
+    }
+
+    .navbar a:hover,
+    .navbar a:hover,
+    .navbar.active,
+    .navbar.active:focus,
     .navbar a:hover,
     .navbar.active,
     .navbar.active:focus,
     .navbar li:hover>a {
         color: #1D1D1Bff;
         background: #F1D69d;
-    }    
-    .back-drop {
-        background: #1D1D1Bff !important;
+        opacity: .80;
     }
+
+    .back-drop {
+        background: #1D1D1Bff;
+    }
+
     .navbar .dropdown ul {
         display: block;
         position: absolute;
@@ -109,31 +123,44 @@
         transition: 0.3s;
         border-radius: 4px;
     }
-    .drop-item{       
+
+    .drop-item {
         font-size: 1.5vw !important;
         text-transform: none;
         color: #1D1D1Bff;
-        font-weight: 200;  
+        font-weight: 200;
     }
-    .cart-icon {    
+
+    .cart-icon {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 50px;
+        text-align: center;
+        visibility: hidden;
+        margin-right: 3vw;
     }
+
+    .cart-icon.active {
+        visibility: visible;
+    }
+
     .cart {
         color: white;
-        font-size: 2vw;
+        font-size: clamp(0.5rem, 1.5rem, 2rem);
         border-radius: 30px;
         padding: 5px 15px;
         cursor: pointer;
     }
+
     .cart:hover {
         color: #1D1D1Bff;
         background: #F1D69d;
     }
+
     .cart-item-count {
-        margin-left: 5px;
-        font-size: 18px;
+        margin-left: 0.1rem;
+        font-size: clamp(0.5rem, 0.8rem, 1rem);
         color: white;
     }
 }
@@ -141,9 +168,10 @@
 /*-- Mobile Navigation --*/
 
 @media (max-width: 600px) {
-     .burguer {
+    .burguer {
         margin-right: 2vw;
     }
+
     .header {
         display: flex;
         width: 100vw;
@@ -156,15 +184,12 @@
         justify-content: space-between;
         z-index: 9997;
     }
+
     .header .logoHeader img {
         width: 15vw;
         margin-left: 5vw;
     }
-    .btn-book-a-table {
-        font-size: 5.5vw !important;
-        text-decoration: none;
-        margin-right: 0;        
-    }
+
     .navbar {
         position: fixed;
         top: 0;
@@ -175,18 +200,44 @@
         transition: 0.3s;
         z-index: 9997;
     }
+
+    .navbar a.active {
+        color: #1D1D1Bff !important;
+        background: #F1D69d;
+        opacity: .80;
+        border-radius: 50px;
+        padding: 1vw;
+    }
+
     .navbar.active {
         left: 50vw;
         top: 15vw;
     }
+
+    .back-drop {
+        display: flex;
+        flex-direction: column;
+        background: #1D1D1Bff;
+    }
+
+    .drop-item {
+        font-size: 4vw;
+        text-transform: none;
+        color: white;
+        font-weight: 200;
+        text-decoration: none;
+        margin-left: 3vw;
+    }
+
     .navbar ul {
         position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        align-items: start;
         height: 50vh;
         inset: 0;
-        padding: 10px 0 10px 0;
+        padding: 10px 0 10px 30px;
         margin: 0;
         background: #1D1D1Bff;
         box-shadow: 0px 0px 10px #c19f71;
@@ -198,18 +249,12 @@
         font-weight: 100;
         color: white;
     }
+
     .navbar li>a {
         color: white;
         text-decoration: none;
-    }    
-    .navbar a:hover,
-    .navbar li:hover>a {
-        color: white;
     }
-    .navbar.active,
-    .navbar.active:focus {
-        color: #1D1D1Bff;
-    }
+
     .cart {
         font-size: 4.5vw;
         color: white;
@@ -217,20 +262,15 @@
         padding: 5px 15px;
         cursor: pointer;
     }
+
     .cart:hover {
         color: #1D1D1Bff;
         background: #F1D69d;
     }
 
-    .cart-item-count {        
+    .cart-item-count {
         font-size: 3.5vw;
         color: white;
-    }
-    .header .btn-book-a-table,
-    .header .btn-book-a-table:focus {
-        font-family: 'Selima';
-        font-size: 2.5vw;
-        color: #c19f71;        
     }
 
 }
