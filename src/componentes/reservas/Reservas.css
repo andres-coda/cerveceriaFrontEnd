@@ -1,0 +1,48 @@
+.reservas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--color3);
+    overflow-y: auto;
+    position: relative;
+    top: 0;
+    margin-bottom: 15vh;
+   
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.reservas p{
+    background-color: transparent;
+    color: var(--color3);
+    text-decoration: none;
+    border: none;
+    text-align: center;
+}
+
+.reservas a{
+    text-decoration: none;
+    max-width: 280px;
+}
+
+.reservas input {
+    border-radius: 0.5rem;
+}
+
+.botonera{
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+    margin: 1rem;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+  }
+
+ 

@@ -19,6 +19,7 @@ import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
 import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
 import Contacto from './componentes/Contacto/Contacto'
+import Reservas from './componentes/reservas/Reservas';
 
 function App() {
   const { datos } = useContext(contexto);
@@ -53,6 +54,7 @@ function App() {
           <Route path='/dondeestamos' element={<DondeEstamos />}/>
           <Route path='/contacto' element={<Contacto />}/>
           <Route path='/carrito' element={<Carrito />}/>
+          <Route path='/reservas' element={<Reservas />}/>
           <Route path='/cargarmenu' element={ <MenuCargar />}/>
         </Routes>
       <Footer />
