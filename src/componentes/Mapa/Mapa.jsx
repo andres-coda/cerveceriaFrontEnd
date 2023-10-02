@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
@@ -40,10 +41,10 @@ function Map({props}) {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
+       
         <></>
       </GoogleMap>
   ) : <></>
 }
 
-export default React.memo(Map)
+export default React.memo(Map) 

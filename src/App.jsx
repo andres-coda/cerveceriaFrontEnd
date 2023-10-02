@@ -1,3 +1,7 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+library.add(faAngleLeft, faAngleRight);
+
 import './App.css'
 import { contexto } from './componentes/contexto/contexto'
 import { useContext, useState } from 'react'

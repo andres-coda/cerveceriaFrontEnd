@@ -12,9 +12,26 @@
  
 npm i -S @react-google-maps/api
 
-Reactstrap booststrap
 
-npm install reactstrap bootstrap
+
+------------------------------------------------------------------
+npm install react-leaflet leaflet
+
+comandos de actualización 
+npm install react-scripts@5.0.1
+npm install @jridgewell/sourcemap-codec
+npm install workbox-cacheable-response@latest
+npm install workbox-background-sync@latest
+npm install @babel/plugin-transform-private-methods
+npm install @babel/plugin-transform-numeric-separator
+npm install @babel/plugin-transform-nullish-coalescing-operator
+npm install @babel/plugin-transform-class-properties
+npm install @babel/plugin-transform-optional-chaining
+
+
+
+
+
 -------------------------------------------------------------------
 
 creación de rama nueva git hub
