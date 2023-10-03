@@ -5,8 +5,9 @@ import MenuTarjeta from '../menuTarjeta/MenuTarjeta';
 import MenuDetalles from '../menuDetalles/MenuDetalles';
 import { Link } from 'react-router-dom';
 function Menu({categoria}) {
-    const { datos } = useContext(contexto);
+    const { datos} = useContext(contexto);
     const [ menuDetalle, setMenuDetalle ] = useState(undefined);
+    
     const btnClick = (e) => {
         const btn = e.currentTarget.id;
         setMenuDetalle(datos.data.find((dato)=> Number(dato.id)===Number(btn)));
@@ -49,7 +50,6 @@ function Menu({categoria}) {
                 ) : (null)
             ))}
             {menuDetalle != undefined ? (<MenuDetalles dato={menuDetalle} setMenuDetalles={setMenuDetalle}/>) : (null)} 
-        
         </div>
         </div>
     );

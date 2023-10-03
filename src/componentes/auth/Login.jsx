@@ -8,16 +8,12 @@ import Subtitulo from "../subtitulo/Subtitulo";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { datos, setDatos} = useContext(contexto);
-  const { usuario, usuarioActivo, auth } = datos
+  const { datos, setAuth} = useContext(contexto);
+  const { usuario} = datos
   const navegate = useNavigate()
   const [login, setLogin] = useState({});
   const [mensaje, setMensaje] = useState({});
   const { email, password } = login;
-
-  
-  const { data } = usuario;
-
 
   const onChan = (e) => {
     setLogin({
@@ -50,7 +46,9 @@ function Login() {
       return;
     }
 
-    setDatos((prev)=>({...prev, auth: false }))
+    const usuarioActivo = usuario.filter (user => user.email == email)
+    setAuth (usuarioActivo [0])
+    // setDatos((prev)=>({...prev, auth: false }))
     setMensaje({
       msj: "iniciaste sesion con exito",
       error: false
