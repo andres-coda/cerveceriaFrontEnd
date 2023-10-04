@@ -69,7 +69,7 @@ function Header() {
               <NavLink className='drop-item' to="/menu/sintacc" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Sin TACC</NavLink>
             </div>
           </NavDropdown>
-          <li><NavLink to="/registro" activeClassName="active-link">Login</NavLink></li>
+          <li><NavLink to="/login" activeClassName="active-link">Login</NavLink></li>
           <li><NavLink to="/reservas" activeClassName="active-link">Reservas</NavLink></li>
         </ul>
       </nav>
