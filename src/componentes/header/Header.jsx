@@ -63,10 +63,10 @@ function Header() {
             <div className='back-drop'>
               <NavLink className='drop-item' to="/menu" activeClassName="active-link" onClick={closeMenuDropdown}>Carta Completa</NavLink>
               <NavLink className='drop-item' to="/menu/bebida" activeClassName="active-link" onClick={closeMenuDropdown}>Bebidas</NavLink>
-              <NavLink className='drop-item' to="/menu" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Clásica</NavLink>
-              <NavLink className='drop-item' to="/menu" activeClassName="active-link" onClick={closeMenuDropdown}>Sandwiches</NavLink>
-              <NavLink className='drop-item' to="/menu" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Vegetariana</NavLink>
-              <NavLink className='drop-item' to="/menu" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Sin TACC</NavLink>
+              <NavLink className='drop-item' to="/menu/clasica" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Clásica</NavLink>
+              <NavLink className='drop-item' to="/menu/sandwich" activeClassName="active-link" onClick={closeMenuDropdown}>Sandwiches</NavLink>
+              <NavLink className='drop-item' to="/menu/vegetariana" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Vegetariana</NavLink>
+              <NavLink className='drop-item' to="/menu/sintacc" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Sin TACC</NavLink>
             </div>
           </NavDropdown>
           <li><NavLink to="/registro" activeClassName="active-link">Login</NavLink></li>
