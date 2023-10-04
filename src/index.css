@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'selima';
+  src: url('./assets/fonts/selima_.otf') format('opentype');
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
