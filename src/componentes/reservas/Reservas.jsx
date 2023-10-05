@@ -80,6 +80,8 @@ const Reservas = () => {
           onClose={closeModal}
           reserva={formulario}
           claveReserva={claveReserva}
+          estado={"Cantidad de Personas:"}
+          titulo={"Reserva Exitosa"}
         />
       )}
     </div>

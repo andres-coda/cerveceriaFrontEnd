@@ -16,7 +16,8 @@ export const ProveedorContexto = ({children}) => {
         })
         .then(res=> res.json())
         .then(users =>{
-            setDatos((prev)=>({...prev, usuario: users}));
+            let usuarioActivo = { usuario: users[0],  administrador: false  }
+            setDatos((prev)=>({...prev, usuario: users, usuarioActivo: usuarioActivo}));
         })
         .catch(error => {
             console.error(`Error al obtener los datos: `, error);
