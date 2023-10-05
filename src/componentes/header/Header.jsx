@@ -38,7 +38,6 @@ function Header() {
       </div>
       <nav id="navbar" className={`navbar ${clicked ? 'active' : ''}`}>
         <ul>
-          <li><NavLink to="/" activeClassName="active-link">Inicio</NavLink></li>
           <li><NavLink to="/map" activeClassName="active-link">Buscar</NavLink></li>
           <NavDropdown
             id="nav-dropdown-dark-example"

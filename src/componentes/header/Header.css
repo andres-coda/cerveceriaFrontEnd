@@ -20,7 +20,7 @@
         align-items: center;
         background: #1D1D1Bff;
         transition: all 0.5s;
-        z-index: 997;
+        z-index: 9999;
         height: auto;
     }
 

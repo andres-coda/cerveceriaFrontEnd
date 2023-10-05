@@ -26,3 +26,4 @@ function ModalReservas({ isVisible, onClose, reserva, claveReserva, estado, titu
 }
 
 export default ModalReservas;
+

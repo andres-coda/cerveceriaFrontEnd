@@ -29,7 +29,7 @@ const Slider = () => {
             <div
             key={item.id}
               className="item"
-              style={{ backgroundImage: `url(${item.imgUrl})` }}
+              style={{ backgroundImage: `url(${item.imgUrl})`, borderRadius:"20px"}}
               >
               <div className="content">
                 <h1 className="name">{item.name}</h1>
