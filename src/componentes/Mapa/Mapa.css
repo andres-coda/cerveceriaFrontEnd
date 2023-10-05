@@ -1,8 +1,7 @@
-/* Google-maps{
-width: 100%;
-} */
-
-.map {
+.mapa {
     margin: 10%;
-    
+    width: 50vw;
+    height: 40vw;
+    overflow: hidden;
  }
+
