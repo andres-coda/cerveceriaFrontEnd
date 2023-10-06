@@ -8,7 +8,7 @@ import Subtitulo from "../subtitulo/Subtitulo";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const { datos, setAuth} = useContext(contexto);
+  const { datos, setAuth, setDatos} = useContext(contexto);
   const { usuario} = datos
   const navegate = useNavigate()
   const [login, setLogin] = useState({});
@@ -25,6 +25,7 @@ function Login() {
   const registro = (e) => {
     e.preventDefault();
     navegate("/registro");
+    console.log(datos.usuarioActivo);
   }
 
   const handleSubmit = async (e) => {
@@ -46,9 +47,10 @@ function Login() {
       return;
     }
 
-    const usuarioActivo = usuario.filter (user => user.email == email)
+    const usuarioActivo = usuario.filter (user => user.email == email && user.password== password)
     setAuth (usuarioActivo [0])
     // setDatos((prev)=>({...prev, auth: false }))
+    setDatos((prev)=>({...prev, usuarioActivo:{ usuario: usuarioActivo, administrador:false }}));
     setMensaje({
       msj: "iniciaste sesion con exito",
       error: false
