@@ -6,6 +6,7 @@ import "./LogReg.css";
 import Alerta from "../alerta/alerta";
 import Subtitulo from "../subtitulo/Subtitulo";
 import { useNavigate } from "react-router-dom";
+import ModalUsers from "../modalUsers/ModalUsers";
 
 function Login() {
   const { datos, setAuth, setDatos} = useContext(contexto);
@@ -56,28 +57,31 @@ function Login() {
       error: false
     });
     
-    navegate("../menu");
 
 };
 
 
 return (
   <div className="conteinerGeneral">
-  <div className="login">
-    <Subtitulo clase={"subtitulo"} texto={"Iniciar Sesión"} />
-    <form onSubmit={handleSubmit} className="formulario">
-      <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico "} onChan={onChan} />
-      <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan}  />
-      <div className="botonera" >
-        <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar Sesión" }} btnClick={handleSubmit} />
-        <Boton btn={{ id: "enviar", clase: "comun", texto: "Registro" }} btnClick={registro} />
-      </div>
+    {datos.usuarioActivo.usuario==="perfil" ? (
+      <div className="login">
+        <Subtitulo clase={"subtitulo"} texto={"Iniciar Sesión"} />
+        <form onSubmit={handleSubmit} className="formulario">
+          <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico "} onChan={onChan} />
+          <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan}  />
+          <div className="botonera" >
+            <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar Sesión" }} btnClick={handleSubmit} />
+            <Boton btn={{ id: "enviar", clase: "comun", texto: "Registro" }} btnClick={registro} />
+          </div>
 
-    </form >
-    {
-      mensaje.msj && <Alerta mensaje={mensaje} />
-    }
-  </div >
+        </form >
+        {
+          mensaje.msj && <Alerta mensaje={mensaje} />
+        }
+      </div >
+    ): (
+      <ModalUsers datos={datos} setDatos={setDatos}/>
+    )}
   </div>
 );
 
