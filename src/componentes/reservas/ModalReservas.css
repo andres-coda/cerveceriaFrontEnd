@@ -34,7 +34,8 @@
     color: var(--color3);
     font-size: clamp(0.5rem, 1rem, 1.2rem);
   }
-  .button-reservas {
+  .modal h3, .button-reservas {
     color: var(--color3);
   }
+   
   

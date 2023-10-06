@@ -4,19 +4,25 @@ import FormularioInput from "../formularioInput/FormularioInput";
 import Boton from "../boton/Boton";
 import Alerta from "../alerta/alerta";
 import Subtitulo from "../subtitulo/Subtitulo";
+import { useNavigate } from "react-router-dom";
 
 
 function Registro() {
-
     const [registro, setRegistro] = useState({});
     const [mensaje, setMensaje] = useState({});
     const { name, lastName, email, user, password, repetir, age } = registro;
-   
+    const navegate = useNavigate();
+    
     const onChan = (e) => {
         setRegistro({
             ...registro,
             [e.target.name]: e.target.value
         })
+    }
+
+    const btnLogin = (e) => {
+        e.preventDefault();
+        navegate("/login");
     }
 
     const handleSubmit = async (e) => {
@@ -83,10 +89,12 @@ function Registro() {
                 <FormularioInput id={`age`} tipo={`number`} texto={"Edad"} onChan={onChan} />
                 <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan} />
                 <FormularioInput id={`repetir`} tipo={`password`} texto={"Repetir Contraseña "} onChan={onChan} />
-                <a href="/login">
-                    <p>Iniciar Sesion</p>
-                </a>
-                <Boton btn={{ id: "enviar", clase: "comun", texto: "Registrase" }} btnClick={handleSubmit} />
+                
+                <div className="botonera" >
+                    <Boton btn={{ id: "enviar", clase: "comun", texto: "Registrase" }} btnClick={handleSubmit} />
+                    <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar sesión" }} btnClick={btnLogin} />
+                </div>
+            
             </form>
             {
                 mensaje.msj && <Alerta mensaje={mensaje} />

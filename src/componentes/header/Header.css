@@ -20,7 +20,7 @@
         align-items: center;
         background: #1D1D1Bff;
         transition: all 0.5s;
-        z-index: 9999;
+        z-index: 9969;
         height: auto;
     }
 
@@ -115,7 +115,7 @@
         top: calc(100% + 30px);
         margin: 0;
         padding: 10px 0;
-        z-index: 99;
+        z-index: 9969;
         opacity: 0;
         visibility: hidden;
         background: #c19f71;
@@ -182,7 +182,7 @@
         left: 0;
         align-items: center;
         justify-content: space-between;
-        z-index: 9997;
+        z-index: 9969;
     }
 
     .header .logoHeader img {
@@ -198,7 +198,7 @@
         max-width: 50vw;
         bottom: 0;
         transition: 0.3s;
-        z-index: 9997;
+        z-index: 9969;
     }
 
     .navbar a.active {
@@ -243,7 +243,7 @@
         box-shadow: 0px 0px 10px #c19f71;
         overflow-y: visible;
         transition: 0.3s;
-        z-index: 9998;
+        z-index: 9969;
         font-family: 'Selima';
         font-size: 5vw;
         font-weight: 100;

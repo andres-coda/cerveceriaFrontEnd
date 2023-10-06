@@ -82,11 +82,13 @@
 }
 
 .form-p {
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
   font-size: 1.2em;
   color:#F1F1EF;
   background-color:#F1F1EF;
   background: rgba(36, 35, 35, 0.7);
-  background: rgba(164, 164, 164, 0.7);
+  background:rgba(14, 13, 13, 0.6);
   margin-bottom: 0;
 
    }
