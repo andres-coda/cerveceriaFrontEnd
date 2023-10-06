@@ -1,0 +1,33 @@
+.cardUser{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid var(--color3);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px var(--color3);
+    margin: 2rem;
+    padding: 1rem 4rem;
+}
+.line-modal {
+    height: 2px;
+    background-color: var(--color3);
+    width: 15vw;
+    margin: 2vh 0 2vh 0;
+}
+.cardUser img {
+    max-width: 13rem;
+    margin-bottom: 10px;
+}
+.cardUser h3 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+}
+.cardUser p {
+    margin: 5px 0;
+    color: var(--color3);
+    font-size: clamp(0.5rem, 1rem, 1.2rem);
+}
+.cardUser h3, .button-reservas {
+    color: var(--color3);
+}

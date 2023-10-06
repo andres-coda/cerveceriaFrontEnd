@@ -5,7 +5,6 @@ library.add(faAngleLeft, faAngleRight);
 import './App.css'
 import { contexto } from './componentes/contexto/contexto'
 import { useContext, useState } from 'react'
-import Map from './componentes/Mapa/Mapa';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
 import QuienesSomos from './componentes/QuienesSomos/QuienesSomos';
@@ -20,13 +19,12 @@ import MenuCargar from './componentes/menuCargar/MenuCargar';
 import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
 import Contacto from './componentes/Contacto/Contacto'
 import Reservas from './componentes/reservas/Reservas';
+import ModalUsers from "./componentes/modalUsers/ModalUsers";
 
 function App() {
   const { datos } = useContext(contexto);
   return (
     <>
-      
-   
       <BrowserRouter>
         <Header /> 
         <Routes>
@@ -47,7 +45,6 @@ function App() {
           })}
           <Route path='/' element={<Home />}/>
           <Route path='/menu' element={<Menu categoria={undefined}/>}/>
-          <Route path='/map' element={<Map />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>
@@ -56,6 +53,7 @@ function App() {
           <Route path='/carrito' element={<Carrito />}/>
           <Route path='/reservas' element={<Reservas />}/>
           <Route path='/cargarmenu' element={ <MenuCargar />}/>
+          <Route path='/perfil' element={ <ModalUsers />}/>
         </Routes>
       <Footer />
       </BrowserRouter>

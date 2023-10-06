@@ -38,7 +38,6 @@ function Header() {
       </div>
       <nav id="navbar" className={`navbar ${clicked ? 'active' : ''}`}>
         <ul>
-          <li><NavLink to="/map" activeClassName="active-link">Buscar</NavLink></li>
           <NavDropdown
             id="nav-dropdown-dark-example"
             title="Nosotros"
@@ -74,7 +73,7 @@ function Header() {
       </nav>
       <div className={`cart-icon ${isCartaSectionActive || isCarritoSectionActive || isReservasSectionActive ? 'active' : ''}`}>
         <NavLink to="/carrito" className='cart'><FaShoppingCart /></NavLink>
-        <span className="cart-item-count">{datos.carrito.length}</span>
+        <span className="cart-item-count">{datos && datos.carrito && datos.carrito.length}</span>
       </div>
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} onClick={() => setIsDropdownActive(false)} />
