@@ -34,15 +34,21 @@
     border-radius: 0.5rem;
 }
 
-.botonera{
-    display: flex;
-    flex-direction: row;
-    gap: 10rem;
-    margin: 1rem;
+.button-reservas{
+    border: 1px solid black !important;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px black;
+    padding: 0.2rem 0.8rem;
+    margin: 0.2rem 0.3rem;
+    cursor: pointer;
+    color: black;
 }
-.error-message {
-    color: red;
-    font-size: 14px;
-  }
+.button-reservas {
+    background-color: #c19f71;
+}
+.button-reservas:hover {
+    box-shadow: 2px 2px 4px black;
+    background-color:  #F1D69D;
+}
 
  
