@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./LogReg.css";
 import FormularioInput from "../formularioInput/FormularioInput";
 import Boton from "../boton/Boton";
 import Alerta from "../alerta/alerta";
 import Subtitulo from "../subtitulo/Subtitulo";
 import { useNavigate } from "react-router-dom";
+import { contexto } from "../contexto/contexto";
 
 
 function Registro() {
+    const {datos, setDatos} = useContext(contexto);
     const [registro, setRegistro] = useState({});
     const [mensaje, setMensaje] = useState({});
     const { name, lastName, email, user, password, repetir, age } = registro;
@@ -60,6 +62,8 @@ function Registro() {
         
             if (response.ok) {
                 const data = await response.json();
+                setDatos((prev)=>({...prev, usuarioActivo:{usuario : data, administrador: false}}));
+                navegate('/perfil');
                 setMensaje({
                     msj: `Bienvenido ${data.name}`,
                     error: false,

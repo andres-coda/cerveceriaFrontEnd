@@ -6,8 +6,6 @@ import "./LogReg.css";
 import Alerta from "../alerta/alerta";
 import Subtitulo from "../subtitulo/Subtitulo";
 import { useNavigate } from "react-router-dom";
-import ModalUsers from "../modalUsers/ModalUsers";
-
 function Login() {
   const { datos, setAuth, setDatos} = useContext(contexto);
   const { usuario} = datos
@@ -49,8 +47,7 @@ function Login() {
     }
 
     const usuarioActivo = usuario.filter (user => user.email == email && user.password== password)
-    setAuth (usuarioActivo [0])
-    // setDatos((prev)=>({...prev, auth: false }))
+    setAuth (usuarioActivo [0]);
     setDatos((prev)=>({...prev, usuarioActivo:{ usuario: usuarioActivo[0], administrador:false }}));
     setMensaje({
       msj: "iniciaste sesion con exito",
