@@ -74,10 +74,15 @@
   left: 100px;
   width: 40%;
   text-align: left;
-  padding: 0;
   color: #F1F1EF;
   transform: translate(0, -50%);
   display: none;
+}
+
+.content{
+  background-color: #0a0808a2;
+  border-radius: 10px;
+  padding: 0.5rem;
 }
 
 .item:nth-child(2) .content {
