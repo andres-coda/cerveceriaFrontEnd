@@ -19,7 +19,7 @@ function ModalReservas({ isVisible, onClose, reserva, claveReserva, estado, titu
       <span className='line-modal'></span>
       <p>El Ticket de Reserva se ha enviado al email: <strong>{reserva.email}</strong></p>
      
-      <Boton btn={{ id: 'btn-cerrar', clase: 'cerrar button-reservas', texto: 'X' }} btnClick={onClose} />
+      <Boton btn={{ id: 'btn-cerrar', clase: 'cerrar', texto: 'X' }} btnClick={onClose} />
 
     </div>
   );
