@@ -4,13 +4,17 @@ import Subtitulo from "../subtitulo/Subtitulo";
 import Boton from "../boton/Boton";
 import './ModalUsers.css'
 import { contexto } from "../contexto/contexto";
+import { useNavigate } from "react-router-dom";
 function ModalUsers (){
+    const navegate = useNavigate();
     const {datos, setDatos } = useContext(contexto);
     const onClose = (e) =>{
-        setDatos((prev)=>({...prev,usuarioActivo: {usuario: "perfil", administrador: false}}));
+        setDatos((prev)=>({...prev,usuarioActivo: {usuario: {user: "login"}, administrador: false}}));
+        navegate('/login');
     }
     return (
         <>
+        <div className="conteinerGeneral">
             <Subtitulo clase={"subtitulo"} texto={"Perfil"}/>
             <div className="cardUser">
                 <img src="src/assets/Logo.png" alt="Logo del Restaurante" />   
@@ -22,6 +26,7 @@ function ModalUsers (){
                 <span className='line-modal'></span>
                 <Boton  btn={{ id: 'cerrarSesion', clase: 'comun', texto: 'Cerrar Sesión' }} btnClick={onClose} />
             </div>
+        </div>
         </>
     );
 };

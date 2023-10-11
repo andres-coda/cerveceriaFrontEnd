@@ -56,6 +56,7 @@ function Login() {
       msj: "iniciaste sesion con exito",
       error: false
     });
+    navegate('/perfil');
     
 
 };
@@ -63,7 +64,6 @@ function Login() {
 
 return (
   <div className="conteinerGeneral">
-    {datos.usuarioActivo.usuario==="perfil" ? (
       <div className="login">
         <Subtitulo clase={"subtitulo"} texto={"Iniciar Sesión"} />
         <form onSubmit={handleSubmit} className="formulario">
@@ -79,9 +79,6 @@ return (
           mensaje.msj && <Alerta mensaje={mensaje} />
         }
       </div >
-    ): (
-      <ModalUsers/>
-    )}
   </div>
 );
 
