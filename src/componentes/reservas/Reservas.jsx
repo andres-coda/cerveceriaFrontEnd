@@ -71,7 +71,7 @@ const Reservas = () => {
         <FormularioInput id="telefono" tipo="tel" texto="Teléfono" value={formulario.telefono} onChan={onChan} />
         <FormularioInput id="email" tipo="email" texto="Correo Electrónico" value={formulario.email} onChan={onChan} />
 
-        <button className='comun button-reservas' onClick={handleSubmit} disabled={!camposCompletos}>Reservar</button>
+        <button className='button-reservas' onClick={handleSubmit} disabled={!camposCompletos}>RESERVAR</button>
         
       </form>
       {modalVisible && (
