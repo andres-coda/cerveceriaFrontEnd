@@ -3,7 +3,7 @@ export const contexto = createContext({});
 const URL_MENU = 'http://localhost:3000/menu';
 const URL_USER = 'http://localhost:3000/users';
 export const ProveedorContexto = ({children}) => {
-    const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], tipo:[], usuario:[], usuarioActivo: {usuario:"perfil", administrador: false}, datoAEditar: undefined});
+    const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], tipo:[], usuario:[], usuarioActivo: {usuario:{user: "login"}, administrador: false}, datoAEditar: undefined});
     const [ auth, setAuth ] = useState ({});
     
     
