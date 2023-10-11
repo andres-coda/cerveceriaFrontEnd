@@ -1,5 +1,5 @@
 .menu {
-    max-width: 94vw;
+    max-width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -18,9 +18,7 @@
 .menu a{
    text-decoration: none;
 }
-.menu h4{
-    width: 93vw;
-}
+
 .menu h4, menu a{
     margin-top: 2rem;
     margin-right: 100%;
@@ -31,6 +29,11 @@
     box-shadow: 2px 2px 4px transparent;
     background-color: #F1D69d;
     color: black;
+}
+
+.menu h4{
+    width: 79vw;
+    margin-left: 0;
 }
 
 .menu h4:hover, menu a:hover{
