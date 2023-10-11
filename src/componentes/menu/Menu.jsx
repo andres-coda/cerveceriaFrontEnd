@@ -4,6 +4,7 @@ import { contexto } from '../contexto/contexto';
 import MenuTarjeta from '../menuTarjeta/MenuTarjeta';
 import MenuDetalles from '../menuDetalles/MenuDetalles';
 import { Link } from 'react-router-dom';
+import Subtitulo from '../subtitulo/Subtitulo';
 function Menu({categoria}) {
     const { datos} = useContext(contexto);
     const [ menuDetalle, setMenuDetalle ] = useState(undefined);
@@ -33,6 +34,7 @@ function Menu({categoria}) {
   const seccion = setSeccionPorCategoria();
     return (
         <div className='conteinerGeneral'>
+          <Subtitulo clase={"subtitulo"} texto={categoria!==undefined ? categoria : "Carta completa"} />
         <div className='menu'>
             {datos.categorias.map((dato)=> ( seccion.includes(dato) || categoria === undefined ?(
                 <div key={dato} className='menuCatYTitulo'>
