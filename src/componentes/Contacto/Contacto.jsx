@@ -52,9 +52,7 @@ function Contacto() {
           ) : (
             <>
             <Parrafo clase={"form-p"} texto={'¡Queremos conocerte. Dejanos tu mensaje y responderemos a la brevedad!'} />
-                <FormularioInput id={`email`}
-                 tipo={`email`} texto={"email"} onChan={onChan} />
-
+                <input id='email' type='email' onChange={onChan} placeholder='Email' />
                 <textarea
                  className='textarea'
                 name="message"
