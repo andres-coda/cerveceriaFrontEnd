@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Subtitulo from "../subtitulo/Subtitulo";
 import Boton from "../boton/Boton";
 import './ModalUsers.css'
-function ModalUsers ({datos, setDatos}){
-   const [usuario, setUsuario ] = useState(datos.usuarioActivo);
-    console.log(datos.usuarioActivo);
+import { contexto } from "../contexto/contexto";
+function ModalUsers (){
+    const {datos, setDatos } = useContext(contexto);
     const onClose = (e) =>{
         setDatos((prev)=>({...prev,usuarioActivo: {usuario: "perfil", administrador: false}}));
-        setUsuario({usuario: "perfil", administrador: false})
     }
     return (
         <>
@@ -16,10 +15,10 @@ function ModalUsers ({datos, setDatos}){
             <div className="cardUser">
                 <img src="src/assets/Logo.png" alt="Logo del Restaurante" />   
                 <span className='line-modal'></span>
-                <h3>¡¡{usuario.usuario.user}!!</h3>
-                <p>Nombre y Apellido: <strong> {usuario.usuario.name} {usuario.usuario.lastName} </strong> </p>
-                <p>Email: <strong> {usuario.usuario.email} </strong> </p>
-                <p>Edad: <strong> {usuario.usuario.age} </strong> </p>
+                <h3>¡¡{datos.usuarioActivo.usuario.user}!!</h3>
+                <p>Nombre y Apellido: <strong> {datos.usuarioActivo.usuario.name} {datos.usuarioActivo.usuario.lastName} </strong> </p>
+                <p>Email: <strong> {datos.usuarioActivo.usuario.email} </strong> </p>
+                <p>Edad: <strong> {datos.usuarioActivo.usuario.age} </strong> </p>
                 <span className='line-modal'></span>
                 <Boton  btn={{ id: 'cerrarSesion', clase: 'comun', texto: 'Cerrar Sesión' }} btnClick={onClose} />
             </div>

@@ -51,7 +51,7 @@ function Login() {
     const usuarioActivo = usuario.filter (user => user.email == email && user.password== password)
     setAuth (usuarioActivo [0])
     // setDatos((prev)=>({...prev, auth: false }))
-    setDatos((prev)=>({...prev, usuarioActivo:{ usuario: usuarioActivo, administrador:false }}));
+    setDatos((prev)=>({...prev, usuarioActivo:{ usuario: usuarioActivo[0], administrador:false }}));
     setMensaje({
       msj: "iniciaste sesion con exito",
       error: false
@@ -80,7 +80,7 @@ return (
         }
       </div >
     ): (
-      <ModalUsers datos={datos} setDatos={setDatos}/>
+      <ModalUsers/>
     )}
   </div>
 );
