@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Contacto.css';
 import Subtitulo from '../subtitulo/Subtitulo';
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
-import {IoBeerOutline} from 'react-icons/io5';
+import { IoBeerOutline } from 'react-icons/io5';
 import { useNavigate } from "react-router-dom";
 
-function Contacto() {
+function Contacto() {  
+
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -51,7 +56,7 @@ function Contacto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setMensajeEnviado(true);
       console.log(formData);
@@ -114,7 +119,7 @@ function Contacto() {
                   placeholder="Mensaje"
                   required />
                 {errors.message && <p className="error">{errors.message}</p>}
-                <Boton btn={{ id: "enviar", clase: "comun", texto: "Enviar" }} btnClick={handleSubmit}/>
+                <Boton btn={{ id: "enviar", clase: "comun", texto: "Enviar" }} btnClick={handleSubmit} />
               </form>
             </>
           )}

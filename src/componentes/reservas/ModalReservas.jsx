@@ -2,7 +2,7 @@ import React from 'react';
 import './ModalReservas.css'
 import Boton from '../boton/Boton';
 
-function ModalReservas({ isVisible, onClose, reserva, claveReserva, estado, titulo }) {
+function ModalReservas({ isVisible, onClose, reserva, condicion, claveReserva, nombreClave, estado, titulo }) {
   if (!isVisible) return null;
 
   return (
@@ -15,9 +15,9 @@ function ModalReservas({ isVisible, onClose, reserva, claveReserva, estado, titu
       <p>Fecha: <strong>{reserva.fecha}</strong></p>
       <p>Hora: <strong>{reserva.hora}</strong></p>
       <p>{estado} <strong>{reserva.personas}</strong></p>
-      <p>Clave de Reserva: <strong>{claveReserva}</strong></p>
+      <p>{nombreClave}: <strong>{claveReserva}</strong></p>
       <span className='line-modal'></span>
-      <p>El Ticket de Reserva se ha enviado al email: <strong>{reserva.email}</strong></p>
+      <p>El Ticket de {condicion} se ha enviado al email: <strong>{reserva.email}</strong></p>
      
       <Boton btn={{ id: 'btn-cerrar', clase: 'cerrar', texto: 'X' }} btnClick={onClose} />
 

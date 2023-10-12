@@ -84,6 +84,8 @@ function Carrito(){
                 claveReserva= {claveReserva}
                 estado={"Total de la compra: "}
                 titulo={"Compra Exitosa"}
+                condicion={"Compra"}
+                nombreClave={"Clave de Compra"}
             />
         </div>
     );
