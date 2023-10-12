@@ -1,3 +1,4 @@
+
 .contenedor {
   position: relative;
   display: flex;
@@ -12,6 +13,9 @@
 .lupulo {
   width: 100%;
 
+}
+form button {
+  width: 50%;
 }
 
 /*subtitulo*/
@@ -80,7 +84,17 @@
   text-align: center;
 
 }
+form p{
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 1.2em;
+  color:#f70404;
+  background-color:#F1F1EF;
+  background: rgba(36, 35, 35, 0.7);
+  background:rgba(14, 13, 13, 0.6);
+  margin-bottom: 0;
 
+}
 .form-p {
   padding: 0.2rem 0.5rem;
   border-radius: 10px;
@@ -90,6 +104,7 @@
   background: rgba(36, 35, 35, 0.7);
   background:rgba(14, 13, 13, 0.6);
   margin-bottom: 0;
+  margin-top: 100px;
 
    }
 
@@ -98,7 +113,7 @@
 .textarea {
   width: 90%;
  max-width: 600px;
-  min-height: 50vh;
+  min-height: 40vh;
   border-radius: 10px;
   padding: 10px;
  }
