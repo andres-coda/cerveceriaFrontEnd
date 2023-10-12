@@ -42,10 +42,15 @@
     margin: 0.2rem 0.3rem;
     cursor: pointer;
     color: black !important;
+<<<<<<< Updated upstream
 }
 .button-reservas {
+=======
+>>>>>>> Stashed changes
     background-color: #c19f71;
+    width: max-content;
 }
+
 .button-reservas:hover {
     box-shadow: 2px 2px 4px black;
     background-color:  #F1D69D;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Contacto.css';
 import Subtitulo from '../subtitulo/Subtitulo';
 import Parrafo from '../parrafo/Parrafo';
@@ -9,7 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 
 function Contacto() {
+<<<<<<< Updated upstream
   const navegate = useNavigate()
+=======
+  const navigate = useNavigate();
+  useEffect(() => {    
+    window.scrollTo(0, 0);
+}, []);
+>>>>>>> Stashed changes
   const [formData, setFormData] = useState({
     email: '',
     message: '',
