@@ -1,21 +1,22 @@
- Participantes del grupo
+Integrantes 
+ Alvarez, Facundo  https://github.com/Facundo-Alvarez-Torriglia
+                   https://www.linkedin.com/in/facundo-alvarez-7b23a0236/
+
  Arean, Carla      https://github.com/carlaarean79
                    https://www.linkedin.com/in/carla-arean-7692b3270/
 
  Coda, Andrés      https://github.com/andres-coda
                    https://www.linkedin.com/in/andr%C3%A9s-coda-83824027a/
 
- Alvarez, Facundo  https://github.com/Facundo-Alvarez-Torriglia
-                   https://www.linkedin.com/in/facundo-alvarez-7b23a0236/
 
  Curuchet, Juan    https://github.com/juanjocurutchet
                    https://www.linkedin.com/in/juanjo-curutchet78/
 -------------------------------------------------------------------------------------                 
- Enlace al tablero de Trello
+Link al tablero de Trello
 
  https://trello.com/b/8pDU84Pb/comienzo-del-frontend
 
- Enlace al doc. informe
+ Link al doc. informe
 
  https://docs.google.com/document/d/1UNWzZe-vZ0EyiXH4NtwVjV2SZll119gQ80QSTMH4H-A/edit
  
@@ -30,7 +31,7 @@ comandos para correr las dos terminales
 npm run db
 npm run start:dev
 
-Link al proyecto en Git hub
+Link al proyecto en Git hub cerveceriaBackEnd
 https://github.com/andres-coda/cerveceriaBackEnd.git
 ------------------------------------------------------------------
 Instalación del recurso Mapa de leaflet

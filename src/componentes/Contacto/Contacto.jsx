@@ -6,7 +6,7 @@ import Boton from '../boton/Boton';
 import { IoBeerOutline } from 'react-icons/io5';
 import { useNavigate } from "react-router-dom";
 
-function Contacto() {  
+function Contacto() {
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -31,24 +31,9 @@ function Contacto() {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.firstName) {
-      errors.firstName = 'Por favor, ingrese su nombre';
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+      errors.firstName = 'Por favor, complete todos los campos';
     }
-
-    if (!formData.lastName) {
-      errors.lastName = 'Por favor, ingrese su apellido';
-    }
-
-    if (!formData.email) {
-      errors.email = 'Por favor, ingrese su correo electrónico';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = 'El correo electrónico no es válido';
-    }
-
-    if (!formData.message) {
-      errors.message = 'Por favor, ingrese su mensaje';
-    }
-
     setErrors(errors);
 
     return Object.keys(errors).length === 0;
@@ -77,6 +62,7 @@ function Contacto() {
         <div className='container-form'>
           {mensajeEnviado ? (
             <div className='mensaje-Enviado'>
+              <img src="src/assets/Logo.png" alt="Logo del Restaurante" />
               <p>Su mensaje ha sido enviado exitosamente.</p>
               <p>En breve responderemos a su consulta.</p>
               <p>Muchas gracias por elegirnos! Grupo Green Beer.<IoBeerOutline className='beer-icon' /></p>
@@ -85,7 +71,7 @@ function Contacto() {
           ) : (
             <>
               <Parrafo clase={"form-p"} texto={'¡Queremos conocerte. Dejanos tu mensaje y responderemos a la brevedad!'} />
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} >
                 <input
                   id='consulta'
                   type="text"
@@ -94,7 +80,6 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Nombre"
                   required />
-                {errors.firstName && <p className="error">{errors.firstName}</p>}
                 <input
                   type="text"
                   name="lastName"
@@ -102,7 +87,6 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Apellido"
                   required />
-                {errors.lastName && <p className="error">{errors.lastName}</p>}
                 <input
                   type="email"
                   name="email"
@@ -110,7 +94,6 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Correo electrónico"
                   required />
-                {errors.email && <p className="error">{errors.email}</p>}
                 <textarea
                   className='textarea'
                   name="message"
@@ -118,7 +101,8 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Mensaje"
                   required />
-                {errors.message && <p className="error">{errors.message}</p>}
+                {errors.firstName && <p className="error">{errors.firstName}</p>}
+
                 <Boton btn={{ id: "enviar", clase: "comun", texto: "Enviar" }} btnClick={handleSubmit} />
               </form>
             </>

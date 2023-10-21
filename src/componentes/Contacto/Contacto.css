@@ -7,22 +7,21 @@
   flex-direction: column;
   height: 100vh;
   width: 80%;
+  filter: brightness(100%);
 }
 
-/*imagen de fondo*/
-.lupulo {
-  width: 100%;
 
-}
-form button {
-  width: 50%;
+.comun {
+  width: 20vw;
+  filter: brightness(100%);
+  top: 10px;
 }
 
 /*subtitulo*/
 .titulo {
   position: absolute;
-  top: 10%;
   left: 50%;
+  top: 5%;
   transform: translate(-50%, -50%);
   color: white;
   padding: 10px;
@@ -58,16 +57,30 @@ form button {
 
 /*confirmación de mensaje enviado */
 .mensaje-Enviado {
-  position: absolute;
   display: flex;
-  flex-wrap: wrap;
+  width: clamp(20rem, 50vw, 60rem);
+  height: 50vh;
   flex-direction: column;
-  width: 70%;
-  padding: 10px;
-  text-align: center;
-  background: rgba(164, 164, 164, 0.7);
-
-}
+  align-items: center;
+  background: #1D1D1Bff;
+  border: 5px solid var(--color3);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px var(--color3);
+  position: fixed;
+  top: 58vh;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+ }
+ .mensaje-Enviado p{
+  margin: 5px 0;
+    color: var(--color3);
+    font-size: clamp(0.5rem, 1rem, 1.2rem);
+ }
+ .mensaje-Enviado img{
+  max-width: 10rem;
+    margin-bottom: 10px;
+ }
 
 /*icono de cerbeza*/
 .beer-icon {
@@ -84,43 +97,55 @@ form button {
   text-align: center;
 
 }
-form p{
-  padding: 0.2rem 0.5rem;
-  border-radius: 10px;
-  font-size: 1.2em;
-  color:#f70404;
-  background-color:#F1F1EF;
+
+.error {
+  color: red;
+  margin: 10px 80px 10px 80px;
   background: rgba(36, 35, 35, 0.7);
   background:rgba(14, 13, 13, 0.6);
-  margin-bottom: 0;
-
-}
+  
+ }
+ /*parrafo subtitulo queremos conocerte*/
 .form-p {
-  padding: 0.2rem 0.5rem;
-  border-radius: 10px;
+   border-radius: 10px;
   font-size: 1.2em;
   color:#F1F1EF;
   background-color:#F1F1EF;
   background: rgba(36, 35, 35, 0.7);
   background:rgba(14, 13, 13, 0.6);
-  margin-bottom: 0;
-  margin-top: 100px;
-
+  margin: 0px 80px 10px 80px;
    }
-
-
-
+  
 .textarea {
-  width: 90%;
- max-width: 600px;
-  min-height: 40vh;
+   width: 90%;
+  max-width: 600px;
+  min-height: 40vh; 
+  resize: none;
+   border-color: black 2px;
   border-radius: 10px;
   padding: 10px;
+ }
+ .comun{
+  width: 30vw;
+  margin: 10px 80px 10px 80px;
  }
 
 
 @media (max-width:770px) {
   .titulo h1:before {
     width: 69vw;
+     }
+     .titulo{
+      top: 7%;
+     }
+     .form-p{
+      margin: 0px 0px 0px 0px;
+     }
+     .error{
+      font-size: 0.8em;
+      margin: 10px 50px 10px 50px;
+     }
+     .comun{
+      width: 30vw;
      }
  }
