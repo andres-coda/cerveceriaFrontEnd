@@ -1,3 +1,4 @@
+// El subtutiulo es el subtitulo de cada pagina, tiene un diseño particular.
 import './Subtitulo.css'
 function Subtitulo({clase, texto}){
     return (

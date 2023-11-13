@@ -3,7 +3,6 @@ import './Reservas.css';
 import FormularioInput from '../formularioInput/FormularioInput';
 import '../boton/Boton.css';
 import ModalReservas from './ModalReservas';
-import Subtitulo from '../subtitulo/Subtitulo';
 
 const Reservas = () => {
   const initialState = {
@@ -61,7 +60,8 @@ const Reservas = () => {
 
   return (
     <div className="conteinerGeneral reservas">
-      <Subtitulo clase={"subtitulo"} texto={"RESERVA DE MESA"}/>      
+      <h1>Reserva de Mesa</h1>
+      <hr />
       <form className="formulario" key={formularioKey} ref={formRef}>
         <FormularioInput id="fecha" tipo="date" texto="Fecha" value={formulario.fecha} onChan={onChan} />
         <FormularioInput id="hora" tipo="time" texto="Hora" value={formulario.hora} onChan={onChan} />
@@ -82,8 +82,6 @@ const Reservas = () => {
           claveReserva={claveReserva}
           estado={"Cantidad de Personas:"}
           titulo={"Reserva Exitosa"}
-          condicion={"Reserva"}
-          nombreClave={"Clave de Reserva"}
         />
       )}
     </div>

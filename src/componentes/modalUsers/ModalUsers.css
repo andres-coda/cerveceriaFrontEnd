@@ -28,6 +28,6 @@
     color: var(--color3);
     font-size: clamp(0.5rem, 1rem, 1.2rem);
 }
-.cardUser h3, .button-reservas {
+.cardUser h3 {
     color: var(--color3);
 }
