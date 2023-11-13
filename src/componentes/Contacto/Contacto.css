@@ -1,4 +1,3 @@
-
 .contenedor {
   position: relative;
   display: flex;
@@ -52,7 +51,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-   
+  margin-top: 100px;
 }
 
 /*confirmación de mensaje enviado */
@@ -70,17 +69,19 @@
   position: fixed;
   top: 58vh;
   left: 50%;
-  transform: translate(-50%, -50%);  
- }
- .mensaje-Enviado p{
+  transform: translate(-50%, -50%);
+}
+
+.mensaje-Enviado p {
   margin: 5px 0;
-    color: var(--color3);
-    font-size: clamp(0.5rem, 1rem, 1.2rem);
- }
- .mensaje-Enviado img{
+  color: var(--color3);
+  font-size: clamp(0.5rem, 1rem, 1.2rem);
+}
+
+.mensaje-Enviado img {
   max-width: 10rem;
-    margin-bottom: 10px;
- }
+  margin-bottom: 10px;
+}
 
 /*icono de cerbeza*/
 .beer-icon {
@@ -95,57 +96,65 @@
   background: rgba(164, 164, 164, 0.7);
   width: 5vw;
   text-align: center;
-
 }
 
 .error {
+  padding: 5px;
+  border-radius: 10px;
   color: red;
+  font-weight: bold;
   margin: 10px 80px 10px 80px;
-  background: rgba(36, 35, 35, 0.7);
-  background:rgba(14, 13, 13, 0.6);
-  
- }
- /*parrafo subtitulo queremos conocerte*/
+  }
+
+/*parrafo subtitulo queremos conocerte*/
 .form-p {
-   border-radius: 10px;
+  padding: 5px;
+  border-radius: 10px;
   font-size: 1.2em;
-  color:#F1F1EF;
-  background-color:#F1F1EF;
+  color: #F1F1EF;
+  background-color: #F1F1EF;
   background: rgba(36, 35, 35, 0.7);
-  background:rgba(14, 13, 13, 0.6);
+  background: rgba(14, 13, 13, 0.6);
   margin: 0px 80px 10px 80px;
-   }
-  
+}
+
+/*textarea*/
 .textarea {
-   width: 90%;
+  width: 90%;
   max-width: 600px;
-  min-height: 40vh; 
+  min-height: 40vh;
   resize: none;
-   border-color: black 2px;
+  border-color: black 2px;
   border-radius: 10px;
   padding: 10px;
- }
- .comun{
+}
+
+/*boton form*/
+.comun {
   width: 30vw;
   margin: 10px 80px 10px 80px;
- }
+}
 
-
+/*media para título principal,form, p de error mensaje enviado y botón form*/
 @media (max-width:770px) {
   .titulo h1:before {
     width: 69vw;
-     }
-     .titulo{
-      top: 7%;
-     }
-     .form-p{
-      margin: 0px 0px 0px 0px;
-     }
-     .error{
-      font-size: 0.8em;
-      margin: 10px 50px 10px 50px;
-     }
-     .comun{
-      width: 30vw;
-     }
- }
+  }
+
+  .titulo {
+    top: 7%;
+  }
+
+  .form-p {
+    margin: 0px 0px 0px 0px;
+  }
+
+  .error {
+    font-size: 0.8em;
+    margin: 10px 50px 10px 50px;
+  }
+
+  .comun {
+    width: 30vw;
+  }
+}

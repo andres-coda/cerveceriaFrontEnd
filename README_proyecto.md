@@ -1,3 +1,7 @@
+🟢🟩Somos el grupo N°2. Nos hemos autoproclamado Grupo Green. Hay una anécdota detrás de ese nombre. 
+Si gustan conocerla no duden en comunicarce con algún integrante de nuestro grupo. 
+Esperamos disfruten de nuestra 🍺 cervecería la cual fue realizada con mucho entusiasmo y compromiso.
+
 Integrantes 
  Alvarez, Facundo  https://github.com/Facundo-Alvarez-Torriglia
                    https://www.linkedin.com/in/facundo-alvarez-7b23a0236/
@@ -34,7 +38,7 @@ npm run start:dev
 Link al proyecto en Git hub cerveceriaBackEnd
 https://github.com/andres-coda/cerveceriaBackEnd.git
 ------------------------------------------------------------------
-Instalación del recurso Mapa de leaflet
+Instalación del recurso Mapa de leaflet(si fuera necesario)
 -------------------------------------------------------------------
 npm install react-leaflet leaflet
 
@@ -49,21 +53,7 @@ npm install @babel/plugin-transform-nullish-coalescing-operator
 npm install @babel/plugin-transform-class-properties
 npm install @babel/plugin-transform-optional-chaining
 
-
-
-
-
 -------------------------------------------------------------------
-
-creación de rama nueva git hub
-git checkout -b ----  //creación de rama nueva
-
-git push --set-upstream origin Pepe // primer comando para push rama nueva
-
-
-// luego git push solamente
-
------------------------------------------------------------------------
 //paleta de colores
 -----------------------------------------------------------------------
 Dominante: #1D1D1B
