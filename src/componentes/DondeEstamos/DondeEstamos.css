@@ -15,7 +15,7 @@
   margin-top: 20px;
   border: #F1F1EF solid 2px;
   box-shadow: #fbf8e9 1px 1px 8px 8px;
- background-color:#c19f71; 
+  background-color: #c19f71;
   overflow: hidden;
 }
 
@@ -24,17 +24,19 @@
   margin-right: 10px;
 
 }
-.div-map-h1{
+
+.div-map-h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .div-map-h1 h1 {
   font-size: 1.7em;
   margin: 10px;
   font-family: 'selima';
-  
 }
+
 .beer {
   margin: 10px;
 }
@@ -59,53 +61,23 @@
 .paragrafh {
   font-size: 1.5em;
   font-family: 'selima';
-
 }
-
 
 .texto h2 {
   font-size: 1em;
   margin-top: 30px;
 }
 
-
-
 /* Estilos para pantallas más pequeñas (media query) */
 @media (max-width: 1260px) {
- /*  .container-all-map {
-   
-    flex-direction: column;
-    align-items: center;
-    width: 90vw;
-    height: auto;
-    overflow: hidden;
-  } */
-
-
   .ubicacion {
     margin: 20px;
   }
+
   .texto img {
     width: 10vh;
     border-radius: 100%;
     margin-bottom: 30px;
-  }
-
-}
-
-@media (max-width: 840px) {
-
-  /*lo mismo para esto*/
- /*  .container-all-map {
-    flex-direction: column;
-    align-items: center;
-    width: 80vw;
-    height: 120vh;
-    overflow: hidden;
-  } */
-  .texto  {
-    width: 50vw;
-   
   }
 }
 
@@ -119,28 +91,29 @@
 
 /* Cards sucursal */
 .cards-sucursal {
-  width: 300px; /* Tamaño fijo para las tarjetas */
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: #F1F1EF solid 2px;
   box-shadow: #fbf8e9 1px 1px 8px 8px;
-  margin: 10px; /* Reducido el margen para que haya espacio entre las tarjetas */
-  padding: 10px; /* Agregado relleno para espacio interno */
-  text-align: center; /* Centra el contenido */
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
   margin: 30px;
 }
 
 .card-sucursal img {
-  width: 100%; /* Hace que la imagen ocupe todo el ancho de la tarjeta */
-  height: auto; /* Mantiene la proporción de aspecto de la imagen */
+  width: 100%;
+  height: auto;
   margin-top: 10px;
 }
 
 .cards-sucursal h1 {
   font-family: 'selima';
   color: #c19f71;
-  font-size: 1.5em; /* Tamaño de fuente reducido para que quepa en la tarjeta */
+  font-size: 1.5em;
+  /* Tamaño de fuente reducido para que quepa en la tarjeta */
   margin: 10px;
 }
 
@@ -148,12 +121,13 @@
   color: #F1F1EF;
   font-size: 0.8em;
   margin: 5px;
-  
+
 }
-.icon{
+
+.icon {
   margin: 10px;
   color: #c19f71;
-  
+
 }
 
 

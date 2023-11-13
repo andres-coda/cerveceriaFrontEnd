@@ -21,7 +21,7 @@ function Contacto() {
   });
 
   const [mensajeEnviado, setMensajeEnviado] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,15 +29,20 @@ function Contacto() {
   };
 
   const validateForm = () => {
-    const errors = {};
-
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
-      errors.firstName = 'Por favor, complete todos los campos';
-    }
-    setErrors(errors);
-
-    return Object.keys(errors).length === 0;
+    const requiredFields = ['firstName', 'lastName', 'email', 'message'];
+    let errorMessage = '';
+  
+    requiredFields.forEach(field => {
+      if (!formData[field]) {
+        errorMessage = 'Por favor, complete todos los campos.';
+      }
+    });
+  
+    setErrors(errorMessage);
+    return errorMessage === '';
   };
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +50,9 @@ function Contacto() {
     if (validateForm()) {
       setMensajeEnviado(true);
       console.log(formData);
+    } else {
+    
+      return 'por favor complete todos los campos'
     }
   };
 
@@ -101,8 +109,7 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Mensaje"
                   required />
-                {errors.firstName && <p className="error">{errors.firstName}</p>}
-
+                 <p className="error">{errors}</p>
                 <Boton btn={{ id: "enviar", clase: "comun", texto: "Enviar" }} btnClick={handleSubmit} />
               </form>
             </>

@@ -17,12 +17,9 @@ const Slider = () => {
     slideRef.current.prepend(items[items.length - 1]);
   };
 
-
   return (
       <div className="contenedor-flexible">
-
       <div className="container">
-
         <div className="loadbar" style={{ width: `${loadingProgress}%` }}></div>
         <div id="slide" ref={slideRef}>
           {data.map((item) => (

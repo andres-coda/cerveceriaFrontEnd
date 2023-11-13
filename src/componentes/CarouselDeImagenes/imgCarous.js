@@ -3,7 +3,7 @@ export const data = [
     {
       id: 1,
       imgUrl: "https://s7e6w6d2.rocketcdn.me/wp-content/uploads/2013/02/Antares--696x463.jpg",
-      desc: "Pasión por lo que hacemos desde 1999",
+      desc: "Pasión por lo que hacemos desde 1969",
       name: "GREEN BEER",
     },
     {
