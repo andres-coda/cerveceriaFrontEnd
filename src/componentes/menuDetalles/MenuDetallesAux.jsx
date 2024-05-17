@@ -5,12 +5,15 @@ import Boton from '../boton/Boton';
 import MenuDetallesBotoneraCliente from '../menuDetallesBotonera/MenuDetallesBotoneraCliente';
 import context from 'react-bootstrap/esm/AccordionContext';
 import { useNavigate } from 'react-router-dom';
+import { contexto } from '../contexto/contexto';
 
 function MenuDetallesAux({dato, setMenuDetalles}) {
     const URL_PRODUCTO = `http://localhost:3000/producto/${dato.idProducto}`
     const [ datoCorroborado, setDatoCorroborado ] = useState({});
+    const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const navegate = useNavigate();
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===dato.idProducto));
     useEffect(()=>{
         fetch(URL_PRODUCTO)
         .then(res=> res.json())
@@ -22,6 +25,14 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
         })
     },[dato.idProducto]);
 
+    useEffect(()=>{
+        if (indice!=-1) {
+            setCantidad(datos.carrito[indice].cantidad); 
+        } else {
+            setCantidad(0);
+        }
+    }, [datos.carrito, indice]);
+
     const btnClick =(e) => {
         const btn = e.target.id;
         switch(btn){
@@ -32,9 +43,20 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
                 setCantidad((prev)=>(prev+=1));
                 break;
             case "aceptar":
-                navegate("/menu")
+                const newCarrito = datos.carrito.slice();
+                if (indice===-1){
+                    const newObjet = { ...dato, cantidad};
+                    newCarrito.push(newObjet);
+                } else {
+                    newCarrito[indice].cantidad=cantidad;
+                }
+                const filterCarrito = newCarrito.filter((dato)=>{
+                    if(dato.cantidad>0) return dato;
+                })
+                setDatos((prev)=>({...prev, carrito:filterCarrito}));
+                setMenuDetalles(undefined);
                 break;
-                case "cerrar" :
+            case "cerrar" :
                     setMenuDetalles(undefined)
                 break;
             default:
