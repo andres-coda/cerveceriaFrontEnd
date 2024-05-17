@@ -38,12 +38,16 @@ function MenuAux({categoria}){
         <div className='menu'>
             {datos.categoria.map((dato)=> (  categoria === undefined  ||seccion.includes(dato.nombre) || categoria.nombre === dato.nombre ?(
               <div key={dato.idCategoria} className='menuCatYTitulo'>
-                    <Link to={`/menu/${dato.nombre}`}><h4> {dato.nombre.toUpperCase()} </h4></Link>
-                    <div className='menuCategoria'>
-                    {dato.productos.map((producto)=>{
-                      return <MenuTarjeta key={producto.idProducto} dato={producto} click={btnClick}/> 
-                    })}
-                    </div>
+                    {dato.productos.length>0 ? (
+                      <>
+                        <Link to={`/menu/${dato.nombre}`}><h4> {dato.nombre.toUpperCase()} </h4></Link>
+                        <div className='menuCategoria'>
+                          {dato.productos.map((producto)=>{
+                            return <MenuTarjeta key={producto.idProducto} dato={producto} click={btnClick}/> 
+                          })}
+                        </div>
+                      </>
+                    ) : (null)}
                 </div>
                 ) : (null)
             ))}
