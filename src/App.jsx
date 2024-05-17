@@ -8,7 +8,7 @@ import { useContext, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Menu from './componentes/menu/Menu';
 import QuienesSomos from './componentes/QuienesSomos/QuienesSomos';
-import MenuDetalles from './componentes/menuDetalles/MenuDetalles';
+import MenuDetallesAux from './componentes/menuDetalles/MenuDetallesAux';
 import Login from './componentes/auth/Login';
 import Registro from './componentes/auth/Registro';
 import  Home  from './componentes/Home/Home';
@@ -20,6 +20,7 @@ import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
 import Contacto from './componentes/Contacto/Contacto'
 import Reservas from './componentes/reservas/Reservas';
 import ModalUsers from "./componentes/modalUsers/ModalUsers";
+import MenuAux from "./componentes/menu/MenuAux";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -28,23 +29,23 @@ function App() {
       <BrowserRouter>
         <Header /> 
         <Routes>
-          {datos.data.map((dato)=>{
+          {datos.productos.map((dato)=>{
             return (
-              <Route path={`/menu/${dato.id}`} element={<MenuDetalles dato={dato} setMenuDetalles="app"/>} key={dato.id}/>
+              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetallesAux dato={dato}/>} key={dato.idProducto}/>
             )
           })}
-          {datos.categorias.map((categorias)=>{
+          {datos.categoria.map((categorias)=>{
             return (
-              <Route path={`/menu/${categorias}`} element={<Menu categoria={categorias}/>} key={categorias}/>
+              <Route path={`/menu/${categorias.nombre}`} element={<MenuAux categoria={categorias}/>} key={categorias.idCategoria}/>
             )
           })}
           {datos.tipo.map((tipo)=>{
             return (
-              <Route path={`/menu/${tipo}`} element={<Menu categoria={tipo}/>} key={tipo}/>
+              <Route path={`/menu/${tipo.nombre}`} element={<MenuAux categoria={tipo}/>} key={tipo.idNombre}/>
             )
           })}
           <Route path='/' element={<Home />}/>
-          <Route path='/menu' element={<Menu categoria={undefined}/>}/>
+          <Route path='/menu' element={<MenuAux categoria={undefined}/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>

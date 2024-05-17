@@ -1,5 +1,5 @@
 //contexto para las tarjetas sucursales
-import React, { createContext } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const sucursalContext = createContext({});
 function SucursalProvider({ children }) {
@@ -8,7 +8,7 @@ function SucursalProvider({ children }) {
   
 
   return (
-    <sucursalContext.Provider value={sucursales}>
+    <sucursalContext.Provider value={sucursales1}>
       {children}
     </sucursalContext.Provider>
   )
