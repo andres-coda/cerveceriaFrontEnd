@@ -1,7 +1,6 @@
-import React from 'react'
+import { React, useEffect, useContext } from 'react'
 import Subtitulo from '../subtitulo/Subtitulo';
 import Map from '../Mapa/Mapa';
-import { useEffect, useContext } from 'react'
 import './DondeEstamos.css'
 import Parrafo from '../parrafo/Parrafo';
 import FotoQSomos from '../FotoQSomos/FotoQSomos';
@@ -18,7 +17,7 @@ function DondeEstamos() {
         window.scrollTo(0, 0);
     }, []);
     const sucursales = useContext(sucursalContext);
-    console.log(sucursales);
+    console.log(`Sucursal en el back ${sucursales}`);
     return (
 
         <section className='conteinerGeneral'>
@@ -42,7 +41,7 @@ function DondeEstamos() {
             <Subtitulo clase={"subtitulo-para"} texto={"Nuestras Sucursales"} />
             </div>
                 <div className='container-all-cards'>
-      {sucursales.map((sucursal) => (
+      {sucursales.sucursal.map((sucursal) => (
         <CardsSucursal key={sucursal.id} sucursal={sucursal} />
       ))}
     </div>

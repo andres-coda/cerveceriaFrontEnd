@@ -68,12 +68,8 @@ function MenuDetalles( {dato, setMenuDetalles } ) {
                 setAlerta(true);
                 break;
             case "cerrar" :
-                if (setMenuDetalles==="app") {
-                    navegate("/menu");
-                } else {
+                    console.log(`estiy aqui`);
                     setMenuDetalles(undefined);
-                }
-
                 break;
             default:
                 console.log("boton todavía no implementado");
