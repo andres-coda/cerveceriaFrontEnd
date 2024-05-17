@@ -7,6 +7,7 @@ import MenuCarrito from '../menuCarrito/MenuCarrito';
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import ModalReservas from '../reservas/ModalReservas';
+import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
 
 function Carrito(){
     const {datos, setDatos} = useContext(contexto);
@@ -46,7 +47,8 @@ function Carrito(){
             console.log(datos.carrito);
             setDatos((prev)=>({...prev, carrito:[]}));
         } else {
-            setMenuDetalle(datos.data.find((dato)=> Number(dato.id)===Number(btn)));
+            const producto = datos.productos.find((dato)=> Number(dato.idProducto)===Number(btn))
+            setMenuDetalle(producto);
         }
     }
     const closeModal = () => {
@@ -64,13 +66,12 @@ function Carrito(){
                         <Subtitulo clase={"subtitulo"} texto={"CARRITO"} />
                         {datos.carrito.map((dato)=>{
                             subTotal= subTotal + dato.price * dato.cantidad;
-                            console.log(`${dato.id}, ${dato.title}, ${dato.cantidad}, ${dato.price}`);
-                            return <MenuCarrito key={dato.id} menu={dato} click={btnClick}/> 
+                            return <MenuCarrito key={dato.idProducto} menu={dato} click={btnClick}/> 
                         })}
                         <Parrafo clase={"totalCarrito"} texto={`Total: $${total}`} />
                         <Boton btn={{id:"comprar", clase: "comun", texto:"comprar"}} btnClick={btnClick} />
                     </div>
-                    {menuDetalle != undefined ? (<MenuDetalles dato={menuDetalle} setMenuDetalles={setMenuDetalle}/>) : (null)} 
+                    {menuDetalle != undefined ? (<MenuDetallesAux dato={menuDetalle} setMenuDetalles={setMenuDetalle}/>) : (null)} 
                 </>
             ) : ( 
             <div className='carrito'>

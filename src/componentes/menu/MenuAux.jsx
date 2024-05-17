@@ -13,9 +13,7 @@ function MenuAux({categoria}){
 
   const btnClick = (e) => {
     const btn = e.currentTarget.id;
-    console.log(`este es el btn: ${btn}`);
     const producto = datos.productos.find((producto)=> Number(producto.idProducto)=== Number(btn))
-    console.log(`este es el producto: ${producto.titulo}`);
     setMenuDetalle(producto)
   }
 
