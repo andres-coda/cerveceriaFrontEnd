@@ -6,10 +6,10 @@ export const contexto = createContext({});
 const URL_PRODUCTO = 'http://localhost:3000/producto'
 const URL_CATEGORIAS = 'http://localhost:3000/categoria'
 const URL_TIPOS = 'http://localhost:3000/tipo'
-const URL_MENU = 'http://localhost:3000/producto';
+/* const URL_MENU = 'http://localhost:3000/producto';
 const URL_USER = 'http://localhost:3001/users';
 const URL_MENU = 'http://localhost:3001/menu';
-const URL_USER = 'http://localhost:3001/users';
+const URL_USER = 'http://localhost:3001/users'; */
 const URL_SUCURSALES = 'http://localhost:3000/sucursal'
 export const ProveedorContexto = ({children}) => {
     const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], tipo:[], usuario:[], usuarioActivo: {usuario:{user: "login"}, administrador: false}, datoAEditar: undefined, productos:[], categoria: []});
@@ -55,7 +55,7 @@ export const ProveedorContexto = ({children}) => {
    
 
     
-/*
+
     const [sucursales, setSucursales] = useState([]);
 
     useEffect(() => {
@@ -75,7 +75,7 @@ export const ProveedorContexto = ({children}) => {
     }, []);
 
     
-
+/*
     useEffect(()=>{
         fetch(URL_USER)
         .catch(error =>{
