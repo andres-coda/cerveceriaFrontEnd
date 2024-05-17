@@ -1,9 +1,22 @@
 //contexto para las tarjetas sucursales
-import React, { createContext } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 export const sucursalContext = createContext({});
 function SucursalProvider({ children }) {
-
+  const url_Sucursal = 'http://localhost:3000/sucursal'
+  const [sucursales1, setSucursales1] = useState({sucursal: []})
+  
+  useEffect(()=> {
+    fetch(url_Sucursal)
+    .catch(error => {
+      console.error(`Error en el fetch: `, error);
+      throw error;
+    })
+    .then(res=> res.json())
+    .then(sucursal=> 
+      setSucursales1((prev)=>({...prev,sucursal}))
+    )
+  },[])
   const sucursales = [
     {
       id: 1,
@@ -69,7 +82,7 @@ function SucursalProvider({ children }) {
   ]
 
   return (
-    <sucursalContext.Provider value={sucursales}>
+    <sucursalContext.Provider value={sucursales1}>
       {children}
     </sucursalContext.Provider>
   )

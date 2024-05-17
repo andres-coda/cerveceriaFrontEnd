@@ -60,11 +60,9 @@ function Header() {
           >
             <div className='back-drop'>
               <NavLink className='drop-item' to="/menu" activeClassName="active-link" onClick={closeMenuDropdown}>Carta Completa</NavLink>
-              <NavLink className='drop-item' to="/menu/bebida" activeClassName="active-link" onClick={closeMenuDropdown}>Bebidas</NavLink>
-              <NavLink className='drop-item' to="/menu/clasica" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Clásica</NavLink>
-              <NavLink className='drop-item' to="/menu/sandwich" activeClassName="active-link" onClick={closeMenuDropdown}>Sandwiches</NavLink>
-              <NavLink className='drop-item' to="/menu/vegetariana" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Vegetariana</NavLink>
-              <NavLink className='drop-item' to="/menu/sintacc" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Sin TACC</NavLink>
+              {datos.categoria.map((categoria)=>(
+                <NavLink className='drop-item' to={`/menu/${categoria.nombre}`} activeClassName="active-link" onClick={closeMenuDropdown} key={categoria.idCategoria}>{categoria.nombre.charAt(0).toUpperCase() + categoria.nombre.slice(1).toLowerCase()}</NavLink>
+              ))}
             </div>
           </NavDropdown>
           <li>{datos.usuarioActivo.usuario.user=== "login" ? ( 
@@ -85,3 +83,11 @@ function Header() {
 }
 
 export default Header;
+
+
+/*
+<NavLink className='drop-item' to="/menu/clasica" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Clásica</NavLink>
+              <NavLink className='drop-item' to="/menu/sandwich" activeClassName="active-link" onClick={closeMenuDropdown}>Sandwiches</NavLink>
+              <NavLink className='drop-item' to="/menu/vegetariana" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Vegetariana</NavLink>
+              <NavLink className='drop-item' to="/menu/sintacc" activeClassName="active-link" onClick={closeMenuDropdown}>Comida Sin TACC</NavLink>
+              */
