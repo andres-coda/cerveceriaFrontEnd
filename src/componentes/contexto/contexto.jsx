@@ -1,11 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { fetchCategorias, fetchProducto, fetchTipos, usefetchCategorias, usefetchProductos, usefetchTipos } from "../funciones fetch/funciones";
+
+
 export const contexto = createContext({});
 const URL_PRODUCTO = 'http://localhost:3000/producto'
 const URL_CATEGORIAS = 'http://localhost:3000/categoria'
 const URL_TIPOS = 'http://localhost:3000/tipo'
-const URL_MENU = 'http://localhost:3000/producto';
+/* const URL_MENU = 'http://localhost:3000/producto';
 const URL_USER = 'http://localhost:3001/users';
+const URL_MENU = 'http://localhost:3001/menu';
+const URL_USER = 'http://localhost:3001/users'; */
+const URL_SUCURSALES = 'http://localhost:3000/sucursal'
 export const ProveedorContexto = ({children}) => {
     const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], tipo:[], usuario:[], usuarioActivo: {usuario:{user: "login"}, administrador: false}, datoAEditar: undefined, productos:[], categoria: []});
     const [ auth, setAuth ] = useState ({});
@@ -48,6 +53,26 @@ export const ProveedorContexto = ({children}) => {
     },[])
 
    
+
+    
+
+    const [sucursales, setSucursales] = useState([]);
+
+    useEffect(() => {
+        fetch(URL_SUCURSALES)
+            .then(res => res.json())
+            .then(sucursales => {
+                // Asegúrate de que sucursales es un array
+                if (Array.isArray(sucursales)) {
+                    setSucursales(sucursales);
+                } else {
+                    console.error("La respuesta de sucursales no es un array:", sucursales);
+                }
+            })
+            .catch(error => {
+                console.error(`Error al obtener los datos de sucursales: `, error);
+            });
+    }, []);
 
     
 /*
@@ -95,7 +120,7 @@ export const ProveedorContexto = ({children}) => {
     */
 
     return (
-        <contexto.Provider value={{datos, setDatos, auth, setAuth } } >
+        <contexto.Provider value={{datos, setDatos, auth, setAuth, sucursales } } >
             { children }
         </contexto.Provider>
     )
