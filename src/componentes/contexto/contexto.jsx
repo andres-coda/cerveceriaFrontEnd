@@ -14,24 +14,10 @@ const URL_MENU = 'http://localhost:3001/menu';
 const URL_USER = 'http://localhost:3001/users'; */
 const URL_SUCURSALES = 'http://localhost:3000/sucursal'
 export const ProveedorContexto = ({children}) => {
-    const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], tipo:[], usuario:[], usuarioActivo: {usuario:{user: "login"}, administrador: true}, datoAEditar: undefined, productos:[], categoria: []});
     const [ auth, setAuth ] = useState ({});
     const [sucursales, setSucursales] = useState([]);
 
-    useEffect(() => {
-        fetch(URL_SUCURSALES)
-            .then(res => res.json())
-            .then(sucursales => {
-                if (Array.isArray(sucursales)) {
-                    setSucursales(sucursales);
-                } else {
-                    console.error("La respuesta de sucursales no es un array:", sucursales);
-                }
-            })
-            .catch(error => {
-                console.error(`Error al obtener los datos de sucursales: `, error);
-            });
-    }, []);
+ 
 
 
     const [ datos, setDatos ] = useState ({
@@ -50,6 +36,21 @@ export const ProveedorContexto = ({children}) => {
         token : null, 
         userAct: null
     });
+
+    useEffect(() => {
+        fetch(URL_SUCURSALES)
+            .then(res => res.json())
+            .then(sucursales => {
+                if (Array.isArray(sucursales)) {
+                    setSucursales(sucursales);
+                } else {
+                    console.error("La respuesta de sucursales no es un array:", sucursales);
+                }
+            })
+            .catch(error => {
+                console.error(`Error al obtener los datos de sucursales: `, error);
+            });
+    }, []);
     
     useEffect(()=>{
         if (datos.userAct) {
