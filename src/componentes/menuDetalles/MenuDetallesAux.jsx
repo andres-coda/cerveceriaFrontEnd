@@ -6,12 +6,14 @@ import MenuDetallesBotoneraCliente from '../menuDetallesBotonera/MenuDetallesBot
 import context from 'react-bootstrap/esm/AccordionContext';
 import { useNavigate } from 'react-router-dom';
 import { contexto } from '../contexto/contexto';
+import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAdministrador';
 
 function MenuDetallesAux({dato, setMenuDetalles}) {
     const URL_PRODUCTO = `http://localhost:3000/producto/${dato.idProducto}`
     const [ datoCorroborado, setDatoCorroborado ] = useState({});
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
+    const [ vista, setVista ] = useState(false);
     const navegate = useNavigate();
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===dato.idProducto));
     useEffect(()=>{
@@ -56,6 +58,12 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
                 setDatos((prev)=>({...prev, carrito:filterCarrito}));
                 setMenuDetalles(undefined);
                 break;
+            case "original" :
+                setVista(true);
+                break;
+            case "editar" :
+                console.log("estoy");
+                setDatos((prev)=>({...prev, datoAEditar: dato}));
             case "cerrar" :
                     setMenuDetalles(undefined)
                 break;
@@ -64,6 +72,13 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
                 break;
         }
     }
+
+    useEffect(() => {
+        if (datos.datoAEditar) {
+            console.log(datos.datoAEditar);
+            navegate('/cargarmenu');
+        }
+    }, [datos.datoAEditar, navegate]);
 
     return (
         <div >
@@ -83,7 +98,13 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
                         <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${datoCorroborado.valoracion}`}/>
                         <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${datoCorroborado.price}`}/>
                     </div>
-                    <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} datoCorroborado={datoCorroborado} />
+                    <>
+                        {datos.userAct.role ==="admin" && vista === false ? (
+                            <MenuDetallesBotonera btnClick={btnClick} />
+                        ) : (
+                            <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} datoCorroborado={datoCorroborado} />
+                        )}
+                    </>
                 </div>
                 <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : `x`}} btnClick={btnClick} />
             </div>

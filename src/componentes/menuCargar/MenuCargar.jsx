@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import './MenuCargar.css'
 import FormularioInput from '../formularioInput/FormularioInput';
 import Boton from '../boton/Boton';
@@ -11,15 +11,19 @@ function MenuCargar(){
     const [ editar, setEditar ] = useState(false);
     const navegate = useNavigate();
     const [menu, setMenu] = useState({
-        title: "",
-        category: "",
+        titulo: "",
+        categoria: "",
         img: "",
-        description: "",
-        ingredients: "",
+        descripcion: "",
+        ingredientes: "",
         price:"",
-        valoration: "",
+        valoracion: "",
         tipo: "",
     });
+    if (!datos.datoAEditar && !editar) {
+        setMenu(datos.datoAEditar);
+        setEditar(true);
+    } 
     const btnClick = async (e)=>{
         e.preventDefault();
     
@@ -35,7 +39,7 @@ function MenuCargar(){
             
                 if (response.ok) {
                     const data = await response.json();
-                    setDatos((prev)=>({...prev, datoAEditar: undefined}));
+                    //setDatos((prev)=>({...prev, datoAEditar: undefined}));
                     navegate('/menu')
                     navegate(`/menu/${datos.datoAEditar.id}`);
                 } else {
@@ -75,10 +79,7 @@ function MenuCargar(){
             }
         }
     }
-    if (datos.datoAEditar!== undefined && !editar) {
-        setMenu(datos.datoAEditar);
-        setEditar(true);
-    } 
+
     const onChange = (e) =>{
         setMenu({
             ...menu,
@@ -86,22 +87,27 @@ function MenuCargar(){
         });
     };
     return(
-        <div className='conteinerGeneral'>
+        <>
+        { !datos.datoAEditar ? (null) : (
+            <div className='conteinerGeneral'>
             <div className='cargarMenu'>
-                <Subtitulo clase={"subtitulo"} texto={" Carga de menu "} />
-                <form onSubmit={btnClick} className='formulario'>
-                    <FormularioInput id={"title"} tipo={"text"} texto={"Nombre del menu"} onChan={onChange} value={menu.title}/>
-                    <FormularioInput id={"category"} value={menu.category} tipo={"text"} texto={"Categoría del menu"} onChan={onChange} />
-                    <FormularioInput id={"img"} value={menu.img} tipo={"text"} texto={"Enlace de la imagen del menu"} onChan={onChange} />
-                    <FormularioInput id={"description"} value={menu.description} tipo={"text"} texto={"Descripción del menu"} onChan={onChange} />
-                    <FormularioInput id={"ingredients"} value={menu.ingredients} tipo={"text"} texto={"Ingredientes del menu"} onChan={onChange} />
-                    <FormularioInput id={"price"} value={menu.price} tipo={"int"} texto={"Precio del menu"} onChan={onChange} />
-                    <FormularioInput id={"valoration"} value={menu.valoration} tipo={"int"} texto={"Valoración del menu"} onChan={onChange} />
-                    <FormularioInput id={"tipo"} value={menu.tipo} tipo={"text"} texto={"Tipo del menu"} onChan={onChange} />
-                    <Boton btn={{ id: "enviar", clase: "comun", texto: "Cargar menu" }} btnClick={btnClick} />
-                </form>
+            <Subtitulo clase={"subtitulo"} texto={" Carga de menu "} />
+            <form onSubmit={btnClick} className='formulario'>
+            <FormularioInput id={"titulo"} tipo={"text"} texto={"Nombre del menu"} onChan={onChange} value={menu.titulo}/>
+            <FormularioInput id={"categoria"} value={menu.categoria} tipo={"text"} texto={"Categoría del menu"} onChan={onChange} />
+            <FormularioInput id={"img"} value={menu.img} tipo={"text"} texto={"Enlace de la imagen del menu"} onChan={onChange} />
+            <FormularioInput id={"descripcion"} value={menu.descripcion} tipo={"text"} texto={"Descripción del menu"} onChan={onChange} />
+            <FormularioInput id={"ingredientes"} value={menu.ingredientes} tipo={"text"} texto={"Ingredientes del menu"} onChan={onChange} />
+            <FormularioInput id={"price"} value={menu.price} tipo={"int"} texto={"Precio del menu"} onChan={onChange} />
+            <FormularioInput id={"valoracion"} value={menu.valoracion} tipo={"int"} texto={"Valoración del menu"} onChan={onChange} />
+            <FormularioInput id={"tipo"} value={menu.tipo} tipo={"text"} texto={"Tipo del menu"} onChan={onChange} />
+            <Boton btn={{ id: "enviar", clase: "comun", texto: "Cargar menu" }} btnClick={btnClick} />
+            </form>
             </div>
-        </div>
+            </div>
+            )
+        }
+        </>
     );
 };
 
