@@ -21,12 +21,14 @@ import Contacto from './componentes/Contacto/Contacto'
 import Reservas from './componentes/reservas/Reservas';
 import ModalUsers from "./componentes/modalUsers/ModalUsers";
 import MenuAux from "./componentes/menu/MenuAux";
+import PrivateRoute from "./componentes/privateRoute/PrivateRoute";
+import { AuthProvider } from "./componentes/auth/AuthContext";
 
 function App() {
   const { datos } = useContext(contexto);
-  return (
-    <>
-      <BrowserRouter>
+  return ( 
+    <BrowserRouter>
+    <AuthProvider>   
         <Header /> 
         <Routes>
           {datos.productos.map((dato)=>{
@@ -52,15 +54,19 @@ function App() {
           <Route path='/dondeestamos' element={<DondeEstamos />}/>
           <Route path='/contacto' element={<Contacto />}/>
           <Route path='/carrito' element={<Carrito />}/>
-          <Route path='/reservas' element={<Reservas />}/>
-          <Route path='/cargarmenu' element={ <MenuCargar />}/>
-          <Route path='/perfil' element={ <ModalUsers />}/>
+          <Route path="/reservas" element={<PrivateRoute roles={['user', 'admin']} />}>
+            <Route path='/reservas' element={<Reservas />} />
+          </Route>
+          <Route path="/cargarmenu" element={<PrivateRoute roles={['admin']} />}>
+            <Route path='/cargarmenu' element={<MenuCargar />} />
+          </Route>
+          <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
+            <Route path='/perfil' element={<ModalUsers />} />
+          </Route>
         </Routes>
       <Footer />
-      </BrowserRouter>
-
-
-    </>
+    </AuthProvider>  
+      </BrowserRouter>  
   )
 }
 
