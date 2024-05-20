@@ -5,22 +5,26 @@ import Boton from '../boton/Boton';
 import Subtitulo from '../subtitulo/Subtitulo';
 import { contexto } from '../contexto/contexto';
 import { useNavigate } from 'react-router-dom';
+import { fetchPost } from '../funciones fetch/funciones';
+import { URL_PRODUCTO } from '../../endPoints/endPoints';
 function MenuCargar(){
     const { datos, setDatos } = useContext(contexto);
     const URL = `http://localhost:3000/menu/`
     const [ editar, setEditar ] = useState(false);
+    const [ nuevoProducto, setNuevoProducto ] = useState(null);
     const navegate = useNavigate();
     const [menu, setMenu] = useState({
         titulo: "",
-        categoria: "",
+        categoria:{ nombre:""},
         img: "",
         descripcion: "",
         ingredientes: "",
         price:"",
         valoracion: "",
-        tipo: "",
+        tipo: { nombre:""},
     });
-    if (!datos.datoAEditar && !editar) {
+    if (!editar) {
+        console.log("entre aqui");
         setMenu(datos.datoAEditar);
         setEditar(true);
     } 
@@ -54,31 +58,12 @@ function MenuCargar(){
               console.log(error);
             }
         } else {
-            try {
-                const response = await fetch(URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(menu),
-                });
-            
-                if (response.ok) {
-                    const data = await response.json();
-                    navegate(`/menu/`);
-                } else {
-                    // Manejar el caso de respuesta no exitosa aquí
-                    console.log("Error en la solicitud HTTP:", response.status, response.statusText);
-                }
-            } catch (error) {
-              setMensaje({
-                msj: "No se pudo cargar el menu",
-                error: true,
-              })
-              console.log(error);
-            }
+            console.log("desactivado por ahora");
+            //setNuevoProducto(fetchPost(URL_PRODUCTO, datos.token, menu))
         }
     }
+
+    if ( nuevoProducto) navegate("/menu"+nuevoProducto.idProducto);
 
     const onChange = (e) =>{
         setMenu({
@@ -94,13 +79,13 @@ function MenuCargar(){
             <Subtitulo clase={"subtitulo"} texto={" Carga de menu "} />
             <form onSubmit={btnClick} className='formulario'>
             <FormularioInput id={"titulo"} tipo={"text"} texto={"Nombre del menu"} onChan={onChange} value={menu.titulo}/>
-            <FormularioInput id={"categoria"} value={menu.categoria} tipo={"text"} texto={"Categoría del menu"} onChan={onChange} />
+            <FormularioInput id={"categoria.nombre"} value={menu.categoria.nombre} tipo={"text"} texto={"Categoría del menu"} onChan={onChange} />
             <FormularioInput id={"img"} value={menu.img} tipo={"text"} texto={"Enlace de la imagen del menu"} onChan={onChange} />
             <FormularioInput id={"descripcion"} value={menu.descripcion} tipo={"text"} texto={"Descripción del menu"} onChan={onChange} />
             <FormularioInput id={"ingredientes"} value={menu.ingredientes} tipo={"text"} texto={"Ingredientes del menu"} onChan={onChange} />
             <FormularioInput id={"price"} value={menu.price} tipo={"int"} texto={"Precio del menu"} onChan={onChange} />
             <FormularioInput id={"valoracion"} value={menu.valoracion} tipo={"int"} texto={"Valoración del menu"} onChan={onChange} />
-            <FormularioInput id={"tipo"} value={menu.tipo} tipo={"text"} texto={"Tipo del menu"} onChan={onChange} />
+            <FormularioInput id={"tipo.nombre"} value={menu.tipo.nombre} tipo={"text"} texto={"Tipo del menu"} onChan={onChange} />
             <Boton btn={{ id: "enviar", clase: "comun", texto: "Cargar menu" }} btnClick={btnClick} />
             </form>
             </div>

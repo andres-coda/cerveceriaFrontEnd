@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { fetchCategorias, fetchProducto, fetchTipos, usefetchCategorias, usefetchProductos, usefetchTipos } from "../funciones fetch/funciones";
+import { useAuth } from "../auth/AuthContext";
 
 
 export const contexto = createContext({});
@@ -30,56 +30,13 @@ export const ProveedorContexto = ({children}) => {
         token : null, 
         userAct: null
     });
-    const [ auth, setAuth ] = useState ({});
-    const [ isLogin, setisLogin ] = useState(false)
-    const user = {
-                username: "josefina",
-                email: "extraño@tubarrio.com",
-                password: "enpijama",
-                role: "admin"
-            }
     
     useEffect(()=>{
-        fetch(URL_LOGIN, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-        })
-        .then(res=> res.json())
-        .then(token => {
-            setDatos((prev)=>({...prev, token}));
-            setisLogin(true)
-        })
-    },[isLogin])
-    
-    useEffect(()=>{
-        if (isLogin) {
-            fetch(URL_PERFIL, {
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${datos.token.access_token}`, // Usualmente el token se envía en el header Authorization
-                    "Content-Type": "application/json",
-                }
-            })
-            .then(res=> res.json())
-            .then(userAct =>{
-                setDatos((prev)=>({...prev, userAct}));
-            })
-            .catch(error =>{
-                console.error(`Error en el fetch al obtener los categorias`, error);
-                throw error;
-            })
-        }
-    },[isLogin]);
-
-    useEffect(()=>{
-        if (isLogin) {
+        if (datos.userAct) {
             fetch(URL_CATEGORIAS, {
                 method: "GET",
                 headers: {
-                  "Authorization": `Bearer ${datos.token.access_token}`, // Usualmente el token se envía en el header Authorization
+                  "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
                   "Content-Type": "application/json",
                 }
             })
@@ -102,15 +59,15 @@ export const ProveedorContexto = ({children}) => {
                 throw error;
             }) 
         }
-    },[isLogin])
+    },[])
 
 
     useEffect(()=>{
-        if (isLogin) {
+        if (datos.userAct) {
         fetch(URL_TIPOS, {
             method: "GET",
             headers: {
-              "Authorization": `Bearer ${datos.token.access_token}`, // Usualmente el token se envía en el header Authorization
+              "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
               "Content-Type": "application/json",
             }
         })
@@ -133,14 +90,14 @@ export const ProveedorContexto = ({children}) => {
             throw error;
         })
     }
-    },[isLogin])
+    },[])
 
     useEffect(()=>{
-        if (isLogin) {
+        if (datos.userAct) {
         fetch(URL_PRODUCTO, {
             method: "GET",
             headers: {
-              "Authorization": `Bearer ${datos.token.access_token}`, // Usualmente el token se envía en el header Authorization
+              "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
               "Content-Type": "application/json",
             }
         })
@@ -163,7 +120,7 @@ export const ProveedorContexto = ({children}) => {
             throw error;
         })
     }
-    },[isLogin])
+    },[])
 
    
 
@@ -233,15 +190,8 @@ export const ProveedorContexto = ({children}) => {
     */
 
     return (
-        <contexto.Provider value={{datos, setDatos, auth, setAuth, sucursales } } >
+        <contexto.Provider value={{datos, setDatos, sucursales } } >
             { children }
         </contexto.Provider>
     )
 }
-
-const DataFetcher = () => {
-    fetchTipos();
-    fetchCategorias();
-    fetchProducto();
-    return null;
-};
