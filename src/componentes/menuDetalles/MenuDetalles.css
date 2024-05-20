@@ -9,7 +9,9 @@
     background-color: #1410109a;
 }
 
-.menuDetalleElementos{
+
+.menuDetalleElementos,
+.menuDetalleElementosEliminado{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -25,11 +27,18 @@
     justify-content: center;
     align-content: center;
     margin: auto;
-    background-color: #F1F1EF;
     color: #1D1D1B;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 4px black;
+}
+
+.menuDetalleElementosEliminado {    
+    background-color: #df7765;
+}
+
+.menuDetalleElementos {    
+    background-color: #F1F1EF;
 }
 
 .menuDetalle{

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './Menu.css';
 import { contexto } from '../contexto/contexto';
 import Subtitulo from '../subtitulo/Subtitulo';
@@ -6,16 +6,25 @@ import { Link } from 'react-router-dom';
 import MenuTarjeta from '../menuTarjeta/MenuTarjeta';
 import MenuDetalles from '../menuDetalles/MenuDetalles';
 import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
+import { fetchGet } from '../funciones fetch/funciones';
+import { URL_PRODUCTO } from '../../endPoints/endPoints';
 
 function MenuAux({categoria}){
   const { datos } = useContext(contexto);
   const [ menuDetalle, setMenuDetalle ]= useState(undefined);
-
-  const btnClick = (e) => {
+  const [  producto, setProducto ] = useState(null);
+  
+  const btnClick = async (e) => {
     const btn = e.currentTarget.id;
-    const producto = datos.productos.find((producto)=> Number(producto.idProducto)=== Number(btn))
-    setMenuDetalle(producto)
+    const url = URL_PRODUCTO+'/'+Number(btn);
+    const productoConst = await fetchGet(url, datos.token, datos.userAct)
+    if (productoConst) setProducto(productoConst);
   }
+  useEffect(()=>{
+    if (producto) {
+      setMenuDetalle(producto)
+    }
+  },[producto])
 
   const setSeccionPorCategoria = () => {
     const tipos = [];

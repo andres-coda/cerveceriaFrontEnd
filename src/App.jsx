@@ -31,21 +31,21 @@ function App() {
     <AuthProvider>   
         <Header /> 
         <Routes>
-          {datos.productos.map((dato)=>{
+          {Array.isArray(datos.productos) ? ( datos.productos.map((dato)=>{
             return (
               <Route path={`/menu/${dato.idProducto}`} element={<MenuDetallesAux dato={dato}/>} key={dato.idProducto}/>
             )
-          })}
-          {datos.categoria.map((categorias)=>{
+          })):(null)}
+          {Array.isArray(datos.categoria) ? ( datos.categoria.map((categorias)=>{
             return (
               <Route path={`/menu/${categorias.nombre}`} element={<MenuAux categoria={categorias}/>} key={categorias.idCategoria}/>
             )
-          })}
-          {datos.tipo.map((tipo)=>{
+          })):(null)}
+          {Array.isArray(datos.tipo) ? (datos.tipo.map((tipo)=>{
             return (
               <Route path={`/menu/${tipo.nombre}`} element={<MenuAux categoria={tipo}/>} key={tipo.idNombre}/>
             )
-          })}
+          })):(null)}
           <Route path='/' element={<Home />}/>
           <Route path='/menu' element={<MenuAux categoria={undefined}/>}/>
           <Route path='/login' element={<Login />} />

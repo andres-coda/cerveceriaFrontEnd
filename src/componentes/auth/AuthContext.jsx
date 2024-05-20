@@ -1,11 +1,13 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../endPoints/endPoints';
+import { contexto } from '../contexto/contexto';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children}) => {
-  const navigate = useNavigate();  
+  const navigate = useNavigate(); 
+  const {datos, setDatos} = useContext(contexto);
   const [auth, setAuth] = useState({ 
     token: localStorage.getItem('token') || null,
     user: null
@@ -54,7 +56,6 @@ export const AuthProvider = ({ children}) => {
     }
 
     const data = await response.json();
-    console.log(data);    
     setAuth((prevAuth) => ({ ...prevAuth, user: data }));    
   };
 
@@ -64,6 +65,13 @@ export const AuthProvider = ({ children}) => {
     navigate('/');  
   };
 
+  useEffect(()=>{
+    if (auth.user) {
+      console.log(auth.user);
+      setDatos((prev)=>({...prev,userAct:auth.user, token:auth.token}))
+      console.log(datos.userAct);
+    }
+  },[auth.user])
   return (
     <AuthContext.Provider value={{ auth, setAuth, login, fetchProfile, logout }}>
       {children}

@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Boton from '../boton/Boton';
 import Parrafo from '../parrafo/Parrafo';
 import './EliminarAlerta.css';
+import { contexto } from '../contexto/contexto';
 function EliminarAlerta({dato, setAlerta}){
-    const URL = `http://localhost:3000/menu/${dato.id}`
+    const { datos } = useContext(contexto)
+    const URL = `http://localhost:3000/producto/${dato.idProducto}`
     const [ texto, setTexto ] = useState({
         texto: "¿Seguro que quiere elimainar el menu de la lista?",
         condicion : true,
@@ -15,6 +17,10 @@ function EliminarAlerta({dato, setAlerta}){
                 try {
                     const response = await fetch(URL, {
                         method: "DELETE",
+                        headers: {
+                            "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
+                            "Content-Type": "application/json",
+                          }
                     });
                     if (response.ok) setTexto({ texto: "El menú fue eliminado con exito", condicion :false});
                 } catch (error) {
