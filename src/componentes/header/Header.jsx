@@ -6,18 +6,23 @@ import logo from "../../assets/Logo.png"
 import BurguerButton from '../burguerButton/BurguerButton';
 import { FaShoppingCart } from 'react-icons/fa';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useAuth } from '../auth/AuthContext';
 
 function Header() {
   const { datos } = useContext(contexto);
   const [clicked, setClicked] = useState(false);
   const [menuDropdownOpen, setMenuDropdownOpen] = useState(false); 
   const [nosotrosDropdownOpen, setNosotrosDropdownOpen] = useState(false); 
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const location = useLocation();
+  const { auth, logout } = useAuth();
+  const { user } = auth;
 
   const handleClick = () => {
     setClicked(!clicked);
     setMenuDropdownOpen(false); 
     setNosotrosDropdownOpen(false); 
+    setUserDropdownOpen(false); 
   }
 
   const isCartaSectionActive = location.pathname.startsWith('/menu');
@@ -29,6 +34,10 @@ function Header() {
 
   const closeNosotrosDropdown = () => {
     setNosotrosDropdownOpen(false); 
+  };
+
+  const closeUserDropdown = () => {
+    setUserDropdownOpen(false); 
   };
 
   return (
@@ -70,9 +79,25 @@ function Header() {
               ))}
             </div>
           </NavDropdown>
-          <li>{datos.usuarioActivo.usuario.user=== "login" ? ( 
-          <NavLink to="/login" activeClassName="active-link">{datos.usuarioActivo.usuario.user}</NavLink> ) : (
-            <NavLink to="/perfil" activeClassName="active-link">{datos.usuarioActivo.usuario.user}</NavLink> )} </li>
+          {user ? (
+        <div className="user-menu">
+          <NavDropdown
+            id="nav-dropdown-user"
+            title={user.email}
+            menuVariant="light"
+            onToggle={() => setUserDropdownOpen(!userDropdownOpen)}
+            show={userDropdownOpen}
+          >
+            <div className='back-drop'>
+              <NavLink className='drop-item'  activeClassName="active-link" onClick={() =>
+                 { closeUserDropdown(); logout(); }}>Logout
+              </NavLink>              
+            </div>
+          </NavDropdown>
+        </div>
+      ) : (
+        <li><NavLink to="/login" activeClassName="active-link">Login</NavLink></li>
+      )}          
           <li><NavLink to="/reservas" activeClassName="active-link">Reservas</NavLink></li>
         </ul>
       </nav>
@@ -80,6 +105,7 @@ function Header() {
         <NavLink to="/carrito" className='cart'><FaShoppingCart /></NavLink>
         <span className="cart-item-count">{datos && datos.carrito && datos.carrito.length}</span>
       </div>
+     
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} onClick={() => setIsDropdownActive(false)} />
       </div>

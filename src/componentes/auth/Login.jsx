@@ -6,30 +6,32 @@ import "./LogReg.css";
 import Alerta from "../alerta/alerta";
 import Subtitulo from "../subtitulo/Subtitulo";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+
 function Login() {
-  const { datos, setAuth, setDatos} = useContext(contexto);
-  const { usuario} = datos
-  const navegate = useNavigate()
-  const [login, setLogin] = useState({});
+  const { datos, setDatos} = useContext(contexto);  
+  const navigate = useNavigate()
+  const { login, fetchProfile} = useAuth();
+  const [loginData, setLoginData] = useState({email: '', password: '', role: 'user'});
   const [mensaje, setMensaje] = useState({});
-  const { email, password } = login;
+  const { email, password, role } = loginData;
 
   const onChan = (e) => {
-    setLogin({
-      ...login,
+    setLoginData({
+      ...loginData,
       [e.target.name]: e.target.value
     })
   };
 
   const registro = (e) => {
     e.preventDefault();
-    navegate("/registro");
+    navigate("/registro");
     console.log(datos.usuarioActivo);
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if ([email, password].includes("")) {
+    if ([email, password, role].includes("")) {
       setMensaje({
         msj: "Los campos deben completarse",
         error: true
@@ -37,28 +39,23 @@ function Login() {
       return;
     }
 
-    const validarUsuario = usuario.some(el => el.email === email && el.password === password  );
-    if (!validarUsuario) {
+    try {
+      const token = await login(email, password, role);
+      await fetchProfile(token);
       setMensaje({
-        msj: "error al iniciar sesion",
+        msj: "Iniciaste sesión con éxito",
+        error: false
+      });
+      navigate('/');
+    } catch (error) {
+      setMensaje({
+        msj: error.message,
         error: true
       });
-      return;
     }
+  };
 
-    const usuarioActivo = usuario.filter (user => user.email == email && user.password== password)
-    setAuth (usuarioActivo [0]);
-    setDatos((prev)=>({...prev, usuarioActivo:{ usuario: usuarioActivo[0], administrador:false }}));
-    setMensaje({
-      msj: "iniciaste sesion con exito",
-      error: false
-    });
-    navegate('/perfil');
-    
-
-};
-
-
+  
 return (
   <div className="conteinerGeneral">
       <div className="login">
@@ -78,6 +75,6 @@ return (
       </div >
   </div>
 );
+};
 
-}
 export default Login;

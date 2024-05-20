@@ -21,29 +21,31 @@ import Contacto from './componentes/Contacto/Contacto'
 import Reservas from './componentes/reservas/Reservas';
 import ModalUsers from "./componentes/modalUsers/ModalUsers";
 import MenuAux from "./componentes/menu/MenuAux";
+import PrivateRoute from "./componentes/privateRoute/PrivateRoute";
+import { AuthProvider } from "./componentes/auth/AuthContext";
 
 function App() {
   const { datos } = useContext(contexto);
-  return (
-    <>
-      <BrowserRouter>
+  return ( 
+    <BrowserRouter>
+    <AuthProvider>   
         <Header /> 
         <Routes>
-          {datos.productos.map((dato)=>{
+          {Array.isArray(datos.productos) ? ( datos.productos.map((dato)=>{
             return (
               <Route path={`/menu/${dato.idProducto}`} element={<MenuDetallesAux dato={dato}/>} key={dato.idProducto}/>
             )
-          })}
-          {datos.categoria.map((categorias)=>{
+          })):(null)}
+          {Array.isArray(datos.categoria) ? ( datos.categoria.map((categorias)=>{
             return (
               <Route path={`/menu/${categorias.nombre}`} element={<MenuAux categoria={categorias}/>} key={categorias.idCategoria}/>
             )
-          })}
-          {datos.tipo.map((tipo)=>{
+          })):(null)}
+          {Array.isArray(datos.tipo) ? (datos.tipo.map((tipo)=>{
             return (
               <Route path={`/menu/${tipo.nombre}`} element={<MenuAux categoria={tipo}/>} key={tipo.idNombre}/>
             )
-          })}
+          })):(null)}
           <Route path='/' element={<Home />}/>
           <Route path='/menu' element={<MenuAux categoria={undefined}/>}/>
           <Route path='/login' element={<Login />} />
@@ -52,15 +54,19 @@ function App() {
           <Route path='/dondeestamos' element={<DondeEstamos />}/>
           <Route path='/contacto' element={<Contacto />}/>
           <Route path='/carrito' element={<Carrito />}/>
-          <Route path='/reservas' element={<Reservas />}/>
-          <Route path='/cargarmenu' element={ <MenuCargar />}/>
-          <Route path='/perfil' element={ <ModalUsers />}/>
+          <Route path="/reservas" element={<PrivateRoute roles={['user', 'admin']} />}>
+            <Route path='/reservas' element={<Reservas />} />
+          </Route>
+          <Route path="/cargarmenu" element={<PrivateRoute roles={['admin']} />}>
+            <Route path='/cargarmenu' element={<MenuCargar />} />
+          </Route>
+          <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
+            <Route path='/perfil' element={<ModalUsers />} />
+          </Route>
         </Routes>
       <Footer />
-      </BrowserRouter>
-
-
-    </>
+    </AuthProvider>  
+      </BrowserRouter>  
   )
 }
 

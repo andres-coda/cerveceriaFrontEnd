@@ -3,16 +3,20 @@ import './Reservas.css';
 import FormularioInput from '../formularioInput/FormularioInput';
 import '../boton/Boton.css';
 import ModalReservas from './ModalReservas';
+import { useAuth } from '../auth/AuthContext';
+import { BASE_URL } from '../../endPoints/endPoints';
 
 const Reservas = () => {
+  const {auth} = useAuth();
+  const {user, token} = auth || {}  ;
   const initialState = {
     fecha: '',
     hora: '',
     personas: '',
-    nombre: '',
-    apellido: '',
+    nombre: user?.name || '',
+    apellido: user?.lastname || '',
     telefono: '',
-    email: '',
+    email: user?.email || '',
   };
 
   const [formulario, setFormulario] = useState(initialState);
@@ -37,18 +41,28 @@ const Reservas = () => {
     setCamposCompletos(areAllInputsFilled);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Generar una clave de reserva aleatoria (6 caracteres alfanuméricos)
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let clave = '';
-    for (let i = 0; i < 6; i++) {
-      clave += characters.charAt(Math.floor(Math.random() * characters.length));
+    try {
+      const response = await fetch(`${BASE_URL}/reserva`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formulario),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error al crear la reserva");
+      }
+  
+      const responseData = await response.json();
+      setClaveReserva(responseData.claveReserva);
+      setModalVisible(true);
+    } catch (error) {
+      console.error("Error al crear la reserva", error);
     }
-
-    setClaveReserva(clave);
-    setModalVisible(true);
   };
 
   const closeModal = () => {

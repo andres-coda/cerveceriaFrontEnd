@@ -3,27 +3,19 @@ import './MenuDetalles.css'
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import MenuDetallesBotoneraCliente from '../menuDetallesBotonera/MenuDetallesBotoneraCliente';
-import context from 'react-bootstrap/esm/AccordionContext';
 import { useNavigate } from 'react-router-dom';
+import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAdministrador';
+import { useAuth } from '../auth/AuthContext';
 import { contexto } from '../contexto/contexto';
+import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
 
 function MenuDetallesAux({dato, setMenuDetalles}) {
-    const URL_PRODUCTO = `http://localhost:3000/producto/${dato.idProducto}`
-    const [ datoCorroborado, setDatoCorroborado ] = useState({});
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
+    const [ vista, setVista ] = useState(false);
+    const [ alerta, setAlerta ] = useState(false);
     const navegate = useNavigate();
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===dato.idProducto));
-    useEffect(()=>{
-        fetch(URL_PRODUCTO)
-        .then(res=> res.json())
-        .then(data =>{
-            setDatoCorroborado(data);
-        })
-        .catch(error => {
-            console.error(`Error en el fetch. al intentar leer el producto: `, error);
-        })
-    },[dato.idProducto]);
 
     useEffect(()=>{
         if (indice!=-1) {
@@ -56,6 +48,18 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
                 setDatos((prev)=>({...prev, carrito:filterCarrito}));
                 setMenuDetalles(undefined);
                 break;
+            case "original" :
+                setVista(true);
+                break;
+            case "editar" :
+                setDatos((prev)=>({...prev, datoAEditar: dato}));
+                if (datos.datoAEditar) {
+                    navegate('/cargarmenu');
+                };
+                break;
+            case "eliminar" :
+                setAlerta(true);
+                break
             case "cerrar" :
                     setMenuDetalles(undefined)
                 break;
@@ -67,25 +71,34 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
 
     return (
         <div >
-            {datoCorroborado != {} && datoCorroborado.categoria != undefined && datoCorroborado.tipo != undefined ? (
+            {dato != {} && dato.categoria != undefined && dato.tipo != undefined ? (
                 <>     
                 <div className="transparente">
-            <div className='menuDetalleElementos'>            
+            <div className={dato.deleted ? 'menuDetalleElementosEliminado' : 'menuDetalleElementos'}>            
                 <div className='menuDetalle'>
-                    <h3> { datoCorroborado.categoria.nombre } </h3>
-                    <h2> { datoCorroborado.titulo } </h2>
+                    <h3> { dato.categoria.nombre } </h3>
+                    <h2> { dato.titulo } </h2>
                     <div className='menuFotoDescripcion'>
-                        <img src={datoCorroborado.img} alt={datoCorroborado.titulo.nombre} />
-                        <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ${datoCorroborado.descripcion}`} />
-                        <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ${datoCorroborado.ingredientes}`}/>
+                        <img src={dato.img} alt={dato.titulo.nombre} />
+                        <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ${dato.descripcion}`} />
+                        <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ${dato.ingredientes}`}/>
                     </div>
                     <div className='valoracionPrecio'>
-                        <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${datoCorroborado.valoracion}`}/>
-                        <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${datoCorroborado.price}`}/>
+                        <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${dato.valoracion}`}/>
+                        <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${dato.price}`}/>
                     </div>
-                    <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} datoCorroborado={datoCorroborado} />
+                    <>
+                        {datos.userAct && datos.userAct.role ==="admin" && vista === false ? (
+                                <MenuDetallesBotonera btnClick={btnClick} dato={dato}/>
+                        ) : (
+                            <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato} />
+                        )}
+                    </>
                 </div>
                 <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : `x`}} btnClick={btnClick} />
+                { alerta ? (
+                    <EliminarAlerta setAlerta={setAlerta} dato={dato} />
+                ) : (null)}
             </div>
         </div>
         </>
