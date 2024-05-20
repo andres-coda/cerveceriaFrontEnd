@@ -10,7 +10,7 @@ import { fetchGet } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
 
 function MenuAux({categoria}){
-  const { datos } = useContext(contexto);
+  const { datos, setDatos } = useContext(contexto);
   const [ menuDetalle, setMenuDetalle ]= useState(undefined);
   const [  producto, setProducto ] = useState(null);
   
@@ -25,6 +25,12 @@ function MenuAux({categoria}){
       setMenuDetalle(producto)
     }
   },[producto])
+
+  useEffect(()=>{
+    const urlProducto=URL_PRODUCTO;
+    const productos = fetchGet(urlProducto, datos.token, datos.userAct);
+    if (productos) setDatos((prev)=>({...prev, productos}))
+  },[datos.userAct])
 
   const setSeccionPorCategoria = () => {
     const tipos = [];

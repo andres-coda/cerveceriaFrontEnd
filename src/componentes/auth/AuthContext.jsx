@@ -62,6 +62,7 @@ export const AuthProvider = ({ children}) => {
   const logout = () => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
+    setDatos((prev)=>({...prev,userAct:null, token:null}))
     navigate('/');  
   };
 
@@ -69,7 +70,7 @@ export const AuthProvider = ({ children}) => {
     if (auth.user) {
       console.log(auth.user);
       setDatos((prev)=>({...prev,userAct:auth.user, token:auth.token}))
-      console.log(datos.userAct);
+      console.log(`auth ${datos.userAct}`);
     }
   },[auth.user])
   return (
