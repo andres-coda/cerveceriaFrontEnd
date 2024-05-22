@@ -8,20 +8,38 @@ import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAd
 import { useAuth } from '../auth/AuthContext';
 import { contexto } from '../contexto/contexto';
 import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
+import { fetchGet, fetchPatCh } from '../funciones fetch/funciones';
+import { URL_PRODUCTO } from '../../endPoints/endPoints';
 
-function MenuDetallesAux({dato, setMenuDetalles}) {
+function MenuDetallesAux({idProducto}) {
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const [ vista, setVista ] = useState(false);
     const [ alerta, setAlerta ] = useState(false);
+    const [ dato, setDatoLocal ] = useState(null)
     const navegate = useNavigate();
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===dato.idProducto));
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const producto = await fetchGet(URL_PRODUCTO+'/'+idProducto, localStorage.getItem('token'));
+                if (producto) {
+                    setDatoLocal(producto);
+                }
+            } catch (error) {
+                console.error("Error al obtener el producto:", error);
+            }
+        };
+        fetchData();
+    }, []);
 
     useEffect(()=>{
-        if (indice!=-1) {
-            setCantidad(datos.carrito[indice].cantidad); 
-        } else {
-            setCantidad(0);
+        if (dato) {
+            if (indice!=-1) {
+                setCantidad(datos.carrito[indice].cantidad); 
+            } else {
+                setCantidad(0);
+            } 
         }
     }, [datos.carrito, indice]);
 
@@ -46,35 +64,39 @@ function MenuDetallesAux({dato, setMenuDetalles}) {
                     if(dato.cantidad>0) return dato;
                 })
                 setDatos((prev)=>({...prev, carrito:filterCarrito}));
-                setMenuDetalles(undefined);
+                navegate('/menu')
                 break;
             case "original" :
                 setVista(true);
                 break;
             case "editar" :
                 setDatos((prev)=>({...prev, datoAEditar: dato}));
-                if (datos.datoAEditar) {
-                    navegate('/cargarmenu');
-                };
+                navegate('/cargarmenu');
                 break;
             case "eliminar" :
                 setAlerta(true);
                 break
+            case "reactivar" :
+                console.log(URL_PRODUCTO+'/'+dato.idProducto);
+                fetchPatCh(URL_PRODUCTO+'/'+dato.idProducto, localStorage.getItem('token'));
+                setDatos((prev)=>({...prev,refresh:true}));                
+                break
             case "cerrar" :
-                    setMenuDetalles(undefined)
+                    navegate('/menu')
                 break;
             default:
                 console.log("boton todavía no implementado");
+                console.log(btn.toStrong());
                 break;
         }
     }
 
     return (
         <div >
-            {dato != {} && dato.categoria != undefined && dato.tipo != undefined ? (
+            {dato != null ? (
                 <>     
                 <div className="transparente">
-            <div className={dato.deleted ? 'menuDetalleElementosEliminado' : 'menuDetalleElementos'}>            
+            <div className={ !dato.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>            
                 <div className='menuDetalle'>
                     <h3> { dato.categoria.nombre } </h3>
                     <h2> { dato.titulo } </h2>

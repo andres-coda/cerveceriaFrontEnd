@@ -5,23 +5,21 @@ import Boton from '../boton/Boton';
 import Subtitulo from '../subtitulo/Subtitulo';
 import { contexto } from '../contexto/contexto';
 import { useNavigate } from 'react-router-dom';
-import { fetchPost } from '../funciones fetch/funciones';
+import { fetchPost, fetchPut } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
 function MenuCargar(){
     const { datos, setDatos } = useContext(contexto);
-    const URL = `http://localhost:3000/menu/`
     const [ editar, setEditar ] = useState(false);
-    const [ nuevoProducto, setNuevoProducto ] = useState(null);
     const navegate = useNavigate();
     const [menu, setMenu] = useState({
         titulo: "",
-        categoria:{ nombre:""},
+        categoria:"",
         img: "",
         descripcion: "",
         ingredientes: "",
         price:"",
         valoracion: "",
-        tipo: { nombre:""},
+        tipo: "",
     });
     if (!editar) {
         console.log("entre aqui");
@@ -30,40 +28,32 @@ function MenuCargar(){
     } 
     const btnClick = async (e)=>{
         e.preventDefault();
+        setDatos((prev)=>({...prev, refresh : !refresh}))
     
         if (editar === true ){
-            try {
-                const response = await fetch(`${URL}${datos.datoAEditar.id}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(menu),
-                });
-            
-                if (response.ok) {
-                    const data = await response.json();
-                    //setDatos((prev)=>({...prev, datoAEditar: undefined}));
-                    navegate('/menu')
-                    navegate(`/menu/${datos.datoAEditar.id}`);
-                } else {
-                    // Manejar el caso de respuesta no exitosa aquí
-                    console.log("Error en la solicitud HTTP:", response.status, response.statusText);
-                }
-            } catch (error) {
-              setMensaje({
-                msj: "No se pudo cargar el menu",
-                error: true,
-              })
-              console.log(error);
+            const productoEditado = await fetchPut(
+                URL_PRODUCTO+'/'+datos.datoAEditar.idProducto,
+                localStorage.getItem('token'),
+                menu
+            )
+            if (productoEditado) {
+                setDatos((prev)=>({...prev, datoAEditar: undefined}));
+                navegate(`/menu/${productoEditado.idProducto}`);
             }
+            
         } else {
-            console.log("desactivado por ahora");
+            const productoNuevo= await fetchPost(
+                URL_PRODUCTO,
+                localStorage.getItem('token'),
+                menu
+            )
+            if (productoNuevo){
+                navegate(`/menu/${productoNuevo.idProducto}`)
+            }
             //setNuevoProducto(fetchPost(URL_PRODUCTO, datos.token, menu))
         }
     }
 
-    if ( nuevoProducto) navegate("/menu"+nuevoProducto.idProducto);
 
     const onChange = (e) =>{
         setMenu({
@@ -71,6 +61,21 @@ function MenuCargar(){
             [e.target.name]: e.target.value
         });
     };
+
+    const onSelectOption = (e, key, data) => {
+        const value = e.target.value;
+        if (value !== "Nueva") {
+            const selectedOption = data.find(option => option.nombre === value);
+            setMenu(prevMenu => ({
+                ...prevMenu,
+                [key]: selectedOption
+            }));
+        } else {
+            console.log(`Nueva ${key}`);
+            // Aquí puedes manejar la lógica para una nueva opción
+        }
+    };
+    
     return(
         <>
         { !datos.datoAEditar ? (null) : (
@@ -79,13 +84,27 @@ function MenuCargar(){
             <Subtitulo clase={"subtitulo"} texto={" Carga de menu "} />
             <form onSubmit={btnClick} className='formulario'>
             <FormularioInput id={"titulo"} tipo={"text"} texto={"Nombre del menu"} onChan={onChange} value={menu.titulo}/>
-            <FormularioInput id={"categoria.nombre"} value={menu.categoria.nombre} tipo={"text"} texto={"Categoría del menu"} onChan={onChange} />
+            <FormularioInput 
+                id={"categoria.nombre"} 
+                value={menu.categoria.nombre} 
+                tipo={"select"} 
+                texto={"Categoría del menu"} 
+                onChan={(e) => onSelectOption(e, 'categoria', datos.categoria)} 
+                opciones={[...datos.categoria.map((categoria) => categoria.nombre), "Nueva categoria"]}
+            />
             <FormularioInput id={"img"} value={menu.img} tipo={"text"} texto={"Enlace de la imagen del menu"} onChan={onChange} />
             <FormularioInput id={"descripcion"} value={menu.descripcion} tipo={"text"} texto={"Descripción del menu"} onChan={onChange} />
             <FormularioInput id={"ingredientes"} value={menu.ingredientes} tipo={"text"} texto={"Ingredientes del menu"} onChan={onChange} />
             <FormularioInput id={"price"} value={menu.price} tipo={"int"} texto={"Precio del menu"} onChan={onChange} />
             <FormularioInput id={"valoracion"} value={menu.valoracion} tipo={"int"} texto={"Valoración del menu"} onChan={onChange} />
-            <FormularioInput id={"tipo.nombre"} value={menu.tipo.nombre} tipo={"text"} texto={"Tipo del menu"} onChan={onChange} />
+            <FormularioInput 
+                id={"tipo.nombre"} 
+                value={menu.tipo.nombre} 
+                tipo={"select"} 
+                texto={"Tipo del menu"} 
+                onChan={(e) => onSelectOption(e, 'tipo', datos.tipo)} 
+                opciones={[...datos.tipo.map((tipo) => tipo.nombre), "Nuevo tipo"]} 
+            />
             <Boton btn={{ id: "enviar", clase: "comun", texto: "Cargar menu" }} btnClick={btnClick} />
             </form>
             </div>

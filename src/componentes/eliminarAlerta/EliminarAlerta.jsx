@@ -3,9 +3,10 @@ import Boton from '../boton/Boton';
 import Parrafo from '../parrafo/Parrafo';
 import './EliminarAlerta.css';
 import { contexto } from '../contexto/contexto';
+import { fetchDelete } from '../funciones fetch/funciones';
+import { URL_PRODUCTO } from '../../endPoints/endPoints';
 function EliminarAlerta({dato, setAlerta}){
-    const { datos } = useContext(contexto)
-    const URL = `http://localhost:3000/producto/${dato.idProducto}`
+    const { setDatos } = useContext(contexto)
     const [ texto, setTexto ] = useState({
         texto: "¿Seguro que quiere elimainar el menu de la lista?",
         condicion : true,
@@ -15,14 +16,11 @@ function EliminarAlerta({dato, setAlerta}){
        
             if (btn === "si") {
                 try {
-                    const response = await fetch(URL, {
-                        method: "DELETE",
-                        headers: {
-                            "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
-                            "Content-Type": "application/json",
-                          }
-                    });
-                    if (response.ok) setTexto({ texto: "El menú fue eliminado con exito", condicion :false});
+                    const response = await fetchDelete(URL_PRODUCTO+'/'+dato.idProducto,localStorage.getItem('token'))
+                    if (response.ok) {
+                        setTexto({ texto: "El menú fue eliminado con exito", condicion :false});
+                        setDatos((prev)=>({...prev,refresh:true})); 
+                    }
                 } catch (error) {
                     setTexto({ texto: "El menú no pudo ser borrado", condicion :false});
                 }
