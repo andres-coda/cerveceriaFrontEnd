@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
+import { fetchGet } from "../funciones fetch/funciones";
+import { URL_CATEGORIA, URL_TIPO } from "../../endPoints/endPoints";
 
 
 export const contexto = createContext({});
@@ -21,9 +23,7 @@ export const ProveedorContexto = ({children}) => {
 
 
     const [ datos, setDatos ] = useState ({
-        data:[], 
         carrito:[], 
-        categorias:[], 
         tipo:[], 
         usuario:[], 
         usuarioActivo: {
@@ -36,6 +36,29 @@ export const ProveedorContexto = ({children}) => {
         token : null, 
         userAct: null
     });
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const token = localStorage.getItem('token');
+            const [productos, categoria, tipo] = await Promise.all([
+              fetchGet(URL_PRODUCTO, token),
+              fetchGet(URL_CATEGORIA, token),
+              fetchGet(URL_TIPO, token)
+            ]);
+            setDatos(prev => ({
+              ...prev,
+              productos,
+              categoria,
+              tipo
+            }));
+          } catch (error) {
+            console.error("Error fetching data", error);
+          }
+        };
+      
+        fetchData();
+      }, [datos.userAct]);
 
     useEffect(() => {
         fetch(URL_SUCURSALES)
@@ -51,145 +74,6 @@ export const ProveedorContexto = ({children}) => {
                 console.error(`Error al obtener los datos de sucursales: `, error);
             });
     }, []);
-    
-    useEffect(()=>{
-        if (datos.userAct) {
-            fetch(URL_CATEGORIAS, {
-                method: "GET",
-                headers: {
-                  "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
-                  "Content-Type": "application/json",
-                }
-            })
-            .then(res=> res.json())
-            .then(categoria =>{
-                setDatos((prev)=>({...prev, categoria}))
-            })
-            .catch(error =>{
-                console.error(`Error en el fetch al obtener los categorias`, error);
-                throw error;
-            })
-        } else {
-            fetch(URL_CATEGORIAS)
-            .then(res=> res.json())
-            .then(categoria =>{
-                setDatos((prev)=>({...prev, categoria}))
-            })
-            .catch(error =>{
-                console.error(`Error en el fetch al obtener los categorias`, error);
-                throw error;
-            }) 
-        }
-    },[])
-
-
-    useEffect(()=>{
-        if (datos.userAct) {
-        fetch(URL_TIPOS, {
-            method: "GET",
-            headers: {
-              "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
-              "Content-Type": "application/json",
-            }
-        })
-        .then(res=> res.json())
-        .then(tipo =>{
-            setDatos((prev)=>({...prev, tipo}))
-        })
-        .catch(error =>{
-            console.error(`Error en el fetch al obtener los tipos`, error);
-            throw error;
-        })
-    } else {
-        fetch(URL_TIPOS)
-        .then(res=> res.json())
-        .then(tipo =>{
-            setDatos((prev)=>({...prev, tipo}))
-        })
-        .catch(error =>{
-            console.error(`Error en el fetch al obtener los tipos`, error);
-            throw error;
-        })
-    }
-    },[])
-
-    useEffect(()=>{
-        if (datos.userAct) {
-        fetch(URL_PRODUCTO, {
-            method: "GET",
-            headers: {
-              "Authorization": `Bearer ${datos.token}`, // Usualmente el token se envía en el header Authorization
-              "Content-Type": "application/json",
-            }
-        })
-        .then(res=> res.json())
-        .then(productos =>{
-            setDatos((prev)=>({...prev, productos}))
-        })
-        .catch(error =>{
-            console.error(`Error en el fetch al obtener los productos`, error);
-            throw error;
-        })
-    } else {
-        fetch(URL_PRODUCTO)
-        .then(res=> res.json())
-        .then(productos =>{
-            setDatos((prev)=>({...prev, productos}))
-        })
-        .catch(error =>{
-            console.error(`Error en el fetch al obtener los productos`, error);
-            throw error;
-        })
-    }
-    },[])
-
-   
-
-   
-
-/*
-    useEffect(()=>{
-        fetch(URL_USER)
-        .catch(error =>{
-            console.error(`Error en el fetch: `, error);
-            throw error;
-        })
-        .then(res=> res.json())
-        .then(users =>{
-            let usuarioActivo = { usuario: users[0],  administrador: false  }
-            setDatos((prev)=>({...prev, usuario: users, usuarioActivo: usuarioActivo}));
-        })
-        .catch(error => {
-            console.error(`Error al obtener los datos: `, error);
-        });
-    },[]);
-    useEffect(()=>{
-        fetch(URL_MENU)
-        .catch(error =>{
-            console.error(`Error en el fetch: `, error);
-            throw error;
-        })
-        .then(res=> res.json())
-        .then(data =>{
-            let arrayCategorias = data.reduce((unicaCategoria, item)=>{
-                if (!unicaCategoria.includes(item.category)) {
-                    unicaCategoria.push(item.category);
-                }
-                return unicaCategoria;
-            },[]);
-            let arrayTipo = data.reduce((unicoTipo, item)=>{
-                if (!unicoTipo.includes(item.tipo)) {
-                    unicoTipo.push(item.tipo);
-                }
-                return unicoTipo;
-            },[]);
-            setDatos((prev)=>({...prev, data, categorias:arrayCategorias, tipo:arrayTipo}));
-        })
-        .catch(error => {
-            console.error(`Error al obtener los datos: `, error);
-        });
-    },[]);
-    */
 
     return (
         <contexto.Provider value={{datos, setDatos, sucursales } } >

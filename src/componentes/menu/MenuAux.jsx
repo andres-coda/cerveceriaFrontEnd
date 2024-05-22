@@ -10,21 +10,17 @@ import { fetchGet } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
 
 function MenuAux({categoria}){
-  const { datos } = useContext(contexto);
+  const { datos} = useContext(contexto);
   const [ menuDetalle, setMenuDetalle ]= useState(undefined);
-  const [  producto, setProducto ] = useState(null);
   
   const btnClick = async (e) => {
     const btn = e.currentTarget.id;
     const url = URL_PRODUCTO+'/'+Number(btn);
-    const productoConst = await fetchGet(url, datos.token, datos.userAct)
-    if (productoConst) setProducto(productoConst);
-  }
-  useEffect(()=>{
-    if (producto) {
-      setMenuDetalle(producto)
+    const productoConst = await fetchGet(url, localStorage.getItem('token'))
+    if (productoConst) {
+      setMenuDetalle(productoConst)
     }
-  },[producto])
+  }
 
   const setSeccionPorCategoria = () => {
     const tipos = [];
