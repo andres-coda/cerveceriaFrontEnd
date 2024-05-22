@@ -33,32 +33,33 @@ export const ProveedorContexto = ({children}) => {
         datoAEditar: null, 
         productos:[], 
         categoria: [], 
-        token : null, 
+        refresh : true, 
         userAct: null
     });
-
-    useEffect(() => {
+    
+    if (datos.refresh) {
         const fetchData = async () => {
-          try {
-            const token = localStorage.getItem('token');
-            const [productos, categoria, tipo] = await Promise.all([
-              fetchGet(URL_PRODUCTO, token),
-              fetchGet(URL_CATEGORIA, token),
-              fetchGet(URL_TIPO, token)
-            ]);
-            setDatos(prev => ({
-              ...prev,
-              productos,
-              categoria,
-              tipo
-            }));
-          } catch (error) {
-            console.error("Error fetching data", error);
-          }
-        };
-      
-        fetchData();
-      }, [datos.userAct]);
+            try {
+              const token = localStorage.getItem('token');
+              const [productos, categoria, tipo] = await Promise.all([
+                fetchGet(URL_PRODUCTO, token),
+                fetchGet(URL_CATEGORIA, token),
+                fetchGet(URL_TIPO, token)
+              ]);
+              setDatos(prev => ({
+                ...prev,
+                productos,
+                categoria,
+                tipo
+              }));
+            } catch (error) {
+              console.error("Error fetching data", error);
+            }
+          };
+        
+          fetchData();
+          setDatos((prev)=>({...prev,refresh:false}));
+    }
 
     useEffect(() => {
         fetch(URL_SUCURSALES)
