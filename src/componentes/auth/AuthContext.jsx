@@ -38,6 +38,7 @@ export const AuthProvider = ({ children}) => {
     const data = await response.json();
     localStorage.setItem('token', data.access_token);
       setAuth({ token: data.access_token, user: null });
+      setDatos((prev)=>({...prev, token:auth.token, userAct: null}))
       await fetchProfile(data.access_token);
       navigate('/');    
   };
@@ -56,23 +57,18 @@ export const AuthProvider = ({ children}) => {
     }
 
     const data = await response.json();
-    setAuth((prevAuth) => ({ ...prevAuth, user: data }));    
+    setAuth((prevAuth) => ({ ...prevAuth, user: data })); 
+    setDatos((prev)=>({...prev,userAct:data}))   
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
     setDatos((prev)=>({...prev,userAct:null, token:null}))
+    console.log(datos.token);
     navigate('/');  
   };
 
-  useEffect(()=>{
-    if (auth.user) {
-      console.log(auth.user);
-      setDatos((prev)=>({...prev,userAct:auth.user, token:auth.token}))
-      console.log(`auth ${datos.userAct}`);
-    }
-  },[auth.user])
   return (
     <AuthContext.Provider value={{ auth, setAuth, login, fetchProfile, logout }}>
       {children}

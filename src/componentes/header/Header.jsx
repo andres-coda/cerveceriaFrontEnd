@@ -69,21 +69,21 @@ function Header() {
           >
             <div className='back-drop'>
               <NavLink className='drop-item' to="/menu" activeClassName="active-link" onClick={closeMenuDropdown}>Carta Completa</NavLink>
-              {datos.categoria.map((categoria)=>(
+              {datos.categoria.length > 0 ? ( datos.categoria.map((categoria)=>(
                 <>
                   {categoria.productos.length>0 ? (
                     <NavLink className='drop-item' to={`/menu/${categoria.nombre}`} activeClassName="active-link" onClick={closeMenuDropdown} key={categoria.idCategoria}>{categoria.nombre.charAt(0).toUpperCase() + categoria.nombre.slice(1).toLowerCase()}</NavLink>
                   ) : (null)
                   }
                 </>
-              ))}
+              ))) : (null)}
             </div>
           </NavDropdown>
           {user ? (
         <div className="user-menu">
           <NavDropdown
             id="nav-dropdown-user"
-            title={user.email}
+            title={user.username}
             menuVariant="light"
             onToggle={() => setUserDropdownOpen(!userDropdownOpen)}
             show={userDropdownOpen}

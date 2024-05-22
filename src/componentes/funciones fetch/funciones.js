@@ -6,36 +6,27 @@ const URL_CATEGORIAS = 'http://localhost:3000/categoria'
 const URL_TIPOS = 'http://localhost:3000/tipo'
 
 
-const usefetchProductos = () => {
-    const { setDatos } = useContext(contexto)
-    useEffect(()=>{
-        fetch(URL_PRODUCTO)
-        .then(res=> res.json())
-        .then(productos =>{
-            setDatos((prev)=>({...prev, productos}))
-        })
-        .catch(error =>{
-            console.error(`Error en el fetch al obtener los productos`, error);
-            throw error;
-        })
-    },[])
-}
 
-const fetchGet = async (url, token, userAct) =>{
-    if (userAct) {
+const fetchGet = async (url, token) =>{
+    //if (userAct) {
      try {
             const res = await fetch(url, {
                 method: "GET",
                 headers: {
-                    "Authorization": `Bearer ${token}`, // Usualmente el token se envía en el header Authorization
+                    //"Authorization": `Bearer ${token}`, 
                     "Content-Type": "application/json",
+                    ...(token && { "Authorization": `Bearer ${token}` }) // Usualmente el token se envía en el header Authorization
                 }
-            });
+            })
             return await res.json();
         } catch (error) {
             console.error(`Error en el fetch al obtener los productos`, error);
             throw error;
-        }
+  
+  }
+  }
+
+  /*      }
   } else {
       try {
             const res_1 = await fetch(url);
@@ -43,9 +34,7 @@ const fetchGet = async (url, token, userAct) =>{
         } catch (error_1) {
             console.error(`Error en el fetch al obtener los productos`, error_1);
             throw error_1;
-        }
-  }
-  }
+        }*/
 
   const fetchPost = async (url, token, bodi) =>{
      try {
@@ -118,4 +107,4 @@ const fetchTipos = () => {
     return null; // O renderiza algo si es necesario
 };
 
-export  {usefetchProductos, usefetchCategorias, usefetchTipos, fetchCategorias, fetchProducto, fetchTipos, fetchGet, fetchPost};
+export  { usefetchCategorias, usefetchTipos, fetchCategorias, fetchProducto, fetchTipos, fetchGet, fetchPost};
