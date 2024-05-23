@@ -74,7 +74,7 @@ function Contacto() {
               <p>Su mensaje ha sido enviado exitosamente.</p>
               <p>En breve responderemos a su consulta.</p>
               <p>Muchas gracias por elegirnos! Grupo Green Beer.<IoBeerOutline className='beer-icon' /></p>
-              <Boton btn={{ id: "Salir", clase: "comun", texto: "Salir" }} btnClick={mensaje} />
+              <Boton btn={{ id: "Salir", clase: "comunContacto", texto: "Salir" }} btnClick={mensaje} />
             </div>
           ) : (
             <>
@@ -110,7 +110,7 @@ function Contacto() {
                   placeholder="Mensaje"
                   required />
                  <p className="error">{errors}</p>
-                <Boton btn={{ id: "enviar", clase: "comun", texto: "Enviar" }} btnClick={handleSubmit} />
+                <Boton btn={{ id: "enviar", clase: "comunContacto", texto: "Enviar" }} btnClick={handleSubmit} />
               </form>
             </>
           )}

@@ -18,7 +18,7 @@ const fetchGet = async (url, token) =>{
             })
             return await res.json();
         } catch (error) {
-            console.error(`Error en el fetch al obtener los productos`, error);
+            console.error(`Error en el fetch al obtener los elementos`, error);
             throw error;
   
   }
@@ -35,17 +35,14 @@ const fetchGet = async (url, token) =>{
                 body: JSON.stringify(bodi),
             });
             if (res.ok) {
-                return await response.json();
+                return await res.json();
             } else {
                 // Manejar el caso de respuesta no exitosa aquí
-                console.log("Error en la solicitud HTTP:", response.status, response.statusText);
+                console.log("Error en la solicitud HTTP:", res.status, res.statusText);
             }
         } catch (error) {
-          setMensaje({
-            msj: "No se pudo cargar el producto",
-            error: true,
-          })
-          console.log(error);
+            console.error(`Error en el fetch intentar agregar el elemento `, error);
+            throw error;
         }
     }
 
@@ -66,11 +63,8 @@ const fetchGet = async (url, token) =>{
                    console.log("Error en la solicitud HTTP:", res.status, res.statusText);
                }
            } catch (error) {
-             setMensaje({
-               msj: "No se pudo cargar el producto",
-               error: true,
-             })
-             console.log(error);
+            console.error(`Error en el fetch al intentar editar el elemento `, error);
+            throw error;
            }
        }
 
@@ -84,17 +78,14 @@ const fetchGet = async (url, token) =>{
                    }
                });
                if (res.ok) {
-                   return await response.json();
+                   return await res.json();
                } else {
                    // Manejar el caso de respuesta no exitosa aquí
-                   console.log("Error en la solicitud HTTP:", response.status, response.statusText);
+                   console.log("Error en la solicitud HTTP:", res.status, res.statusText);
                }
            } catch (error) {
-             setMensaje({
-               msj: "No se pudo cargar el menu",
-               error: true,
-             })
-             console.log(error);
+            console.error(`Error en el fetch al intentar reactivar el elemento `, error);
+            throw error;
            }
        }
 
@@ -108,17 +99,16 @@ const fetchGet = async (url, token) =>{
                    }
                });
                if (res.ok) {
-                   return await response.json();
+                   return await res.json();
                } else {
                    // Manejar el caso de respuesta no exitosa aquí
-                   console.log("Error en la solicitud HTTP:", response.status, response.statusText);
+                   console.log("Error en la solicitud HTTP:", res.status, res.statusText);
+                const errorData = await res.json();
+                throw new Error(errorData.message || 'Error al eliminar el producto');            
                }
            } catch (error) {
-             setMensaje({
-               msj: "El elemento no pudo ser borrado",
-               error: true,
-             })
-             console.log(error);
+            console.error(`Error en el fetch al intentar borrar el elemento `, error);
+            throw error;
            }
        }
 

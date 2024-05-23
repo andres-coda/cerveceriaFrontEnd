@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import Boton from '../boton/Boton';
 import './MenuDetallesBotonera.css';
-function MenuDetallesBotonera({btnClick, dato}){
-    const [idTexto, setIdText] = useState(!dato.deleted ?  "eliminar": "reactivar");
+function MenuDetallesBotonera({btnClick, idTexto}){
     return(
         <div className='botoneraAdministrador'>
             <Boton btn={{id:"original", clase:"comun", texto: "Vista del cliente"}} btnClick={btnClick}/>

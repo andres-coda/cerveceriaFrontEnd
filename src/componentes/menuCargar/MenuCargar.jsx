@@ -7,9 +7,12 @@ import { contexto } from '../contexto/contexto';
 import { useNavigate } from 'react-router-dom';
 import { fetchPost, fetchPut } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
+import CargarAlerta from '../eliminarAlerta/CargarAlerta';
 function MenuCargar(){
     const { datos, setDatos } = useContext(contexto);
     const [ editar, setEditar ] = useState(false);
+    const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
+    const [ idTexto, setIdText ] = useState(null)
     const navegate = useNavigate();
     const [menu, setMenu] = useState({
         titulo: "",
@@ -22,14 +25,11 @@ function MenuCargar(){
         tipo: "",
     });
     if (!editar) {
-        console.log("entre aqui");
         setMenu(datos.datoAEditar);
         setEditar(true);
     } 
     const btnClick = async (e)=>{
-        e.preventDefault();
-        setDatos((prev)=>({...prev, refresh : !refresh}))
-    
+        e.preventDefault();    
         if (editar === true ){
             const productoEditado = await fetchPut(
                 URL_PRODUCTO+'/'+datos.datoAEditar.idProducto,
@@ -37,7 +37,7 @@ function MenuCargar(){
                 menu
             )
             if (productoEditado) {
-                setDatos((prev)=>({...prev, datoAEditar: undefined}));
+                setDatos((prev)=>({...prev, datoAEditar: undefined, refresh:true}));
                 navegate(`/menu/${productoEditado.idProducto}`);
             }
             
@@ -48,9 +48,9 @@ function MenuCargar(){
                 menu
             )
             if (productoNuevo){
+                setDatos((prev)=>({...prev, refresh:true}));
                 navegate(`/menu/${productoNuevo.idProducto}`)
             }
-            //setNuevoProducto(fetchPost(URL_PRODUCTO, datos.token, menu))
         }
     }
 
@@ -64,15 +64,15 @@ function MenuCargar(){
 
     const onSelectOption = (e, key, data) => {
         const value = e.target.value;
-        if (value !== "Nueva") {
+        if (value !== "Nueva categoria" && value !== "Nuevo tipo") {
             const selectedOption = data.find(option => option.nombre === value);
             setMenu(prevMenu => ({
                 ...prevMenu,
                 [key]: selectedOption
             }));
         } else {
-            console.log(`Nueva ${key}`);
-            // Aquí puedes manejar la lógica para una nueva opción
+            setIdText((prev)=>({...prev, id:key, texto:value}));
+            setAlerta((prev)=>({...prev, estado: true}))
         }
     };
     
@@ -106,6 +106,9 @@ function MenuCargar(){
                 opciones={[...datos.tipo.map((tipo) => tipo.nombre), "Nuevo tipo"]} 
             />
             <Boton btn={{ id: "enviar", clase: "comun", texto: "Cargar menu" }} btnClick={btnClick} />
+            { alerta.estado ? (
+                    <CargarAlerta setAlerta={setAlerta} idTexto={idTexto}/>
+                ) : (null)}
             </form>
             </div>
             </div>
