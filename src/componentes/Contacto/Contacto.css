@@ -10,7 +10,7 @@
 }
 
 
-.comun {
+.comunContacto {
   width: 20vw;
   filter: brightness(100%);
   top: 10px;
@@ -130,7 +130,7 @@
 }
 
 /*boton form*/
-.comun {
+.comunContacto {
   width: 30vw;
   margin: 10px 80px 10px 80px;
 }
@@ -154,7 +154,7 @@
     margin: 10px 50px 10px 50px;
   }
 
-  .comun {
+  .comunContacto {
     width: 30vw;
   }
 }

@@ -15,8 +15,9 @@ function MenuDetallesAux({idProducto}) {
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const [ vista, setVista ] = useState(false);
-    const [ alerta, setAlerta ] = useState(false);
-    const [ dato, setDatoLocal ] = useState(null)
+    const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
+    const [ dato, setDatoLocal ] = useState(null);
+    const [idTexto, setIdText] = useState(null);
     const navegate = useNavigate();
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===dato.idProducto));
     useEffect(() => {
@@ -25,6 +26,7 @@ function MenuDetallesAux({idProducto}) {
                 const producto = await fetchGet(URL_PRODUCTO+'/'+idProducto, localStorage.getItem('token'));
                 if (producto) {
                     setDatoLocal(producto);
+                    setIdText(producto.deleted ==false  ?  "eliminar": "reactivar");
                 }
             } catch (error) {
                 console.error("Error al obtener el producto:", error);
@@ -43,7 +45,12 @@ function MenuDetallesAux({idProducto}) {
         }
     }, [datos.carrito, indice]);
 
-    const btnClick =(e) => {
+    if (alerta.refresh) {
+        window.location.reload();
+        setAlerta((prev)=>({...prev, refresh:false}))
+    }
+
+    const btnClick = async (e) => {
         const btn = e.target.id;
         switch(btn){
             case "menos":
@@ -74,12 +81,10 @@ function MenuDetallesAux({idProducto}) {
                 navegate('/cargarmenu');
                 break;
             case "eliminar" :
-                setAlerta(true);
+                setAlerta((prev)=>({...prev,estado:true}));
                 break
             case "reactivar" :
-                console.log(URL_PRODUCTO+'/'+dato.idProducto);
-                fetchPatCh(URL_PRODUCTO+'/'+dato.idProducto, localStorage.getItem('token'));
-                setDatos((prev)=>({...prev,refresh:true}));                
+                setAlerta((prev)=>({...prev,estado:true}));  
                 break
             case "cerrar" :
                     navegate('/menu')
@@ -110,16 +115,16 @@ function MenuDetallesAux({idProducto}) {
                         <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${dato.price}`}/>
                     </div>
                     <>
-                        {datos.userAct && datos.userAct.role ==="admin" && vista === false ? (
-                                <MenuDetallesBotonera btnClick={btnClick} dato={dato}/>
+                        {datos.userAct && datos.userAct.role ==="admin" && vista === false && idTexto!=null ? (
+                                <MenuDetallesBotonera btnClick={btnClick} dato={dato} idTexto={idTexto}/>
                         ) : (
                             <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato} />
                         )}
                     </>
                 </div>
                 <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : `x`}} btnClick={btnClick} />
-                { alerta ? (
-                    <EliminarAlerta setAlerta={setAlerta} dato={dato} />
+                { alerta.estado ? (
+                    <EliminarAlerta setAlerta={setAlerta} dato={dato} idTexto={idTexto}/>
                 ) : (null)}
             </div>
         </div>

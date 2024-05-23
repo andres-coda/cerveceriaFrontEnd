@@ -1,4 +1,4 @@
-.comun, .cerrar, .mas-menos{
+.comun, .cerrar, .mas-menos, .alerta{
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 1px 1px 2px black;
@@ -7,11 +7,15 @@
     cursor: pointer;
 }
 
-.comun, .mas-menos{
+.comun, .mas-menos, .alerta{
     background-color: #c19f71;
 }
 
-.comun:hover, .mas-menos:hover {
+.alerta {
+    min-width: 20vw;
+}
+
+.comun:hover, .alerta:hover, .mas-menos:hover {
     box-shadow: 2px 2px 4px black;
     background-color:  #F1D69D;
 }
@@ -35,7 +39,7 @@
 }
 
 @media (max-width: 600px) {
-    .comun, .cerrar, .mas-menos {
+    .comun, .cerrar, .mas-menos, .alerta {
         font-size: 0.8em;
         margin: 0.5rem 0;
     }
