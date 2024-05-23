@@ -5,7 +5,6 @@ function MenuDetallesBotoneraCliente({btnClick, cantidad, dato}){
     return(
         <>           
             <div className='botonesMasMenos'>
-                {console.log(dato)}
                 <Boton btn={{id:"menos", clase:"mas-menos", texto: "-"}} btnClick={btnClick}/>
                 <Parrafo clase={"menuParrafo"} texto={cantidad} />
                 <Boton btn={{id:"mas", clase:"mas-menos", texto: "+"}} btnClick={btnClick}/>
