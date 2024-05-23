@@ -94,6 +94,8 @@ function Header() {
             <li><NavLink to="/login">Login</NavLink></li>
           )}
           <li><NavLink to="/reservas">Reservas</NavLink></li>
+          {user && user.role==="admin" ? (
+               <li> <NavLink to={`/cargarmenu`}>Agregar producto</NavLink> </li>):(null)}
         </ul>
       </nav>
       <div className={`cart-icon ${isCartaSectionActive || isCarritoSectionActive || isReservasSectionActive ? 'active' : ''}`}>

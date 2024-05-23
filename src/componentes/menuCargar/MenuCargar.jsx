@@ -24,7 +24,9 @@ function MenuCargar(){
         valoracion: "",
         tipo: "",
     });
-    if (!editar) {
+    if (!editar&& datos.datoAEditar!==null) {
+        console.log(menu);
+        console.log(datos.datoAEditar);
         setMenu(datos.datoAEditar);
         setEditar(true);
     } 
@@ -78,8 +80,7 @@ function MenuCargar(){
     
     return(
         <>
-        { !datos.datoAEditar ? (null) : (
-            <div className='conteinerGeneral'>
+        {   <div className='conteinerGeneral'>
             <div className='cargarMenu'>
             <Subtitulo clase={"subtitulo"} texto={" Carga de menu "} />
             <form onSubmit={btnClick} className='formulario'>
@@ -112,7 +113,6 @@ function MenuCargar(){
             </form>
             </div>
             </div>
-            )
         }
         </>
     );
