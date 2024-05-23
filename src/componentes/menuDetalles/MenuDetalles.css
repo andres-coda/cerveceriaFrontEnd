@@ -43,7 +43,7 @@
 
 .menuDetalle{
     overflow: auto;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 0.5rem;
 }
 
 .menuDetalle  h2{
@@ -73,16 +73,22 @@
 
 .menuFotoDescripcion, .valoracionPrecio{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-content: center;
     padding: 0.5rem;
 }
 
+.valoracionPrecio{
+    flex-wrap: wrap;
+}
+.menuFotoDescripcion{
+    flex-direction: column;
+    align-items: center;
+}
+
 .menuFotoDescripcion  img{
     max-width: 90%;
     max-height: 40%;
-    margin-right: 0.5rem;
     border-radius: 5px;
 }
 

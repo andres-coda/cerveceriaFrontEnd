@@ -33,7 +33,7 @@ function App() {
         <Routes>
           {Array.isArray(datos.productos) ? ( datos.productos.map((dato)=>{
             return (
-              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetallesAux dato={dato}/>} key={dato.idProducto}/>
+              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetallesAux idProducto={dato.idProducto}/>} key={dato.idProducto}/>
             )
           })):(null)}
           {Array.isArray(datos.categoria) ? ( datos.categoria.map((categorias)=>{

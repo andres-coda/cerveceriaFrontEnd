@@ -56,22 +56,20 @@ export const AuthProvider = ({ children}) => {
     }
 
     const data = await response.json();
-    setAuth((prevAuth) => ({ ...prevAuth, user: data }));    
+    setAuth((prevAuth) => ({ ...prevAuth, user: data }));
+    setDatos((prev)=>({...prev,refresh:true})); 
+    setDatos((prev)=>({...prev,userAct:data}))   
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
+    setDatos((prev)=>({...prev,refresh:true})); 
+    setDatos((prev)=>({...prev,userAct:null, token:null}))
     navigate('/');  
   };
 
-  useEffect(()=>{
-    if (auth.user) {
-      console.log(auth.user);
-      setDatos((prev)=>({...prev,userAct:auth.user, token:auth.token}))
-      console.log(datos.userAct);
-    }
-  },[auth.user])
+
   return (
     <AuthContext.Provider value={{ auth, setAuth, login, fetchProfile, logout }}>
       {children}
