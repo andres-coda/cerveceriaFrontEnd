@@ -80,7 +80,7 @@ function Header() {
             <div className="user-menu">
               <NavDropdown
                 id="nav-dropdown-user"
-                title={user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
+                title={ user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
                 menuVariant="light"
                 onToggle={() => setUserDropdownOpen(!userDropdownOpen)}
                 show={userDropdownOpen}
