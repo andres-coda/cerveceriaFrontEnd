@@ -23,6 +23,7 @@ import ModalUsers from "./componentes/modalUsers/ModalUsers";
 import MenuAux from "./componentes/menu/MenuAux";
 import PrivateRoute from "./componentes/privateRoute/PrivateRoute";
 import { AuthProvider } from "./componentes/auth/AuthContext";
+import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -59,6 +60,9 @@ function App() {
           </Route>
           <Route path="/cargarmenu" element={<PrivateRoute roles={['admin']} />}>
             <Route path='/cargarmenu' element={<MenuCargar />} />
+          </Route>
+          <Route path="/cargarsucursales" element={<PrivateRoute roles={['admin']} />}>
+            <Route path='/cargarsucursales' element={<AddSucursal />} />
           </Route>
           <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/perfil' element={<ModalUsers />} />

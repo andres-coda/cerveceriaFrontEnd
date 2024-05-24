@@ -14,7 +14,7 @@ const DondeEstamos = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const { sucursales } = useContext(contexto);
+    const { sucursales, datos } = useContext(contexto);
 
     return (
         <section className='conteinerGeneral'>
@@ -37,10 +37,11 @@ const DondeEstamos = () => {
             <div className='subtitulo'>
                 <Subtitulo clase={"subtitulo-para"} texto={"Nuestras Sucursales"} />
             </div>
-            <AddSucursal />
             <div className='container-all-cards'>
-                {sucursales.map(sucursal => (
+                {datos.sucursales.map(sucursal => (
+                    <>
                     <CardsSucursal key={sucursal.id} sucursal={sucursal} />
+                    </>
                 ))}
             </div>
         </section>
