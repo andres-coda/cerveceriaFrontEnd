@@ -90,17 +90,24 @@
 }
 
 /* Cards sucursal */
-.cards-sucursal {
+.cards-sucursal, .cards-sucursalEliminada {
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border: #F1F1EF solid 2px;
-  box-shadow: #fbf8e9 1px 1px 8px 8px;
   margin: 10px;
   padding: 10px;
   text-align: center;
   margin: 30px;
+}
+
+.cards-sucursalEliminada{
+  box-shadow: #df7765 1px 1px 8px 8px;
+}
+
+.cards-sucursal{
+  box-shadow: #fbf8e9 1px 1px 8px 8px;
 }
 
 .card-img-container {
@@ -112,14 +119,14 @@
   align-items: center;
 }
 
-.card-sucursal img {
+.card-sucursal img, .cards-sucursalEliminada img {
   width: 100%;
   height: 200px;
   margin-top: 10px;
   object-fit: cover;
 }
 
-.cards-sucursal h1 {
+.cards-sucursal h1, .cards-sucursalEliminada h1 {
   font-family: 'selima';
   color: #c19f71;
   font-size: 1.5em;

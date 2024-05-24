@@ -76,6 +76,9 @@ function MenuDetallesAux({idProducto}) {
             case "original" :
                 setVista(true);
                 break;
+            case "volver" :
+                setVista(false);
+                break;
             case "editar" :
                 setDatos((prev)=>({...prev, datoAEditar: dato}));
                 navegate('/cargarmenu');

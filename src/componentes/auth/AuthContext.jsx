@@ -56,16 +56,14 @@ export const AuthProvider = ({ children}) => {
     }
 
     const data = await response.json();
-    setAuth((prevAuth) => ({ ...prevAuth, user: data }));
-    setDatos((prev)=>({...prev,refresh:true})); 
-    setDatos((prev)=>({...prev,userAct:data}))   
+    setAuth((prevAuth) => ({ ...prevAuth, user: data })); 
+    setDatos((prev)=>({...prev,userAct:data, refresh:true}))   
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
-    setDatos((prev)=>({...prev,refresh:true})); 
-    setDatos((prev)=>({...prev,userAct:null, token:null}))
+    setDatos((prev)=>({...prev,userAct:null, token:null, refresh:true}))
     navigate('/');  
   };
 
