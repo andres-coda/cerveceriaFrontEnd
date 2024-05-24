@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react';
 import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
 import { contexto } from '../contexto/contexto';
+import { fetchDelete } from '../funciones fetch/funciones';
+import { URL_SUCURSAL } from '../../endPoints/endPoints';
 
 const CardsSucursal = ({ sucursal }) => {
-    const { sucursales, setSucursales, datos, URL_SUCURSALES } = useContext(contexto);
-    const { usuarioActivo } = datos;
+    const { sucursales, setSucursales, datos } = useContext(contexto);
     const [isEditing, setIsEditing] = useState(false);
     const [editedSucursal, setEditedSucursal] = useState(sucursal);
 
@@ -16,7 +17,7 @@ const CardsSucursal = ({ sucursal }) => {
 
     const handleSave = async () => {
         try {
-            const response = await fetch(`${URL_SUCURSALES}/${sucursal.id}`, {
+            const response = await fetch(`${URL_SUCURSAL}/${sucursal.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,21 +38,19 @@ const CardsSucursal = ({ sucursal }) => {
 
     const handleDelete = async () => {
         try {
-            const response = await fetch(`${URL_SUCURSALES}/${sucursal.id}`, {
-                method: 'DELETE',
-            });
+            console.log(sucursal.id);
+            const response = await fetchDelete(URL_SUCURSAL+'/'+sucursal.id, localStorage.getItem('token'))
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const nuevasSucursales = sucursales.filter(s => s.id !== sucursal.id);
-            setSucursales(nuevasSucursales);
+            setDatos((prev)=>({...prev, refreshSucursal:true}))
         } catch (error) {
             console.error('Error al eliminar sucursal:', error);
         }
     };
 
     return (
-        <div className='cards-sucursal'>
+        <div className={sucursal.deleted? 'cards-sucursalEliminada' : 'cards-sucursal'}>
             {isEditing ? (
                 <div>
                     <input name="nombre" value={editedSucursal.nombre} onChange={handleEditChange} />
@@ -75,12 +74,12 @@ const CardsSucursal = ({ sucursal }) => {
                     <h3 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h3>
                 </div>
             )}
-            {usuarioActivo.administrador && (
+            {datos.userAct && datos.userAct.role === "admin" ? (
                 <div>
                     <button onClick={() => setIsEditing(true)}><FaEdit /></button>
                     <button onClick={handleDelete}><FaTrash /></button>
                 </div>
-            )}
+            ) : (null)}
         </div>
     );
 };
