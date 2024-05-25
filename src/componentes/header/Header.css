@@ -163,6 +163,13 @@
         font-size: clamp(0.5rem, 0.8rem, 1rem);
         color: white;
     }
+
+    /* Estilos generales para los íconos */
+.icon {
+    font-size: 1.2rem; /* Ajusta el tamaño del ícono */
+    margin: 10px; /* Espacio entre el ícono y el texto */
+    color: #ffffff; /* Color del ícono */
+  }
 }
 
 /*-- Mobile Navigation --*/
@@ -272,5 +279,4 @@
         font-size: 3.5vw;
         color: white;
     }
-
 }

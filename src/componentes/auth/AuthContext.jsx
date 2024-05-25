@@ -19,7 +19,7 @@ export const AuthProvider = ({ children}) => {
     }
   }, [auth.token]);
 
-  const login = async (email, password, role = 'user') => {
+  const login = async (email, password, role= auth.user ) => {
     console.log('Sending data:', { email, password, role }); 
     
     const response = await fetch(`${BASE_URL}/auth/login`, {
