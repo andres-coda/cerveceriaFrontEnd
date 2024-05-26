@@ -15,12 +15,11 @@ function MenuDetallesAux({idProducto}) {
     const urlImagenCargar= '../../../public/loading.gif'
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
-    const [ vista, setVista ] = useState(false);
     const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
     const [ dato, setDatoLocal ] = useState(null);
     const [idTexto, setIdText] = useState(null);
     const navegate = useNavigate();
-    let indice = -1;
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===idProducto));
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -37,13 +36,13 @@ function MenuDetallesAux({idProducto}) {
     }, []);
     
     useEffect(()=>{
-        if (dato) {
+        console.log(datos.carrito);
             if (indice!=-1) {
                 setCantidad(datos.carrito[indice].cantidad); 
             } else {
                 setCantidad(0);
             } 
-        }
+
     }, [datos.carrito, indice]);
 
     if (alerta.refresh) {
@@ -108,7 +107,7 @@ function MenuDetallesAux({idProducto}) {
                     <div className='menuDetalle'>
                         <div className='menuCabecera'>
                         <h3> { dato.categoria.nombre } </h3>
-                        {datos.userAct && datos.userAct.role ==="admin" && vista === false && idTexto!=null ? (
+                        {datos.userAct && datos.userAct.role ==="admin" && idTexto!=null ? (
                                     <MenuDetallesBotonera btnClick={btnClick} dato={dato} idTexto={idTexto}/>
                             ) : (null)}
                         </div>
