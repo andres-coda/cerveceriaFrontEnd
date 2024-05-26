@@ -2,64 +2,120 @@ import React, { useContext, useState } from 'react';
 import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
 import { contexto } from '../contexto/contexto';
-import { fetchDelete } from '../funciones fetch/funciones';
+import { fetchDelete, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
 import { URL_SUCURSAL } from '../../endPoints/endPoints';
+import { VscLayersActive } from "react-icons/vsc";
+import Boton from '../boton/Boton';
+import { useNavigate } from 'react-router-dom';
 
 const CardsSucursal = ({ sucursal }) => {
-    const { sucursales, setSucursales, datos } = useContext(contexto);
+    const { setDatos, datos } = useContext(contexto);
     const [isEditing, setIsEditing] = useState(false);
-    const [editedSucursal, setEditedSucursal] = useState(sucursal);
+    const navigate = useNavigate();
+
+    const [editedSucursal, setEditedSucursal] = useState({
+        imagen: "",
+        nombre: "",
+        direccion: "",
+        telefono: "",
+        email: "",
+        instagram: "",
+        facebook: ""
+    });
+
+    const startEditing = () => {
+        setEditedSucursal({
+            imagen:sucursal.imagen,
+            nombre: sucursal.nombre,
+            direccion: sucursal.direccion,
+            telefono: sucursal.telefono,
+            email: sucursal.email,
+            instagram: sucursal.instagram,
+            facebook: sucursal.facebook
+        });
+        setIsEditing(true);
+    };
 
     const handleEditChange = (e) => {
-        const { name, value } = e.target;
-        setEditedSucursal({ ...editedSucursal, [name]: value });
+        setEditedSucursal({ ...editedSucursal, [e.target.name]: e.target.value });
     };
 
-    const handleSave = async () => {
+    const handleSave = async (e) => {
+        e.preventDefault();
         try {
-            const response = await fetch(`${URL_SUCURSAL}/${sucursal.id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(editedSucursal),
-            });
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            const response = await fetchPut(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'), editedSucursal);
+            if (response) {
+                setDatos((prev) => ({ ...prev, refresh: true }));
+                setIsEditing(false);
+                navigate('/dondeestamos')
             }
-            const updatedSucursal = await response.json();
-            const nuevasSucursales = sucursales.map(s => s.id === updatedSucursal.id ? updatedSucursal : s);
-            setSucursales(nuevasSucursales);
-            setIsEditing(false);
         } catch (error) {
-            console.error('Error al editar sucursal:', error);
+            console.error("Error al editar la sucursal:", error);
         }
     };
 
-    const handleDelete = async () => {
-        try {
-            console.log(sucursal.id);
-            const response = await fetchDelete(URL_SUCURSAL+'/'+sucursal.id, localStorage.getItem('token'))
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+    const DeleteSucursal = async () => {
+        // Mostrar el diálogo de confirmación antes de eliminar
+        const isConfirmed = window.confirm("¿Estás seguro de que deseas eliminar esta sucursal?");
+        
+        // Si el usuario confirma, proceder con la eliminación
+        if (isConfirmed) {
+            try {
+                const response = await fetchDelete(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'));
+                
+                if (response.ok) {
+                    // Mostrar mensaje de eliminación exitosa
+                    alert(`Sucursal ${sucursal.nombre} eliminada correctamente`);
+                } else {
+                    // Manejar la respuesta cuando no se elimina correctamente
+                    setDatos((prev) => ({ ...prev, refreshSucursal: true }));
+                }
+            } catch (error) {
+                console.error('Error al eliminar sucursal:', error);
             }
-            setDatos((prev)=>({...prev, refreshSucursal:true}))
-        } catch (error) {
-            console.error('Error al eliminar sucursal:', error);
+        } else {
+            // Si el usuario cancela, no se hace nada
+            console.log("Eliminación cancelada por el usuario");
         }
     };
+
+    const reactivarSucursal = async () => {
+        // Mostrar el diálogo de confirmación antes de eliminar
+        const isConfirmed = window.confirm("¿Estás seguro de que deseas restaurar la eliminación de esta sucursal?");
+        
+        // Si el usuario confirma, proceder con la eliminación
+        if (isConfirmed) {
+            try {
+                const response = await fetchPatCh(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'));
+                
+                if (response.ok) {
+                    alert(`Sucursal ${sucursal.nombre} restaurada correctamente`);
+                } else {
+                    setDatos((prev) => ({ ...prev, refreshSucursal: true }));
+                }
+            } catch (error) {
+                alert('Error al restaurar la sucursal:', error);
+            }
+        } else {
+            alert("Restauración cancelada por el usuario");
+        }
+    };
+    
 
     return (
-        <div className={sucursal.deleted? 'cards-sucursalEliminada' : 'cards-sucursal'}>
+        <div className={sucursal.deleted ? 'cards-sucursalEliminada' : 'cards-sucursal'}>
             {isEditing ? (
                 <div>
+                    <div className='card-img-container'>
+                    <input name="imagen"  src={editedSucursal.imagen} alt={sucursal.nombre} />
+                    </div>
                     <input name="nombre" value={editedSucursal.nombre} onChange={handleEditChange} />
                     <input name="direccion" value={editedSucursal.direccion} onChange={handleEditChange} />
                     <input name="telefono" value={editedSucursal.telefono} onChange={handleEditChange} />
                     <input name="email" value={editedSucursal.email} onChange={handleEditChange} />
                     <input name="instagram" value={editedSucursal.instagram} onChange={handleEditChange} />
                     <input name="facebook" value={editedSucursal.facebook} onChange={handleEditChange} />
-                    <button onClick={handleSave}>Guardar</button>
+                    <Boton btn={{ id: "editSucursal", clase: "comun", texto: "Guardar" }} btnClick={handleSave} />
                 </div>
             ) : (
                 <div>
@@ -74,12 +130,19 @@ const CardsSucursal = ({ sucursal }) => {
                     <h3 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h3>
                 </div>
             )}
-            {datos.userAct && datos.userAct.role === "admin" ? (
-                <div>
-                    <button onClick={() => setIsEditing(true)}><FaEdit /></button>
-                    <button onClick={handleDelete}><FaTrash /></button>
-                </div>
-            ) : (null)}
+            <div className='btn-icon'>
+                {datos.userAct && datos.userAct.role === "admin" ? (
+                    <div>
+                        <button onClick={startEditing} title='Editar Surcursal'><FaEdit /></button>
+                        <button onClick={DeleteSucursal} title='Eliminar Surcursal'><FaTrash /></button>
+                    </div>
+                ) : (null)}
+                {sucursal && sucursal.deleted ? (
+                    <div>
+                        <button onClick={reactivarSucursal} title='Reactivar Surcursal Eliminada'><VscLayersActive /></button>
+                    </div>
+                ) : (null)}
+            </div>
         </div>
     );
 };
