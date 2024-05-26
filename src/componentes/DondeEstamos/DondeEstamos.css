@@ -106,6 +106,12 @@
   box-shadow: #df7765 1px 1px 8px 8px;
 }
 
+/*botones iconos editar, borrar y restaurar vista admin*/
+.btn-icon{
+  display: flex;
+  justify-content: space-around;
+}
+
 .cards-sucursal{
   box-shadow: #fbf8e9 1px 1px 8px 8px;
 }

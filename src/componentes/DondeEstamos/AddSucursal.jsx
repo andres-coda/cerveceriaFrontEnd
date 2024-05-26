@@ -51,16 +51,14 @@ const AddSucursal = () => {
          <Subtitulo clase={"subtitulo"} texto={" Carga de sucursales "} />
             <form onSubmit={handleSubmit} className='formulario'>
                 <FormularioInput id={"nombre"} value={nuevaSucursal.nombre} tipo={"text"} texto={"Nombre"} onChan={handleChange} />
-                <input name="nombre" value={nuevaSucursal.nombre} onChange={handleChange} placeholder="Nombre" />
-                <input name="direccion" value={nuevaSucursal.direccion} onChange={handleChange} placeholder="Dirección" />
-                <input name="telefono" value={nuevaSucursal.telefono} onChange={handleChange} placeholder="Teléfono" />
-                <input name="email" value={nuevaSucursal.email} onChange={handleChange} placeholder="Email" />
-                <input name="instagram" value={nuevaSucursal.instagram} onChange={handleChange} placeholder="Instagram" />
-                <input name="facebook" value={nuevaSucursal.facebook} onChange={handleChange} placeholder="Facebook" />
-                <input name="imagen" value={nuevaSucursal.imagen} onChange={handleChange} placeholder="URL de la Imagen" />
-                <Boton btn={{id:"addSucursal", clase:"comun", texto: "Agregar sucursal"}} btnClick={handleSubmit}/>
-            
-            </form>
+                <FormularioInput id={"direccion"} value={nuevaSucursal.direccion} tipo={"text"} texto={"Dirección"} onChan={handleChange} />
+                <FormularioInput id={"telefono"} value={nuevaSucursal.telefono} tipo={"text"} texto={"Teléfono"} onChan={handleChange} />
+                <FormularioInput id={"email"} value={nuevaSucursal.email} tipo={"text"} texto={"Email"} onChan={handleChange} />
+                <FormularioInput id={"instagram"} value={nuevaSucursal.instagram} tipo={"text"} texto={"Instagram"} onChan={handleChange} />
+                <FormularioInput id={"facebook"} value={nuevaSucursal.facebook} tipo={"text"} texto={"Facebook"} onChan={handleChange} />
+                <FormularioInput id={"imagen"} value={nuevaSucursal.imagen} tipo={"text"} texto={"Url imágen"} onChan={handleChange} />
+                <Boton btn={{id:"addSucursal", clase:"comun", texto: "Agregar"}} btnClick={handleSubmit}/>
+                        </form>
             </div>
             </div>
         </>
