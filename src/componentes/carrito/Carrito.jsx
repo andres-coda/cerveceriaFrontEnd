@@ -33,26 +33,33 @@ function Carrito(){
     let subTotal = 0;
     const btnClick = (e) => {
         const btn = e.currentTarget.id;
-        if (btn==="comprar") {
-            setModalVisible(true);
-            setFormulario({
-                fecha: hoy,
-                hora: hora,
-                personas: `$${total}`,
-                nombre: datos.usuarioActivo.usuario.name,
-                apellido: datos.usuarioActivo.usuario.lastName,
-                telefono: datos.usuarioActivo.usuario.telefono,
-                email: datos.usuarioActivo.usuario.email,
-            })
-            console.log("aqui va el tiquet de compra");
-            console.log(subTotal);
-            console.log(datos.carrito);
-            setDatos((prev)=>({...prev, carrito:[]}));
-        } else {
-            console.log(btn);
-            console.log(datos.productos);
-            const producto = datos.productos.find((dato)=> Number(dato.idProducto)===Number(btn));
-            setMenuDetalle(producto);
+        switch (btn) {
+            case "comprar" :
+                setModalVisible(true);
+                setFormulario({
+                    fecha: hoy,
+                    hora: hora,
+                    personas: `$${total}`,
+                    nombre: datos.usuarioActivo.usuario.name,
+                    apellido: datos.usuarioActivo.usuario.lastName,
+                    telefono: datos.usuarioActivo.usuario.telefono,
+                    email: datos.usuarioActivo.usuario.email,
+                })
+                console.log("aqui va el tiquet de compra");
+                console.log(subTotal);
+                console.log(datos.carrito);
+                setDatos((prev)=>({...prev, carrito:[]}));
+            break;
+            case "login" :
+                navegate('/login');
+            break;
+            default:
+                console.log(btn);
+                console.log(datos.productos);
+                const producto = datos.productos.find((dato)=> Number(dato.idProducto)===Number(btn));
+                setMenuDetalle(producto);
+            break;
+
         }
     }
     const closeModal = () => {
@@ -79,7 +86,10 @@ function Carrito(){
                             return <MenuCarrito key={dato.idProducto} menu={dato} click={btnClick}/> 
                         })}
                         <Parrafo clase={"totalCarrito"} texto={`Total: $${total}`} />
-                        <Boton btn={{id:"comprar", clase: "comun", texto:"comprar"}} btnClick={btnClick} />
+                        { datos.userAct ? (
+                        <Boton btn={{id:"comprar", clase: "comun", texto:"comprar"}} btnClick={btnClick} />) : (
+                            <Boton btn={{id:"login", clase: "comun", texto:"Login"}} btnClick={btnClick} />
+                        )}
                     </div>
                 </>
             ) : ( 
