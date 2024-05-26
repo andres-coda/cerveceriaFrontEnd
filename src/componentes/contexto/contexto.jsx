@@ -18,7 +18,7 @@ export const ProveedorContexto = ({children}) => {
         usuario:[], 
         usuarioActivo: {
             usuario:{user: "login"}, 
-            administrador: fal
+            administrador: false
         }, 
         datoAEditar: null, 
         productos:[], 
