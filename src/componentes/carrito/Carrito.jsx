@@ -9,6 +9,8 @@ import Boton from '../boton/Boton';
 import ModalReservas from '../reservas/ModalReservas';
 import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
 import { useNavigate } from 'react-router-dom';
+import { fetchPost } from '../funciones fetch/funciones';
+import { URL_PEDIDO } from '../../endPoints/endPoints';
 
 function Carrito(){
     const {datos, setDatos} = useContext(contexto);
@@ -31,6 +33,26 @@ function Carrito(){
       });
 
     let subTotal = 0;
+    
+    const comprar = async ()=>{
+        const fecha = new Date();
+        const bodiPedido = { 
+            fecha: fecha,
+            detalle: "",
+            usuario: datos.userAct.sub,
+            metodoPago: 1
+        }
+        try {
+            const cargarPedido = await fetchPost(
+                URL_PEDIDO, 
+                localStorage.getItem('token'),
+                bodiPedido
+                );
+        } catch(error) {
+            console.log(error);
+        }
+        
+    }
     const btnClick = (e) => {
         const btn = e.currentTarget.id;
         switch (btn) {

@@ -10,6 +10,7 @@ import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
 import { fetchGet } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
 import {  FaTimes } from 'react-icons/fa';
+import AnimatedSVG from '../animacion/AnimatedSVG';
 
 function MenuDetallesAux({idProducto}) {
     const urlImagenCargar= '../../../public/loading.gif'
@@ -136,7 +137,7 @@ function MenuDetallesAux({idProducto}) {
                         <h3> Categoría </h3>
                         <h2> Menu ... </h2>
                     <div className='menuFotoDescripcion'>
-                        <img src={urlImagenCargar} alt="cargando" />
+                        <AnimatedSVG />
                         <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ...`} />
                         <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ...`}/>
                     </div>
