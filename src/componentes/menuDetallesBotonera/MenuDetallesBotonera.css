@@ -3,7 +3,6 @@
 }
 
 .total{
-    padding-top: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,13 +15,7 @@
 .botoneraAdministrador{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    margin: 1rem;
-}
-
-@media (max-width: 800px) {
-    .botoneraAdministrador{
-        display: flex;
-        flex-direction: column;
-    }
+    justify-content: flex-end;
+    margin: 0 1em 0 0;
+    padding: 0 1rem 0 0;
 }

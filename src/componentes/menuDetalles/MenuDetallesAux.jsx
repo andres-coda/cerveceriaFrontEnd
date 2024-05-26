@@ -3,15 +3,16 @@ import './MenuDetalles.css'
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import MenuDetallesBotoneraCliente from '../menuDetallesBotonera/MenuDetallesBotoneraCliente';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAdministrador';
-import { useAuth } from '../auth/AuthContext';
 import { contexto } from '../contexto/contexto';
 import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
-import { fetchGet, fetchPatCh } from '../funciones fetch/funciones';
+import { fetchGet } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
+import {  FaTimes } from 'react-icons/fa';
 
 function MenuDetallesAux({idProducto}) {
+    const urlImagenCargar= '../../../public/loading.gif'
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const [ vista, setVista ] = useState(false);
@@ -19,7 +20,7 @@ function MenuDetallesAux({idProducto}) {
     const [ dato, setDatoLocal ] = useState(null);
     const [idTexto, setIdText] = useState(null);
     const navegate = useNavigate();
-    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===dato.idProducto));
+    let indice = -1;
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -51,7 +52,7 @@ function MenuDetallesAux({idProducto}) {
     }
 
     const btnClick = async (e) => {
-        const btn = e.target.id;
+        const btn = e.currentTarget.id;
         switch(btn){
             case "menos":
                 setCantidad((prev)=>(prev> 0 ? prev-=1 : 0));
@@ -60,6 +61,7 @@ function MenuDetallesAux({idProducto}) {
                 setCantidad((prev)=>(prev+=1));
                 break;
             case "aceptar":
+                if( !datos.userAct ) navegate('/login')
                 const newCarrito = datos.carrito.slice();
                 if (indice===-1){
                     const newObjet = { ...dato, cantidad};
@@ -94,46 +96,55 @@ function MenuDetallesAux({idProducto}) {
                 break;
             default:
                 console.log("boton todavía no implementado");
-                console.log(btn.toStrong());
+                console.log(btn.toString());
                 break;
         }
     }
 
-    return (
-        <div >
+    return (   
+            <div className="transparente">
             {dato != null ? (
-                <>     
-                <div className="transparente">
-            <div className={ !dato.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>            
-                <div className='menuDetalle'>
-                    <h3> { dato.categoria.nombre } </h3>
-                    <h2> { dato.titulo } </h2>
-                    <div className='menuFotoDescripcion'>
-                        <img src={dato.img} alt={dato.titulo.nombre} />
-                        <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ${dato.descripcion}`} />
-                        <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ${dato.ingredientes}`}/>
-                    </div>
-                    <div className='valoracionPrecio'>
-                        <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${dato.valoracion}`}/>
-                        <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${dato.price}`}/>
-                    </div>
-                    <>
+                <div className={ !dato.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>            
+                    <div className='menuDetalle'>
+                        <div className='menuCabecera'>
+                        <h3> { dato.categoria.nombre } </h3>
                         {datos.userAct && datos.userAct.role ==="admin" && vista === false && idTexto!=null ? (
-                                <MenuDetallesBotonera btnClick={btnClick} dato={dato} idTexto={idTexto}/>
-                        ) : (
-                            <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato} />
-                        )}
-                    </>
+                                    <MenuDetallesBotonera btnClick={btnClick} dato={dato} idTexto={idTexto}/>
+                            ) : (null)}
+                        </div>
+                        <h2> { dato.titulo } </h2>
+                        <div className='menuFotoDescripcion'>
+                            <img src={dato.img} alt={dato.titulo.nombre} />
+                            <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ${dato.descripcion}`} />
+                            <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ${dato.ingredientes}`}/>
+                        </div>
+                        <div className='valoracionPrecio'>
+                            <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${dato.valoracion}`}/>
+                            <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${dato.price}`}/>
+                        </div>
+                        <>
+                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato} />
+                        </>
+                    </div>
+                    <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes/>}} btnClick={btnClick} />
+                    { alerta.estado ? (
+                        <EliminarAlerta setAlerta={setAlerta} dato={dato} idTexto={idTexto}/>
+                    ) : (null)}
                 </div>
-                <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : `x`}} btnClick={btnClick} />
-                { alerta.estado ? (
-                    <EliminarAlerta setAlerta={setAlerta} dato={dato} idTexto={idTexto}/>
-                ) : (null)}
-            </div>
-        </div>
-        </>
-
-        ): (null)}
+            ): (
+                <div className="menuDetalleElementos"> 
+                    <div className='menuDetalle'>
+                        <h3> Categoría </h3>
+                        <h2> Menu ... </h2>
+                    <div className='menuFotoDescripcion'>
+                        <img src={urlImagenCargar} alt="cargando" />
+                        <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ...`} />
+                        <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ...`}/>
+                    </div>
+                    </div>
+                    <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes />}} btnClick={btnClick} />
+                </div>
+            )}
         </div>
     );
 };
