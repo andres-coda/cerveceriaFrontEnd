@@ -10,4 +10,22 @@ select{
     cursor: pointer;
 }
 
+.renglon {
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    width: 100%; 
+}
+
+.renglon label {
+    margin-left: 10px;
+    text-align: left;
+}
+
+.renglon input[type="radio"] {
+    margin-right: 5px;
+    width: 3rem;
+    cursor: pointer;
+}
 

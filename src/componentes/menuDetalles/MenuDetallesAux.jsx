@@ -10,17 +10,17 @@ import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
 import { fetchGet } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
 import {  FaTimes } from 'react-icons/fa';
+import AnimatedSVG from '../animacion/AnimatedSVG';
 
 function MenuDetallesAux({idProducto}) {
     const urlImagenCargar= '../../../public/loading.gif'
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
-    const [ vista, setVista ] = useState(false);
     const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
     const [ dato, setDatoLocal ] = useState(null);
     const [idTexto, setIdText] = useState(null);
     const navegate = useNavigate();
-    let indice = -1;
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===idProducto));
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -35,15 +35,15 @@ function MenuDetallesAux({idProducto}) {
         };
         fetchData();
     }, []);
-
+    
     useEffect(()=>{
-        if (dato) {
+        console.log(datos.carrito);
             if (indice!=-1) {
                 setCantidad(datos.carrito[indice].cantidad); 
             } else {
                 setCantidad(0);
             } 
-        }
+
     }, [datos.carrito, indice]);
 
     if (alerta.refresh) {
@@ -108,7 +108,7 @@ function MenuDetallesAux({idProducto}) {
                     <div className='menuDetalle'>
                         <div className='menuCabecera'>
                         <h3> { dato.categoria.nombre } </h3>
-                        {datos.userAct && datos.userAct.role ==="admin" && vista === false && idTexto!=null ? (
+                        {datos.userAct && datos.userAct.role ==="admin" && idTexto!=null ? (
                                     <MenuDetallesBotonera btnClick={btnClick} dato={dato} idTexto={idTexto}/>
                             ) : (null)}
                         </div>
@@ -137,7 +137,7 @@ function MenuDetallesAux({idProducto}) {
                         <h3> Categoría </h3>
                         <h2> Menu ... </h2>
                     <div className='menuFotoDescripcion'>
-                        <img src={urlImagenCargar} alt="cargando" />
+                        <AnimatedSVG />
                         <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ...`} />
                         <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ...`}/>
                     </div>

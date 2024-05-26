@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { fetchGet } from "../funciones fetch/funciones";
-import { URL_CATEGORIA, URL_PRODUCTO, URL_SUCURSAL, URL_TIPO } from "../../endPoints/endPoints";
+import { URL_CATEGORIA, URL_METODOPAGO, URL_PRODUCTO, URL_SUCURSAL, URL_TIPO } from "../../endPoints/endPoints";
 
 
 export const contexto = createContext({});
@@ -26,7 +26,8 @@ export const ProveedorContexto = ({children}) => {
         categoria: [], 
         refresh : true, 
         refreshSucursal: true,
-        userAct: null
+        userAct: null,
+        metodoPago:null
     });
     
     useEffect(() => {
@@ -74,6 +75,24 @@ export const ProveedorContexto = ({children}) => {
             fetchSucursales();
         }
     }, [datos.refreshSucursal]);
+
+    useEffect(() => {
+        const fetchMetodosPago = async () =>{
+            try {
+                console.log("Fetching metodos de pago...");
+                const res = await fetchGet(URL_METODOPAGO, localStorage.getItem('token'));
+                if (res) {
+                    setDatos((prev) => ({
+                        ...prev,
+                        metodoPago:res
+                    }));
+                }
+            } catch (error) {
+                console.error("Error fetching sucursales", error);
+            }
+        }
+        fetchMetodosPago();
+    }, []);
 
 
     return (
