@@ -27,18 +27,18 @@
     justify-content: center;
     align-content: center;
     margin: auto;
-    color: #1D1D1B;
+    color: var(--color1);
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 4px black;
 }
 
 .menuDetalleElementosEliminado {    
-    background-color: #df7765;
+    background-color: var(--color5);
 }
 
 .menuDetalleElementos {    
-    background-color: #F1F1EF;
+    background-color: var(--color2);
 }
 
 .menuDetalle{
@@ -53,21 +53,27 @@
 }
 
 .menuDetalle h3{
-    font-size: 0.7em;
+    font-size: 0.9em;
     margin: 2px;
     text-align: start;
-    color: #c19f71;
+    color: var(--color4);
+    text-shadow: 
+        -1px -1px 0 var(--color1),  
+        1px -1px 0 var(--color1),
+        -1px  1px 0 var(--color1),
+        1px  1px 0 var(--color1);
+    width: 50%;
 }
 
 .menuDetalle::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    background-color:  #F1F1EF;
+    background-color:  var(--color2);
     border-radius: 10px;
 }
 
 .menuDetalle::-webkit-scrollbar-thumb {
-    background-color: #c19f71;
+    background-color: var(--color4);
     border-radius: 10px;
 }
 
@@ -96,6 +102,11 @@
     background-color: transparent;
     border: none;
     box-shadow: none;
+}
+
+.menuCabecera {
+    display: flex;
+    justify-content: space-between;
 }
 
 

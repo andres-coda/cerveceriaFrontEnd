@@ -13,6 +13,7 @@ function EliminarAlerta({dato, setAlerta, idTexto}){
     });
     const btnClick = async (e) => {
         const btn = e.target.id;
+        setTexto({texto: "Procesando ...", condicion:false})
         switch (btn) {
             case "eliminar" : 
                 try {

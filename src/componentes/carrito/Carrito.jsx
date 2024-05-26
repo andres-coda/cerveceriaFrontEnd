@@ -8,9 +8,11 @@ import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import ModalReservas from '../reservas/ModalReservas';
 import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
+import { useNavigate } from 'react-router-dom';
 
 function Carrito(){
     const {datos, setDatos} = useContext(contexto);
+    const navegate = useNavigate();
     const [total, setTotal] = useState(0);
     const claveReserva = Math.floor(Math.random() * 900000) + 100000;
     const fecha = new Date();
@@ -47,7 +49,9 @@ function Carrito(){
             console.log(datos.carrito);
             setDatos((prev)=>({...prev, carrito:[]}));
         } else {
-            const producto = datos.productos.find((dato)=> Number(dato.idProducto)===Number(btn))
+            console.log(btn);
+            console.log(datos.productos);
+            const producto = datos.productos.find((dato)=> Number(dato.idProducto)===Number(btn));
             setMenuDetalle(producto);
         }
     }
@@ -57,6 +61,12 @@ function Carrito(){
     useEffect(()=>{
         setTotal(subTotal); 
     },[subTotal, datos.carrito]);
+
+    useEffect(()=>{
+        if (menuDetalle != undefined ){
+            navegate(`/menu/${menuDetalle.idProducto}`)
+        }
+    },[menuDetalle])
     
     return (
         <div className='conteinerGeneral'>
@@ -71,7 +81,6 @@ function Carrito(){
                         <Parrafo clase={"totalCarrito"} texto={`Total: $${total}`} />
                         <Boton btn={{id:"comprar", clase: "comun", texto:"comprar"}} btnClick={btnClick} />
                     </div>
-                    {menuDetalle != undefined ? (<MenuDetallesAux dato={menuDetalle} setMenuDetalles={setMenuDetalle}/>) : (null)} 
                 </>
             ) : ( 
             <div className='carrito'>
