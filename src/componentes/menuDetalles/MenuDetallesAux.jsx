@@ -35,7 +35,7 @@ function MenuDetallesAux({idProducto}) {
         };
         fetchData();
     }, []);
-
+    
     useEffect(()=>{
         if (dato) {
             if (indice!=-1) {
