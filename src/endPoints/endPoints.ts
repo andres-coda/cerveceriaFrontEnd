@@ -3,3 +3,5 @@ export const URL_PRODUCTO = BASE_URL+'/producto';
 export const URL_CATEGORIA = BASE_URL+'/categoria';
 export const URL_TIPO = BASE_URL+'/tipo';
 export const URL_SUCURSAL = BASE_URL+'/sucursal';
+export const URL_PEDIDO = BASE_URL+'/pedido';
+export const URL_METODOPAGO = BASE_URL+'/metodoPago';
