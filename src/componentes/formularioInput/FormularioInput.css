@@ -19,13 +19,13 @@ select{
 }
 
 .renglon label {
-    margin-left: 10px;
+    margin-left: 0.5rem;
     text-align: left;
 }
 
 .renglon input[type="radio"] {
     margin-right: 5px;
-    width: 3rem;
+    width: 1rem;
     cursor: pointer;
 }
 
