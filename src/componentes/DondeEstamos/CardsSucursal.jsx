@@ -7,6 +7,7 @@ import { URL_SUCURSAL } from '../../endPoints/endPoints';
 import { VscLayersActive } from "react-icons/vsc";
 import Boton from '../boton/Boton';
 import { useNavigate } from 'react-router-dom';
+import FormularioInput from '../formularioInput/FormularioInput';
 
 const CardsSucursal = ({ sucursal }) => {
     const { setDatos, datos } = useContext(contexto);
@@ -40,7 +41,7 @@ const CardsSucursal = ({ sucursal }) => {
         setEditedSucursal({ ...editedSucursal, [e.target.name]: e.target.value });
     };
 
-    const handleSave = async (e) => {
+   const handleSave = async (e) => {
         e.preventDefault();
         try {
             const response = await fetchPut(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'), editedSucursal);
@@ -52,7 +53,10 @@ const CardsSucursal = ({ sucursal }) => {
         } catch (error) {
             console.error("Error al editar la sucursal:", error);
         }
-    };
+    }; 
+
+
+
 
     const DeleteSucursal = async () => {
         // Mostrar el diálogo de confirmación antes de eliminar
@@ -61,45 +65,29 @@ const CardsSucursal = ({ sucursal }) => {
         // Si el usuario confirma, proceder con la eliminación
         if (isConfirmed) {
             try {
-                const response = await fetchDelete(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'));
-                
-                if (response.ok) {
-                    // Mostrar mensaje de eliminación exitosa
-                    alert(`Sucursal ${sucursal.nombre} eliminada correctamente`);
-                } else {
+                const response = await fetchDelete(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'))            
                     // Manejar la respuesta cuando no se elimina correctamente
                     setDatos((prev) => ({ ...prev, refreshSucursal: true }));
-                }
             } catch (error) {
                 console.error('Error al eliminar sucursal:', error);
             }
-        } else {
-            // Si el usuario cancela, no se hace nada
-            console.log("Eliminación cancelada por el usuario");
         }
-    };
+    }; 
 
-    const reactivarSucursal = async () => {
+   const reactivarSucursal = async () => {
         // Mostrar el diálogo de confirmación antes de eliminar
         const isConfirmed = window.confirm("¿Estás seguro de que deseas restaurar la eliminación de esta sucursal?");
         
         // Si el usuario confirma, proceder con la eliminación
         if (isConfirmed) {
             try {
-                const response = await fetchPatCh(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'));
-                
-                if (response.ok) {
-                    alert(`Sucursal ${sucursal.nombre} restaurada correctamente`);
-                } else {
+                const response = await fetchPatCh(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'));            
                     setDatos((prev) => ({ ...prev, refreshSucursal: true }));
-                }
             } catch (error) {
                 alert('Error al restaurar la sucursal:', error);
             }
-        } else {
-            alert("Restauración cancelada por el usuario");
-        }
-    };
+        } 
+    }; 
     
 
     return (
@@ -109,13 +97,14 @@ const CardsSucursal = ({ sucursal }) => {
                     <div className='card-img-container'>
                     <input name="imagen"  src={editedSucursal.imagen} alt={sucursal.nombre} />
                     </div>
+                    <FormularioInput id={"nombre"} value={editedSucursal.nombre} tipo={"text"} texto={"nombre"} onChange={handleEditChange}/>
                     <input name="nombre" value={editedSucursal.nombre} onChange={handleEditChange} />
                     <input name="direccion" value={editedSucursal.direccion} onChange={handleEditChange} />
                     <input name="telefono" value={editedSucursal.telefono} onChange={handleEditChange} />
                     <input name="email" value={editedSucursal.email} onChange={handleEditChange} />
                     <input name="instagram" value={editedSucursal.instagram} onChange={handleEditChange} />
                     <input name="facebook" value={editedSucursal.facebook} onChange={handleEditChange} />
-                    <Boton btn={{ id: "editSucursal", clase: "comun", texto: "Guardar" }} btnClick={handleSave} />
+                    <Boton btn={{ id: "edit", clase: "comun", texto: "Guardar" }} btnClick={handleSave} />
                 </div>
             ) : (
                 <div>
@@ -133,14 +122,14 @@ const CardsSucursal = ({ sucursal }) => {
             <div className='btn-icon'>
                 {datos.userAct && datos.userAct.role === "admin" ? (
                     <div>
-                        <button onClick={startEditing} title='Editar Surcursal'><FaEdit /></button>
-                        <button onClick={DeleteSucursal} title='Eliminar Surcursal'><FaTrash /></button>
-                    </div>
+                      <button  onClick={startEditing} title='Editar Surcursal'><FaEdit /></button>
+                        <button  onClick={DeleteSucursal} title='Eliminar Surcursal'><FaTrash /></button>
+                   </div>
                 ) : (null)}
                 {sucursal && sucursal.deleted ? (
                     <div>
                         <button onClick={reactivarSucursal} title='Reactivar Surcursal Eliminada'><VscLayersActive /></button>
-                    </div>
+                   </div>
                 ) : (null)}
             </div>
         </div>
