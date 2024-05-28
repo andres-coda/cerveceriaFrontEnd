@@ -5,7 +5,12 @@ function FormularioInput({ id, tipo, texto, onChan, value, opciones }) {
     <>
       <label htmlFor={id}>{texto.toUpperCase()}</label>
       {tipo === "select" ? (
-        <select id={id} name={id} onChange={onChan} value={value} required>
+        <select 
+          id={id} 
+          name={id} 
+          onChange={onChan} 
+          value={value} 
+        required>
           {opciones.map((opcion, index) => (
             <option key={index} value={opcion}>
               {opcion}

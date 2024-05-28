@@ -102,6 +102,27 @@
   margin: 30px;
 }
 
+.cards-sucursal input ,
+.card-sucursal label{
+  margin: 0.1rem;
+  text-align: start;
+}
+
+.cards-sucursalEliminada input, 
+.cards-sucursalEliminada label,
+.cards-sucursal input ,
+.card-sucursal label{
+  margin: 0.1rem;
+}
+
+.cards-sucursalEliminada label,
+.cards-sucursal label{
+  color: var(--color4);
+  text-align: left;
+  width:80%;
+  font-size: 0.7em;
+}
+
 .cards-sucursalEliminada{
   box-shadow: #df7765 1px 1px 8px 8px;
 }
