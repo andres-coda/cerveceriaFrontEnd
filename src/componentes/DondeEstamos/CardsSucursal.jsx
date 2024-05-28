@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
 import { contexto } from '../contexto/contexto';
 import { fetchDelete, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
@@ -7,6 +7,7 @@ import { URL_SUCURSAL } from '../../endPoints/endPoints';
 import { VscLayersActive } from "react-icons/vsc";
 import Boton from '../boton/Boton';
 import { useNavigate } from 'react-router-dom';
+import FormularioInput from '../formularioInput/FormularioInput';
 
 const CardsSucursal = ({ sucursal }) => {
     const { setDatos, datos } = useContext(contexto);
@@ -107,8 +108,16 @@ const CardsSucursal = ({ sucursal }) => {
             {isEditing ? (
                 <div>
                     <div className='card-img-container'>
-                    <input name="imagen"  src={editedSucursal.imagen} alt={sucursal.nombre} />
+                    <input name="imagen"  value={editedSucursal.imagen} onChange={handleEditChange} />
                     </div>
+                    <FormularioInput id={"nombre"} value={sucursal.nombre} tipo={"text"} texto={"Nombre"} onChan={handleEditChange} />
+                    <FormularioInput id={"direccion"} value={sucursal.direccion} tipo={"text"} texto={"Dirección"} onChan={handleEditChange} />
+                    <FormularioInput id={"telefono"} value={sucursal.telefono} tipo={"text"} texto={"Teléfono"} onChan={handleEditChange} />
+                    <FormularioInput id={"email"} value={sucursal.email} tipo={"text"} texto={"Email"} onChan={handleEditChange} />
+                    <FormularioInput id={"instagram"} value={sucursal.instagram} tipo={"text"} texto={"Instagram"} onChan={handleEditChange} />
+                    <FormularioInput id={"facebook"} value={sucursal.facebook} tipo={"text"} texto={"Facebook"} onChan={handleEditChange} />
+                    <FormularioInput id={"imagen"} value={sucursal.imagen} tipo={"text"} texto={"Url imagen"} onChan={handleEditChange} />
+            
                     <input name="nombre" value={editedSucursal.nombre} onChange={handleEditChange} />
                     <input name="direccion" value={editedSucursal.direccion} onChange={handleEditChange} />
                     <input name="telefono" value={editedSucursal.telefono} onChange={handleEditChange} />
@@ -135,6 +144,8 @@ const CardsSucursal = ({ sucursal }) => {
                     <div>
                         <button onClick={startEditing} title='Editar Surcursal'><FaEdit /></button>
                         <button onClick={DeleteSucursal} title='Eliminar Surcursal'><FaTrash /></button>
+                        <button onClick={DeleteSucursal} title='Eliminar Surcursal'><FaUndo /></button>
+               
                     </div>
                 ) : (null)}
                 {sucursal && sucursal.deleted ? (

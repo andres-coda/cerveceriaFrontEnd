@@ -13,7 +13,6 @@ import {  FaTimes } from 'react-icons/fa';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 
 function MenuDetallesAux({idProducto}) {
-    const urlImagenCargar= '../../../public/loading.gif'
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
@@ -37,7 +36,6 @@ function MenuDetallesAux({idProducto}) {
     }, []);
     
     useEffect(()=>{
-        console.log(datos.carrito);
             if (indice!=-1) {
                 setCantidad(datos.carrito[indice].cantidad); 
             } else {
