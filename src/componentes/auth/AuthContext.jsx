@@ -59,7 +59,7 @@ export const AuthProvider = ({ children}) => {
     setAuth((prevAuth) => ({ ...prevAuth, user: data })); 
     setDatos((prev)=>({...prev,userAct:data, refresh:true}))   
   };
-
+console.log(auth.user);
   const logout = () => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });

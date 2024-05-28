@@ -125,6 +125,16 @@
   align-items: center;
 }
 
+.cards-sucursal input, .cards-sucursalEliminada input {
+  margin: 2px;
+
+}
+
+.cards-sucursal label, .cards-sucursalEliminada label{
+  font-size: 0.5rem;
+  
+}
+
 .card-sucursal img, .cards-sucursalEliminada img {
   width: 100%;
   height: 200px;

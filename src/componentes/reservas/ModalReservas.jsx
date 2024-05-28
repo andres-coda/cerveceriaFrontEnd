@@ -15,7 +15,7 @@ function ModalReservas({ isVisible, onClose, reserva, claveReserva, estado, titu
       <p>Nombre y Apellido: <strong> {reserva.nombre} {reserva.apellido} </strong> </p>
       <p>Fecha: <strong>{reserva.fecha}</strong></p>
       <p>Hora: <strong>{reserva.hora}</strong></p>
-      <p>{estado} <strong>{reserva.personas}</strong></p>
+      <p>{estado} <strong>{reserva.cantidad}</strong></p>
       <p>Clave de Reserva: <strong>{claveReserva}</strong></p>
       <span className='line-modal'></span>
       <p>El Ticket de Reserva se ha enviado al email: <strong>{reserva.email}</strong></p>

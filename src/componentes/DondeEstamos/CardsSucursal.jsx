@@ -94,16 +94,14 @@ const CardsSucursal = ({ sucursal }) => {
         <div className={sucursal.deleted ? 'cards-sucursalEliminada' : 'cards-sucursal'}>
             {isEditing ? (
                 <div>
-                    <div className='card-img-container'>
-                    <input name="imagen"  src={editedSucursal.imagen} alt={sucursal.nombre} />
-                    </div>
-                    <FormularioInput id={"nombre"} value={editedSucursal.nombre} tipo={"text"} texto={"nombre"} onChange={handleEditChange}/>
-                    <input name="nombre" value={editedSucursal.nombre} onChange={handleEditChange} />
-                    <input name="direccion" value={editedSucursal.direccion} onChange={handleEditChange} />
-                    <input name="telefono" value={editedSucursal.telefono} onChange={handleEditChange} />
-                    <input name="email" value={editedSucursal.email} onChange={handleEditChange} />
-                    <input name="instagram" value={editedSucursal.instagram} onChange={handleEditChange} />
-                    <input name="facebook" value={editedSucursal.facebook} onChange={handleEditChange} />
+                    
+                    <FormularioInput id={"imagen"} name={'Imagen'} value={editedSucursal.imagen} tipo={"text"} texto={"Url_Imagen"} onChange={handleEditChange}/>
+                    <FormularioInput id={"nombre"} name={'Nombre'} value={editedSucursal.nombre} tipo={"text"} texto={"Nombre"} onChange={handleEditChange}/>
+                    <FormularioInput id={"direccion"} name={'Dirección'} value={editedSucursal.direccion} tipo={"text"} texto={"Dirección"} onChange={handleEditChange}/>
+                    <FormularioInput id={"telefono"} name={'Teléfono'} value={editedSucursal.telefono} tipo={"text"} texto={"Teléfono"} onChange={handleEditChange}/>
+                    <FormularioInput id={"email"} name={'email'} value={editedSucursal.email} tipo={"text"} texto={"Email"} onChange={handleEditChange}/>
+                    <FormularioInput id={"instagram"} name={'instagram'} value={editedSucursal.instagram} tipo={"text"} texto={"Instagram"} onChange={handleEditChange}/>
+                    <FormularioInput id={"facebook"} name={'facebook'} value={editedSucursal.facebook} tipo={"text"} texto={"Facebook"} onChange={handleEditChange}/>
                     <Boton btn={{ id: "edit", clase: "comun", texto: "Guardar" }} btnClick={handleSave} />
                 </div>
             ) : (
