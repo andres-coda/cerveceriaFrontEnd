@@ -9,7 +9,8 @@ import { getUserDetails } from './actions/getUserDetails';
 import {generarClaveReserva}  from './actions/claveReserva';
 import { BASE_URL } from '../../endPoints/endPoints';
 import { data } from '../CarouselDeImagenes/imgCarous';
-import { convertEnumValueToDisplayValue } from './actions/convertEnumValueToDisplayValue';
+import { convertEnumValueToDisplayValue } from '../../utils/convertValue.js'
+
 
 const Reservas = () => {
   const {auth} = useAuth();
@@ -65,6 +66,7 @@ const Reservas = () => {
           ...metodoPago,
           metodoPago: convertEnumValueToDisplayValue(metodoPago.metodoPago)
         }));
+
         
         setMetodosPago(data);
       })

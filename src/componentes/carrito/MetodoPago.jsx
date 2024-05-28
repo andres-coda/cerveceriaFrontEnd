@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-//import './carrito.css';
+import './carrito.css';
 import Subtitulo from '../subtitulo/Subtitulo';
 import Boton from '../boton/Boton';
 import { contexto } from '../contexto/contexto';

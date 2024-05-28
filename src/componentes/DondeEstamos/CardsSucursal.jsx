@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
 import { contexto } from '../contexto/contexto';
 import { fetchDelete, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
@@ -144,6 +144,8 @@ const CardsSucursal = ({ sucursal }) => {
                     <div>
                         <button onClick={startEditing} title='Editar Surcursal'><FaEdit /></button>
                         <button onClick={DeleteSucursal} title='Eliminar Surcursal'><FaTrash /></button>
+                        <button onClick={DeleteSucursal} title='Eliminar Surcursal'><FaUndo /></button>
+               
                     </div>
                 ) : (null)}
                 {sucursal && sucursal.deleted ? (
