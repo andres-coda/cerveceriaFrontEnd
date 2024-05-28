@@ -9,13 +9,14 @@ import { getUserDetails } from './actions/getUserDetails';
 import {generarClaveReserva}  from './actions/claveReserva';
 import { BASE_URL } from '../../endPoints/endPoints';
 import { data } from '../CarouselDeImagenes/imgCarous';
+import { convertEnumValueToDisplayValue } from '../../utils/convertValue.js'
+
 
 const Reservas = () => {
   const {auth} = useAuth();
   const {user, token} = auth || {};
   const userId = user?.sub;
   
-//console.log('pagoid',pagoId);
   const initialState = {
     fecha: '',
     hora: '',
@@ -60,7 +61,13 @@ const Reservas = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Payment methods:', data);
+        
+        data = data.map(metodoPago => ({
+          ...metodoPago,
+          metodoPago: convertEnumValueToDisplayValue(metodoPago.metodoPago)
+        }));
+
+        
         setMetodosPago(data);
       })
       .catch(error => {

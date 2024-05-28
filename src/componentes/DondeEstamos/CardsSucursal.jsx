@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
 import { contexto } from '../contexto/contexto';
 import { fetchDelete, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
@@ -7,6 +7,7 @@ import { URL_SUCURSAL } from '../../endPoints/endPoints';
 import { VscLayersActive } from "react-icons/vsc";
 import Boton from '../boton/Boton';
 import { useNavigate } from 'react-router-dom';
+import FormularioInput from '../formularioInput/FormularioInput';
 import FormularioInput from '../formularioInput/FormularioInput';
 
 const CardsSucursal = ({ sucursal }) => {
