@@ -8,7 +8,7 @@ import { VscLayersActive } from "react-icons/vsc";
 import Boton from '../boton/Boton';
 import { useNavigate } from 'react-router-dom';
 import FormularioInput from '../formularioInput/FormularioInput';
-import FormularioInput from '../formularioInput/FormularioInput';
+
 
 const CardsSucursal = ({ sucursal }) => {
     const { setDatos, datos } = useContext(contexto);
