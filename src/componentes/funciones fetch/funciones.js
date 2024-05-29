@@ -1,10 +1,6 @@
 import { useContext, useEffect } from "react";
 import { contexto } from "../contexto/contexto";
 
-const URL_PRODUCTO = 'http://localhost:3000/producto'
-const URL_CATEGORIAS = 'http://localhost:3000/categoria'
-const URL_TIPOS = 'http://localhost:3000/tipo'
-
 const fetchGet = async (url, token) =>{
     //if (userAct) {
      try {

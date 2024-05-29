@@ -10,6 +10,26 @@
     color: black;
 }
 
+.menuPrecio,
+.menuPrecioEliminado {
+    font-size: 0.9em;
+    text-align: center;
+    background-color: var(--color4);
+    padding: 0.2rem 1rem;
+    margin: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: var(--color1);
+}
+
+.menuPrecio{
+    background-color: var(--color4);
+}
+
+.menuPrecioEliminado {
+    background-color: var(--color7);
+}
+
 .quienesSomos{
     display: flex;
     justify-content: space-between;

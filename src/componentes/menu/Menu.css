@@ -1,55 +1,50 @@
 .menu {
-    max-width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: start;
     background-color: #1D1D1B;
     overflow-y: auto; 
     overflow-x: hidden; 
-    margin-top: 1rem;
+    margin: 1rem 1rem 0 1rem;
+    width: 100%;
+
 }
 
 .menuCatYTitulo{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem 0rem;
 }
 .menu a{
    text-decoration: none;
 }
 
 .menu h4, menu a{
-    margin-top: 2rem;
-    margin-right: 100%;
+    margin-top: 0.5rem;
     margin-left: 0.1rem;
     padding: 0.1rem 2rem;
-    border-radius: 10px;
-    border: 1px solid #c19f71;
-    box-shadow: 2px 2px 4px transparent;
-    background-color: #F1D69d;
-    color: black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: var(--color4);
 }
 
 .menu h4{
-    width: 79vw;
     margin-left: 0;
 }
 
 .menu h4:hover, menu a:hover{
-    border: 1px solid black;
-    box-shadow: 2px 2px 4px #F1F1EF;
-    background-color: #c19f71;
+    background-color: var(--color4);
+    color: var(--color1);
 }
 
 .menu .menuCategoria {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: stretch;
-    margin: 0.5rem 1rem;
-    padding: 1rem 0.2rem;
+    margin: 0.2rem 1rem;
+    padding: 0 0.2rem;
 }
 
 .menu p{

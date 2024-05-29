@@ -7,10 +7,13 @@
 } 
 
 .conteinerGeneral{
-  margin-top: 18vh;
-  max-width: 99vw;
+  margin-top: 12vh;
+  margin-bottom: 16vh;
+  margin-left: 0;
+  margin-right: 0;
+  width: 99vw;
   min-height: 77vh;
-  padding: 1rem;
+  padding: 0.1rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;

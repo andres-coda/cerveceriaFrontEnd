@@ -10,6 +10,7 @@ import {generarClaveReserva}  from './actions/claveReserva';
 import { BASE_URL } from '../../endPoints/endPoints';
 import { data } from '../CarouselDeImagenes/imgCarous';
 import { convertEnumValueToDisplayValue } from '../../utils/convertValue.js'
+import Subtitulo from '../subtitulo/Subtitulo.jsx';
 
 
 const Reservas = () => {
@@ -26,6 +27,7 @@ const Reservas = () => {
     apellido: user?.lastname || '',
     email: user?.email || '',
     idMetodoPago: '',
+    metodoPago: ""
   };
 
   const [formulario, setFormulario] = useState(initialState);
@@ -99,14 +101,14 @@ const Reservas = () => {
 
   const handlePagoSubmit = async (formData) => {      
     console.log('formData',formData); 
-    const { fecha, hora, cantidad, numeroMesa, metodoPago } = formulario;
+    const { fecha, hora, cantidad, numeroMesa, metodoPago,idMetodoPago } = formulario;
     const requestBody = {
       fecha,
       hora,
       cantidad: parseInt(cantidad),
       numeroMesa: parseInt(numeroMesa),
       idUsuario: parseInt(userId),
-      idMetodoPago: parseInt(formulario.idMetodoPago),
+      idMetodoPago: parseInt(idMetodoPago),
     };
     console.log('Request body:', requestBody);
     try {
@@ -130,6 +132,13 @@ const Reservas = () => {
     }
   };
 
+  const onselect=(e) => {
+    const select = e.target.value;
+    const option= metodosPago.find(metodo => metodo.metodoPago === select);
+    setFormulario((prev)=>({...prev, idMetodoPago:option.idMetodoPago, metodoPago: option.metodoPago}));
+
+  }
+
   const handlePagoClose = () => {
     setIsModalPagoVisible(false);
   };
@@ -143,7 +152,7 @@ const Reservas = () => {
 
   return (
     <div className="conteinerGeneral reservas">
-      <h1>Reserva de Mesa</h1>
+      <Subtitulo texto={"Reserva de mesa"} />
       <hr />
       <form className="formulario" key={formularioKey} ref={formRef}>
         <FormularioInput id="fecha" tipo="date" texto="Fecha" value={formulario.fecha} onChan={onChan} />
@@ -153,17 +162,14 @@ const Reservas = () => {
         <FormularioInput id="apellido" tipo="text" texto="Apellido" value={formulario.apellido} onChan={onChan} />
         <FormularioInput id="numeroMesa" tipo="numero" texto="Numero de Mesa" value={formulario.numeroMesa} onChan={onChan} />
         <FormularioInput id="email" tipo="email" texto="Correo Electrónico" value={formulario.email} onChan={onChan} />
-
-        <div className="form-group">
-          <label htmlFor="metodoPago">Método de Pago</label>
-          <select id="idMetodoPago" name="idMetodoPago" value={formulario.idMetodoPago} onChange={onChan}>
-  <option value="">Seleccione un método de pago</option>
-  {metodosPago.map((metodo) => (
-    <option key={metodo.idMetodoPago} value={metodo.idMetodoPago}>{metodo.metodoPago}</option>
-  ))}
-</select>
-        </div>
-
+         <FormularioInput 
+         id="idMetodoPago"
+         value={formulario.metodoPago} 
+         tipo={"select"} 
+         texto={"Metodo de Pago"} 
+         onChan={onselect} 
+         opciones={[...metodosPago.map((metodo) => metodo.metodoPago)]} 
+     />
         <button className='button-reservas' onClick={handleSubmit} disabled={!camposCompletos}>RESERVAR</button>
         
       </form>
