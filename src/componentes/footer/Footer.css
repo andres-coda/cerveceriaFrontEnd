@@ -2,6 +2,7 @@
 .footer {
   position: fixed;
   bottom: 0;
+  z-index: 9970;
   background-color: var(--color1);
     width: 99vw;
     color: var(--color2);
