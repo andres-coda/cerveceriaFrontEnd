@@ -124,7 +124,7 @@ function MenuDetallesAux({idProducto}) {
                         <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato} />
                         </>
                     </div>
-                    <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes/>}} btnClick={btnClick} />
+                    <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes/>}} btnClick={btnClick} titulo="cerrar"/>
                     { alerta.estado ? (
                         <EliminarAlerta setAlerta={setAlerta} dato={dato} idTexto={idTexto}/>
                     ) : (null)}
