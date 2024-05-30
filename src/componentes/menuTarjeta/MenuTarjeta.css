@@ -23,11 +23,11 @@
 }
 
 .menuTarjeta:hover {
-    box-shadow: 4px 4px 4px 2px var(--color3);
+    box-shadow: 2px 2px 2px 2px var(--color3);
 }
 
 .menuTarjetaEliminado:hover{
-    box-shadow: 4px 4px 4px 2px var(--color5);
+    box-shadow: 2px 2px 2px 2px var(--color5);
 }
 
 .menuTarjeta img,

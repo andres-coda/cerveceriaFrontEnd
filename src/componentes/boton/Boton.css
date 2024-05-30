@@ -1,14 +1,21 @@
 .comun, .cerrar, .mas-menos, .alerta,.iconBtn, .iconGrande{
     border: 1px solid black;
-    border-radius: 8px;
+    border-radius: 12px;
     box-shadow: 1px 1px 2px black;
     cursor: pointer;
 }
 
 .comun, .mas-menos, .alerta, .iconBtn{
     background-color: #c19f71;
-    margin: 0.2rem 0.2rem;
     padding: 0.1rem 0.4rem 0.2rem;
+}
+
+.mas-menos, .alerta, .iconBtn{
+    margin: 0rem 0.2rem;
+}
+
+.comun{
+    margin: 0.1rem 0;
 }
 
 .alerta {
@@ -22,8 +29,8 @@
 
 .cerrar{
     position: fixed;
-    top: 6px;
-    right: 5px;
+    top: 8px;
+    right: 8px;
     background-color: rgb(138, 8, 8);
     color: black;
     padding: 0.1rem 0.4rem 0.2rem;
@@ -50,6 +57,5 @@
 @media (max-width: 600px) {
     .comun, .cerrar, .alerta {
         font-size: 0.8em;
-        margin: 0.5rem 0;
     }
 }
