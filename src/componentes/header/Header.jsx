@@ -5,8 +5,10 @@ import './Header.css';
 import logo from "../../assets/Logo.png";
 import BurguerButton from '../burguerButton/BurguerButton';
 import { FaShoppingCart, FaEdit, FaPlusCircle } from 'react-icons/fa';
+import { MdOutlineLockPerson } from 'react-icons/md';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useAuth } from '../auth/AuthContext';
+import { IoPersonCircleOutline } from 'react-icons/io5';
 
 function Header() {
   const { datos } = useContext(contexto);
@@ -51,9 +53,10 @@ function Header() {
           <NavDropdown
             id="nav-dropdown-dark-example"
             title="Nosotros"
-            menuVariant="light"
+            menuVariant="dark"
             onToggle={() => setNosotrosDropdownOpen(!nosotrosDropdownOpen)}
             show={nosotrosDropdownOpen}
+            className='nav-dropdown'
           >
             <div className='back-drop'>
               <NavLink className='drop-item' to="/quienessomos" onClick={closeNosotrosDropdown}>¿Quienes Somos?</NavLink>
@@ -64,7 +67,7 @@ function Header() {
           <NavDropdown
             id="nav-dropdown-dark-example"
             title="Carta"
-            menuVariant="light"
+            menuVariant="dark"
             onToggle={() => setMenuDropdownOpen(!menuDropdownOpen)}
             show={menuDropdownOpen}
           >
@@ -88,8 +91,13 @@ function Header() {
             <div className="user-menu">
               <NavDropdown
                 id="nav-dropdown-user"
-                title={user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
-                menuVariant="light"
+                title={
+                  <>
+                  <IoPersonCircleOutline className='iconLogin'/>
+                  {user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
+                  </>
+                }
+                menuVariant="dark"
                 onToggle={() => setUserDropdownOpen(!userDropdownOpen)}
                 show={userDropdownOpen}
               >
@@ -99,14 +107,14 @@ function Header() {
               </NavDropdown>
             </div>
           ) : (
-            <li><NavLink to="/login">Login</NavLink></li>
+            <li><NavLink to="/login"><MdOutlineLockPerson className='iconLogin'/>Login</NavLink></li>
           )}
           <li><NavLink to="/reservas">Reservas</NavLink></li>
           {user && user.role === "admin" ? (
             <NavDropdown
               id="nav-dropdown-admin"
               title="Administrar"
-              menuVariant="light"
+              menuVariant="dark"
               onToggle={() => setAdminDropdownOpen(!adminDropdownOpen)}
               show={adminDropdownOpen}
             >
