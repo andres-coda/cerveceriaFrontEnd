@@ -6,9 +6,8 @@
     z-index: 9970;
     width: 100%;
     height: 100%;
-    background-color: #1410109a;
+    background-color: var(--color6);
 }
-
 
 .menuDetalleElementos,
 .menuDetalleElementosEliminado{

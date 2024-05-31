@@ -102,7 +102,7 @@ function MenuDetalles({idProducto}) {
     return (   
             <div className="transparente">
             {dato != null ? (
-                <div className={ !dato.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>            
+                <div className={ !dato.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>
                     {datos.userAct && datos.userAct.role ==="admin" && idTexto!=null ? (
                                 <MenuDetallesBotonera btnClick={btnClick} dato={dato} idTexto={idTexto}/>
                         ) : (null)}
@@ -129,17 +129,17 @@ function MenuDetalles({idProducto}) {
                     <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes/>}} btnClick={btnClick} titulo="cerrar"/>
                     { alerta.estado ? (
                         <EliminarAlerta setAlerta={setAlerta} dato={dato} idTexto={idTexto}/>
-                    ) : (null)}
+                    ) : (null)}        
                 </div>
             ): (
                 <div className="menuDetalleElementos"> 
                     <div className='menuDetalle'>
                         <h3> Categoría </h3>
-                        <h2> Menu ... </h2>
+                        <h2> <b>Menu ... </b></h2>
                     <div className='menuFotoDescripcion'>
                         <AnimatedSVG />
-                        <Parrafo clase={"menuParrafo"} texto={`DESCRIPCIÓN: ...`} />
-                        <Parrafo clase={"menuParrafo"} texto={`INGREDIENTES: ...`}/>
+                        <p className='menuParrafo'><b>DESCRIPCIÓN: ...</b></p>
+                        <p className='menuParrafo'><b>INGREDIENTES: ...</b></p>
                     </div>
                     </div>
                     <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes />}} btnClick={btnClick} />
