@@ -1,7 +1,7 @@
 /*-- Header and NavBar --*/
 @font-face {
-    font-family: 'selima';
-    src: url('../../assets/fonts/selima_.otf') format('opentype');
+    font-family: 'Castor One W01 Regular';
+    src: url('../../assets/fonts/Castor One W01 Regular.otf') format('opentype');
 }
 
 /*-- Desktop Navigation --*/
@@ -55,7 +55,7 @@
         list-style: none;
         justify-content: space-evenly;
         align-items: center;
-        font-family: 'Selima';
+        font-family: 'Castor One W01 Regular';        
     }
 
     .navbar li {
@@ -73,7 +73,7 @@
         align-items: center;
         justify-content: center;
         padding: 0 3px;
-        font-size: clamp(1rem, 1.5vw + 0.5rem, 2rem);
+        font-size: clamp(1rem, 1vw + 0.5rem, 2rem);
         font-weight: 400;
         color: white;
         white-space: nowrap;
@@ -125,10 +125,10 @@
     }
 
     .drop-item {
-        font-size: 1.5vw !important;
+        font-size: 1vw !important;
         text-transform: none;
         color: #1D1D1Bff;
-        font-weight: 200;
+        font-weight: 100;
     }
 
     .cart-icon {
@@ -164,12 +164,17 @@
         color: white;
     }
 
+    .iconLogin {
+        font-size: 1.5rem; /* Ajusta el tamaño del ícono */
+        margin: 10px; 
+    }
+
     /* Estilos generales para los íconos */
-.icon {
+    .icon {
     font-size: 1.2rem; /* Ajusta el tamaño del ícono */
     margin: 10px; /* Espacio entre el ícono y el texto */
     color: #ffffff; /* Color del ícono */
-  }
+    }
 }
 
 /*-- Mobile Navigation --*/
@@ -251,7 +256,7 @@
         overflow-y: visible;
         transition: 0.3s;
         z-index: 9969;
-        font-family: 'Selima';
+        font-family: 'Castor One W01 Regular';
         font-size: 5vw;
         font-weight: 100;
         color: white;

@@ -26,6 +26,7 @@ import { AuthProvider } from "./componentes/auth/AuthContext";
 import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
 import EditSucursal from "./componentes/DondeEstamos/EditSucursal";
 import MetodosPago from "./componentes/carrito/MetodoPago";
+import MenuDetalles from "./componentes/menuDetalles/MenuDetalles";
 function App() {
   const { datos } = useContext(contexto);
   return ( 
@@ -35,7 +36,7 @@ function App() {
         <Routes>
           {Array.isArray(datos.productos) ? ( datos.productos.map((dato)=>{
             return (
-              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetallesAux idProducto={dato.idProducto}/>} key={dato.idProducto}/>
+              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetalles idProducto={dato.idProducto}/>} key={dato.idProducto}/>
             )
           })):(null)}
           {Array.isArray(datos.categoria) ? ( datos.categoria.map((categorias)=>{

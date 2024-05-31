@@ -1,4 +1,18 @@
 .subtitulo{
+    color: var(--color4);
+    background-color: var(--color1);
+    width: 100%;
+    padding: 0.2rem;
+}
+
+.subtitulo h1{
+   font-weight: bold;
+}
+
+
+/*
+
+.subtitulo{
     margin: 1rem;
 }
 .subtitulo h1:before {
@@ -77,3 +91,4 @@
         
     }
 }
+*/
