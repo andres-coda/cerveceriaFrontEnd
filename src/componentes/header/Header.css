@@ -131,14 +131,16 @@
         font-weight: 100;
     }
 
+    .profile {
+        font-size: 1vw;
+    }
+
     .cart-icon {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 50px;
+        justify-content: center;        
         text-align: center;
-        visibility: hidden;
-        margin-right: 3vw;
+        visibility: hidden;       
     }
 
     .cart-icon.active {
@@ -160,12 +162,12 @@
 
     .cart-item-count {
         margin-left: 0.1rem;
-        font-size: clamp(0.5rem, 0.8rem, 1rem);
+        font-size: clamp(0.5rem, 1rem, 1rem);
         color: white;
     }
 
     .iconLogin {
-        font-size: 1.5rem; /* Ajusta el tamaño del ícono */
+        font-size: 1.8rem; /* Ajusta el tamaño del ícono */
         margin: 10px; 
     }
 

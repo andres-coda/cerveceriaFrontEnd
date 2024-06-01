@@ -8,10 +8,8 @@ import { useAuth } from '../auth/AuthContext';
 import { getUserDetails } from './actions/getUserDetails';
 import {generarClaveReserva}  from './actions/claveReserva';
 import { BASE_URL } from '../../endPoints/endPoints';
-import { data } from '../CarouselDeImagenes/imgCarous';
 import { convertEnumValueToDisplayValue } from '../../utils/convertValue.js'
 import Subtitulo from '../subtitulo/Subtitulo.jsx';
-
 
 const Reservas = () => {
   const {auth} = useAuth();
