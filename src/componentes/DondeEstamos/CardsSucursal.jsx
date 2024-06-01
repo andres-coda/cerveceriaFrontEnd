@@ -5,7 +5,7 @@ import { contexto } from '../contexto/contexto';
 import { fetchDelete, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
 import { URL_SUCURSAL } from '../../endPoints/endPoints';
 import Boton from '../boton/Boton';
-import { Form, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FormularioInput from '../formularioInput/FormularioInput';
 import Modal from '../modal/modal';
 import AlertSucursal from '../alertSucursal/AlertSucursal';
