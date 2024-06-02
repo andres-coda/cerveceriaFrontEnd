@@ -16,42 +16,13 @@
   top: 10px;
 }
 
-/*subtitulo*/
-.titulo {
-  position: absolute;
-  left: 50%;
-  top: 5%;
-  transform: translate(-50%, -50%);
-  color: white;
-  padding: 10px;
-  border-radius: 20px;
-}
 
-.titulo h1 {
-  font-size: 1.5em;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  letter-spacing: 8px;
-  color: black;
-  background-color: #F1F1EF;
-}
 
-.titulo span {
-  background-color: #F1F1EF;
-}
-
-.titulo h1:before {
-  border-top: solid black;
-  width: 79vw;
-}
 
 /**contenedor formulario*/
 .container-form {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  margin-top: 100px;
+width: auto;
+
 }
 
 /*confirmación de mensaje enviado */
@@ -89,14 +60,7 @@
 }
 
 
-.form label {
-  color: #F1F1EF;
-  text-align: left;
-  font-size: 1em;
-  background: rgba(164, 164, 164, 0.7);
-  width: 5vw;
-  text-align: center;
-}
+
 
 .error {
   padding: 5px;
@@ -106,21 +70,12 @@
   margin: 10px 80px 10px 80px;
   }
 
-/*parrafo subtitulo queremos conocerte*/
-.form-p {
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 1.2em;
-  color: #F1F1EF;
-  background-color: #F1F1EF;
-  background: rgba(36, 35, 35, 0.7);
-  background: rgba(14, 13, 13, 0.6);
-  margin: 0px 80px 10px 80px;
-}
+
 
 /*textarea*/
 .textarea {
-  width: 90%;
+width: 90%;
+  max-height: 80vh;
   max-width: 600px;
   min-height: 40vh;
   resize: none;

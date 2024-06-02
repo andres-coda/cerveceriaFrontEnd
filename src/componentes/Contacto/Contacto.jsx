@@ -5,6 +5,7 @@ import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import { IoBeerOutline } from 'react-icons/io5';
 import { useNavigate } from "react-router-dom";
+import FormularioInput from '../formularioInput/FormularioInput';
 
 function Contacto() {
 
@@ -62,12 +63,8 @@ function Contacto() {
   }
 
   return (
-    <section className="conteinerGeneral">
-      <div className="contenedor">
-        <div className='subtitulo'>
-          <Subtitulo clase={"titulo"} texto={"Contacto"} />
-        </div>
-        <div className='container-form'>
+       
+            <div className='container-form'>
           {mensajeEnviado ? (
             <div className='mensaje-Enviado'>
               <img src="src/assets/Logo.png" alt="Logo del Restaurante" />
@@ -78,30 +75,11 @@ function Contacto() {
             </div>
           ) : (
             <>
-              <Parrafo clase={"form-p"} texto={'¡Queremos conocerte. Dejanos tu mensaje y responderemos a la brevedad!'} />
+             
               <form onSubmit={handleSubmit} >
-                <input
-                  id='consulta'
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  placeholder="Nombre"
-                  required />
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  placeholder="Apellido"
-                  required />
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Correo electrónico"
-                  required />
+              <FormularioInput id={"nombre"} value={formData.firstName} tipo={"text"} texto={"Nombre"} onChan={handleChange} />
+              <FormularioInput id={"apellido"} value={formData.lastName} tipo={"text"} texto={"lastName"} onChan={handleChange} />
+              <FormularioInput id={"email"} value={formData.email} tipo={"text"} texto={"email"} onChan={handleChange} />
                 <textarea
                   className='textarea'
                   name="message"
@@ -110,16 +88,14 @@ function Contacto() {
                   placeholder="Mensaje"
                   required />
                  <p className="error">{errors}</p>
-                <Boton btn={{ id: "enviar", clase: "comunContacto", texto: "Enviar" }} btnClick={handleSubmit} />
+                 <Boton btn={{ id: "enviar", clase: "comunContacto", texto: "Enviar" }} btnClick={handleSubmit} />
+
               </form>
             </>
           )}
         </div>
-        <div className="imgLupuloContacto">
-          <img src="https://rentabilibar.s3-eu-west-1.amazonaws.com/media/lupulo_planta.jpg" alt="Lúpulo" />
-        </div>
-      </div>
-    </section>
+       
+
   );
 }
 
