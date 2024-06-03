@@ -104,8 +104,10 @@ function Header() {
           </NavDropdown>
           <li><NavLink to="/reservas">Reservas</NavLink></li>
           <div className={`cart-icon active `}>
-            <NavLink to="/carrito" className='cart'><FaShoppingCart /></NavLink>
-            <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
+            <NavLink to="/carrito" className='cart'>
+              <FaShoppingCart />
+              <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
+            </NavLink>
           </div>
           {user ? (
             <div className="user-menu">
