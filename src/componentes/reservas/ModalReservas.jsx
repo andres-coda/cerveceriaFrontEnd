@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './ModalReservas.css'
 import Boton from '../boton/Boton';
