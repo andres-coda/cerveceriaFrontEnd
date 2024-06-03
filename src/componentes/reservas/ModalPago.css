@@ -5,17 +5,18 @@
     flex-direction: column;
     align-items: center;
     width: clamp(20rem, 60vw, 60rem);
-    height: 73vh;
-    background: #1D1D1B;
-    border: 5px solid var(--color3);
-    border-radius: 10px;
+    max-height: 70vh;
+    background: var(--color1);
+    border: 1px solid var(--color3);
+    border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 0 10px var(--color3);
+    box-shadow: 2px 2px 4px var(--color3);
     position: fixed;
-    top: 55vh;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    overflow: auto;
   }
   
   .line-modal-pago {
@@ -26,7 +27,7 @@
   }
   
   .modalPago h3 {
-    color: var(--color3);
+    color: var(--color4);
     font-size: clamp(1.5rem, 5vw, 2rem);
   }
   
@@ -37,10 +38,10 @@
     width: 100%;
   }
 
-  .modal-content button {
+  /*.modal-content button {
     margin-top: 10px;
     width: 70%;
-  }
+  } */
   
   .card-preview {
     flex: 1;
@@ -50,23 +51,26 @@
   }
   
   .payment-form {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: end;
     justify-content: center;
+    margin-top: 1rem;
+    max-width: 320px;
   }
   
   .form-group {
-    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
   }
   
   .form-group label {
     display: block;
-    color: var(--color3);
+    color: var(--color4);
     margin-bottom: 5px;
     text-align: start;
-    margin-left: 3vw;
   }
   
   .form-group input {
@@ -75,8 +79,9 @@
     padding: 10px;
     border: 1px solid var(--color3);
     border-radius: 5px;
-    background: #f1f1f1;
-    margin-left: 3vw;
+    background: var(--color2);
+    padding-left: 3vw;
+    text-align: start;
   } 
   
   .close {
@@ -84,16 +89,33 @@
     top: 10px;
     right: 20px;
     font-size: 1.5rem;
-    color: var(--color3);
+    color: var(--color1);
     cursor: pointer;
   }
+
+  .payment-form button {
+    margin: 1rem 0;
+  }
+
+  .modalPago::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color:  var(--color2);
+    border-radius: 8px;
+}
+
+.modalPago::-webkit-scrollbar-thumb {
+    background-color: var(--color4);
+    border-radius: 8px;
+}
+  /*
 
   .modalPago button {
     width: 70%;
     margin-left: 3vw;
-  }
+  }*/
   
-  @media (max-width: 768px) {
+  @media (max-width: 980px) {
     .modal-content {
       flex-direction: column;
       align-items: center;
@@ -102,5 +124,6 @@
     .card-preview, .payment-form {
       width: 100%;
     }
+
   }
   
