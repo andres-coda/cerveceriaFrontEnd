@@ -19,19 +19,6 @@ export const AuthProvider = ({ children}) => {
     }
   }, [auth.token]);
 
-  useEffect(() => {
-    const handleUnload = () => {
-      localStorage.removeItem('token');
-      setAuth({ token: null, user: null });
-      setDatos((prev) => ({ ...prev, userAct: null, token: null, refresh: true }));
-    };
-
-    window.addEventListener('beforeunload', handleUnload);
-
-    return () => {
-      window.removeEventListener('beforeunload', handleUnload);
-    };
-  }, []);
 
   const login = async (email, password, role= auth.user ) => {
     console.log('Sending data:', { email, password, role }); 

@@ -6,7 +6,7 @@
     z-index: 9980;
     width: 100%;
     height: 100%;
-    background-color: #1410109a;
+    background-color: var(--color6);
 }
 .alertaEliminar{
     position: fixed;
@@ -21,11 +21,11 @@
     flex-direction: column;
     margin: auto;
     justify-content: space-around;
-    background-color: #F1F1EF;
-    color: #1D1D1B;
-    border: 1px solid black;
+    background-color: var(--color2);
+    color: var(--color1);
+    border: 1px solid var(--color1);
     border-radius: 10px;
-    box-shadow: 2px 2px 4px black;
+    box-shadow: 2px 2px 4px var(--color1);
 }
 
 .botonSiNo{

@@ -113,9 +113,9 @@ function MenuDetalles({idProducto}) {
                         <h2> { dato.titulo } </h2>
                         <div className='menuFotoDescripcion'>
                             <img src={dato.img} alt={dato.titulo.nombre} />
-                            <p><b>DESCRIPCIÓN: </b></p>
+                            <p className='menuParrafo'><b>DESCRIPCIÓN: </b></p>
                             <Parrafo clase={"menuParrafo"} texto={dato.descripcion} />
-                            <p><b>INGREDIENTES: </b></p>
+                            <p className='menuParrafo'><b>INGREDIENTES: </b></p>
                             <Parrafo clase={"menuParrafo"} texto={dato.ingredientes}/>
                         </div>
                         <div className='valoracionPrecio'>

@@ -22,12 +22,12 @@
     margin: 2vh 0;
   }
   
-  h3 {
+  .modal h3 {
     color: var(--color3);
     font-size: clamp(1.5rem, 5vw, 2rem);
   }
   
-  p {
+  .modal p {
     margin: 5px 0;
     color: var(--color3);
     font-size: clamp(0.5rem, 1rem, 1.2rem);
@@ -37,7 +37,7 @@
     margin: 20px 0;
   }
   
-  img {
+  .modal img {
     max-width: 10rem;
     margin-bottom: 10px;
   }

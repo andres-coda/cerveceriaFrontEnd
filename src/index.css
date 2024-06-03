@@ -2,6 +2,10 @@
   font-family: 'selima';
   src: url('./assets/fonts/selima_.otf') format('opentype');
 }
+@font-face {
+  font-family: 'Castor One W01 Regular';
+  src: url('./assets/fonts/Castor One W01 Regular.otf') format('opentype');
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

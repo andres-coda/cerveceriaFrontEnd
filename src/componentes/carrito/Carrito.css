@@ -18,13 +18,25 @@
     color: black;
 }
 
-
 .metodos-pago {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9972;
+    float: inline-start;
+    min-width: 210px;
+    width: 60%;
+    max-height: 80vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-content: center;
     margin: auto;
-    color: var(--color4);
-    width: 60vw;
+    color: var(--color1);
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px black;
+    background-color: var(--color2);
 }
