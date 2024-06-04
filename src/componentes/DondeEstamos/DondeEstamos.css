@@ -1,188 +1,82 @@
-.prueba{
-  width: 100vw;
+
+
+.logo-zoom {
+  transition: width 0.3s, height 0.3s;
+  border-radius: 50%;
+}
+
+
+
+.section {
   height: auto;
-}
-.prueba img{
-  width: 200%;
-  height: 50vh;
-}
-.container-all-map {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: column;
   align-items: center;
-  width: 80vw;
-  height: auto;
-  border-radius: 20px;
   margin-top: 20px;
-  border: #F1F1EF solid 2px;
-  box-shadow: #fbf8e9 1px 1px 8px 8px;
-  background-color: #c19f71;
-  overflow: hidden;
+  flex-direction: column;
+  padding: 0 ;
 }
 
-.ubicacion {
-  flex: 1;
-  margin-right: 10px;
-
-}
-
-.div-map-h1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.div-map-h1 h1 {
-  font-size: 1.7em;
-  margin: 10px;
-  font-family: 'selima';
-}
-
-.beer {
-  margin: 10px;
-}
-
-.subtitulo {
-  margin-top: 20px;
-}
-
-.texto {
-  flex: 1;
-  overflow: hidden;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.texto img {
-  width: 20vh;
-  border-radius: 100%;
-  margin: 10px;
-}
-
-.paragrafh {
+.section p, .section-sucursal p {
   font-size: 1.5em;
-  font-family: 'selima';
+  color: var(--color3);
+  margin-top: 50px;
 }
 
-.texto h2 {
-  font-size: 1em;
-  margin-top: 30px;
-}
-
-/* Estilos para pantallas más pequeñas (media query) */
-@media (max-width: 1260px) {
-  .ubicacion {
-    margin: 20px;
-  }
-
-  .texto img {
-    width: 10vh;
-    border-radius: 100%;
-    margin-bottom: 30px;
-  }
-}
-
-/*contenedor card*/
-.container-all-cards {
+.section-sucursal {
+  height: auto;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 85vw;
-}
-
-/* Cards sucursal */
-.cards-sucursal, .cards-sucursalEliminada {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  border: #F1F1EF solid 2px;
-  margin: 10px;
+  margin-top: 20px;
+  flex-direction: column;
   padding: 10px;
-  text-align: center;
-  margin: 30px;
 }
-
-.cards-sucursal input ,
-.card-sucursal label{
-  margin: 0.1rem;
-  text-align: start;
-}
-
-.cards-sucursalEliminada input, 
-.cards-sucursalEliminada label,
-.cards-sucursal input ,
-.card-sucursal label{
-  margin: 0.1rem;
-}
-
-.cards-sucursalEliminada label,
-.cards-sucursal label{
-  color: var(--color4);
-  text-align: left;
-  width:80%;
-  font-size: 0.7em;
-}
-
-.cards-sucursalEliminada{
-  box-shadow: #df7765 1px 1px 8px 8px;
-}
-
-/*botones iconos editar, borrar y restaurar vista admin*/
-.btn-icon{
+/*contacto form*/
+.section-contacto {
+  height:auto;
+  margin-top: 20px;
   display: flex;
-  justify-content: space-around;
-}
-
-.cards-sucursal{
-  box-shadow: #fbf8e9 1px 1px 8px 8px;
-}
-
-.card-img-container {
-  width: 100%;
-  height: 150px; /* Ajusta la altura según tus necesidades */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  padding: 0;
 }
 
-.card-sucursal img, .cards-sucursalEliminada img {
+.contacto-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height:auto;
   width: 100%;
-  height: 200px;
-  margin-top: 10px;
-  object-fit: cover;
+  margin-bottom: 20px;
 }
 
-.cards-sucursal h1, .cards-sucursalEliminada h1 {
-  font-family: 'selima';
-  color: #c19f71;
-  font-size: 1.5em;
-  /* Tamaño de fuente reducido para que quepa en la tarjeta */
-  margin: 10px;
+/*h3*/
+.border {
+  background-color: #111;
+  color: var(--color2);
+  padding: 18px;
+  font-size: 18px;
+  letter-spacing: 10px;
 }
 
-.card-h3 {
-  color: #F1F1EF;
-  font-size: 0.8em;
-  margin: 5px;
-
+/*mapa y card*/
+.section-mapa {
+  height: auto;
+  width: 100%;
+  margin-top: 20px;
+ 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.icon {
-  margin: 10px;
-  color: #c19f71;
-
-}
-
-
-@media (max-width: 840px) {
-  .card-img {
-    width: 100%;
-    height:200px;
+.card-map {
+  margin-top: 20px;
+  width: 70%;
+  height: auto;
+  display: flex;
    
-  }
+}
 
+
+@media (max-width: 1260px) {
 }

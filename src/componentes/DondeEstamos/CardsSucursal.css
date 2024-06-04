@@ -1,84 +1,69 @@
 
-.card-sucursal-container {
+.card-container {
     position: relative;
-    width: 10%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     
 }
-/*contenedor img */
-.card-img-sucursal-container {
-  width: 100%;
-  height:100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+
+.imagen {
+  width: 50%;
 }
 
-/*imagen card*/
+.card-img-form {
+  width: 100%;
+}
 .card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  border-radius: 10px;
-  border: solid 1px var(--color3);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    border: solid 1px var(--color3);
 }
 
-/*contenedor hover card */
-.card-sucursal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(91, 85, 85, 0.879);
-  color: var(--color3);
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: opacity 0.4s ease;
-   box-sizing: border-box;
-
-}
-
-/*h3 cards hover redes*/
-.card-sucursal-overlay h3 {
-  text-align: start;
-  font-size: 1em;
-  letter-spacing: 0.2em;
-  padding-left: 8px;
-
-}
-
-.card-h3 {
-  color: var(--color2);
-  font-size: 0.8em;
-  text-align: start;
-
-}
- .imagen {
-  width: 100%;
-} 
-
-
-
-.card-sucursal-container:hover .card-img {
+.card-container:hover .card-img {
     transform: scale(1.1);
 }
 
-.card-sucursal-container:hover .card-sucursal-overlay {
+.card-container:hover .card-overlay {
     opacity: 1;
 }
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(91, 85, 85, 0.879);
+    color: var(--color3);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+     box-sizing: border-box;
+ 
+}
+
+
+
+/*h3 cards redes*/
+.card-overlay h3 {
+    text-align: start;
+    font-size: 1em;
+    letter-spacing: 0.2em;
+    padding-left: 8px;
+ 
+}
+
+
 
 .icon-button:hover {
     background-color: var(--color3);
     color: var(--color1);
 }
-
 
 /*contenedor card*/
 .container-all-cards {
@@ -92,13 +77,14 @@
   .cards-sucursal {
     flex-grow: 1; /* Permitir que las tarjetas crezcan */
       flex-shrink: 1; /* Permitir que las tarjetas se encojan */
-      width: 500px; /* Ajusta el tamaño según sea necesario */
+      width: 350px; /* Ajusta el tamaño según sea necesario */
       height: 350px;
       min-width: 250px; /* Tamaño mínimo para el ancho */
       min-height: 250px; /* Tamaño mínimo para la altura */
       margin: 15px;
+    
       padding: 0px;
-       border-radius: 10px;
+        border-radius: 10px;
       text-align: center;
       position: relative;
       display:inline-flex;
@@ -108,16 +94,12 @@
    
   }
   
-  /*formulario editar*/
   .cards-sucursal input ,
   .card-sucursal label{
     margin: 0.1rem;
     text-align: start;
   }
   
-  .card-img-sucursal-form {
-    width: 100%;
-  }
   .cards-sucursalEliminada input, 
   .cards-sucursalEliminada label,
   .cards-sucursal input ,
@@ -148,7 +130,16 @@
   }
   
 
-
+/*contenedor img */
+.card-img-container {
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
   /*img del form*/
   .card-img-form {
   
@@ -194,7 +185,13 @@
     font-weight: bold;
   } 
   
- 
+  .card-h3 {
+    color: var(--color2);
+    font-size: 0.8em;
+   /*  margin: 2px; */
+    text-align: start;
+  
+  }
   
   /*iconos de redes*/
   .icon {
@@ -229,7 +226,7 @@
   width: 38vw;
  
  }
-    .card-sucursal-overlay h3 {
+    .card-overlay h3 {
         text-align: start;
         font-size: 0.6em;
        
@@ -238,7 +235,7 @@
 
   
 
-    .cards-sucursal h1,.card-sucursal-overlay h3 {
+    .cards-sucursal h1,.card-overlay h3 {
             font-size: 1em;
         margin-bottom: 10px ;
        
@@ -246,7 +243,7 @@
 }
 
 @media (max-width: 926px) {
- .card-sucursal-overlay h3 {
+ .card-overlay h3 {
     font-size: 0.8em;
 margin-bottom: 5px ;
 }
