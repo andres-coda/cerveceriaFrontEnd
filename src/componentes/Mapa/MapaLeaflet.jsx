@@ -9,8 +9,8 @@ function MapL() {
 
   return (
     < >
-    <div className='mapa'>
-    <MapContainer  className={'map'} center={position} zoom={13} style={{ width: '50vw', height: '50vw' }}>
+  
+    <MapContainer  className={'map'} center={position} zoom={13} >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -19,7 +19,7 @@ function MapL() {
         <Popup>¡Hola, soy un marcador!</Popup>
       </Marker> 
     </MapContainer>
-    </div>
+   
         </>
   );
 }

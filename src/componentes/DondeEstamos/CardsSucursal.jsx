@@ -115,12 +115,12 @@ const CardsSucursal = ({ sucursal }) => {
                     {isSaving ? (
                         <AnimatedSVG />
                     ) : (
-                        //card-img-form clse de la imagen
+                        //card-img-form clase de la imagen
                         <>
                         
-                            <img className='card-img-form' src={sucursal.imagen} alt={sucursal.nombre} />
+                            <img className='card-img-form' src={editedSucursal.imagen} alt={sucursal.nombre} />
                             <form onSubmit={handleSave} className='form-modal'>
-                                <FormularioInput id={"imagen"} value={editedSucursal.imagen} tipo={"text"} texto={"Url_Imagen"} onChan={handleEditChange} />
+                                <FormularioInput className={'imagen'} id={"imagen"} value={editedSucursal.imagen} tipo={"text"} texto={"Url_Imagen"} onChan={handleEditChange} />
                                 <FormularioInput id={"nombre"} value={editedSucursal.nombre} tipo={"text"} texto={"Nombre"} onChan={handleEditChange} />
                                 <FormularioInput id={"direccion"} value={editedSucursal.direccion} tipo={"text"} texto={"Dirección"} onChan={handleEditChange} />
                                 <FormularioInput id={"telefono"} value={editedSucursal.telefono} tipo={"text"} texto={"Teléfono"} onChan={handleEditChange} />

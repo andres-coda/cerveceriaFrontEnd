@@ -1,0 +1,58 @@
+
+
+  
+  .contenedor-mapa-card {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    justify-content: center; /* Centra el contenido horizontalmente */
+  }
+  
+  .card-sucursal, .map-container {
+    flex: 1;
+    min-width: 300px; /* Asegura que los elementos no sean más pequeños que 300px */
+    max-width: 500px; /* Define un ancho máximo para que no crezcan demasiado */
+  }
+  
+  .card-sucursal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    height: 500px;
+  }
+  
+ 
+  .card-img-form img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .card-content {
+    margin-top: 10px;
+  }
+  
+  .map-container {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  @media (max-width: 768px) {
+    .contacto-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

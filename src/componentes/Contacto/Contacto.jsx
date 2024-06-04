@@ -76,10 +76,16 @@ function Contacto() {
           ) : (
             <>
              
-              <form onSubmit={handleSubmit} >
-              <FormularioInput id={"nombre"} value={formData.firstName} tipo={"text"} texto={"Nombre"} onChan={handleChange} />
+              <form onSubmit={handleSubmit} className='form-contacto' >
+{/*               <FormularioInput id={"nombre"} value={formData.firstName} tipo={"text"} texto={"Nombre"} onChan={handleChange} />
               <FormularioInput id={"apellido"} value={formData.lastName} tipo={"text"} texto={"lastName"} onChan={handleChange} />
               <FormularioInput id={"email"} value={formData.email} tipo={"text"} texto={"email"} onChan={handleChange} />
+ */}         
+ <label>Nombre</label>
+              <input value={formData.firstName} type='text' placeholder='Nombre' className='nombre'/>
+              <label>Email</label>
+              <input value={formData.email} type='text' placeholder='Email' className='email'/>
+              <label>Mensaje</label>
                 <textarea
                   className='textarea'
                   name="message"

@@ -1,10 +1,4 @@
-.contacto-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 50vw;
-  width: 100%;
-}
+
 
 .logo-zoom {
   transition: width 0.3s, height 0.3s;
@@ -14,15 +8,15 @@
 
 
 .section {
-  height: 350px;
+  height: auto;
   display: flex;
   align-items: center;
   margin-top: 20px;
   flex-direction: column;
-  padding: 0 200px;
+  padding: 0 ;
 }
 
-.section p {
+.section p, .section-sucursal p {
   font-size: 1.5em;
   color: var(--color3);
   margin-top: 50px;
@@ -36,7 +30,7 @@
   flex-direction: column;
   padding: 10px;
 }
-
+/*contacto form*/
 .section-contacto {
   height:auto;
   margin-top: 20px;
@@ -46,6 +40,16 @@
   padding: 0;
 }
 
+.contacto-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height:auto;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/*h3*/
 .border {
   background-color: #111;
   color: var(--color2);
@@ -54,20 +58,25 @@
   letter-spacing: 10px;
 }
 
-.section-contacto {
+/*mapa y card*/
+.section-mapa {
   height: auto;
+  width: 100%;
+  margin-top: 20px;
+ 
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.contacto {
-  color: var(--color2);
-  font-size: 1.5em;
-  letter-spacing: 1em;
-  font-style: bold;
+.card-map {
   margin-top: 20px;
+  width: 70%;
+  height: auto;
+  display: flex;
+   
 }
+
 
 @media (max-width: 1260px) {
 }

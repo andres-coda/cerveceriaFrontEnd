@@ -17,14 +17,44 @@
 }
 
 
-
-
 /**contenedor formulario*/
-.container-form {
-width: auto;
+
+.form-contacto {
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
+}
+/*input*/
+.form-contacto input {
+width:100%;
+height: 30px;
+resize: none;
+border-color: black 2px;
+border-radius: 10px;
+padding: 10px;
 
 }
 
+/*label*/
+.form-contacto label {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  color: var(--color3);
+}
+
+/*textarea*/
+.textarea {
+  width: 100%;
+    max-height: 40vh;
+    max-width: 400px;
+    min-height: 30vh;
+    resize: none;
+    border-color: black 2px;
+    border-radius: 10px;
+    padding: 10px;
+  }
 /*confirmación de mensaje enviado */
 .mensaje-Enviado {
   display: flex;
@@ -72,23 +102,8 @@ width: auto;
 
 
 
-/*textarea*/
-.textarea {
-width: 90%;
-  max-height: 80vh;
-  max-width: 600px;
-  min-height: 40vh;
-  resize: none;
-  border-color: black 2px;
-  border-radius: 10px;
-  padding: 10px;
-}
 
-/*boton form*/
-.comunContacto {
-  width: 30vw;
-  margin: 10px 80px 10px 80px;
-}
+
 
 /*media para título principal,form, p de error mensaje enviado y botón form*/
 @media (max-width:770px) {
@@ -109,7 +124,5 @@ width: 90%;
     margin: 10px 50px 10px 50px;
   }
 
-  .comunContacto {
-    width: 30vw;
-  }
+  
 }

@@ -1,7 +1,7 @@
-.mapa {
+.map {
     margin: 10%;
-    width: 50vw;
-    height: 40vw;
+    width: 30vw;
+    height: 30vw;
     overflow: hidden;
     border-radius: 10px;
  }
