@@ -17,6 +17,7 @@
     z-index: 9972;
     float: inline-start;
     min-width: 210px;
+    max-width: 30rem;
     width: 60%;
     max-height: 80vh;
     display: flex;
