@@ -26,6 +26,7 @@ import { AuthProvider } from "./componentes/auth/AuthContext";
 import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
 import MetodosPago from "./componentes/carrito/MetodoPago";
 import MenuDetalles from "./componentes/menuDetalles/MenuDetalles";
+import ModalCarrito from "./componentes/modalCarrito/ModalCarrito";
 function App() {
   const { datos } = useContext(contexto);
   return ( 
@@ -53,7 +54,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/quienessomos' element={<QuienesSomos />}/>
-          <Route path='/metodopago' element={<MetodosPago />}/>
+          <Route path='/metodopago' element={<ModalCarrito />}/>
           
             <Route path='/dondeestamos' element={<DondeEstamos />} />
          

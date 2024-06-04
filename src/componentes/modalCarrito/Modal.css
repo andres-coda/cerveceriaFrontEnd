@@ -1,0 +1,58 @@
+.modalFondoTransparente {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(0%, 0%);
+    z-index: 9970;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color6);
+}
+
+.modalFondo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9972;
+    float: inline-start;
+    min-width: 210px;
+    width: 60%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+    color: var(--color1);
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px black;   
+    background-color: var(--color2);
+}
+
+.modal-metodo-pago::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color:  var(--color2);
+    border-radius: 10px;
+}
+
+.modal-metodo-pago::-webkit-scrollbar-thumb {
+    background-color: var(--color4);
+    border-radius: 10px;
+}
+
+.modal-metodo-pago{
+    overflow: auto;
+    padding: 0.5rem 0.5rem;
+}
+
+.modal-metodo-pago h3{
+    color: var(--color6);
+    font-family: 'Castor One W01 Regular'; 
+}
+
+.formulario-modal{
+    max-width: 60vw;
+}
