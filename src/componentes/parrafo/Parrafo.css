@@ -46,6 +46,7 @@
     border: none;
     box-shadow: none;
     font-size: 1em;
+    color: var(--color1);
 }
 
 @media (max-width: 600px) {

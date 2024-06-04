@@ -3,15 +3,13 @@ import './Reservas.css';
 import FormularioInput from '../formularioInput/FormularioInput';
 import '../boton/Boton.css';
 import ModalPago from './ModalPago';
-import ModalReservas from './ModalReservas';
+import Modal from '../../utils/genericModal/GenericModal.jsx';
 import { useAuth } from '../auth/AuthContext';
 import { getUserDetails } from './actions/getUserDetails';
 import {generarClaveReserva}  from './actions/claveReserva';
 import { BASE_URL } from '../../endPoints/endPoints';
-import { data } from '../CarouselDeImagenes/imgCarous';
 import { convertEnumValueToDisplayValue } from '../../utils/convertValue.js'
 import Subtitulo from '../subtitulo/Subtitulo.jsx';
-
 
 const Reservas = () => {
   const {auth} = useAuth();
@@ -150,13 +148,45 @@ const Reservas = () => {
     setCamposCompletos(false);
   };
 
+  const generateReservaQRData = (reserva) => {
+    return `Reserva exitosa!!\nFecha: ${reserva.fecha}\nHora: ${reserva.hora}\nNombre: ${reserva.nombre} ${reserva.apellido}\nEmail: ${reserva.email}\nCantidad de Personas: ${reserva.cantidad}\nMesa: ${reserva.numeroMesa}`;
+  };
+
+  const contentStructure = [
+    { type: 'paragraph', label: 'Nombre y Apellido:', field: 'nombreApellido' },
+    { type: 'paragraph', label: 'Fecha:', field: 'fecha' },
+    { type: 'paragraph', label: 'Hora:', field: 'hora' },
+    { type: 'paragraph', label: 'Cantidad de Personas:', field: 'cantidad' },
+    { type: 'paragraph', label: 'Numero de Mesa:', field: 'numeroMesa' },
+    { type: 'paragraph', label: 'Email:', field: 'email' },
+  ];
+
+  const generateTimeOptions = () => {
+    const options = [];
+    for (let hour = 10; hour <= 24; hour++) { // Rango de 10:00 a 22:00
+      for (let minutes of ['00', '30']) {
+        const time = `${hour < 10 ? '0' + hour : hour}:${minutes}`;
+        options.push(time);
+      }
+    }
+    return options;
+  };
+
   return (
     <div className="conteinerGeneral reservas">
       <Subtitulo texto={"Reserva de mesa"} />
       <hr />
       <form className="formulario" key={formularioKey} ref={formRef}>
-        <FormularioInput id="fecha" tipo="date" texto="Fecha" value={formulario.fecha} onChan={onChan} />
-        <FormularioInput id="hora" tipo="time" texto="Hora" value={formulario.hora} onChan={onChan} />
+        <FormularioInput id="fecha" tipo="date" texto="Fecha" value={formulario.fecha} onChan={onChan} />        
+        <div className="renglonInput">
+          <label htmlFor="hora">HORA</label>
+          <select id="hora" name="hora" value={formulario.hora} onChange={onChan} required>
+            <option value="">Seleccione horario de reserva</option>
+            {generateTimeOptions().map(time => (
+              <option key={time} value={time}>{time}</option>
+            ))}
+          </select>
+        </div>
         <FormularioInput id="cantidad" tipo="numero" texto="Cantidad de Personas" value={formulario.cantidad} onChan={onChan} />
         <FormularioInput id="nombre" tipo="text" texto="Nombre" value={formulario.nombre} onChan={onChan} />
         <FormularioInput id="apellido" tipo="text" texto="Apellido" value={formulario.apellido} onChan={onChan} />
@@ -182,13 +212,16 @@ const Reservas = () => {
       />
       )}     
       {ismodalReservaVisible && (
-        <ModalReservas
+        <Modal
           isVisible={ismodalReservaVisible}
           onClose={closeModal}
-          reserva={formulario}
-          claveReserva={claveReserva}
-          estado={"Cantidad de Personas:"}
-          titulo={"Reserva Exitosa"}
+          data={{
+            ...formulario,
+            nombreApellido: `${formulario.nombre} ${formulario.apellido}`,
+            titulo: 'Reserva Exitosa'
+          }}          
+          qrDataTemplate={generateReservaQRData}
+          contentStructure={contentStructure}
         />
       )}
     </div>

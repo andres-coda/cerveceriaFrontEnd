@@ -11,6 +11,7 @@ import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
 import { useNavigate } from 'react-router-dom';
 import { fetchPost } from '../funciones fetch/funciones';
 import { URL_PEDIDO } from '../../endPoints/endPoints';
+import ModalCarrito from '../modalCarrito/ModalCarrito';
 
 function Carrito(){
     const {datos, setDatos} = useContext(contexto);
@@ -22,6 +23,10 @@ function Carrito(){
     const hora = `${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`;
     const [ menuDetalle, setMenuDetalle ] = useState(undefined);
     const [modalVisible, setModalVisible] = useState(false);
+    const [modal, setModal ] = useState({
+        modalVisible: false,
+        metodoPago: false
+    })
     const [ formulario, setFormulario ] = useState({
         fecha: '',
         hora: '',
@@ -57,20 +62,7 @@ function Carrito(){
         const btn = e.currentTarget.id;
         switch (btn) {
             case "comprar" :
-                setModalVisible(true);
-                setFormulario({
-                    fecha: hoy,
-                    hora: hora,
-                    personas: `$${total}`,
-                    nombre: datos.usuarioActivo.usuario.name,
-                    apellido: datos.usuarioActivo.usuario.lastName,
-                    telefono: datos.usuarioActivo.usuario.telefono,
-                    email: datos.usuarioActivo.usuario.email,
-                })
-                console.log("aqui va el tiquet de compra");
-                console.log(subTotal);
-                console.log(datos.carrito);
-                setDatos((prev)=>({...prev, carrito:[]}));
+                setModal((prev)=>({...prev, metodoPago:true}));
             break;
             case "login" :
                 navegate('/login');
@@ -119,8 +111,9 @@ function Carrito(){
                 <Subtitulo clase={"subtitulo"} texto={"CARRITO"} />
                 <Parrafo clase={"menuParrafo"} texto={`No hay productos agregados al carrito`} />
             </div>)}
+            {modal.metodoPago ? (<ModalCarrito setModal={setModal} />):(null)}
             <ModalReservas
-                isVisible={modalVisible}
+                isVisible={modal.modalVisible}
                 onClose={closeModal}
                 reserva={formulario}
                 claveReserva= {claveReserva}

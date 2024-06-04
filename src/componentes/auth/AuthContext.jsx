@@ -19,6 +19,7 @@ export const AuthProvider = ({ children}) => {
     }
   }, [auth.token]);
 
+
   const login = async (email, password, role= auth.user ) => {
     console.log('Sending data:', { email, password, role }); 
     
@@ -59,14 +60,13 @@ export const AuthProvider = ({ children}) => {
     setAuth((prevAuth) => ({ ...prevAuth, user: data })); 
     setDatos((prev)=>({...prev,userAct:data, refresh:true}))   
   };
-console.log(auth.user);
+
   const logout = () => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
     setDatos((prev)=>({...prev,userAct:null, token:null, refresh:true}))
     navigate('/');  
   };
-
 
   return (
     <AuthContext.Provider value={{ auth, setAuth, login, fetchProfile, logout }}>

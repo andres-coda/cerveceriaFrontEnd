@@ -9,6 +9,7 @@ import { MdOutlineLockPerson } from 'react-icons/md';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useAuth } from '../auth/AuthContext';
 import { IoPersonCircleOutline } from 'react-icons/io5';
+import { getUserDetails } from '../reservas/actions/getUserDetails';
 
 function Header() {
   const { datos } = useContext(contexto);
@@ -17,10 +18,22 @@ function Header() {
   const [nosotrosDropdownOpen, setNosotrosDropdownOpen] = useState(false);
   const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-  const location = useLocation();
   const { auth, logout } = useAuth();
-  const { user } = auth;
-
+  
+  const {user, token} = auth || {};
+  const userId = user?.sub;
+  const [userDetails, setUserDetails] = useState({});
+  
+  useEffect(() => {
+    if (userId && token) {
+      getUserDetails(userId, token).then(details => {
+        setUserDetails(details);
+      }).catch(error => {
+        console.error('Error fetching user details:', error);
+      });
+     }
+  }, [userId, token]);
+ 
   useEffect(() => {
     if (!clicked) {
       setMenuDropdownOpen(false);
@@ -34,14 +47,16 @@ function Header() {
     setClicked(!clicked);
   };
 
-  const isCartaSectionActive = location.pathname.startsWith('/menu');
-  const isCarritoSectionActive = location.pathname === '/carrito';
-  const isReservasSectionActive = location.pathname === '/reservas';
+  // const isCartaSectionActive = location.pathname.startsWith('/menu');
+  // const isCarritoSectionActive = location.pathname === '/carrito';
+  // const isReservasSectionActive = location.pathname === '/reservas';
 
   const closeMenuDropdown = () => setMenuDropdownOpen(false);
   const closeNosotrosDropdown = () => setNosotrosDropdownOpen(false);
   const closeAdminDropdown = () => setAdminDropdownOpen(false);
   const closeUserDropdown = () => setUserDropdownOpen(false);
+
+  const pedidosCount = userDetails.pedidos ? userDetails.pedidos.length : 0;
 
   return (
     <div id="header" className="header">
@@ -87,14 +102,21 @@ function Header() {
               ))}
             </div>
           </NavDropdown>
+          <li><NavLink to="/reservas">Reservas</NavLink></li>
+          <div className={`cart-icon active `}>
+            <NavLink to="/carrito" className='cart'>
+              <FaShoppingCart />
+              <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
+            </NavLink>
+          </div>
           {user ? (
             <div className="user-menu">
               <NavDropdown
                 id="nav-dropdown-user"
                 title={
                   <>
-                  <IoPersonCircleOutline className='iconLogin'/>
-                  {user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
+                    <IoPersonCircleOutline className='iconLogin' />
+                    {user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
                   </>
                 }
                 menuVariant="dark"
@@ -102,14 +124,18 @@ function Header() {
                 show={userDropdownOpen}
               >
                 <div className='back-drop'>
+                  <div className='profile'>{`Nombre: ${(auth.user.name) || ''} ${(auth.user.lastname) || ''}`}</div>
+                  <div className='profile'>{`Email: ${(auth.user.email) || ''}`}</div>
+                  <div className='profile'>{`Rol: ${(auth.user.role) || ''}`}</div>
+                  <div className='profile'>{`Pedidos: ${pedidosCount}`}</div>
                   <NavLink className='drop-item' onClick={() => { closeUserDropdown(); logout(); }}>Logout</NavLink>
                 </div>
               </NavDropdown>
             </div>
           ) : (
-            <li><NavLink to="/login"><MdOutlineLockPerson className='iconLogin'/>Login</NavLink></li>
+            <li><NavLink to="/login"><MdOutlineLockPerson className='iconLogin' />Login</NavLink></li>
           )}
-          <li><NavLink to="/reservas">Reservas</NavLink></li>
+          {/* <li><NavLink to="/reservas">Reservas</NavLink></li> */}
           {user && user.role === "admin" ? (
             <NavDropdown
               id="nav-dropdown-admin"
@@ -130,10 +156,10 @@ function Header() {
           ) : null}
         </ul>
       </nav>
-      <div className={`cart-icon ${isCartaSectionActive || isCarritoSectionActive || isReservasSectionActive ? 'active' : ''}`}>
+      {/* <div className={`cart-icon active `}>
         <NavLink to="/carrito" className='cart'><FaShoppingCart  /></NavLink>
         <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
-      </div>
+      </div> */}
       <div className="burguer">
         <BurguerButton clicked={clicked} handleClick={handleClick} />
       </div>

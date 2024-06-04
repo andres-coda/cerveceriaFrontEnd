@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useAuth } from "../auth/AuthContext";
+//import { useAuth } from "../auth/AuthContext";
 import { fetchGet } from "../funciones fetch/funciones";
 import { URL_CATEGORIA, URL_METODOPAGO, URL_PRODUCTO, URL_SUCURSAL, URL_TIPO } from "../../endPoints/endPoints";
 
