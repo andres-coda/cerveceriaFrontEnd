@@ -1,70 +1,66 @@
-
+/* Contenedor de la tarjeta */
 .card-sucursal-container {
     position: relative;
-    width: 10%;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* Contenedor de la imagen */
+.card-img-sucursal-container {
+    width: 100%;
     height: 100%;
     overflow: hidden;
-    
-}
-/*contenedor img */
-.card-img-sucursal-container {
-  width: 100%;
-  height:100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-/*imagen card*/
+/* Imagen de la tarjeta */
 .card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  border-radius: 10px;
-  border: solid 1px var(--color3);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
 }
 
-/*contenedor hover card */
+/* Contenedor del hover */
 .card-sucursal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(91, 85, 85, 0.879);
-  color: var(--color3);
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  transition: opacity 0.4s ease;
-   box-sizing: border-box;
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(91, 85, 85, 0.879);
+    color: var(--color3);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: opacity 0.4s ease;
+    box-sizing: border-box;
 }
 
-/*h3 cards hover redes*/
+/* Texto dentro del hover */
 .card-sucursal-overlay h3 {
-  text-align: start;
-  font-size: 1em;
-  letter-spacing: 0.2em;
-  padding-left: 8px;
-
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: 0.1em;
 }
 
-.card-h3 {
-  color: var(--color2);
-  font-size: 0.8em;
-  text-align: start;
-
+/* Estilo del título */
+.card-h1 {
+    color: var(--color2);
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 10px;
 }
- .imagen {
-  width: 100%;
-} 
-
-
 
 .card-sucursal-container:hover .card-img {
     transform: scale(1.1);
@@ -74,137 +70,25 @@
     opacity: 1;
 }
 
-.icon-button:hover {
-    background-color: var(--color3);
-    color: var(--color1);
-}
-
-
-/*contenedor card*/
+/* Contenedor de todas las tarjetas */
 .container-all-cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 80vw;
-  }
-  
-  /* Cards sucursal */
-  .cards-sucursal {
-    flex-grow: 1; /* Permitir que las tarjetas crezcan */
-      flex-shrink: 1; /* Permitir que las tarjetas se encojan */
-      width: 500px; /* Ajusta el tamaño según sea necesario */
-      height: 350px;
-      min-width: 250px; /* Tamaño mínimo para el ancho */
-      min-height: 250px; /* Tamaño mínimo para la altura */
-      margin: 15px;
-      padding: 0px;
-       border-radius: 10px;
-      text-align: center;
-      position: relative;
-      display:inline-flex;
-      
-     
-
-   
-  }
-  
-  /*formulario editar*/
-  .cards-sucursal input ,
-  .card-sucursal label{
-    margin: 0.1rem;
-    text-align: start;
-  }
-  
-  .card-img-sucursal-form {
     width: 100%;
-  }
-  .cards-sucursalEliminada input, 
-  .cards-sucursalEliminada label,
-  .cards-sucursal input ,
-  .card-sucursal label{
-    margin: 0.1rem;
-  }
-  
-  .cards-sucursalEliminada label,
-  .cards-sucursal label{
-    color: var(--color4);
-    text-align: left;
-    width:80%;
-    font-size: 0.7em;
-  }
-  
-  
-  
-  /* contairner botones iconos editar, borrar y restaurar vista admin*/
-  .btn-icon{
+}
+
+/* Contenedor de los botones de iconos */
+.btn-icon {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     position: absolute;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-  }
-  
-
-
-  /*img del form*/
-  .card-img-form {
-  
-    margin-top: 30px; 
-   
-  }
-  
-  
-  /*form edit del modal*/
-  .form-modal {
-    height: auto;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-  }
-  
-  .cards-sucursal input, .cards-sucursalEliminada input {
-    margin: 5px;
-    width: auto;
-  
-  }
-  
-  .cards-sucursal label, .cards-sucursalEliminada label{
-    font-size: 0.8rem;
-    color: var(--color1);
-    font-weight: bold;
-  
-    
-  }
-  
-  .card-sucursal img, .cards-sucursalEliminada img {
     width: 100%;
-    height: 100px;
-    margin-top: 10px;
-    object-fit: cover;
-   
-  }
-  .cards-sucursal h1, .cards-sucursalEliminada h1 {
-    color: var(--color3);
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    letter-spacing: 0.1em; 
-    font-weight: bold;
-  } 
-  
- 
-  
-  /*iconos de redes*/
-  .icon {
-      margin: 6px;
-      color:var(--color4);
-  }
-  
-  /*iconos de botones*/
- 
+    gap: 10px;
+}
 
+/* Botones de iconos */
 .icon-button {
     background: none;
     border: 1px solid var(--color2);
@@ -212,49 +96,29 @@
     cursor: pointer;
     color: var(--color2);
     padding: 5px;
-    margin-top: 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-  
-  .icon-button:hover {
+
+.icon-button:hover {
     background-color: var(--color3);
+    color: var(--color1);
     border-radius: 10px;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 926px) {
+    .cards-sucursal {
+        width: 80%;
+        height: auto;
+        margin-top: 5px;
     }
 
-@media (max-width: 926px) {
-    
- .cards-sucursal {
-  margin-top: 5px;
-  height: 38vh;
-  width: 38vw;
- 
- }
     .card-sucursal-overlay h3 {
-        text-align: start;
-        font-size: 0.6em;
-       
-            
+        font-size: 0.8em;
     }
 
-  
-
-    .cards-sucursal h1,.card-sucursal-overlay h3 {
-            font-size: 1em;
-        margin-bottom: 10px ;
-       
+    .cards-sucursal h1 {
+        font-size: 1em;
+        margin-bottom: 5px;
     }
-}
-
-@media (max-width: 926px) {
- .card-sucursal-overlay h3 {
-    font-size: 0.8em;
-margin-bottom: 5px ;
-}
-
-.cards-sucursal h1{
-  font-size: 1em;
-  margin-bottom: 5px;
- 
-}
-
 }
