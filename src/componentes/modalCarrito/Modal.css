@@ -19,7 +19,6 @@
     min-width: 210px;
     width: 60%;
     max-height: 80vh;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -3,6 +3,8 @@ import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import './ModalPago.css';
 import InputMask from 'react-input-mask';
+import Boton from '../boton/Boton';
+import { FaTimes } from 'react-icons/fa';
 
 const ModalPago = ({ isVisible, onClose, metodoPago, onSubmitPago }) => {
   const [formData, setFormData] = useState({
@@ -32,7 +34,9 @@ const ModalPago = ({ isVisible, onClose, metodoPago, onSubmitPago }) => {
 
   return (
     <div className="modalPago">
-      <span className="close" onClick={onClose}>&times;</span>
+      <Boton btn={{id:"cerrar", clase: "cerrar", texto: <FaTimes />}} btnClick={onClose} />
+      {//<span className="close" onClick={onClose}>&times;</span>
+      }
       <h3>Pagar con {metodoPago}</h3>
       <div className="line-modal-pago"></div>
       <div className="modal-content">
