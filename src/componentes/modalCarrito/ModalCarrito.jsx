@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Modal.css';
 import Boton from '../boton/Boton';
 import { contexto } from '../contexto/contexto';
@@ -8,6 +8,7 @@ import { FaTimes } from 'react-icons/fa';
 import { convertEnumValueToDisplayValue } from '../../utils/convertValue';
 import { URL_PEDIDO } from '../../endPoints/endPoints';
 import ModalPago from '../reservas/ModalPago';
+import { fetchPost } from '../funciones fetch/funciones';
 
 function ModalCarrito ({setModal}) {
     const {datos} = useContext(contexto);
@@ -21,7 +22,8 @@ function ModalCarrito ({setModal}) {
     });
     const [detalle, setDetalle ] = useState({
         detalle: "",
-        metodoPago: "Metodo de pago"
+        metodoPago: "Metodo de pago",
+        idMetodo: null
     });
     const [modalTarjeta, setModalTarjeta] =useState(false);
 
@@ -31,7 +33,8 @@ function ModalCarrito ({setModal}) {
 
     const handlePagoSubmit= (datos) => {
         console.log(datos);
-        setTarjeta((prev)=>({...prev, texto: "Realizar pedido", id: "pago"}))
+        setTarjeta((prev)=>({...prev, texto: "Realizar pedido", id: "pago"}));
+        setModalTarjeta(false);
     };
 
     const pago = async (e)=> {
@@ -40,15 +43,15 @@ function ModalCarrito ({setModal}) {
                 fecha: new Date(),
                 detalle: detalle.detalle,
                 usuario: datos.userAct.sub,
-                metodoPago: detalle.metodoPago
+                metodoPago: detalle.idMetodo
             }
             const resp = await fetchPost(URL_PEDIDO, localStorage.getItem('token'), pedido)
-            if (resp==true) {
-                setTexto((prev)=>({...prev, texto:"El pedido fue aprobado", estado:true}));
+            if (resp) {
+                setTexto((prev)=>({...prev, subtitulo:"El pedido fue aprobado", espera:true}));
             }
 
         }catch (error) {
-            setTexto((prev)=>({...prev, texto: "El pedido no fue aprobado"}))
+            setTexto((prev)=>({...prev, subtitulo: "El pedido no fue aprobado"+error, espera:true}))
 
         }
     }
@@ -56,8 +59,8 @@ function ModalCarrito ({setModal}) {
     const onselect=(e) => {
         const select = e.target.value;
         const option= datos.metodoPago.find(metodo => convertEnumValueToDisplayValue(metodo.metodoPago) === select);
-        setDetalle((prev)=>({...prev, metodoPago: convertEnumValueToDisplayValue(option.metodoPago)}));
-    
+        const idMetodo = datos.metodoPago.find(metodo => convertEnumValueToDisplayValue(metodo.metodoPago) === select)?.id;
+        setDetalle((prev)=>({...prev, idMetodo:idMetodo,  metodoPago: convertEnumValueToDisplayValue(option.metodoPago)}));
       }
 
     const onChange = (e) => {
@@ -74,22 +77,25 @@ function ModalCarrito ({setModal}) {
                 setModal((prev)=>({...prev, metodoPago:false}));
             break;
             case "pago" :
-                setTexto((prev)=>({...prev, texto:"Procesando pedido...", estado:true}));
+                setTexto((prev)=>({...prev, subtitulo:"Procesando pedido...", espera:true}));
                 pago();
             break;
             case "tarjeta" :
-                setModalTarjeta(true)
+                setModalTarjeta(true);
             default:
                 console.log("boton no implementado");
             break;
         }
     }
 
-    if (texto.espera) {
-        if (datos.metodoPago  && datos.metodoPago.length > 0) {
-            setTexto((prev)=>({...prev, espera:false}))
+    useEffect(()=>{
+        if (texto.espera) {
+            if (datos.metodoPago  && datos.metodoPago.length > 0) {
+                setTexto((prev)=>({...prev, espera:false}))
+            }
         }
-    }
+    },[])
+
 
     return (
         <>
