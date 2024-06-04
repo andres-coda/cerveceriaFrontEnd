@@ -24,8 +24,6 @@ import MenuAux from "./componentes/menu/MenuAux";
 import PrivateRoute from "./componentes/privateRoute/PrivateRoute";
 import { AuthProvider } from "./componentes/auth/AuthContext";
 import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
-import EditSucursal from "./componentes/DondeEstamos/EditSucursal";
-import MetodosPago from "./componentes/carrito/MetodoPago";
 import MenuDetalles from "./componentes/menuDetalles/MenuDetalles";
 import ModalCarrito from "./componentes/modalCarrito/ModalCarrito";
 function App() {

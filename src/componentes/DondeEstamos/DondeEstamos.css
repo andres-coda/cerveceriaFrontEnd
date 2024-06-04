@@ -1,8 +1,11 @@
-@font-face {
-  font-family: 'selima';
-  src: url('src/assets/fonts/selima_.otf') format('opentype');
+.prueba{
+  width: 100vw;
+  height: auto;
 }
-
+.prueba img{
+  width: 200%;
+  height: 50vh;
+}
 .container-all-map {
   display: flex;
   flex-wrap: wrap;
