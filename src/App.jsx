@@ -22,6 +22,7 @@ import { AuthProvider } from "./componentes/auth/AuthContext";
 import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
 import MenuDetalles from "./componentes/menuDetalles/MenuDetalles";
 import ModalCarrito from "./componentes/modalCarrito/ModalCarrito";
+import MostrarPedidos from "./componentes/pedidos/pedidos";
 function App() {
   const { datos } = useContext(contexto);
   return ( 
@@ -63,6 +64,7 @@ function App() {
            <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/perfil' element={<ModalUsers />} />
           </Route>
+            <Route path='/pedidos' element={<MostrarPedidos/>} />
         </Routes>
       <Footer />
     </AuthProvider>  
