@@ -18,13 +18,22 @@ function PedidosCard({pedido, click}) {
 
 	return (
 		<div className={!pedido.deleted ? "pedido-card" : "pedido-card-eliminado"} onClick={click} id={pedido.id}>
-			<p><b>Fecha: </b> {formatoFecha(pedido.fecha)} </p>
-			{pedido.pedidosProducto.map((producto)=>(
-				<div key={producto.producto.idProducto}>
-					<p><b>{producto.cantidad} </b> {producto.producto.titulo} </p>
-				</div>
-			))}
-			<p><b>Importe: </b> ${importe} </p>
+            <div className='pedido-encabezado'>
+                <p className='pedido-fecha'><b> {formatoFecha(pedido.fecha)} </b> </p>
+            </div>
+            <div className='pedido-cuerpo'>
+                <div className='pedido-productos-content' >
+                    {pedido.pedidosProducto.map((producto)=>(
+                        <div className='pedido-producto' key={producto.producto.idProducto}>
+                            <p><b>{producto.cantidad} </b></p>
+                            <img src={producto.producto.img} alt={producto.producto.titulo} />
+                            <p> {producto.producto.titulo} </p>
+                        </div>
+                    ))}
+                </div>
+                <p className='pedido-importe'><b>Importe: </b> ${importe} </p>
+            </div>
+            <p className='pedido-pie'><b>Detalles del pedido: </b>{pedido.detalle}</p>
 		</div>
 	)
 }

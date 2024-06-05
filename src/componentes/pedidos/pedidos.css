@@ -1,6 +1,7 @@
 .pedidos-menu{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 
@@ -8,8 +9,8 @@
 .pedido-card-eliminado{  
     display: flex;
     flex-direction: column;
-    background-color: var(--color1);
-    max-width: 20vw;
+    background-color: var(--color9);
+    width: 80%;
     margin: 0.5rem;
     border-radius: 8px;
     align-items: start;
@@ -19,14 +20,64 @@
 }
 
 .pedido-card{
-    border: 1px solid var(--color3);
+    box-shadow: 1px 1px 2px var(--color3);
+    
 }
 .pedido-card-eliminado{
-    border: 1px solid var(--color6);
+    border: 1px solid var(--color4);
 }
 
 .pedido-card-eliminado p,
 .pedido-card p{
-    color: var(--color2);
+    color: var(--color4);
+    font-size: 0.9em;
+}
 
+.pedido-encabezado{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color8);
+    padding: 0 1rem;
+}
+
+.pedido-fecha b{
+    font-size: 1em;
+    margin-right: 0.5rem;
+    color: var(--color2);
+}
+
+.pedido-producto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.pedido-producto img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0.2rem 1rem;
+}
+
+.pedido-cuerpo{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pedido-importe{
+    padding: 0 1rem 0 0.2rem;
+    text-align: end;
+}
+
+.pedido-pie{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-top: 1px solid var(--color8);
 }
