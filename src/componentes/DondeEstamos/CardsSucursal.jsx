@@ -160,7 +160,7 @@ const CardsSucursal = ({ sucursal }) => {
                     </div>
                 ) : (
                     datos.userAct && datos.userAct.role === "admin" && (
-                        <div>
+                        <div className='button-icon-container-edit-remove'>
                             <button onClick={startEditing} title='Editar Surcursal' className='icon-button'><FaEdit /></button>
                             <button onClick={DeleteSucursal} title='Eliminar Surcursal' className='icon-button'><FaTrash /></button>
                         </div>

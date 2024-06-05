@@ -19,7 +19,7 @@ const DondeEstamos = () => {
                         height: 'auto', // Altura automática para mantener la proporción
                         backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
                         backgroundPosition: 'center', // Posición centrada de la imagen
-                      }}>
+                    }}>
                     <div style={{ height: "90vh", width: "100vw", marginTop: "0" }} >
                     </div>
                 </Parallax>
@@ -34,7 +34,7 @@ const DondeEstamos = () => {
                         height: 'auto', // Altura automática para mantener la proporción
                         backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
                         backgroundPosition: 'center', // Posición centrada de la imagen
-                      }}>
+                    }}>
                     <div style={{ height: "60vh", width: "100vw", marginTop: "0" }}>
                     </div>
                 </Parallax>
@@ -51,26 +51,27 @@ const DondeEstamos = () => {
                     <h3 className='border'>¡PONGÁMONOS EN CONTACTO!</h3>
                 </div>
                 <Parallax strength={100}
-                  bgImageStyle={{
-                    width: '100%', // Ancho al 100% del contenedor
-                    height: 'auto', // Altura automática para mantener la proporción
-                    backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
-                    backgroundPosition: 'center', // Posición centrada de la imagen
-                  }}
+                    bgImageStyle={{
+                        width: '100%', // Ancho al 100% del contenedor
+                        height: 'auto', // Altura automática para mantener la proporción
+                        backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
+                        backgroundPosition: 'center', // Posición centrada de la imagen
+                    }}
                     renderLayer={(percentage) => (
                         <div className="contacto-container">
-                            <div className="logo-zoom" style={{
-                                background: `url(./src/assets/Logo.png) no-repeat center/cover`,
-                                width: percentage * 350,
-                                height: percentage * 350,
-                            }}></div>
                             <div>
-                                <div >
-                                    <Contacto />
 
-                                </div>
-
+                            <div className="logo-container">
+                                <div className="logo-zoom" style={{
+                                    background: `url(./src/assets/Logo.png) no-repeat center/cover`,
+                                    width: percentage * 300,
+                                    height: percentage * 300,
+                                }}></div>
                             </div>
+                                </div>
+                            
+                                <Contacto />
+                            
                         </div>
                     )}>
                 </Parallax>
@@ -84,15 +85,15 @@ const DondeEstamos = () => {
                         height: 'auto', // Altura automática para mantener la proporción
                         backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
                         backgroundPosition: 'center', // Posición centrada de la imagen
-                      }}
-                    
+                    }}
+
                 >
                     <div style={{ height: '100vh' }}></div>
                 </Parallax>
                 <div className='section-mapa'>
                     <h3 className='border'>¡VENÍ A CONCOCERNOS!</h3>
                     <div className='card-map'>
-                       <SectionMapa/>
+                        <SectionMapa />
                     </div>
                 </div>
 
