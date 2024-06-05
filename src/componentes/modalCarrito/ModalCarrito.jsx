@@ -6,15 +6,18 @@ import AnimatedSVG from '../animacion/AnimatedSVG';
 import FormularioInput from '../formularioInput/FormularioInput';
 import { FaTimes } from 'react-icons/fa';
 import { convertEnumValueToDisplayValue } from '../../utils/convertValue';
-import { URL_PEDIDO } from '../../endPoints/endPoints';
+import { URL_PEDIDO, URL_PEDIDO_PRODUCTO } from '../../endPoints/endPoints';
 import ModalPago from '../reservas/ModalPago';
 import { fetchPost } from '../funciones fetch/funciones';
+import CargarPedidoAlerta from '../eliminarAlerta/CargarPedido';
 
 function ModalCarrito ({setModal}) {
-    const {datos} = useContext(contexto);
+    const {datos, setDatos} = useContext(contexto);
     const [texto, setTexto ] = useState({ 
         subtitulo: "Realizar pedido",
-        espera: true
+        espera: true,
+        exito:false,
+        texto: null
     });
     const [tarjeta, setTarjeta] = useState({
         texto: "Añadir tarjeta",
@@ -47,13 +50,36 @@ function ModalCarrito ({setModal}) {
             }
             const resp = await fetchPost(URL_PEDIDO, localStorage.getItem('token'), pedido)
             if (resp) {
-                setTexto((prev)=>({...prev, subtitulo:"El pedido fue aprobado", espera:true}));
+                guardarPedido(resp.id);
+                console.log("guardo el pedido");
+                console.log(resp);
             }
 
         }catch (error) {
-            setTexto((prev)=>({...prev, subtitulo: "El pedido no fue aprobado"+error, espera:true}))
+            setTexto((prev)=>({...prev,  proceso: true, texto: "El pedido no fue aprobado"+error, espera:true}))
 
         }
+    }
+
+    const guardarPedido = async (idPedido) => {
+       
+        for (const producto of datos.carrito) {
+            try {
+                const pedido = {
+                    cantidad: producto.cantidad,
+                    pedido: idPedido,
+                    producto: producto.idProducto
+                }
+                const resp = await fetchPost(URL_PEDIDO_PRODUCTO, localStorage.getItem('token'), pedido);
+                if (resp) {
+                    setDatos((prev)=>({...prev, carrito:[]}));
+                    setTexto((prev) => ({ ...prev, proceso: true, texto: "El pedido fue aprobado", exito:true }));
+                }
+            } catch (error) {
+                setTexto((prev) => ({ ...prev, proceso: true, texto: "El pedido no fue aprobado. Error: " + error.message, espera: true }));
+            }
+        }
+       
     }
 
     const onselect=(e) => {
@@ -77,7 +103,7 @@ function ModalCarrito ({setModal}) {
                 setModal((prev)=>({...prev, metodoPago:false}));
             break;
             case "pago" :
-                setTexto((prev)=>({...prev, subtitulo:"Procesando pedido...", espera:true}));
+                setTexto((prev)=>({...prev, texto:"Procesando pedido...", espera:true}));
                 pago();
             break;
             case "tarjeta" :
@@ -118,7 +144,11 @@ function ModalCarrito ({setModal}) {
                         </form>
                     ):(
                     <>
-                        <AnimatedSVG />
+                        { texto.texto != null ? (
+                           <CargarPedidoAlerta texto={texto} setTexto={setTexto} /> 
+                        ) : (
+                            <AnimatedSVG />
+                        )}
                     </>
                     )}
                     <Boton btn={{id:"cerrar", clase: "cerrar", texto:<FaTimes />}} btnClick={btnClick} />
