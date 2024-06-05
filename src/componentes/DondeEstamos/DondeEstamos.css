@@ -1,22 +1,37 @@
-
-
-.logo-zoom {
-  transition: width 0.3s, height 0.3s;
-  border-radius: 50%;
+/*logo*/
+.logo-container {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
 }
 
+.logo-zoom {
+  transition: width 0.5s, height 0.3s;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
 
+.form-container {
+  flex-grow: 1;
+  /* Permite que el formulario ocupe el espacio restante */
+  margin-left: 20px;
+}
 
+/*primer section nosotros*/
 .section {
   height: auto;
   display: flex;
   align-items: center;
   margin-top: 20px;
   flex-direction: column;
-  padding: 0 ;
+  padding: 0;
 }
 
-.section p, .section-sucursal p {
+.section p,
+.section-sucursal p {
   font-size: 1.5em;
   color: var(--color3);
   margin-top: 50px;
@@ -30,9 +45,10 @@
   flex-direction: column;
   padding: 10px;
 }
+
 /*contacto form*/
 .section-contacto {
-  height:auto;
+  height: auto;
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -42,20 +58,25 @@
 
 .contacto-container {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
-  height:auto;
-  width: 100%;
-  margin-bottom: 20px;
+  /* Alinear verticalmente en el centro */
+  position: relative;
+  /* Para asegurarse de que los hijos se posicionen relativos a este contenedor */
+  padding: 20px;
+  /* Añade un poco de espacio alrededor */
+  height: 100%;
+
 }
 
 /*h3*/
 .border {
-  background-color: #111;
+
   color: var(--color2);
   padding: 18px;
-  font-size: 18px;
-  letter-spacing: 10px;
+  font-size: 3em;
+
+  font-family: Castor One W01 Regular;
 }
 
 /*mapa y card*/
@@ -63,7 +84,7 @@
   height: auto;
   width: 100%;
   margin-top: 20px;
- 
+
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -74,9 +95,8 @@
   width: 70%;
   height: auto;
   display: flex;
-   
+
 }
 
 
-@media (max-width: 1260px) {
-}
+@media (max-width: 1260px) {}

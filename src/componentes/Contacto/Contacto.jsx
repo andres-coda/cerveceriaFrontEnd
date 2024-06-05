@@ -62,11 +62,9 @@ function Contacto() {
   }
 
   return (
-    <section className="conteinerGeneral">
+   
       <div className="contenedor">
-        <div className='subtitulo'>
-          <Subtitulo clase={"titulo"} texto={"Contacto"} />
-        </div>
+       
         <div className='container-form'>
           {mensajeEnviado ? (
             <div className='mensaje-Enviado'>
@@ -74,12 +72,11 @@ function Contacto() {
               <p>Su mensaje ha sido enviado exitosamente.</p>
               <p>En breve responderemos a su consulta.</p>
               <p>Muchas gracias por elegirnos! Grupo Green Beer.<IoBeerOutline className='beer-icon' /></p>
-              <Boton btn={{ id: "Salir", clase: "comunContacto", texto: "Salir" }} btnClick={mensaje} />
+              <Boton btn={{ id: "Salir", clase: "comun", texto: "Salir" }} btnClick={mensaje} />
             </div>
           ) : (
             <>
-              <Parrafo clase={"form-p"} texto={'¡Queremos conocerte. Dejanos tu mensaje y responderemos a la brevedad!'} />
-              <form onSubmit={handleSubmit} >
+                        <form onSubmit={handleSubmit} className='form-contacto-sucursal'>
                 <input
                   id='consulta'
                   type="text"
@@ -110,16 +107,15 @@ function Contacto() {
                   placeholder="Mensaje"
                   required />
                  <p className="error">{errors}</p>
-                <Boton btn={{ id: "enviar", clase: "comunContacto", texto: "Enviar" }} btnClick={handleSubmit} />
+                <Boton btn={{ id: "enviar", clase: "comun", texto: "Enviar" }} btnClick={handleSubmit} />
               </form>
+                 
             </>
           )}
         </div>
-        <div className="imgLupuloContacto">
-          <img src="https://rentabilibar.s3-eu-west-1.amazonaws.com/media/lupulo_planta.jpg" alt="Lúpulo" />
-        </div>
+       
       </div>
-    </section>
+   
   );
 }
 

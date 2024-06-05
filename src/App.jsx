@@ -6,9 +6,6 @@ import './App.css'
 import { contexto } from './componentes/contexto/contexto'
 import { useContext, useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Menu from './componentes/menu/Menu';
-import QuienesSomos from './componentes/QuienesSomos/QuienesSomos';
-import MenuDetallesAux from './componentes/menuDetalles/MenuDetallesAux';
 import Login from './componentes/auth/Login';
 import Registro from './componentes/auth/Registro';
 import  Home  from './componentes/Home/Home';
@@ -17,7 +14,6 @@ import Header from './componentes/header/Header'
 import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
 import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
-import Contacto from './componentes/Contacto/Contacto'
 import Reservas from './componentes/reservas/Reservas';
 import ModalUsers from "./componentes/modalUsers/ModalUsers";
 import MenuAux from "./componentes/menu/MenuAux";
@@ -52,12 +48,8 @@ function App() {
           <Route path='/menu' element={<MenuAux categoria={undefined}/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
-          <Route path='/quienessomos' element={<QuienesSomos />}/>
           <Route path='/metodopago' element={<ModalCarrito />}/>
-          
-            <Route path='/dondeestamos' element={<DondeEstamos />} />
-         
-          <Route path='/contacto' element={<Contacto />}/>
+          <Route path='/dondeestamos' element={<DondeEstamos />} />
           <Route path='/carrito' element={<Carrito />}/>
           <Route path="/reservas" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/reservas' element={<Reservas />} />
@@ -68,8 +60,7 @@ function App() {
           <Route path="/cargarsucursales" element={<PrivateRoute roles={['admin']} />}>
             <Route path='/cargarsucursales' element={<AddSucursal />} />
           </Route>
-         
-          <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
+           <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/perfil' element={<ModalUsers />} />
           </Route>
         </Routes>
