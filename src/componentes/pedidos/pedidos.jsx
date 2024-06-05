@@ -15,8 +15,6 @@ function MostrarPedidos(){
     const fetchPedidos = async () =>{
         try {
             const usuario = await fetchGet(URL_USUARIO+'/'+datos.userAct.sub, localStorage.getItem('token'));
-            console.log("estoy por aqui");
-            console.log(usuario);
             if (usuario) {
                 setPedidos(usuario.pedidos)
             }
@@ -27,22 +25,18 @@ function MostrarPedidos(){
     if (datos.userAct&& pedidos == null) fetchPedidos();
 
     const btnClick = (e) =>{
-        const btn = e.target.id;
+        const btn = e.currentTarget.id;
         console.log(btn);
     }
 
     
     return(
         <div className="conteinerGeneral">
-            <Subtitulo clase={"subtitulo"} texto={"Lista de pedidos realizados"} />
-            {console.log(pedidos)}
+            <Subtitulo clase={"subtitulo"} texto={pedidos!=null ? `${pedidos.length} pedidos realizados` : `Lista de pedidos realizados`} />
             {pedidos!=null && pedidos.length >0 ? (
                 <div className="pedidos-menu">
                     {pedidos.map((dato)=>(
-                        <>
-                        {console.log(dato)}
                         <PedidosCard pedido={dato} click={btnClick} key={dato.id} />
-                        </>
                     ))}
                 </div>
 

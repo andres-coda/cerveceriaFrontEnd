@@ -109,32 +109,6 @@ function Header() {
               <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
             </NavLink>
           </div>
-          {user ? (
-            <div className="user-menu">
-              <NavDropdown
-                id="nav-dropdown-user"
-                title={
-                  <>
-                    <IoPersonCircleOutline className='iconLogin' />
-                    {user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
-                  </>
-                }
-                menuVariant="dark"
-                onToggle={() => setUserDropdownOpen(!userDropdownOpen)}
-                show={userDropdownOpen}
-              >
-                <div className='back-drop'>
-                  <div className='profile'>{`Nombre: ${(auth.user.name) || ''} ${(auth.user.lastname) || ''}`}</div>
-                  <div className='profile'>{`Email: ${(auth.user.email) || ''}`}</div>
-                  <div className='profile'>{`Rol: ${(auth.user.role) || ''}`}</div>
-                  <div className='profile'>{`Pedidos: ${pedidosCount}`}</div>
-                  <NavLink className='drop-item' onClick={() => { closeUserDropdown(); logout(); }}>Logout</NavLink>
-                </div>
-              </NavDropdown>
-            </div>
-          ) : (
-            <li><NavLink to="/login"><MdOutlineLockPerson className='iconLogin' />Login</NavLink></li>
-          )}
           {/* <li><NavLink to="/reservas">Reservas</NavLink></li> */}
           {user && user.role === "admin" ? (
             <NavDropdown
@@ -154,6 +128,39 @@ function Header() {
               </div>
             </NavDropdown>
           ) : null}
+          {user ? (
+            <div className="user-menu">
+              <NavDropdown
+                id="nav-dropdown-user"
+                title={
+                  <>
+                    <IoPersonCircleOutline className='iconLogin' />
+                    {user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
+                  </>
+                }
+                menuVariant="dark"
+                onToggle={() => setUserDropdownOpen(!userDropdownOpen)}
+                show={userDropdownOpen}
+              >
+                <div className='back-drop'>
+                  <div className='profile'>{`Nombre: ${(auth.user.name) || ''} ${(auth.user.lastname) || ''}`}</div>
+                  <div className='profile'>{`Email: ${(auth.user.email) || ''}`}</div>
+                  <div className='profile'>{`Rol: ${(auth.user.role) || ''}`}</div>
+                  <div className='profile'>{`Pedidos: ${pedidosCount}`}</div>
+                  <NavLink
+                    className='drop-item'
+                    to={`/pedidos`}
+                    onClick={closeMenuDropdown}
+                  >
+                  Mis pedidos
+                  </NavLink>
+                  <NavLink className='drop-item' onClick={() => { closeUserDropdown(); logout(); }}>Logout</NavLink>
+                </div>
+              </NavDropdown>
+            </div>
+          ) : (
+            <li><NavLink to="/login"><MdOutlineLockPerson className='iconLogin' />Login</NavLink></li>
+          )}
         </ul>
       </nav>
       {/* <div className={`cart-icon active `}>
