@@ -6,3 +6,4 @@ export const URL_SUCURSAL = BASE_URL+'/sucursal';
 export const URL_PEDIDO = BASE_URL+'/pedido';
 export const URL_METODOPAGO = BASE_URL+'/metodoPago';
 export const URL_PEDIDO_PRODUCTO = BASE_URL+'/pedido-producto';
+export const URL_USUARIO = BASE_URL+'/usuario';
