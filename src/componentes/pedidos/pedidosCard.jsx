@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './pedidos.css'
+import './pedidosCard.css'
 function PedidosCard({pedido, click}) {
 	const [importe, setImporte] = useState(0);
 	const formatoFecha = (fecha) => {
@@ -31,9 +31,9 @@ function PedidosCard({pedido, click}) {
                         </div>
                     ))}
                 </div>
-                <p className='pedido-importe'><b>Importe: </b> ${importe} </p>
+                <p className='pedido-detalle'>Detalles del pedido: {pedido.detalle}</p>
             </div>
-            <p className='pedido-pie'><b>Detalles del pedido: </b>{pedido.detalle}</p>
+            <p className='pedido-importe'><b>Importe: </b> ${importe} </p>
 		</div>
 	)
 }
