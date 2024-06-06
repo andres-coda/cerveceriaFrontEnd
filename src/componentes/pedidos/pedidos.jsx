@@ -32,16 +32,21 @@ function MostrarPedidos(){
     
     return(
         <div className="conteinerGeneral">
-            <Subtitulo clase={"subtitulo"} texto={pedidos!=null ? `${pedidos.length} pedidos realizados` : `Lista de pedidos realizados`} />
             {pedidos!=null && pedidos.length >0 ? (
-                <div className="pedidos-menu">
-                    {pedidos.map((dato)=>(
-                        <PedidosCard pedido={dato} click={btnClick} key={dato.id} />
-                    ))}
-                </div>
+                <>
+                    <p className='pedido-cantidad'>{`${pedidos.length} pedidos realizados`}</p>
+                    <div className="pedidos-menu">
+                        {pedidos.map((dato)=>(
+                            <PedidosCard pedido={dato} click={btnClick} key={dato.id} />
+                        ))}
+                    </div>
+                </>
 
             ):(
-                <AnimatedSVG />
+                <>
+                    <Subtitulo clase={"subtitulo"} texto={pedidos!=null ? `${pedidos.length} pedidos realizados` : `Lista de pedidos realizados`} />
+                    <AnimatedSVG />
+                </>
             )}
         </div>
     )
