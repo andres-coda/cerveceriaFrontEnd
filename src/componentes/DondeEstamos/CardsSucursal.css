@@ -55,7 +55,7 @@
 /*h3 cards redes*/
 .card-overlay h3 {
   text-align: start;
-  font-size: 1em;
+  font-size: 1.2em;
   letter-spacing: 0.2em;
   padding-left: 8px;
   font-family: 'Castor One W01 Regular';
@@ -148,7 +148,7 @@
 
 /*img del form*/
 .card-img-form {
-  margin-top: 30px;
+  margin-top:30vh;
 }
 
 
@@ -207,15 +207,14 @@
   color: var(--color4);
 }
 
-/*iconos de botones*/
+/*iconos de botones edit, remove, restore*/
 
 
 .icon-button {
-  background: none;
-  border: 1px solid var(--color2);
+  width: 40px;
+  background: var(--color2);
   border-radius: 4px;
   cursor: pointer;
-  color: var(--color2);
   padding: 5px;
   margin-top: 10px;
   transition: background-color 0.3s ease, color 0.3s ease;

@@ -44,7 +44,7 @@ const SectionMapa = ({ sucursalId }) => {
           )}
         </div>
    
-          <MapL />  
+       {/*    <MapL />   */}
       
       </div>
    

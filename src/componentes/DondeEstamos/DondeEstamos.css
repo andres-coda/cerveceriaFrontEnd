@@ -75,7 +75,6 @@
   color: var(--color2);
   padding: 18px;
   font-size: 3em;
-
   font-family: Castor One W01 Regular;
 }
 
@@ -97,6 +96,23 @@
   display: flex;
 
 }
+.parallax{
+  height: 90vh;
+  width: 90vw;
+  margin-top: 0;
+}
 
+@media (max-width:768px) {
+  .border{
+    font-size:2em ;
+  }
+ .parallax{
+  height: 35vh;
+ }
+  }
 
-@media (max-width: 1260px) {}
+  @media (max-width:480px) {
+    .parallax{
+      height: 40vh;
+    }
+  }
