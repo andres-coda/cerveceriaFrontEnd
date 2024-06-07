@@ -23,11 +23,11 @@
     justify-content: space-around;
     border: 1px solid #ccc;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    background-color: #fff;
     height: 500px;
-  }
+    border: var();
+  } 
+  
   
  
   .card-img-form img {
