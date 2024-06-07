@@ -1,87 +1,36 @@
-
+/* Contacto.css */
 
 .contenedor {
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  align-content: start;
   flex-direction: column;
-  height: 70vh;
+  height: 90vh;
   width: 50%;
-  filter: brightness(100%);
- 
-}
-
-.container-form{
-  width: 30vw;
-
-}
-/*subtitulo*/
-.titulo {
-  position: absolute;
-  left: 50%;
-  top: 5%;
-  transform: translate(-50%, -50%);
-  color: white;
-  padding: 10px;
-  border-radius: 20px;
-}
-
-.titulo h1 {
-  font-size: 1.5em;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  letter-spacing: 8px;
-  color: black;
-  background-color: #F1F1EF;
-}
-
-.titulo span {
-  background-color: #F1F1EF;
-}
-
-.titulo h1:before {
-  border-top: solid black;
-  width: 79vw;
-}
-
-/**contenedor formulario*/
-
-.form-contacto-sucursal {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin: 10px;
 
 }
 
-.form-contacto-sucursal input {
-  width: 100%;
-  max-width: 500px;
-  height: 30px;
-  resize: none;
-  border-color: black 2px;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
+.container-form {
+  width: 40vw;
+  align-items: center;
 }
-/*confirmación de mensaje enviado */
+
+/* Confirmación de mensaje enviado */
 .mensaje-Enviado {
   display: flex;
-  width: clamp(20rem, 50vw, 60rem);
-  height: 50vh;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: #1D1D1Bff;
   border: 5px solid var(--color3);
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 0 10px var(--color3);
   position: fixed;
-  top: 58vh;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2000; 
 }
 
 .mensaje-Enviado p {
@@ -90,69 +39,80 @@
   font-size: clamp(0.5rem, 1rem, 1.2rem);
 }
 
-.mensaje-Enviado img {
-  max-width: 10rem;
-  margin-bottom: 10px;
+
+/* Otros estilos */
+.form-contacto-sucursal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+   flex-wrap: wrap;
+   align-items: center;
+ 
 }
 
-/*icono de cerbeza*/
-.beer-icon {
-  width: 20px;
+.form-contacto-sucursal input,
+.form-contacto-sucursal textarea {
+  width: 100%;
+  max-width: 500px;
+  resize: none;
+  border-color: black 2px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.label-contacto {
+
+  color: var(--color3);
+  width: 90%;
+}
+.form-contacto-sucursal input {
+  height: 30px;
+}
+
+.textarea {
+  min-height: 40vh;
+}
+.form-contacto-sucursal label {
+  height: 30px;
+  text-align: start;
+  margin-left: 10px;
 }
 
 
-.form label {
-  color: #F1F1EF;
-  text-align: left;
-  font-size: 1em;
-  background: rgba(164, 164, 164, 0.7);
-  width: 5vw;
-  text-align: center;
+/*boton*/
+.contacto{
+  width: 75%;
+  
 }
-
 .error {
   padding: 5px;
   border-radius: 10px;
   color: red;
   font-weight: bold;
   margin: 10px 80px 10px 80px;
-  }
-
-
-/*textarea*/
-.form-contacto-sucursal textarea {
-  width: 100%;
-  max-width: 500px;
-  min-height: 40vh;
-  resize: none;
-  border-color: black 2px;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 20px;
 }
 
-
-
-/*media para título principal,form, p de error mensaje enviado y botón form*/
-@media (max-width:770px) {
-  .titulo h1:before {
-    width: 69vw;
-  }
-
-  .titulo {
-    top: 7%;
-  }
-
-  .form-p {
-    margin: 0px 0px 0px 0px;
+@media (max-width: 770px) {
+  .container-form {
+    width: 60%;
   }
 
   .error {
     font-size: 0.8em;
     margin: 10px 50px 10px 50px;
   }
+}
 
-  .comunContacto {
-    width: 30vw;
+@media (max-width: 760px) {
+  .container-form {
+    width: 90%;
+  }
+  .mensaje-Enviado{
+    width: 80vw ;
+  }
+  .contenedor{
+    width: 100vw;
   }
 }

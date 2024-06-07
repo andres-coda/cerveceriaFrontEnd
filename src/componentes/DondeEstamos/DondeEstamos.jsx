@@ -9,6 +9,7 @@ import SectionMapa from './SectionMapa';
 const DondeEstamos = () => {
     const { datos } = useContext(contexto);
 
+
     return (
         <>
             <div className='body'>
@@ -20,7 +21,7 @@ const DondeEstamos = () => {
                         backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
                         backgroundPosition: 'center', // Posición centrada de la imagen
                     }}>
-                    <div style={{ height: "90vh", width: "100vw", marginTop: "0" }} >
+                    <div className='parallax'  >
                     </div>
                 </Parallax>
                 <div className='section'>
@@ -35,7 +36,7 @@ const DondeEstamos = () => {
                         backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
                         backgroundPosition: 'center', // Posición centrada de la imagen
                     }}>
-                    <div style={{ height: "60vh", width: "100vw", marginTop: "0" }}>
+                    <div className='parallax' >
                     </div>
                 </Parallax>
                 <div className='section-sucursal'>
@@ -50,13 +51,13 @@ const DondeEstamos = () => {
                 <div className='section-contacto'>
                     <h3 className='border'>¡PONGÁMONOS EN CONTACTO!</h3>
                 </div>
-                <Parallax strength={100}
+                <Parallax strength={100}   blur={{ min: -20, max: 20 }}
                     bgImageStyle={{
-                        width: '100%', // Ancho al 100% del contenedor
-                        height: 'auto', // Altura automática para mantener la proporción
-                        backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
-                        backgroundPosition: 'center', // Posición centrada de la imagen
-                    }}
+                        width: '100%', 
+                        height: 'auto', 
+                        backgroundSize: 'cover', 
+                        backgroundPosition: 'center', 
+                    }} 
                     renderLayer={(percentage) => (
                         <div className="contacto-container">
                             <div>
@@ -88,7 +89,7 @@ const DondeEstamos = () => {
                     }}
 
                 >
-                    <div style={{ height: '100vh' }}></div>
+                    <div className='parallax'></div>
                 </Parallax>
                 <div className='section-mapa'>
                     <h3 className='border'>¡VENÍ A CONCOCERNOS!</h3>

@@ -12,20 +12,18 @@
 }
 
 .modal-content-sucursal {
-  background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+  background-color: var(--color2);
   padding: 20px;
   border-radius: 8px;
-  width: 45%; /* Ocupa el 40% del ancho de la pantalla */
-  max-width: 600px; /* Máximo ancho del modal */
-  max-height: 80vh; /* Altura máxima del modal */
+  width: 40vw; /* Ancho del modal al 100% del viewport */
+  max-height: 100vh; /* Altura máxima del modal */
   overflow-y: auto; /* Barra de desplazamiento vertical */
   display: flex; /* Cambiamos a flexbox para centrar el contenido */
   flex-direction: column; /* Apilamos los elementos verticalmente */
   align-items: center; /* Centramos horizontalmente */
   justify-content: center; /* Centramos verticalmente */
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* No permita el wrap para asegurar que los elementos están en columna */
 }
-
 .modal-close {
   position: absolute;
   top: 10px;
@@ -41,14 +39,14 @@
   color: rgb(138, 8, 8);
 }
 
-  .modal-content-sucursal::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    background-color:  var(--color2);
-    border-radius: 10px;
+.modal-content-sucursal::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color2);
+  border-radius: 10px;
 }
 
 .modal-content-sucursal::-webkit-scrollbar-thumb {
-    background-color: var(--color4);
-    border-radius: 10px;
-} 
+  background-color: var(--color4);
+  border-radius: 10px;
+}

@@ -68,7 +68,7 @@ function Contacto() {
         <div className='container-form'>
           {mensajeEnviado ? (
             <div className='mensaje-Enviado'>
-              <img src="src/assets/Logo.png" alt="Logo del Restaurante" />
+             
               <p>Su mensaje ha sido enviado exitosamente.</p>
               <p>En breve responderemos a su consulta.</p>
               <p>Muchas gracias por elegirnos! Grupo Green Beer.<IoBeerOutline className='beer-icon' /></p>
@@ -77,6 +77,9 @@ function Contacto() {
           ) : (
             <>
                         <form onSubmit={handleSubmit} className='form-contacto-sucursal'>
+                          <div className='label-contacto'>
+                          <label>Nombre</label>
+                          </div>
                 <input
                   id='consulta'
                   type="text"
@@ -85,6 +88,7 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Nombre"
                   required />
+                   <label className='label-contacto'>Apellido</label>
                 <input
                   type="text"
                   name="lastName"
@@ -92,6 +96,7 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Apellido"
                   required />
+                   <label className='label-contacto'>Email</label>
                 <input
                   type="email"
                   name="email"
@@ -99,6 +104,7 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Correo electrónico"
                   required />
+                   <label className='label-contacto'>Mensaje</label>
                 <textarea
                   className='textarea'
                   name="message"
@@ -106,8 +112,10 @@ function Contacto() {
                   onChange={handleChange}
                   placeholder="Mensaje"
                   required />
+                 
                  <p className="error">{errors}</p>
-                <Boton btn={{ id: "enviar", clase: "comun", texto: "Enviar" }} btnClick={handleSubmit} />
+                <Boton btn={{ id: "enviar", clase: "comun contacto", texto: "Enviar" }} btnClick={handleSubmit} />
+                  
               </form>
                  
             </>
