@@ -125,6 +125,9 @@ function Header() {
                 <li>
                   <NavLink to={`/cargarmenu`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Agregar producto</NavLink>
                 </li>
+                <li>
+                  <NavLink to={`/pedidos-generales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Ver pedidos recibidos</NavLink>
+                </li>
               </div>
             </NavDropdown>
           ) : null}

@@ -1,5 +1,7 @@
 .pedido-card,
-.pedido-card-eliminado{  
+.pedido-card-eliminado,
+.pedido-card-general,
+.pedido-card-eliminado-general{  
     display: flex;
     flex-direction: column;
     background-color: var(--color9);
@@ -53,9 +55,18 @@
     align-items: center; 
 }
 
+.pedido-producto p{
+    color: var(--color4);
+}
+
 .pedido-fecha b{
     margin: 0 1rem;
     color: var(--color2);
+}
+
+.pedido-hora {
+    font-size: 0.7em;
+    color: var(--color4);
 }
 
 
@@ -69,12 +80,14 @@
 
 .pedido-importe{
     width: 100%;
-    padding: 0 0.8rem 0 0.2rem;
+    padding: 0.3rem 0 0 0.2rem;
     text-align: end;
+    border-top: 1px solid var(--color8);
 }
 
 .pedido-detalle{
-    padding: 0.5rem 0.8rem;
+    padding: 0.5rem 0 0.5rem 0.8rem;
+    color: var(--color4);
 }
 
 

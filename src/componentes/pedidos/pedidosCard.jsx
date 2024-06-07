@@ -19,7 +19,7 @@ function PedidosCard({pedido, click}) {
 	return (
 		<div className={!pedido.deleted ? "pedido-card" : "pedido-card-eliminado"} onClick={click} id={pedido.id}>
             <div className='pedido-encabezado'>
-                <p className='pedido-fecha'><b> {formatoFecha(pedido.fecha)} </b> </p>
+                <p className='pedido-fecha'> {formatoFecha(pedido.fecha)}  </p>
             </div>
             <div className='pedido-cuerpo'>
                 <div className='pedido-productos-content' >
