@@ -117,9 +117,9 @@ const AddSucursal = () => {
                 <FormularioInput id={"email"} value={nuevaSucursal.email} tipo={"text"} texto={"Email"} onChan={handleChange} />
                 <FormularioInput id={"instagram"} value={nuevaSucursal.instagram} tipo={"text"} texto={"Instagram"} onChan={handleChange} />
                 <FormularioInput id={"facebook"} value={nuevaSucursal.facebook} tipo={"text"} texto={"Facebook"} onChan={handleChange} />
-                {/* <FormularioInput id={"imagen"} value={nuevaSucursal.imagen} tipo={"text"} texto={"Url imágen"} onChan={handleChange} /> */}
-                <input type="file" name="imagen" onChange={handleFileChange} />
-                <Boton btn={{id:"addSucursal", clase:"comun", texto: "Agregar"}} btnClick={handleSubmit}/>
+                <FormularioInput id={"imagen"}  tipo={"file"} texto={"Url-Imagen"} onChan={handleFileChange} /> 
+{/*                 <input type="file" name="imagen" onChange={handleFileChange} />
+ */}                <Boton btn={{id:"addSucursal", clase:"comun", texto: "Agregar"}} btnClick={handleSubmit}/>
                         </form>
             </div>
             </div>

@@ -6,6 +6,7 @@ import { Parallax } from 'react-parallax';
 import Contacto from '../Contacto/Contacto'; // Asegúrate de que la ruta es correcta
 
 import SectionMapa from './SectionMapa';
+import Parrafo from '../parrafo/Parrafo';
 const DondeEstamos = () => {
     const { datos } = useContext(contexto);
 
@@ -40,7 +41,7 @@ const DondeEstamos = () => {
                 </Parallax>
                 <div className='section-sucursal'>
                     <h3 className='border'>NUESTRAS SUCURSALES</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid obcaecati voluptatum accusamus deleniti ipsa expedita sunt tenetur, alias voluptates, aspernatur repudiandae. Alias doloremque sapiente veritatis quos, delectus ipsam harum ullam!</p>
+                    <Parrafo clase={"sucursales-paragrafh"} texto={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid obcaecati voluptatum accusamus deleniti ipsa expedita sunt tenetur, alias voluptates, aspernatur repudiandae. Alias doloremque sapiente veritatis quos, delectus ipsam harum ullam!'} />
                     <div>
                         {datos.sucursales.map(sucursal => (
                             <CardsSucursal key={sucursal.id} sucursal={sucursal} />
