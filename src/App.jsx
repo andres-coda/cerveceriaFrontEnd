@@ -23,6 +23,7 @@ import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
 import MenuDetalles from "./componentes/menuDetalles/MenuDetalles";
 import ModalCarrito from "./componentes/modalCarrito/ModalCarrito";
 import MostrarPedidos from "./componentes/pedidos/pedidos";
+import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
 function App() {
   const { datos } = useContext(contexto);
   return ( 
@@ -64,7 +65,8 @@ function App() {
            <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/perfil' element={<ModalUsers />} />
           </Route>
-            <Route path='/pedidos' element={<MostrarPedidos/>} />
+          <Route path='/pedidos' element={<MostrarPedidos/>} />
+          <Route path='/pedidos-generales' element={<MostrarPedidosGenerales/>}/>
         </Routes>
       <Footer />
     </AuthProvider>  
