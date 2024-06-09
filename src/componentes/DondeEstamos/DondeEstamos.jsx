@@ -3,13 +3,29 @@ import './DondeEstamos.css';
 import CardsSucursal from './CardsSucursal';
 import { contexto } from '../contexto/contexto';
 import { Parallax } from 'react-parallax';
-import Contacto from '../Contacto/Contacto'; // Asegúrate de que la ruta es correcta
-
-import SectionMapa from './SectionMapa';
+import Contacto from '../Contacto/Contacto';
 import Parrafo from '../parrafo/Parrafo';
+import MapL from '../Mapa/MapaLeaflet';
+
+// Array de imágenes
+const slides = [
+    {image:"https://aderezo.mx/wp-content/uploads/2021/05/IMG_8326.jpg",title:"Variedad de Cervezas y menú Sin TACC",description:"Sin Gluten y con un toque Green"},
+    {image:"https://www.institucionalcolombia.com/wp-content/uploads/2023/01/Pizza_vegetariana.jpg",title:"Menú especial para vegetarianos", description:"Queremos que todos disfruten de nuestros locales"},
+    {image:"https://assets.elgourmet.com/wp-content/uploads/2023/03/ymr7g8nfi5_portadasandwich-1024x683.jpg.webp",title:"Super Sandwichs",description:"Los mejores sandwich de la casa"},
+    {image:"https://fotos.perfil.com/2023/08/04/trim/1280/720/cerveza-artesanal-20230804-1624907.jpg",title:"La mejor cerveza tirada",description:"Rubia, Negra, Roja... Probalas Todas!"},
+];
+
 const DondeEstamos = () => {
     const { datos } = useContext(contexto);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+        }, 4000); // Cambia la imagen cada 3 segundos
+
+        return () => clearInterval(interval); // Limpiar el intervalo cuando el componente se desmonte
+    }, []);
 
     return (
         <>
@@ -17,13 +33,12 @@ const DondeEstamos = () => {
                 <Parallax bgImage='https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png'
                     strength={100}
                     bgImageStyle={{
-                        width: '100%', // Ancho al 100% del contenedor
-                        height: 'auto', // Altura automática para mantener la proporción
-                        backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
-                        backgroundPosition: 'center', // Posición centrada de la imagen
+                        width: '100%',
+                        height: 'auto',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
                     }}>
-                    <div className='parallax'  >
-                    </div>
+                    <div className='parallax'></div>
                 </Parallax>
                 <div className='section'>
                     <h3 className='border'>GREEN BEER Estamos donde estés...</h3>
@@ -32,13 +47,12 @@ const DondeEstamos = () => {
                 <Parallax bgImage='https://www.zona4arg.com.ar/wp-content/uploads/2021/04/club-de-la-birra-diseno-360-1400x702.jpg'
                     blur={{ min: -20, max: 20 }}
                     bgImageStyle={{
-                        width: '100%', // Ancho al 100% del contenedor
-                        height: 'auto', // Altura automática para mantener la proporción
-                        backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
-                        backgroundPosition: 'center', // Posición centrada de la imagen
+                        width: '100%',
+                        height: 'auto',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
                     }}>
-                    <div className='parallax' >
-                    </div>
+                    <div className='parallax'></div>
                 </Parallax>
                 <div className='section-sucursal'>
                     <h3 className='border'>NUESTRAS SUCURSALES</h3>
@@ -52,17 +66,15 @@ const DondeEstamos = () => {
                 <div className='section-contacto'>
                     <h3 className='border'>¡PONGÁMONOS EN CONTACTO!</h3>
                 </div>
-                <Parallax strength={100}   blur={{ min: -20, max: 20 }}
+                <Parallax strength={100} blur={{ min: -20, max: 20 }}
                     bgImageStyle={{
-                        width: '100%', 
-                        height: 'auto', 
-                        backgroundSize: 'cover', 
-                        backgroundPosition: 'center', 
-                    }} 
+                        width: '100%',
+                        height: 'auto',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
                     renderLayer={(percentage) => (
                         <div className="contacto-container">
-                            <div>
-
                             <div className="logo-container">
                                 <div className="logo-zoom" style={{
                                     background: `url(./src/assets/Logo.png) no-repeat center/cover`,
@@ -70,10 +82,7 @@ const DondeEstamos = () => {
                                     height: percentage * 300,
                                 }}></div>
                             </div>
-                                </div>
-                            
-                                <Contacto />
-                            
+                            <Contacto />
                         </div>
                     )}>
                 </Parallax>
@@ -83,25 +92,36 @@ const DondeEstamos = () => {
                     strength={150}
                     blur={{ min: -20, max: 20 }}
                     bgImageStyle={{
-                        width: '100%', // Ancho al 100% del contenedor
-                        height: 'auto', // Altura automática para mantener la proporción
-                        backgroundSize: 'cover', // Ajuste de tamaño para cubrir completamente el contenedor
-                        backgroundPosition: 'center', // Posición centrada de la imagen
-                    }}
-
-                >
+                        width: '100%',
+                        height: 'auto',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}>
                     <div className='parallax'></div>
                 </Parallax>
                 <div className='section-mapa'>
-                    <h3 className='border'>¡VENÍ A CONCOCERNOS!</h3>
+                    <div className='section-contacto'>
+                    <h3 className='border'>¡VENÍ A CONOCERNOS Y A PROBAR NUESTRAS VARIADAS CERVEZAS Y PLATOS!</h3>
+                    </div>
+       
+                    <div className='slider-container'>
+                        <div className='slider'>
+                            <img
+                                src={slides[currentSlide].image}
+                                alt={slides[currentSlide].title}
+                                className='slider-image'
+                            />
+                            <div className='slider-info'>
+                                <h3>{slides[currentSlide].title}</h3>
+                                <p>{slides[currentSlide].description}</p>
+                            </div>
+                        </div>
+                    </div>
                     <div className='card-map'>
-                        <SectionMapa />
+                        <MapL />
                     </div>
                 </div>
-
-
             </div>
-
         </>
     );
 };

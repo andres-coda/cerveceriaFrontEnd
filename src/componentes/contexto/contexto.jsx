@@ -8,10 +8,6 @@ export const contexto = createContext({});
 export const ProveedorContexto = ({children}) => {
     const [ auth, setAuth ] = useState ({});
     const [sucursales, setSucursales] = useState([]);
-
- 
-
-
     const [ datos, setDatos ] = useState ({
         carrito:[], 
         tipo:[], 

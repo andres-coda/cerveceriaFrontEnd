@@ -80,14 +80,12 @@
 
 /*mapa y card*/
 .section-mapa {
-  height: auto;
+  min-height: 80vh;
   width: 100%;
-  margin-top: 20px;
+  position: relative;
 
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
+ 
 
 .card-map {
   margin-top: 20px;
@@ -116,3 +114,35 @@
       height: 40vh;
     }
   }
+  .slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.slider-image {
+    transition: transform 0.3s ease-out;
+    width: 80%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+   
+  
+}
+
+.slider-image:hover {
+    transform: scale(1.1);
+}
+
+.slider-info {
+    text-align: center;
+    margin-top: 10px;
+}

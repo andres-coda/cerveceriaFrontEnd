@@ -10,7 +10,7 @@ function MapL() {
   return (
     < >
     <div className='mapa'>
-    <MapContainer  className={'map'} center={position} zoom={13} style={{ width: '50vw', height: '50vw' }}>
+    <MapContainer  className={'map'} center={position} zoom={13} style={{width: '100vw', height:'40vh'}}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

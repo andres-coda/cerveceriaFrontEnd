@@ -31,18 +31,18 @@ function Contacto() {
   const validateForm = () => {
     const requiredFields = ['firstName', 'lastName', 'email', 'message'];
     let errorMessage = '';
-  
+
     requiredFields.forEach(field => {
       if (!formData[field]) {
         errorMessage = 'Por favor, complete todos los campos.';
       }
     });
-  
+
     setErrors(errorMessage);
     return errorMessage === '';
   };
-  
-  
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +51,7 @@ function Contacto() {
       setMensajeEnviado(true);
       console.log(formData);
     } else {
-    
+
       return 'por favor complete todos los campos'
     }
   };
@@ -62,68 +62,66 @@ function Contacto() {
   }
 
   return (
-   
-      <div className="contenedor">
-       
-        <div className='container-form'>
-          {mensajeEnviado ? (
-            <div className='mensaje-Enviado'>
-             
-              <p>Su mensaje ha sido enviado exitosamente.</p>
-              <p>En breve responderemos a su consulta.</p>
-              <p>Muchas gracias por elegirnos! Grupo Green Beer.<IoBeerOutline className='beer-icon' /></p>
-              <Boton btn={{ id: "Salir", clase: "comun", texto: "Salir" }} btnClick={mensaje} />
-            </div>
-          ) : (
-            <>
-                        <form onSubmit={handleSubmit} className='form-contacto-sucursal'>
-                          <div className='label-contacto'>
-                          <label>Nombre</label>
-                          </div>
-                <input
-                  id='consulta'
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  placeholder="Nombre"
-                  required />
-                   <label className='label-contacto'>Apellido</label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  placeholder="Apellido"
-                  required />
-                   <label className='label-contacto'>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Correo electrónico"
-                  required />
-                   <label className='label-contacto'>Mensaje</label>
-                <textarea
-                  className='textarea'
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Mensaje"
-                  required />
-                 
-                 <p className="error">{errors}</p>
-                <Boton btn={{ id: "enviar", clase: "comun contacto", texto: "Enviar" }} btnClick={handleSubmit} />
-                  
-              </form>
-                 
-            </>
-          )}
-        </div>
-       
+
+    <div className="contenedor">
+
+      <div className='container-form'>
+        {mensajeEnviado ? (
+          <div className='mensaje-Enviado'>
+
+            <p>Su mensaje ha sido enviado exitosamente.</p>
+            <p>En breve responderemos a su consulta.</p>
+            <p>Muchas gracias por elegirnos! Grupo Green Beer.<IoBeerOutline className='beer-icon' /></p>
+            <Boton btn={{ id: "Salir", clase: "comun", texto: "Salir" }} btnClick={mensaje} />
+          </div>
+        ) : (
+          <>
+            <form onSubmit={handleSubmit} className='form-contacto-sucursal'>
+              <label className='label-contacto'>Nombre</label>
+              <input
+                id='consulta'
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder="Nombre"
+                required />
+              <label className='label-contacto'>Apellido</label>
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Apellido"
+                required />
+              <label className='label-contacto'>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Correo electrónico"
+                required />
+              <label className='label-contacto'>Mensaje</label>
+              <textarea
+                className='textarea'
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Mensaje"
+                required />
+
+              <p className="error">{errors}</p>
+              <Boton btn={{ id: "enviar", clase: "comun contacto", texto: "Enviar" }} btnClick={handleSubmit} />
+
+            </form>
+
+          </>
+        )}
       </div>
-   
+
+    </div>
+
   );
 }
 
