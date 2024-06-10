@@ -47,6 +47,12 @@
   padding: 0.5rem;
 }
 
+.reserva-card-eliminado{
+  border: 1px solid var(--color4);
+  background-color:var(--color7);
+  
+}
+
 .reserva-card {
   box-shadow: 1px 1px 2px var(--color3);
 }
@@ -80,6 +86,9 @@
   color: var(--color4);
 }
 
+.reserva-hora.unavailable {
+  color: red; 
+}
 .reserva-acciones {
   display: flex;
   justify-content: end;
@@ -89,29 +98,26 @@
 
 .btn-eliminar,
 .btn-editar {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
+  width: 40px;
+  background: var(--color3);
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
-}
-
-.btn-eliminar {
-  background-color: #ff4d4d;
-  color: white;
+  padding: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-eliminar:hover {
-  background-color: #ff1a1a;
+  background-color: var(--color4);
+  border-radius: 10px;
 }
-
-.btn-editar {
-  background-color: #4caf50;
-  color: white;
-}
-
 .btn-editar:hover {
-  background-color: #45a049;
+  background-color: var(--color4);
+  border-radius: 10px;
+}
+
+.btn-editar {  
+  margin-right: 0.5em;
 }
 
 .reserva-error {
@@ -156,5 +162,21 @@
     margin: 0.2rem 0;
     text-align: left;
     padding-left: 1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .reserva-encabezado {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .reserva-hora {
+    width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+    margin: 0.2rem 0;
   }
 }
