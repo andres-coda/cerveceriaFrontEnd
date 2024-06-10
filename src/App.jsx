@@ -24,6 +24,7 @@ import MenuDetalles from "./componentes/menuDetalles/MenuDetalles";
 import ModalCarrito from "./componentes/modalCarrito/ModalCarrito";
 import MostrarPedidos from "./componentes/pedidos/pedidos";
 import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
+import ReservasList from "./componentes/reservas/ReservasList";
 function App() {
   const { datos } = useContext(contexto);
   return ( 
@@ -67,6 +68,7 @@ function App() {
           </Route>
           <Route path='/pedidos' element={<MostrarPedidos/>} />
           <Route path='/pedidos-generales' element={<MostrarPedidosGenerales/>}/>
+          <Route path='/listadoreservas' element={<ReservasList/>} />
         </Routes>
       <Footer />
     </AuthProvider>  

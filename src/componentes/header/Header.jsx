@@ -128,6 +128,9 @@ function Header() {
                 <li>
                   <NavLink to={`/pedidos-generales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Ver pedidos recibidos</NavLink>
                 </li>
+                <li>
+                  <NavLink to={`/listadoreservas`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar Reservas</NavLink>
+                </li>
               </div>
             </NavDropdown>
           ) : null}
