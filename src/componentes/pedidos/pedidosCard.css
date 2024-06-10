@@ -14,10 +14,7 @@
     padding: 0.5rem;
 }
 
-.pedido-card{
-    box-shadow: 1px 1px 2px var(--color3);
-    
-}
+
 .pedido-card-eliminado{
     border: 1px solid var(--color4);
 }

@@ -40,6 +40,7 @@ function MostrarPedidosGenerales(){
     
     return(
         <div className="conteinerGeneral">
+            <Subtitulo texto={'Lista de pedidos'}/>
             {pedidos!=null && pedidos.length >0 ? (
                 <>
                     <p className='pedido-cantidad'>{`${pedidos.length} pedidos recibidos`}</p>
