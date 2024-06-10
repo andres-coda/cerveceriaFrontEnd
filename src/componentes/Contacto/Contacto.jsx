@@ -65,7 +65,7 @@ function Contacto() {
 
     <div className="contenedor">
 
-      <div className='container-form'>
+     
         {mensajeEnviado ? (
           <div className='mensaje-Enviado'>
 
@@ -118,7 +118,7 @@ function Contacto() {
 
           </>
         )}
-      </div>
+     
 
     </div>
 

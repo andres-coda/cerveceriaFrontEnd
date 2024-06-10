@@ -65,21 +65,8 @@ function Header() {
       </div>
       <nav id="navbar" className={`navbar ${clicked ? 'active' : ''}`}>
         <ul>
-          <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Nosotros"
-            menuVariant="dark"
-            onToggle={() => setNosotrosDropdownOpen(!nosotrosDropdownOpen)}
-            show={nosotrosDropdownOpen}
-            className='nav-dropdown'
-          >
-            <div className='back-drop'>
-              <NavLink className='drop-item' to="/quienessomos" onClick={closeNosotrosDropdown}>¿Quienes Somos?</NavLink>
-              <NavLink className='drop-item' to="/dondeestamos" onClick={closeNosotrosDropdown}>¿Donde Estamos?</NavLink>
-              <NavLink className='drop-item' to="/contacto" onClick={closeNosotrosDropdown}>Contacto</NavLink>
-            </div>
-          </NavDropdown>
-          <NavDropdown
+        <li><NavLink to="/dondeestamos">NOSOTROS</NavLink></li>
+        <NavDropdown
             id="nav-dropdown-dark-example"
             title="Carta"
             menuVariant="dark"

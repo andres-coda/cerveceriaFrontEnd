@@ -78,8 +78,8 @@ const DondeEstamos = () => {
                             <div className="logo-container">
                                 <div className="logo-zoom" style={{
                                     background: `url(./src/assets/Logo.png) no-repeat center/cover`,
-                                    width: percentage * 300,
-                                    height: percentage * 300,
+                                    width: (percentage  * 250) ,
+                                    height: (percentage * 250),
                                 }}></div>
                             </div>
                             <Contacto />
