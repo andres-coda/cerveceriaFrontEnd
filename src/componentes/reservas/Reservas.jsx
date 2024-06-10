@@ -163,7 +163,7 @@ const Reservas = () => {
 
   const generateTimeOptions = () => {
     const options = [];
-    for (let hour = 10; hour <= 24; hour++) { // Rango de 10:00 a 22:00
+    for (let hour = 10; hour <= 24; hour++) { 
       for (let minutes of ['00', '30']) {
         const time = `${hour < 10 ? '0' + hour : hour}:${minutes}`;
         options.push(time);
