@@ -1,0 +1,160 @@
+.reservas-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.reservas-list {
+  width: 100%;
+}
+
+.reservas-cantidad {
+  width: 90%;
+  text-align: end;
+  font-size: 0.7em;
+  color: var(--color4);
+}
+
+.reservas-fecha-group {
+  width: 90%;
+}
+
+.fecha-bar {
+  width: 100%;
+  text-align: start;
+  background-color: var(--color7);
+  color: var(--color1);
+  padding: 0.3rem 1rem;
+  margin-top: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: bold;
+}
+
+/* Estilos ReservasCard */
+
+.reserva-card,
+.reserva-card-eliminado {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color9);
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  align-items: start;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.reserva-card {
+  box-shadow: 1px 1px 2px var(--color3);
+}
+
+.reserva-encabezado,
+.pedido-reserva,
+.reserva-cuerpo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.reserva-encabezado,
+.reserva-cuerpo {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.reserva-encabezado {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color8);
+}
+
+.reserva-cuerpo {
+  align-items: center;
+}
+
+.reserva-hora {
+  font-size: 0.7em;
+  color: var(--color4);
+}
+
+.reserva-acciones {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-eliminar,
+.btn-editar {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-eliminar {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #ff1a1a;
+}
+
+.btn-editar {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #45a049;
+}
+
+.reserva-error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (min-width: 601px) {
+  .reserva-cuerpo {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .reserva-hora {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 600px) {
+  .reserva-cuerpo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .reserva-hora {
+    font-size: 0.8em;
+  }
+
+  .pedido-reserva {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .pedido-reserva p {
+    width: 100%;
+    margin: 0.2rem 0;
+    text-align: left;
+    padding-left: 1rem;
+  }
+}

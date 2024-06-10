@@ -1,0 +1,107 @@
+import React, { useEffect, useState } from 'react';
+import './ReservasCard.css'; 
+import Subtitulo from '../subtitulo/Subtitulo';
+import AnimatedSVG from '../animacion/AnimatedSVG';
+import { BASE_URL } from '../../endPoints/endPoints';
+import { useAuth } from '../auth/AuthContext';
+import ReservasCard from './ReservasCard';
+
+const ReservasList = () => {
+  const { auth } = useAuth();
+  const { token } = auth || {};
+
+  const [reservas, setReservas] = useState([]);
+
+  useEffect(() => {
+    if (token) {
+      fetch(`${BASE_URL}/reserva`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          const sortedData = data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+          setReservas(sortedData);
+        })
+        .catch(error => {
+          console.error('Error fetching reservations:', error);
+        });
+    }
+  }, [token]);
+
+  const handleDelete = (id) => {
+    fetch(`${BASE_URL}/reserva/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        setReservas(reservas.filter(reserva => reserva.id !== id));
+      } else {
+        console.error('Error deleting reservation');
+      }
+    })
+    .catch(error => console.error('Error deleting reservation:', error));
+  };
+
+  const handleEdit = (id) => {
+    // Lógica para editar la reserva
+  };
+
+  const reservasPorFecha = reservas.reduce((acc, reserva) => {
+    const [year, month, day] = reserva.fecha.split('-');
+    const fecha = new Date(year, month - 1, day).toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+    if (!acc[fecha]) {
+      acc[fecha] = [];
+    }
+    acc[fecha].push(reserva);
+    return acc;
+  }, {});
+
+  const fechasOrdenadas = Object.keys(reservasPorFecha).sort((a, b) => {
+    const fechaA = new Date(a.split('/').reverse().join('-'));
+    const fechaB = new Date(b.split('/').reverse().join('-'));
+    return fechaB - fechaA;
+  });
+  
+  return (
+    <div className='conteinerGeneral'>
+      {reservas != null && reservas.length > 0 ? (
+        <>
+          <p className='reservas-cantidad'>{`${reservas.length} Reservas recibidas`}</p>
+          <div className="reservas-menu">            
+            {fechasOrdenadas.map(fecha => (
+              <div key={fecha} className="reservas-fecha-group">
+                <div className="fecha-bar">{fecha}</div>
+                {reservasPorFecha[fecha].map(reserva => (
+                  <ReservasCard
+                    key={reserva.id}
+                    reserva={reserva}
+                    onClick={() => handleEdit(reserva.id)}
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
+                  />
+                ))}
+              </div>
+            ))}
+            </div>          
+        </>
+      ) : (
+        <>
+          <Subtitulo clase={"subtitulo"} texto={(reservas !== null) && `Lista de reservas realizadas`} />
+          <AnimatedSVG />
+        </>
+      )}
+    </div>
+  );
+};
+
+
+export default ReservasList;
