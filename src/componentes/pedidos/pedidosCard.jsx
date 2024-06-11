@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './pedidosCard.css'
+import { FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 function PedidosCard({pedido, click}) {
 	const [importe, setImporte] = useState(0);
 	const formatoFecha = (fecha) => {
@@ -20,6 +21,10 @@ function PedidosCard({pedido, click}) {
 		<div className={!pedido.deleted ? "pedido-card" : "pedido-card-eliminado"} onClick={click} id={pedido.id}>
             <div className='pedido-encabezado'>
                 <p className='pedido-fecha'> {formatoFecha(pedido.fecha)}  </p>
+                <div className='botonera-admin'>
+                    <button className='comun' onClick={click}><FaEdit /></button>
+                    <button className='comun' onClick={click}>{ !pedido.deleted ? <FaTrash/> : <FaUndo/> }</button>
+                </div>
             </div>
             <div className='pedido-cuerpo'>
                 <div className='pedido-productos-content' >
