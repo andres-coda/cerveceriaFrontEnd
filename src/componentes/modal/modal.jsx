@@ -7,11 +7,13 @@ const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className='contenedor-sucursal-modal-edit'>
+    <div className="modal-overlay-sucursal">
       <div className="modal-content-sucursal">
-        <button className="modal-close" onClick={onClose}><FaWindowClose className='icon-close'/></button>
+        <button className="modal-close-sucursal" onClick={onClose}><FaWindowClose className='icon-close'/></button>
         {children}
       </div>
+    </div>
     </div>
   );
 };

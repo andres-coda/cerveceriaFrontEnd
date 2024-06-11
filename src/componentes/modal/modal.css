@@ -1,31 +1,45 @@
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.2); /* Fondo oscuro semi-transparente */
+.contenedor-sucursal-modal-edit{
+  position: absolute;
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top:0px;
+  margin-left: 0px;
+  translate: (0% 0%);
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color6);
+ 
+}
+.modal-overlay-sucursal {
+  
+
+
+ margin: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
   z-index: 10000; /* Asegúrate de que este valor sea mayor que el de la navbar */
+
+  max-height: 100vh;
+
 }
 
 .modal-content-sucursal {
   background-color: var(--color2);
   padding: 20px;
   border-radius: 8px;
+  height: 70vh;
   width: 40vw; /* Ancho del modal al 100% del viewport */
   max-height: 100vh; /* Altura máxima del modal */
   overflow-y: auto; /* Barra de desplazamiento vertical */
   display: flex; /* Cambiamos a flexbox para centrar el contenido */
   flex-direction: column; /* Apilamos los elementos verticalmente */
-  align-items: center; /* Centramos horizontalmente */
   justify-content: center; /* Centramos verticalmente */
   flex-wrap: nowrap; /* No permita el wrap para asegurar que los elementos están en columna */
 }
-.modal-close {
-  position: absolute;
+.modal-close-sucursal {
+  position:absolute;
   top: 10px;
   right: 10px;
   background: transparent;
@@ -37,6 +51,8 @@
 .icon-close {
   font-size: 2rem;
   color: rgb(138, 8, 8);
+  position: relative;
+  
 }
 
 .modal-content-sucursal::-webkit-scrollbar {

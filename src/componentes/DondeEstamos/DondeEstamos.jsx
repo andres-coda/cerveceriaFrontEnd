@@ -6,18 +6,20 @@ import { Parallax } from 'react-parallax';
 import Contacto from '../Contacto/Contacto';
 import Parrafo from '../parrafo/Parrafo';
 import MapL from '../Mapa/MapaLeaflet';
+import EditarSucursal from './editarSucursal';
 
 // Array de imágenes
 const slides = [
-    {image:"https://aderezo.mx/wp-content/uploads/2021/05/IMG_8326.jpg",title:"Variedad de Cervezas y menú Sin TACC",description:"Sin Gluten y con un toque Green"},
-    {image:"https://www.institucionalcolombia.com/wp-content/uploads/2023/01/Pizza_vegetariana.jpg",title:"Menú especial para vegetarianos", description:"Queremos que todos disfruten de nuestros locales"},
-    {image:"https://assets.elgourmet.com/wp-content/uploads/2023/03/ymr7g8nfi5_portadasandwich-1024x683.jpg.webp",title:"Super Sandwichs",description:"Los mejores sandwich de la casa"},
-    {image:"https://fotos.perfil.com/2023/08/04/trim/1280/720/cerveza-artesanal-20230804-1624907.jpg",title:"La mejor cerveza tirada",description:"Rubia, Negra, Roja... Probalas Todas!"},
+    { image: "https://aderezo.mx/wp-content/uploads/2021/05/IMG_8326.jpg", title: "Variedad de Cervezas y menú Sin TACC", description: "Sin Gluten y con un toque Green" },
+    { image: "https://www.institucionalcolombia.com/wp-content/uploads/2023/01/Pizza_vegetariana.jpg", title: "Menú especial para vegetarianos", description: "Queremos que todos disfruten de nuestros locales" },
+    { image: "https://assets.elgourmet.com/wp-content/uploads/2023/03/ymr7g8nfi5_portadasandwich-1024x683.jpg.webp", title: "Super Sandwichs", description: "Los mejores sandwich de la casa" },
+    { image: "https://fotos.perfil.com/2023/08/04/trim/1280/720/cerveza-artesanal-20230804-1624907.jpg", title: "La mejor cerveza tirada", description: "Rubia, Negra, Roja... Probalas Todas!" },
 ];
 
 const DondeEstamos = () => {
     const { datos } = useContext(contexto);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [sucursalPorEditar, setSucursalPorEditar] = useState(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,6 +32,7 @@ const DondeEstamos = () => {
     return (
         <>
             <div className='body'>
+
                 <Parallax bgImage='https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png'
                     strength={100}
                     bgImageStyle={{
@@ -54,12 +57,14 @@ const DondeEstamos = () => {
                     }}>
                     <div className='parallax'></div>
                 </Parallax>
+                {sucursalPorEditar != null ? <EditarSucursal  sucursalPorEditar={sucursalPorEditar}/>: (null)}
+
                 <div className='section-sucursal'>
                     <h3 className='border'>NUESTRAS SUCURSALES</h3>
                     <Parrafo clase={"sucursales-paragrafh"} texto={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid obcaecati voluptatum accusamus deleniti ipsa expedita sunt tenetur, alias voluptates, aspernatur repudiandae. Alias doloremque sapiente veritatis quos, delectus ipsam harum ullam!'} />
                     <div>
                         {datos.sucursales.map(sucursal => (
-                            <CardsSucursal key={sucursal.id} sucursal={sucursal} />
+                            <CardsSucursal key={sucursal.id} sucursal={sucursal} setSucursalPorEditar={setSucursalPorEditar} />
                         ))}
                     </div>
                 </div>
@@ -78,8 +83,8 @@ const DondeEstamos = () => {
                             <div className="logo-container">
                                 <div className="logo-zoom" style={{
                                     background: `url(./src/assets/Logo.png) no-repeat center/cover`,
-                                    width: percentage * 300,
-                                    height: percentage * 300,
+                                    width: (percentage * 350),
+                                    height: (percentage * 350),
                                 }}></div>
                             </div>
                             <Contacto />
@@ -101,9 +106,9 @@ const DondeEstamos = () => {
                 </Parallax>
                 <div className='section-mapa'>
                     <div className='section-contacto'>
-                    <h3 className='border'>¡VENÍ A CONOCERNOS Y A PROBAR NUESTRAS VARIADAS CERVEZAS Y PLATOS!</h3>
+                        <h3 className='border'>¡VENÍ A CONOCERNOS Y A PROBAR NUESTRAS VARIADAS CERVEZAS Y PLATOS!</h3>
                     </div>
-       
+
                     <div className='slider-container'>
                         <div className='slider'>
                             <img
