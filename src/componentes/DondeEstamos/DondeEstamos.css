@@ -8,7 +8,7 @@ margin-top: 20px;
 }
 
 .logo-zoom {
-  transition: width 0.5s, height 0.3s;
+  transition: width 0.2s, height 0.2s;
 
 }
 
@@ -28,13 +28,13 @@ margin-top: 20px;
   padding: 0;
 }
 
-.section p,
+/* .section p,
 .section-sucursal p {
   font-size: 1.5em;
   color: var(--color3);
   margin-top: 50px;
   width: 90%;
-}
+} */
 
 .section-sucursal {
   height: auto;
