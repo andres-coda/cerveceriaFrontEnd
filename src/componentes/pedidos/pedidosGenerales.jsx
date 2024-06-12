@@ -40,6 +40,7 @@ function MostrarPedidosGenerales(){
     
     return(
         <div className="conteinerGeneral">
+            <Subtitulo texto={'Lista de pedidos'}/>
             {pedidos!=null && pedidos.length >0 ? (
                 <>
                     <p className='pedido-cantidad'>{`${pedidos.length} pedidos recibidos`}</p>
@@ -63,7 +64,6 @@ function MostrarPedidosGenerales(){
 
             ):(
                 <>
-                    <Subtitulo clase={"subtitulo"} texto={pedidos!=null ? `${pedidos.length} pedidos realizados` : `Lista de pedidos realizados`} />
                     <AnimatedSVG />
                 </>
             )}

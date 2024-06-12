@@ -90,12 +90,6 @@ function Header() {
             </div>
           </NavDropdown>
           <li><NavLink to="/reservas">Reservas</NavLink></li>
-          <div className={`cart-icon active `}>
-            <NavLink to="/carrito" className='cart'>
-              <FaShoppingCart />
-              <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
-            </NavLink>
-          </div>
           {/* <li><NavLink to="/reservas">Reservas</NavLink></li> */}
           {user && user.role === "admin" ? (
             <NavDropdown
@@ -153,6 +147,16 @@ function Header() {
             </div>
           ) : (
             <li><NavLink to="/login"><MdOutlineLockPerson className='iconLogin' />Login</NavLink></li>
+          )}
+          {datos?.carrito?.length > 0 ? (
+          <div className={`cart-icon active `}>
+            <NavLink to="/carrito" className='cart'>
+              <FaShoppingCart />
+              <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
+            </NavLink>
+          </div>
+          ):(
+            null
           )}
         </ul>
       </nav>
