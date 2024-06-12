@@ -6,7 +6,7 @@
 }
 
 .comun, .mas-menos, .alerta, .iconBtn{
-    background-color: #c19f71;
+    background-color: var(--color4);
     padding: 0.1rem 0.4rem 0.2rem;
 }
 
@@ -24,7 +24,7 @@
 
 .comun:hover, .alerta:hover, .iconBtn:hover, .iconGrande:hover {
     box-shadow: 2px 2px 4px black;
-    background-color:  #F1D69D;
+    background-color:  var(--color3);
 }
 
 .cerrar{
@@ -49,7 +49,7 @@
 
 .iconGrande {
     font-size: 1.5em;
-    background-color: #c19f71;
+    background-color: var(--color4);
     margin: 0.5rem 0.2rem 1rem;
     padding: 0.1rem 5rem;
 }

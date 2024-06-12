@@ -64,7 +64,6 @@ function MostrarPedidosGenerales(){
 
             ):(
                 <>
-                    <Subtitulo clase={"subtitulo"} texto={pedidos!=null ? `${pedidos.length} pedidos realizados` : `Lista de pedidos realizados`} />
                     <AnimatedSVG />
                 </>
             )}
