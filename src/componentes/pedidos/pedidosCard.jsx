@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { fetchDelete, fetchPatCh } from "../funciones fetch/funciones";
+import { fetchDelete, fetchPatCh, fetchPut } from "../funciones fetch/funciones";
 import AlertaGeneral from "../eliminarAlerta/AlertaGeneral";
 import PedidoInternoCard from "./pedidoInternoCard";
 import Boton from "../boton/Boton";
 import { FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { URL_PEDIDO } from "../../endPoints/endPoints";
+import FormularioInput from "../formularioInput/FormularioInput";
 
 function PedidosCard({children, pedido, reload, textoAlerta}) {
-    const [isOpen, setIsOpen ] = useState(false)
+    const [isEdit, setIsEdit] = useState(false);
+    const [isOpen, setIsOpen ] = useState(false);
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false});
+    const [detalle, setDetalle] = useState({detalle: pedido ? pedido.detalle : ''})
     let importe = null;
     if (!importe) {
         importe=0;
@@ -19,10 +22,10 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
         setTexto((prev)=>({
             ...prev, 
             proceso:true, 
-            texto: `Desea reactivar ${textoAlerta}`,
-            idTexto: `reactivar`
+            texto: `Desea editar ${textoAlerta}`,
+            idTexto: `editar`
         }))
-        setIsOpen(true)
+        setIsEdit(true);
     }
 
     const onDeleted = () => {
@@ -34,6 +37,13 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
         }))
         setIsOpen(true)
     }
+
+    const onChange = (e)=>{
+        setDetalle({
+            ...detalle,
+            [e.target.name]: e.target.value
+        });
+    };
 
     const btnClick = async (e) => {
         const btn = e.target.id;
@@ -63,6 +73,20 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                     setTexto((prev)=>({...prev, texto: `El pedido no pudo ser reactivado: ${error.message}`, proceso :true, condicion:true}));
                 }
             break;
+            case 'editar' :
+                try {
+                    const pedidoActualizado = {...pedido, detalle:detalle.detalle}
+                    const response = await fetchPut(URL_PEDIDO+'/'+pedido.id,localStorage.getItem('token'),pedidoActualizado);
+                    if (response) {
+                        const reloadLocal = await reload();
+                        if (reloadLocal) {
+                            setTexto((prev)=>({...prev, texto: "El pedido fue editado con exito", proceso :true, condicion:true}));
+                        }
+                    }
+
+                } catch (error) {
+                    setTexto((prev)=>({...prev, texto: `El pedido no pudo ser editado: ${error.message}`, proceso :true, condicion:true}));
+                }
 
         }
     }
@@ -70,6 +94,7 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
     const onClose = () =>{
         setTexto((prev)=>({...prev,proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false}));
         setIsOpen(false);
+        setIsEdit(false);
     }
 
     return (
@@ -113,6 +138,31 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                     ):(null)
                 }
                 isOpen={isOpen}
+                onClose={onClose}
+            />
+            <AlertaGeneral
+                texto={texto}
+                btnClick={btnClick}
+                children={
+                    !texto.condicion ? (
+                        <>
+                    <div>
+                        <FormularioInput 
+                            id={'detalle'}
+                            value={detalle.detalle}
+                            tipo={'text'}
+                            texto={'Editar el detalle del pedido'}
+                            onChan={onChange}
+                        />
+                    </div>
+                    <div className='boton-alerta-pedido'>
+                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
+                        <Boton btn={{id:"cancelar", clase:"alerta", texto: "Cancelar"}} btnClick={onClose}/>
+                    </div>
+                    </>
+                    ):(null)
+                }
+                isOpen={isEdit}
                 onClose={onClose}
             />
         </>
