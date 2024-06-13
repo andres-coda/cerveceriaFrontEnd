@@ -73,12 +73,6 @@
 
 
 
-.form-container {
-  flex-grow: 1;
-  /* Permite que el formulario ocupe el espacio restante */
-  margin-left: 20px;
-}
-
 /*primer section nosotros*/
 .section-1 {
   height: 30vh;
@@ -91,6 +85,7 @@
 .section-2 h3 {
 transform: translate(50%);
  width: 50vw;
+ font-family: Castor One W01 Regular;
   
 }
 .paragrafh-nosotrosSomos{
@@ -135,13 +130,7 @@ transform: translate(50%);
  width: 80%;
 }
 
-/*h3*/
-.border {
-  color: var(--color2);
-  padding: 18px;
-  font-size: 3em;
-  font-family: Castor One W01 Regular;
-}
+
 
 .contenedor-cards-sucursal {
   display: flex;
@@ -218,7 +207,7 @@ overflow-x: hidden;
 
 
 
-@media (max-width:768px) {
+@media (max-width:600px) {
 
 
   .caption-nosotros {
@@ -235,23 +224,33 @@ overflow-x: hidden;
   .border span{
     padding: 5px;
     font-size:2em ;
+    
   }
-.contenedor-h3-contacto .border {
+.contenedor-h3-contacto {
   width: 100%;
 display: flex;
   
   }
-  .contenedor-h3-contacto .border h3{
+  .contenedor-h3-contacto h3{
   font-size: 2em;
+  font-family: Castor One W01 Regular;
   
 }
 
-  
+.contenedor-logo-form{
+  flex-direction: row;
+}
  
 .slider-image {
   height: 40vh;
   min-width: 100%;
    
+}
+
+@media(min-width: 601px){
+  .contenedor-logo-form{
+    flex-direction: column;
+  }
 }
 
 
