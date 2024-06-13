@@ -1,8 +1,9 @@
 import React from 'react';
 import './ReservasCard.css';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-const ReservasCard = ({ reserva, onClick, onDelete, onEdit }) => {
+const ReservasCard = ({ reserva, onDelete }) => {
   const formatoHora = (fecha, hora) => {
     const date = new Date(`${fecha}T${hora}`);
     const opciones = { hour: '2-digit', minute: '2-digit' };
@@ -10,7 +11,7 @@ const ReservasCard = ({ reserva, onClick, onDelete, onEdit }) => {
   };
 
   return (
-    <div className={!reserva.deleted ? "reserva-card" : "reserva-card-eliminado"} onClick={onClick} id={reserva.id}>
+    <div className={!reserva.deleted ? "reserva-card" : "reserva-card-eliminado"}>
       <>
         <div className='reserva-encabezado'>
           <p className={`reserva-hora ${reserva.usuario ? '' : 'unavailable'}`}>{reserva.usuario ? reserva.usuario.username : 'Usuario no disponible'}</p>
@@ -25,8 +26,8 @@ const ReservasCard = ({ reserva, onClick, onDelete, onEdit }) => {
           </div>
         </div>
         <div className='reserva-acciones'>
-          <button className='btn-editar' onClick={(e) => { e.stopPropagation(); onEdit(reserva.id); }}><FaEdit /></button>
-          <button className='btn-eliminar' onClick={(e) => { e.stopPropagation(); onDelete(reserva.id); }}><FaTrash /></button>
+          <Link to={`reservas/editar/${reserva.id}`} className='btn-editar'><FaEdit /></Link>
+          <button className='btn-eliminar' onClick={() => onDelete(reserva.id)}><FaTrash /></button>
         </div>
       </>
     </div>

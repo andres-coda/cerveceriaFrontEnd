@@ -1,6 +1,6 @@
 import './FormularioInput.css';
 
-function FormularioInput({ id, tipo, texto, onChan, value, opciones }) {
+function FormularioInput({ id, tipo, texto, onChan, value, opciones, disabled}) {
   return (
     <div className="renglonInput">
       <label htmlFor={id}>{texto.toUpperCase()}</label>
@@ -26,6 +26,7 @@ function FormularioInput({ id, tipo, texto, onChan, value, opciones }) {
           onChange={onChan}
           value={value}
           required
+          disabled={disabled}
         />
       )}
     </div>
