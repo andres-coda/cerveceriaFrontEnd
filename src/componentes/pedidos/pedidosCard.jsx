@@ -146,7 +146,7 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                 children={
                     !texto.condicion ? (
                         <>
-                    <div>
+                    <div className="pedido-alerta-input">
                         <FormularioInput 
                             id={'detalle'}
                             value={detalle.detalle}
