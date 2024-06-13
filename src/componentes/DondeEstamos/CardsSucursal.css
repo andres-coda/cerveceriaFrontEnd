@@ -57,13 +57,16 @@
 .card-overlay h3 {
   text-align: start;
   font-size: 1.2em;
-  letter-spacing: 0.2em;
   padding-left: 8px;
   font-family: 'Castor One W01 Regular';
+  color: var(--color1);
 
 }
 
-
+.cards-h3 {
+  margin: 0px;
+  padding: 0px;
+}
 
 .icon-button:hover {
   background-color: var(--color3);
@@ -195,12 +198,7 @@
   font-family: 'Castor One W01 Regular';
 }
 
-.card-h3 {
-  color: var(--color1);
-  font-size: 0.8em;
-  text-align: start;
 
-}
 
 /*iconos de redes*/
 .icon {
@@ -226,30 +224,24 @@
   border-radius: 10px;
 }
 
-@media (max-width: 926px) {
+@media (max-width: 768px) {
 
-  .cards-sucursal {
-    margin-top: 5px;
-    height: 38vh;
-    width: 38vw;
-
-  }
 
   .card-overlay h3 {
     text-align: start;
-    font-size: 0.6em;
+    font-size: 0.8em;
 
 
   }
 
 
 
-  .cards-sucursal h1,
+  /* .cards-sucursal h1,
   .card-overlay h3 {
-    font-size: 1em;
+    font-size: 0.8em;
     margin-bottom: 10px;
 
-  }
+  } */
 }
 
 @media (max-width: 600px) {

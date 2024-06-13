@@ -31,9 +31,11 @@ const DondeEstamos = () => {
 
     return (
         <>
-            <div >
+
+            <div class="parallax-container">
                 <div className="bgimg-1">
-                    <div className="caption">
+                    <div className="caption-nosotros">
+                        <span className="border">¡Nos reinventamos!</span>
                     </div>
                 </div>
             </div>
@@ -53,7 +55,7 @@ const DondeEstamos = () => {
                 <div className="caption">
                 </div>
             </div>
-{/*                 {sucursalPorEditar != null ? <EditarSucursal sucursalPorEditar={sucursalPorEditar} /> : (null)}
+            {/*                 {sucursalPorEditar != null ? <EditarSucursal sucursalPorEditar={sucursalPorEditar} /> : (null)}
  */}            <div className="section">
                 <h3 className="border">
                     ¡Te invitamos a Conocernos!
@@ -67,135 +69,65 @@ const DondeEstamos = () => {
             </div>
 
             <div className="bgimg-3">
-                <div className="caption-gastronomia"> 
-                <span className="border">Tenemos una amplia variedad gastronómica apta para todos los sentidos</span>
+                <div className="caption-gastronomia">
+                    <span className="border">Tenemos una amplia variedad gastronómica apta para todos los paladares</span>
 
                 </div>
             </div>
             <div className="section-2">
-                
-              <div className='slider-container'>
-                        <div className='slider'>
-                            <img
-                                src={slides[currentSlide].image}
-                                alt={slides[currentSlide].title}
-                                className='slider-image'
-                            />
-                            <div className='slider-info'>
-                                <h3>{slides[currentSlide].title}</h3>
-                                <p>{slides[currentSlide].description}</p>
-                            </div>
+
+                <div className='slider-container'>
+                    <div className='slider'>
+                        <img
+                            src={slides[currentSlide].image}
+                            alt={slides[currentSlide].title}
+                            className='slider-image'
+                        />
+                        <div className='slider-info'>
+                            <h2>{slides[currentSlide].title}</h2>
+                            <p>{slides[currentSlide].description}</p>
                         </div>
                     </div>
-                            <h3 className="border"> Pongámonos en contacto...   </h3>
-                <div className='section'>
-                    <img src='./src/assets/Logo.png' alt='logo' />
-                    <Contacto />
                 </div>
-              <MapL />
+                <div className='contenedor-h3-contacto'>
+                <h3 className="border"> Pongámonos en contacto...   </h3>
+                </div>
+                <div className='section' >
+                    <div className='contenedor-logo-form'>
+                        <div className="zoom-container">
+                            <img src='./src/assets/Logo.png' alt='logo' className="zoom-image" />
+                        </div>
+                        <Contacto />
+                    </div>
+                </div>
+                <MapL />
             </div>
-          
-           
-
-
-            {/* <div className='body'>
-
-                <Parallax bgImage='https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png'
-                    strength={100}
-                    bgImageStyle={{
-                        width: '100%',
-                        height: 'auto',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}>
-                    <div className='parallax'></div>
-                </Parallax>
-                <div className='section'>
-                    <h3 className='border'>GREEN BEER Estamos donde estés...</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid obcaecati voluptatum accusamus deleniti ipsa expedita sunt tenetur, alias voluptates, aspernatur repudiandae. Alias doloremque sapiente veritatis quos, delectus ipsam harum ullam!</p>
-                </div>
-                <Parallax bgImage='https://www.zona4arg.com.ar/wp-content/uploads/2021/04/club-de-la-birra-diseno-360-1400x702.jpg'
-                    blur={{ min: -20, max: 20 }}
-                    bgImageStyle={{
-                        width: '100%',
-                        height: 'auto',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}>
-                    <div className='parallax'></div>
-                </Parallax>
-                {sucursalPorEditar != null ? <EditarSucursal  sucursalPorEditar={sucursalPorEditar}/>: (null)}
-
-                <div className='section-sucursal'>
-                    <h3 className='border'>NUESTRAS SUCURSALES</h3>
-                    <Parrafo clase={"sucursales-paragrafh"} texto={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid obcaecati voluptatum accusamus deleniti ipsa expedita sunt tenetur, alias voluptates, aspernatur repudiandae. Alias doloremque sapiente veritatis quos, delectus ipsam harum ullam!'} />
-                    <div>
-                        {datos.sucursales.map(sucursal => (
-                            <CardsSucursal key={sucursal.id} sucursal={sucursal} setSucursalPorEditar={setSucursalPorEditar} />
-                        ))}
-                    </div>
-                </div>
-                <div className='section-contacto'>
-                    <h3 className='border'>¡PONGÁMONOS EN CONTACTO!</h3>
-                </div>
-                <Parallax strength={100} blur={{ min: -20, max: 20 }}
-                    bgImageStyle={{
-                        width: '100%',
-                        height: 'auto',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                    renderLayer={(percentage) => (
-                        <div className="contacto-container">
-                            <div className="logo-container">
-                                <div className="logo-zoom" style={{
-                                    background: `url(./src/assets/Logo.png) no-repeat center/cover`,
-                                    width: (percentage * 350),
-                                    height: (percentage * 350),
-                                }}></div>
-                            </div>
-                            <Contacto />
-                        </div>
-                    )}>
-                </Parallax>
-
-                <Parallax
-                    bgImage='https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/7ZR6ZD2FRRC67ARSX2XWL7C5IQ.jpg'
-                    strength={150}
-                    blur={{ min: -20, max: 20 }}
-                    bgImageStyle={{
-                        width: '100%',
-                        height: 'auto',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}>
-                    <div className='parallax'></div>
-                </Parallax>
-                <div className='section-mapa'>
-                    <div className='section-contacto'>
-                        <h3 className='border'>¡VENÍ A CONOCERNOS Y A PROBAR NUESTRAS VARIADAS CERVEZAS Y PLATOS!</h3>
-                    </div>
-
-                    <div className='slider-container'>
-                        <div className='slider'>
-                            <img
-                                src={slides[currentSlide].image}
-                                alt={slides[currentSlide].title}
-                                className='slider-image'
-                            />
-                            <div className='slider-info'>
-                                <h3>{slides[currentSlide].title}</h3>
-                                <p>{slides[currentSlide].description}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='card-map'>
-                        <MapL />
-                    </div>
-                </div>
-            </div> */}
         </>
-    );
-};
+    )
+}
 
 export default DondeEstamos;
+
+{/* 
+ const contenedorRef = useRef(null);
+
+const scrollLeft = () => {
+    contenedorRef.current.scrollBy({ left: -100, behavior: 'smooth' });
+};
+
+const scrollRight = () => {
+    contenedorRef.current.scrollBy({ top: 100, behavior: 'smooth' });
+};
+
+<div className='contenedor-cards-sucursal' ref={contenedorRef}>
+ {datos.sucursales.map(sucursal => (
+     <CardsSucursal key={sucursal.id} sucursal={sucursal} setSucursalPorEditar={setSucursalPorEditar} />
+ ))}
+</div>
+</div>
+<button onClick={scrollLeft} className="scroll-button">
+ <FontAwesomeIcon icon={faChevronLeft} />
+</button>
+<button onClick={scrollRight} className="scroll-button">
+ <FontAwesomeIcon icon={faChevronRight} />
+</button> */}
