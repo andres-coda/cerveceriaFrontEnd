@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+/* import React, { useContext, useState } from 'react';
 import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
 import { contexto } from '../contexto/contexto';
@@ -76,7 +76,6 @@ const CardsSucursal = ({ sucursal, setSucursalPorEditar}) => {
                       <div className='card-container'>
                     <div className='card-img-container'>
                         <img className='card-img' src={sucursal.imagen} alt={sucursal.nombre} />
-                            {/*card.overlay contenedor cuando hace hover vista usuario y admin*/}
                         <div className='card-overlay'>
                             <h1 className='card-h1'>{sucursal.nombre}</h1>
                             <h3 className='card-h3'><CiLocationOn className='icon' />{sucursal.direccion}</h3>
@@ -88,7 +87,6 @@ const CardsSucursal = ({ sucursal, setSucursalPorEditar}) => {
                     </div>
                 </div>
            
-            {/*btn-icon contenedor botones iconos administración */}
             <div className='btn-icon'>
                 {sucursal && sucursal.deleted ? (
                     <div>
@@ -117,9 +115,9 @@ const CardsSucursal = ({ sucursal, setSucursalPorEditar}) => {
 
 export default CardsSucursal;
 
+ */
 
-
-/* import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
 import { contexto } from '../contexto/contexto';
@@ -131,7 +129,7 @@ import FormularioInput from '../formularioInput/FormularioInput';
 import Modal from '../modal/modal';
 import AlertSucursal from '../alertSucursal/AlertSucursal';
 import AnimatedSVG from '../animacion/AnimatedSVG';
-
+import './CardsSucursal.css';  // Archivo CSS para los estilos
 
 const CardsSucursal = ({ sucursal }) => {
     const [alerta, setAlerta] = useState({ estado: false, tipo: '', idTexto: '', mensaje: '' });
@@ -151,7 +149,6 @@ const CardsSucursal = ({ sucursal }) => {
     });
 
     const startEditing = () => {
-    
         setEditedSucursal({
             imagen: sucursal.imagen,
             nombre: sucursal.nombre,
@@ -175,13 +172,13 @@ const CardsSucursal = ({ sucursal }) => {
             const response = await fetchPut(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'), editedSucursal);
             if (response) {
                 setDatos((prev) => ({ ...prev, refresh: true }));
-                 setIsEditing(false);
+                setIsEditing(false);
                 navigate('/dondeestamos');
             }
         } catch (error) {
             console.error("Error al editar la sucursal:", error);
         } finally {
-          setIsSaving(false); // Indica que se ha completado la acción de guardar (ya sea con éxito o con error)
+            setIsSaving(false);
         }
     };
 
@@ -229,63 +226,70 @@ const CardsSucursal = ({ sucursal }) => {
     };
 
     return (
-        <div className={sucursal.deleted ? 'cards-sucursalEliminada' : 'cards-sucursal'}>
+        //cards-sucursal contenedor total
+        <div className={`cards-sucursal ${sucursal.deleted ? 'cards-sucursalEliminada' : ''}`}>
             {isEditing && (
-              <Modal isOpen={isEditing} onClose={() => setIsEditing(false)}>
-                { isSaving ? (<AnimatedSVG />  ):(
-                    <>
-                    <img className='card-img-form' src={sucursal.imagen} alt={sucursal.nombre} />
-                    <form onSubmit={handleSave} className='form-modal'>
-                        <FormularioInput id={"imagen"}  value={editedSucursal.imagen} tipo={"text"} texto={"Url_Imagen"} onChan={handleEditChange} />
-                        <FormularioInput id={"nombre"} value={editedSucursal.nombre} tipo={"text"} texto={"Nombre"} onChan={handleEditChange} />
-                        <FormularioInput id={"direccion"}  value={editedSucursal.direccion} tipo={"text"} texto={"Dirección"} onChan={handleEditChange} />
-                        <FormularioInput id={"telefono"}  value={editedSucursal.telefono} tipo={"text"} texto={"Teléfono"} onChan={handleEditChange} />
-                        <FormularioInput id={"email"}  value={editedSucursal.email} tipo={"text"} texto={"Email"} onChan={handleEditChange} />
-                        <FormularioInput id={"instagram"}  value={editedSucursal.instagram} tipo={"text"} texto={"Instagram"} onChan={handleEditChange} />
-                        <FormularioInput id={"facebook"} value={editedSucursal.facebook} tipo={"text"} texto={"Facebook"} onChan={handleEditChange} />
-                         <div>
-                            <Boton btn={{ id: "editar", clase: "comun", texto: "Guardar" }} btnClick={handleSave} />
-                        </div>
-                    </form>
-                    </>
+                //modal vista admin para adminsitrar la sucursal
+                <Modal isOpen={isEditing} onClose={() => setIsEditing(false)}>
+                    {isSaving ? (
+                        <AnimatedSVG />
+                    ) : (
+                        //card-img-form clse de la imagen
+                        <>
+                        
+                            <img className='card-img-form' src={sucursal.imagen} alt={sucursal.nombre} />
+                            <form onSubmit={handleSave} className='form-modal'>
+                                <FormularioInput id={"imagen"} value={editedSucursal.imagen} tipo={"text"} texto={"Url_Imagen"} onChan={handleEditChange} />
+                                <FormularioInput id={"nombre"} value={editedSucursal.nombre} tipo={"text"} texto={"Nombre"} onChan={handleEditChange} />
+                                <FormularioInput id={"direccion"} value={editedSucursal.direccion} tipo={"text"} texto={"Dirección"} onChan={handleEditChange} />
+                                <FormularioInput id={"telefono"} value={editedSucursal.telefono} tipo={"text"} texto={"Teléfono"} onChan={handleEditChange} />
+                                <FormularioInput id={"email"} value={editedSucursal.email} tipo={"text"} texto={"Email"} onChan={handleEditChange} />
+                                <FormularioInput id={"instagram"} value={editedSucursal.instagram} tipo={"text"} texto={"Instagram"} onChan={handleEditChange} />
+                                <FormularioInput id={"facebook"} value={editedSucursal.facebook} tipo={"text"} texto={"Facebook"} onChan={handleEditChange} />
+                                <div>
+                                    <Boton btn={{ id: "editar", clase: "comun", texto: "Guardar" }} btnClick={handleSave} />
+                                </div>
+                            </form>
+                        </>
                     )}
-                
                 </Modal>
             )}
-           
-            
             {!isEditing && (
-              <div>
+                //card-container contenedor vista de usuario y admin
+                <div className='card-container'>
                     <div className='card-img-container'>
                         <img className='card-img' src={sucursal.imagen} alt={sucursal.nombre} />
+                            {/*card.overlay contenedor cuando hace hover vista usuario y admin*/}
+                        <div className='card-overlay'>
+                            <h1 className='card-h1'>{sucursal.nombre}</h1>
+                            <h3 className='card-h3'><CiLocationOn className='icon' />{sucursal.direccion}</h3>
+                            <h3 className='card-h3'><FaWhatsapp className='icon' />{sucursal.telefono}</h3>
+                            <h3 className='card-h3'><FaMailBulk className='icon' />{sucursal.email}</h3>
+                            <h3 className='card-h3'><FaInstagram className='icon' />{sucursal.instagram}</h3>
+                            <h3 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h3>
+                        </div>
                     </div>
-                    <h1 className='card-h1'>{sucursal.nombre}</h1>
-                    <h3 className='card-h3'><CiLocationOn className='icon' />{sucursal.direccion}</h3>
-                    <h3 className='card-h3'><FaWhatsapp className='icon' />{sucursal.telefono}</h3>
-                    <h3 className='card-h3'><FaMailBulk className='icon' />{sucursal.email}</h3>
-                    <h3 className='card-h3'><FaInstagram className='icon' />{sucursal.instagram}</h3>
-                    <h3 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h3>
                 </div>
             )}
+            {/*btn-icon contenedor botones iconos administración */}
             <div className='btn-icon'>
                 {sucursal && sucursal.deleted ? (
-                  <div>
+                    <div>
                         <button onClick={reactivarSucursal} title='Reactivar Surcursal Eliminada' className='icon-button'><FaUndo /></button>
                     </div>
                 ) : (
-                  datos.userAct && datos.userAct.role === "admin" && (
-                    <div>
+                    datos.userAct && datos.userAct.role === "admin" && (
+                        <div>
                             <button onClick={startEditing} title='Editar Surcursal' className='icon-button'><FaEdit /></button>
                             <button onClick={DeleteSucursal} title='Eliminar Surcursal' className='icon-button'><FaTrash /></button>
                         </div>
                     )
-                  )}
+                )}
             </div>
-            
             {alerta.estado && (
-              <AlertSucursal
-              setAlerta={setAlerta}
-              idTexto={alerta.idTexto}
+                <AlertSucursal
+                    setAlerta={setAlerta}
+                    idTexto={alerta.idTexto}
                     handleAlertAction={handleAlertAction}
                     mensaje={alerta.mensaje}
                 />
@@ -295,4 +299,4 @@ const CardsSucursal = ({ sucursal }) => {
 };
 
 export default CardsSucursal;
- */
+

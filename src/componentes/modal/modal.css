@@ -7,7 +7,7 @@
   translate: (0% 0%);
   z-index: 10000;
   width: 100vw;
-  height: 100vh;
+  height:250vh;
   background-color: var(--color6);
  
 }
@@ -21,7 +21,7 @@
   align-items: start;
   z-index: 10000; /* Asegúrate de que este valor sea mayor que el de la navbar */
 
-  max-height: 100vh;
+  max-height: 250vh;
 
 }
 

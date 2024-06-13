@@ -43,7 +43,7 @@
     background-color:transparent;
     margin: 1rem;
     margin-right: 3rem;
-    border: none;
+    border-bottom: 1px solid var(--color8);
     box-shadow: none;
     font-size: 1em;
     color: var(--color1);

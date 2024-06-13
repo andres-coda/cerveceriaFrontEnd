@@ -31,7 +31,74 @@ const DondeEstamos = () => {
 
     return (
         <>
-            <div className='body'>
+            <div >
+                <div className="bgimg-1">
+                    <div className="caption">
+                    </div>
+                </div>
+            </div>
+
+            <div className="section-1">
+                <h3 className="border">
+                    Somos Nosotros...Somos ustedes...
+                </h3>
+                <p className='paragrafh-nosotrosSomos'>
+                    Porque cada linea de esta web, cada código, cada minuto empleado, cada momento en que la frustración
+                    parecía ganar, siempre hubo un motivo para seguir. A pesar del cansancio y de nuestros compromisos,
+                    podemos decir que todo valió la pena. Porque tenemos Green esperanza, tenemos Green Beer...🍻
+                </p>
+            </div>
+
+            <div className="bgimg-2">
+                <div className="caption">
+                </div>
+            </div>
+{/*                 {sucursalPorEditar != null ? <EditarSucursal sucursalPorEditar={sucursalPorEditar} /> : (null)}
+ */}            <div className="section">
+                <h3 className="border">
+                    ¡Te invitamos a Conocernos!
+                </h3>
+
+                <div>
+                    {datos.sucursales.map(sucursal => (
+                        <CardsSucursal key={sucursal.id} sucursal={sucursal} setSucursalPorEditar={setSucursalPorEditar} />
+                    ))}
+                </div>
+            </div>
+
+            <div className="bgimg-3">
+                <div className="caption-gastronomia"> 
+                <span className="border">Tenemos una amplia variedad gastronómica apta para todos los sentidos</span>
+
+                </div>
+            </div>
+            <div className="section-2">
+                
+              <div className='slider-container'>
+                        <div className='slider'>
+                            <img
+                                src={slides[currentSlide].image}
+                                alt={slides[currentSlide].title}
+                                className='slider-image'
+                            />
+                            <div className='slider-info'>
+                                <h3>{slides[currentSlide].title}</h3>
+                                <p>{slides[currentSlide].description}</p>
+                            </div>
+                        </div>
+                    </div>
+                            <h3 className="border"> Pongámonos en contacto...   </h3>
+                <div className='section'>
+                    <img src='./src/assets/Logo.png' alt='logo' />
+                    <Contacto />
+                </div>
+              <MapL />
+            </div>
+          
+           
+
+
+            {/* <div className='body'>
 
                 <Parallax bgImage='https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png'
                     strength={100}
@@ -126,7 +193,7 @@ const DondeEstamos = () => {
                         <MapL />
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 };
