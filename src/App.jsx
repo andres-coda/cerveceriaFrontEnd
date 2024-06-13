@@ -15,6 +15,7 @@ import Carrito from './componentes/carrito/Carrito';
 import MenuCargar from './componentes/menuCargar/MenuCargar';
 import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
 import Reservas from './componentes/reservas/Reservas';
+import EditarReserva from './componentes/reservas/EditarReservas';
 import ModalUsers from "./componentes/modalUsers/ModalUsers";
 import MenuAux from "./componentes/menu/MenuAux";
 import PrivateRoute from "./componentes/privateRoute/PrivateRoute";
@@ -25,6 +26,7 @@ import ModalCarrito from "./componentes/modalCarrito/ModalCarrito";
 import MostrarPedidos from "./componentes/pedidos/pedidos";
 import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
 import ReservasList from "./componentes/reservas/ReservasList";
+
 function App() {
   const { datos } = useContext(contexto);
   return ( 
@@ -55,7 +57,7 @@ function App() {
           <Route path='/dondeestamos' element={<DondeEstamos />} />
           <Route path='/carrito' element={<Carrito />}/>
           <Route path="/reservas" element={<PrivateRoute roles={['user', 'admin']} />}>
-            <Route path='/reservas' element={<Reservas />} />
+            <Route path='/reservas' element={<Reservas />} />            
           </Route>
           <Route path="/cargarmenu" element={<PrivateRoute roles={['admin']} />}>
             <Route path='/cargarmenu' element={<MenuCargar />} />
@@ -69,6 +71,7 @@ function App() {
           <Route path='/pedidos' element={<MostrarPedidos/>} />
           <Route path='/pedidos-generales' element={<MostrarPedidosGenerales/>}/>
           <Route path='/listadoreservas' element={<ReservasList/>} />
+          <Route path='listadoreservas/reservas/editar/:id' element={<EditarReserva />} />
         </Routes>
       <Footer />
     </AuthProvider>  

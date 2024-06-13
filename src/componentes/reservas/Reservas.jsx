@@ -4,102 +4,161 @@ import FormularioInput from '../formularioInput/FormularioInput';
 import '../boton/Boton.css';
 import ModalPago from './ModalPago';
 import Modal from '../../utils/genericModal/GenericModal.jsx';
+import ConfirmModal from './ConfirmModal';
 import { useAuth } from '../auth/AuthContext';
 import { getUserDetails } from './actions/getUserDetails';
-import {generarClaveReserva}  from './actions/claveReserva';
+import { generarClaveReserva } from './actions/claveReserva';
 import { BASE_URL } from '../../endPoints/endPoints';
-import { convertEnumValueToDisplayValue } from '../../utils/convertValue.js'
+import { convertEnumValueToDisplayValue } from '../../utils/convertValue.js';
 import Subtitulo from '../subtitulo/Subtitulo.jsx';
+import { useParams, useNavigate } from 'react-router-dom';
 
-const Reservas = () => {
-  const {auth} = useAuth();
-  const {user, token} = auth || {};
+const Reservas = ({ reservaEdit }) => {
+  const { auth } = useAuth();
+  const { user, token } = auth || {};
   const userId = user?.sub;
-  
-  const initialState = {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [formulario, setFormulario] = useState({
     fecha: '',
     hora: '',
     cantidad: '',
     numeroMesa: '',
-    nombre: user?.name || '',
-    apellido: user?.lastname || '',
-    email: user?.email || '',
+    nombre: '',
+    apellido: '',
+    email: '',
     idMetodoPago: '',
-    metodoPago: ""
-  };
-
-  const [formulario, setFormulario] = useState(initialState);
-  const [ismodalReservaVisible, setIsModalReservaVisible] = useState(false);
-  const [ismodalPagoVisible, setIsModalPagoVisible] = useState(false);
+    metodoPago: '',
+  });
+  const [camposEditables, setCamposEditables] = useState({
+    fecha: true,
+    hora: true,
+    cantidad: true,
+    numeroMesa: true,
+  });
+  const [isModalReservaVisible, setIsModalReservaVisible] = useState(false);
+  const [isModalPagoVisible, setIsModalPagoVisible] = useState(false);
   const [claveReserva, setClaveReserva] = useState('');
   const [formularioKey, setFormularioKey] = useState(0);
   const [camposCompletos, setCamposCompletos] = useState(false);
   const [metodosPago, setMetodosPago] = useState([]);
+  const [isEditConfirmationVisible, setIsEditConfirmationVisible] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(!!reservaEdit);
   const formRef = useRef(null);
 
   useEffect(() => {
-    
-    window.scrollTo(0, 0);
+    const fetchData = async () => {
+      try {
+        if (id && token) {
+          const reservaResponse = await fetch(`${BASE_URL}/reserva/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          const reservaData = await reservaResponse.json();
 
-    if (userId && token) {
-      getUserDetails(userId, token).then(userDetails => {
-        setFormulario({
-          ...initialState,
-          nombre: userDetails.name || '',
-          apellido: userDetails.lastname || '',
-          email: userDetails.email || '',
+          setFormulario({
+            fecha: reservaData.fecha,
+            hora: reservaData.hora,
+            cantidad: reservaData.cantidad,
+            numeroMesa: reservaData.numeroMesa,
+            nombre: reservaData.usuario.name,
+            apellido: reservaData.usuario.lastname,
+            email: reservaData.usuario.email,
+            idMetodoPago: reservaData.idMetodoPago,
+            metodoPago: reservaData.metodoPago.metodoPago,
+          });
+          setIsEditMode(true);
+        } else if (userId && token) {
+          const userDetails = await getUserDetails(userId, token);
+          setFormulario((prevState) => ({
+            ...prevState,
+            nombre: userDetails.name || '',
+            apellido: userDetails.lastname || '',
+            email: userDetails.email || '',
+          }));
+        }
+
+        const metodosPagoResponse = await fetch(`${BASE_URL}/metodoPago`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
-      }).catch(error => {
-        console.error('Error fetching user details:', error);
-      });
-     }
+        const metodosPagoData = await metodosPagoResponse.json();
 
-     fetch(`${BASE_URL}/metodoPago`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        
-        data = data.map(metodoPago => ({
+        const metodosPagoFormatted = metodosPagoData.map((metodoPago) => ({
           ...metodoPago,
-          metodoPago: convertEnumValueToDisplayValue(metodoPago.metodoPago)
+          metodoPago: convertEnumValueToDisplayValue(metodoPago.metodoPago),
         }));
+        setMetodosPago(metodosPagoFormatted);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-        
-        setMetodosPago(data);
-      })
-      .catch(error => {
-        console.error('Error fetching payment methods:', error);
-      });
-  
-  }, [userId, token]);
-
-  
+    fetchData();
+    window.scrollTo(0, 0);
+  }, [userId, token, id]);
 
   const onChan = (e) => {
     const { name, value } = e.target;
-    setFormulario({ ...formulario, [name]: value });
+    setFormulario((prevState) => ({ ...prevState, [name]: value }));
 
     const inputElements = formRef.current.querySelectorAll('input');
-    const areAllInputsFilled = Array.from(inputElements).every((inputElement) => inputElement.value !== '');
+    const areAllInputsFilled = Array.from(inputElements).every(
+      (inputElement) => inputElement.value !== ''
+    );
 
     setCamposCompletos(areAllInputsFilled);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const claveReserva = generarClaveReserva();
-         
+    if (isEditMode) {
+      setIsEditConfirmationVisible(true);
+    } else {
+      const claveReserva = generarClaveReserva();
       setClaveReserva(claveReserva);
       setIsModalPagoVisible(true);
-    
+    }
   };
 
-  const handlePagoSubmit = async (formData) => {      
-    console.log('formData',formData); 
-    const { fecha, hora, cantidad, numeroMesa, metodoPago,idMetodoPago } = formulario;
+  const handleEditConfirmation = async () => {
+    try {
+      const { fecha, hora, cantidad, numeroMesa, idMetodoPago } = formulario;
+      const requestBody = {
+        fecha,
+        hora,
+        cantidad: parseInt(cantidad),
+        numeroMesa: parseInt(numeroMesa),
+        idUsuario: parseInt(userId),
+        idMetodoPago: parseInt(idMetodoPago),
+      };
+
+      const response = await fetch(`${BASE_URL}/reserva/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al actualizar los datos de la reserva');
+      }
+
+      setIsEditConfirmationVisible(false);
+      setIsModalReservaVisible(true);
+      setTimeout(() => navigate('/listadoreservas'), 5000); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handlePagoSubmit = async (formData) => {
+    const { fecha, hora, cantidad, numeroMesa, idMetodoPago } = formulario;
     const requestBody = {
       fecha,
       hora,
@@ -108,13 +167,13 @@ const Reservas = () => {
       idUsuario: parseInt(userId),
       idMetodoPago: parseInt(idMetodoPago),
     };
-    console.log('Request body:', requestBody);
+
     try {
       const response = await fetch(`${BASE_URL}/reserva`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(requestBody),
       });
@@ -122,20 +181,24 @@ const Reservas = () => {
       if (!response.ok) {
         throw new Error('Error al enviar los datos de la reserva');
       }
-      
+
       setIsModalPagoVisible(false);
       setIsModalReservaVisible(true);
+      setTimeout(() => navigate('/listadoreservas'), 5000); 
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onselect=(e) => {
+  const onselect = (e) => {
     const select = e.target.value;
-    const option= metodosPago.find(metodo => metodo.metodoPago === select);
-    setFormulario((prev)=>({...prev, idMetodoPago:option.idMetodoPago, metodoPago: option.metodoPago}));
-
-  }
+    const option = metodosPago.find((metodo) => metodo.metodoPago === select);
+    setFormulario((prevState) => ({
+      ...prevState,
+      idMetodoPago: option.idMetodoPago,
+      metodoPago: option.metodoPago,
+    }));
+  };
 
   const handlePagoClose = () => {
     setIsModalPagoVisible(false);
@@ -143,8 +206,18 @@ const Reservas = () => {
 
   const closeModal = () => {
     setIsModalReservaVisible(false);
-    setFormularioKey(formularioKey + 1); 
-    setFormulario(initialState); 
+    setFormularioKey((prevKey) => prevKey + 1);
+    setFormulario({
+      fecha: '',
+      hora: '',
+      cantidad: '',
+      numeroMesa: '',
+      nombre: user?.name || '',
+      apellido: user?.lastname || '',
+      email: user?.email || '',
+      idMetodoPago: '',
+      metodoPago: '',
+    });
     setCamposCompletos(false);
   };
 
@@ -163,7 +236,7 @@ const Reservas = () => {
 
   const generateTimeOptions = () => {
     const options = [];
-    for (let hour = 10; hour <= 24; hour++) { 
+    for (let hour = 10; hour <= 24; hour++) {
       for (let minutes of ['00', '30']) {
         const time = `${hour < 10 ? '0' + hour : hour}:${minutes}`;
         options.push(time);
@@ -172,61 +245,118 @@ const Reservas = () => {
     return options;
   };
 
+  const buttonText = isEditMode ? 'Guardar' : 'Reservar';
+
   return (
     <div className="conteinerGeneral reservas">
-      <Subtitulo texto={"Reserva de mesa"} />
+      <Subtitulo texto={'Reserva de mesa'} />
       <hr />
       <form className="formulario" key={formularioKey} ref={formRef}>
-        <FormularioInput id="fecha" tipo="date" texto="Fecha" value={formulario.fecha} onChan={onChan} />        
+        <FormularioInput
+          id="fecha"
+          tipo="date"
+          texto="Fecha"
+          value={formulario.fecha}
+          onChan={onChan}          
+        />
         <div className="renglonInput">
           <label htmlFor="hora">HORA</label>
-          <select id="hora" name="hora" value={formulario.hora} onChange={onChan} required>
+          <select
+            id="hora"
+            name="hora"
+            value={formulario.hora}
+            onChange={onChan}
+            required            
+          >
             <option value="">Seleccione horario de reserva</option>
-            {generateTimeOptions().map(time => (
-              <option key={time} value={time}>{time}</option>
+            {generateTimeOptions().map((time) => (
+              <option key={time} value={time}>
+                {time}
+              </option>
             ))}
           </select>
         </div>
-        <FormularioInput id="cantidad" tipo="numero" texto="Cantidad de Personas" value={formulario.cantidad} onChan={onChan} />
-        <FormularioInput id="nombre" tipo="text" texto="Nombre" value={formulario.nombre} onChan={onChan} />
-        <FormularioInput id="apellido" tipo="text" texto="Apellido" value={formulario.apellido} onChan={onChan} />
-        <FormularioInput id="numeroMesa" tipo="numero" texto="Numero de Mesa" value={formulario.numeroMesa} onChan={onChan} />
-        <FormularioInput id="email" tipo="email" texto="Correo Electrónico" value={formulario.email} onChan={onChan} />
-         <FormularioInput 
-         id="idMetodoPago"
-         value={formulario.metodoPago} 
-         tipo={"select"} 
-         texto={"Metodo de Pago"} 
-         onChan={onselect} 
-         opciones={[...metodosPago.map((metodo) => metodo.metodoPago)]} 
-     />
-        <button className='button-reservas' onClick={handleSubmit} disabled={!camposCompletos}>RESERVAR</button>
-        
+        <FormularioInput
+          id="cantidad"
+          tipo="numero"
+          texto="Cantidad de Personas"
+          value={formulario.cantidad}
+          onChan={onChan}          
+        />
+        <FormularioInput
+          id="nombre"
+          tipo="text"
+          texto="Nombre"
+          value={formulario.nombre}
+          onChan={onChan}
+          disabled 
+        />
+        <FormularioInput
+          id="apellido"
+          tipo="text"
+          texto="Apellido"
+          value={formulario.apellido}
+          onChan={onChan}
+          disabled
+        />
+        <FormularioInput
+          id="numeroMesa"
+          tipo="numero"
+          texto="Numero de Mesa"
+          value={formulario.numeroMesa}
+          onChan={onChan}
+        />
+        <FormularioInput
+          id="email"
+          tipo="email"
+          texto="Correo Electrónico"
+          value={formulario.email}
+          onChan={onChan}
+          disabled
+        />
+        <FormularioInput
+          id="idMetodoPago"
+          value={formulario.metodoPago}
+          tipo={'select'}
+          texto={'Metodo de Pago'}
+          onChan={onselect}
+          opciones={[...metodosPago.map((metodo) => metodo.metodoPago)]}
+          defaultValue={formulario.metodoPago || 'Seleccione Metodo de Pago'}
+        />
+        <button className="button-reservas" onClick={handleSubmit} disabled={!camposCompletos}>
+          {buttonText}
+        </button>
       </form>
-      {ismodalPagoVisible && (
+      {isModalPagoVisible && (
         <ModalPago
-        isVisible={ismodalPagoVisible}
-        onClose={handlePagoClose}
-        metodoPago="Tarjeta"
-        onSubmitPago={handlePagoSubmit}
-      />
-      )}     
-      {ismodalReservaVisible && (
+          isVisible={isModalPagoVisible}
+          onClose={handlePagoClose}
+          metodoPago="Tarjeta"
+          onSubmitPago={handlePagoSubmit}
+        />
+      )}
+      {isModalReservaVisible && (
         <Modal
-          isVisible={ismodalReservaVisible}
+          isVisible={isModalReservaVisible}
           onClose={closeModal}
           data={{
             ...formulario,
             nombreApellido: `${formulario.nombre} ${formulario.apellido}`,
-            titulo: 'Reserva Exitosa'
-          }}          
+            titulo: 'Reserva Exitosa',
+          }}
           qrDataTemplate={generateReservaQRData}
           contentStructure={contentStructure}
         />
       )}
+      {isEditConfirmationVisible && (
+        <ConfirmModal
+          message="¿Está seguro que desea editar la reserva?"
+          onConfirm={handleEditConfirmation}
+          onCancel={() => setIsEditConfirmationVisible(false)}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default Reservas;
-

@@ -14,9 +14,20 @@
     padding: 0.5rem;
 }
 
-
 .pedido-card-eliminado{
-    border: 1px solid var(--color4);
+    position: relative; 
+    overflow: hidden;
+}
+
+.pedido-card-eliminado::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color6); 
+    z-index: 1;
 }
 
 .pedido-card-eliminado p,
@@ -100,6 +111,18 @@
     padding: 0.5rem 0 0.5rem 0.8rem;
     color: var(--color4);
 }
+
+#pedido-edit,
+#pedido-deleted{
+    position: relative;
+    z-index: 2;
+}
+
+#pedido-edit:hover,
+#pedido-deleted:hover{
+    z-index: 2;
+}
+
 
 
 
