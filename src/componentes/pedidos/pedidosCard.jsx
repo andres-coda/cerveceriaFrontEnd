@@ -1,43 +1,38 @@
-import {  useEffect, useState } from 'react';
-import './pedidosCard.css'
+import { useEffect, useState } from "react";
+import { fetchDelete, fetchPatCh } from "../funciones fetch/funciones";
+import AlertaGeneral from "../eliminarAlerta/AlertaGeneral";
+import PedidoInternoCard from "./pedidoInternoCard";
+import Boton from "../boton/Boton";
 import { FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
-import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
-import Boton from '../boton/Boton';
-import { URL_PEDIDO } from '../../endPoints/endPoints';
-import { fetchDelete, fetchPatCh } from '../funciones fetch/funciones';
-function PedidosCard({pedido}) {
-	const [importe, setImporte] = useState(0);
+import { URL_PEDIDO } from "../../endPoints/endPoints";
+
+function PedidosCard({children, pedido, reload, textoAlerta}) {
     const [isOpen, setIsOpen ] = useState(false)
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false});
-	const formatoFecha = (fecha) => {
-    const date = new Date(fecha);
-    const dia = date.getDate();
-    const mes = date.getMonth() + 1; 
-    const año = date.getFullYear();
-    return `${dia}/${mes}/${año}`;
-	}
-
-    const onEdit = (pedidoInterno)=>{
+    let importe = null;
+    if (!importe) {
+        importe=0;
+        pedido.pedidosProducto.map((producto)=>{
+            importe=importe+producto.cantidad*producto.producto.price;
+    })}
+    const onEdit = ()=>{
         setTexto((prev)=>({
             ...prev, 
             proceso:true, 
-            texto: `Desea reactivar el pedido del día ${formatoFecha(pedidoInterno.fecha)}`,
+            texto: `Desea reactivar ${textoAlerta}`,
             idTexto: `reactivar`
         }))
         setIsOpen(true)
-        console.log(`deleted pedido ${pedidoInterno.id}`);
     }
 
-    const onDeleted = (pedidoInterno) => {
-        console.log(pedido.deleted);
+    const onDeleted = () => {
         setTexto((prev)=>({
             ...prev, 
             proceso:true, 
-            texto: `Desea ${!pedido.deleted ? 'eliminar':'reactivar'} el pedido del día ${formatoFecha(pedidoInterno.fecha)}`,
+            texto: `Desea ${!pedido.deleted ? 'eliminar':'reactivar'} ${textoAlerta}`,
             idTexto: !pedido.deleted ? 'eliminar':'reactivar'
         }))
         setIsOpen(true)
-        console.log(`deleted pedido ${pedidoInterno.id}`);
     }
 
     const btnClick = async (e) => {
@@ -48,7 +43,10 @@ function PedidosCard({pedido}) {
                 try {
                     const response = await fetchDelete(URL_PEDIDO+'/'+pedido.id,localStorage.getItem('token'))
                     if (response==true) {
-                        setTexto((prev)=>({...prev, texto: "El pedido fue eliminado con exito", proceso :true, condicion:true}));
+                        const reloadLocal = await reload();
+                        if (reloadLocal) {
+                            setTexto((prev)=>({...prev, texto: "El pedido fue eliminado con exito", proceso :true, condicion:true}));
+                        }
                     }
                 } catch (error) {
                     setTexto((prev)=>({...prev, texto: `El pedido no pudo ser borrado: ${error.message}`, proceso :true, condicion:true}));
@@ -58,7 +56,8 @@ function PedidosCard({pedido}) {
                 try {
                     const response = await fetchPatCh(URL_PEDIDO+'/'+pedido.id,localStorage.getItem('token'))
                     if (response==true) {
-                        setTexto((prev)=>({...prev, texto: "El pedido fue reactivado con exito", proceso :true, condicion:true}));
+                        const reloadLocal = await reload();
+                        if (reloadLocal) setTexto((prev)=>({...prev, texto: "El pedido fue reactivado con exito", proceso :true, condicion:true}));
                     }
                 } catch (error) {
                     setTexto((prev)=>({...prev, texto: `El pedido no pudo ser reactivado: ${error.message}`, proceso :true, condicion:true}));
@@ -69,26 +68,20 @@ function PedidosCard({pedido}) {
     }
 
     const onClose = () =>{
+        setTexto((prev)=>({...prev,proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false}));
         setIsOpen(false);
-        window.location.reload();
     }
 
-	useEffect(()=>{
-		pedido.pedidosProducto.map((producto)=>{
-		setImporte(importe+producto.cantidad*producto.producto.price)
-	})
-	},[])
-
-	return (
+    return (
         <>
 		<div className={!pedido.deleted ? "pedido-card" : "pedido-card-eliminado"} id={pedido.id}>
             <div className='pedido-encabezado'>
-                <p className='pedido-fecha'> {formatoFecha(pedido.fecha)}  </p>
+                {children}
             </div>
             <div className='pedido-cuerpo'>
                 <div className='pedido-productos-content' >
                     {pedido.pedidosProducto.map((producto)=>(
-                        <div className='pedido-producto' key={producto.producto.idProducto}>
+                        <div className='pedido-producto' key={`${pedido.id}-producto-${producto.producto.idProducto}`}>
                             <p><b>{producto.cantidad} </b></p>
                             <img src={producto.producto.img} alt={producto.producto.titulo} />
                             <p> {producto.producto.titulo} </p>
@@ -109,17 +102,8 @@ function PedidosCard({pedido}) {
                 children={
                     !texto.condicion ? (
                         <>
-                        <div>
-                        <>
-                        {pedido.pedidosProducto.map((producto)=>(
-                            <div className='pedido-producto-alerta' key={producto.producto.idProducto}>
-                                <p><b>{producto.cantidad} </b></p>
-                                <img src={producto.producto.img} alt={producto.producto.titulo} />
-                                <p> {producto.producto.titulo} </p>
-                            </div>
-                        ))}
-                         <p className='pedido-importe-alerta'><b>Importe: </b> ${importe} </p>
-                    </>
+                    <div>
+                        <PedidoInternoCard pedido={pedido} />
                     </div>
                     <div className='boton-alerta-pedido'>
                         <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
@@ -132,45 +116,7 @@ function PedidosCard({pedido}) {
                 onClose={onClose}
             />
         </>
-	)
+    )
 }
 
 export default PedidosCard;
-
-
-/*
-"name": "Marta",
-    "lastname": "Pérez Martínez",
-    "username": "josefina",
-    "email": "extraño@tubarrio.com",
-    "password": "enpijama",
-    "age": 30,
-    "direccion": "Calle Peatonal 987",
-    "role": "admin",
-    "id": 2,
-    "deleted": false,
-    "pedidos": [
-        {
-            "fecha": "2024-02-25T03:00:00.000Z",
-            "detalle": "modificando la prueba",
-            "id": 12,
-            "deleted": false,
-            "pedidosProducto": [
-                {
-                    "cantidad": 2,
-                    "producto": {
-                        "titulo": "ravioles con salsa blanca",
-                        "img": "https://cocinerosargentinos.com/content/recipes/500x500/ravioles-de-papa-y-cebolla.1639.jpg",
-                        "descripcion": "El secreto esta en la salsa de la abuela esta muy buena",
-                        "ingredientes": "paz y mucha ciencia, pero pegados",
-                        "price": 2500,
-                        "valoracion": 5,
-                        "idProducto": 1,
-                        "deleted": false
-                    },
-                    "id": 4,
-                    "deleted": false
-                }
-            ]
-        },
-				*/
