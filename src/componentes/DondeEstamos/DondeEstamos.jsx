@@ -2,11 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import './DondeEstamos.css';
 import CardsSucursal from './CardsSucursal';
 import { contexto } from '../contexto/contexto';
-import { Parallax } from 'react-parallax';
 import Contacto from '../Contacto/Contacto';
-import Parrafo from '../parrafo/Parrafo';
 import MapL from '../Mapa/MapaLeaflet';
-import EditarSucursal from './editarSucursal';
 
 // Array de imágenes
 const slides = [
@@ -41,7 +38,7 @@ const DondeEstamos = () => {
             </div>
 
             <div className="section-1">
-                <h3 className="border">
+                <h3>
                     Somos Nosotros...Somos ustedes...
                 </h3>
                 <p className='paragrafh-nosotrosSomos'>
@@ -57,7 +54,7 @@ const DondeEstamos = () => {
             </div>
             {/*                 {sucursalPorEditar != null ? <EditarSucursal sucursalPorEditar={sucursalPorEditar} /> : (null)}
  */}            <div className="section">
-                <h3 className="border">
+                <h3 >
                     ¡Te invitamos a Conocernos!
                 </h3>
 
@@ -70,7 +67,7 @@ const DondeEstamos = () => {
 
             <div className="bgimg-3">
                 <div className="caption-gastronomia">
-                    <span className="border">Tenemos una amplia variedad gastronómica apta para todos los paladares</span>
+                    <span className='border' >Tenemos una amplia variedad gastronómica apta para todos los paladares</span>
 
                 </div>
             </div>
@@ -90,7 +87,7 @@ const DondeEstamos = () => {
                     </div>
                 </div>
                 <div className='contenedor-h3-contacto'>
-                <h3 className="border"> Pongámonos en contacto...   </h3>
+                    <h3 > Pongámonos en contacto...   </h3>
                 </div>
                 <div className='section' >
                     <div className='contenedor-logo-form'>
