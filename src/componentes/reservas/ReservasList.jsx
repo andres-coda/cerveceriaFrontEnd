@@ -91,13 +91,14 @@ const ReservasList = () => {
 
   return (
     <div className='conteinerGeneral'>
+      <Subtitulo clase={"subtitulo"} texto={`Lista de reservas`} />
       {reservas != null && reservas.length > 0 ? (
         <>
-          <p className='reservas-cantidad'>{`${reservas.length} Reservas recibidas`}</p>
-          <div className="reservas-menu">
+          <p className='pedido-cantidad'>{`${reservas.length} Reservas recibidas`}</p>
+          <div className="pedidos-menu">
             {fechasOrdenadas.map(fecha => (
-              <div key={fecha} className="reservas-fecha-group">
-                <div className="fecha-bar">{fecha}</div>
+              <React.Fragment key={fecha}>
+                <p className="fecha-general">{fecha}</p>
                 {reservasPorFecha[fecha].map(reserva => (
                   <ReservasCard
                     key={reserva.id}
@@ -107,13 +108,12 @@ const ReservasList = () => {
                     onEdit={handleEdit}
                   />
                 ))}
-              </div>
+              </React.Fragment>
             ))}
           </div>
         </>
       ) : (
         <>
-          <Subtitulo clase={"subtitulo"} texto={(reservas !== null) && `Lista de reservas realizadas`} />
           <AnimatedSVG />
         </>
       )}
@@ -129,3 +129,17 @@ const ReservasList = () => {
 };
 
 export default ReservasList;
+
+
+/*
+<div key={fecha} className="reservas-fecha-group">
+                <div className="fecha-bar">{fecha}</div>
+                {reservasPorFecha[fecha].map(reserva => (
+                  <ReservasCard
+                    key={reserva.id}
+                    reserva={reserva}
+                    onClick={() => handleEdit(reserva.id)}
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
+                  />
+                  */
