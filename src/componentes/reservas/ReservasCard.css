@@ -78,8 +78,7 @@
   width: 100%;
 }
 
-.reserva-encabezado,
-.reserva-cuerpo {
+.reserva-encabezado {
   width: 100%;
   justify-content: space-between;
 }
@@ -89,13 +88,20 @@
   border-bottom: 1px solid var(--color8);
 }
 
-.reserva-cuerpo {
+.reserva-cuerpo,
+.reserva-cuerpo-alerta {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
   align-items: start;
   margin-bottom: 0.5rem;
+}
+
+.reserva-cuerpo-alerta p{
+  color: var(--color1);
+  padding: 0 2rem;
+  margin: 0.1rem 0;
 }
 
 .reserva-hora {
@@ -175,6 +181,10 @@
     margin: 0.2rem 0;
     text-align: left;
     padding-left: 1rem;
+  }
+  .reserva-cuerpo-alerta p{
+    font-size: 0.8em;
+    padding: 0 0.5rem;
   }
 }
 
