@@ -11,24 +11,24 @@ const ReservasCard = ({ reserva, onDelete }) => {
   };
 
   return (
-    <div className={!reserva.deleted ? "reserva-card" : "reserva-card-eliminado"}>
+    <div className={!reserva.deleted ? "pedido-card" : "pedido-card-eliminado"}>
       <>
-        <div className='reserva-encabezado'>
-          <p className={`reserva-hora ${reserva.usuario ? '' : 'unavailable'}`}>{reserva.usuario ? reserva.usuario.username : 'Usuario no disponible'}</p>
-          <p className={`reserva-hora ${reserva.usuario ? '' : 'unavailable'}`}>{reserva.usuario ? reserva.usuario.email : 'Email no disponible'}</p>
-          <p className='reserva-hora'>Hora de reserva: {formatoHora(reserva.fecha, reserva.hora)}</p>
+        <div className='pedido-encabezado'>
+          <p className={`pedido-hora ${reserva.usuario ? '' : 'unavailable'}`}>{reserva.usuario ? reserva.usuario.username : 'Usuario no disponible'}</p>
+          <p className='pedido-hora'>Hora de reserva: {formatoHora(reserva.fecha, reserva.hora)}</p>
         </div>
-        <div className='reserva-cuerpo'>
-          <div className='pedido-reserva'>
-            <p><b>Nombre:</b> {reserva.usuario ? `${reserva.usuario.name} ${reserva.usuario.lastname}` : 'Nombre no disponible'}</p>
-            <p><b>Mesa:</b> {reserva.numeroMesa}</p>
-            <p><b>Personas:</b> {reserva.cantidad}</p>
-          </div>
+        <div className='pedido-cuerpo'>    
+          <div className='reserva-cuerpo'>
+            <p>Nombre:  {reserva.usuario ? `${reserva.usuario.name} ${reserva.usuario.lastname}` : 'Nombre no disponible'}</p>
+            <p>Mail: {reserva.usuario ? reserva.usuario.email : 'Email no disponible'}</p>
+            <p>Personas:  {reserva.cantidad}</p>
+          </div>        
+        <div className='botonera-admin'>
+          <button className='comun'><Link to={`reservas/editar/${reserva.id}`} ><FaEdit /></Link></button>
+          <button className='comun' onClick={() => onDelete(reserva.id)}><FaTrash /></button>
         </div>
-        <div className='reserva-acciones'>
-          <Link to={`reservas/editar/${reserva.id}`} className='btn-editar'><FaEdit /></Link>
-          <button className='btn-eliminar' onClick={() => onDelete(reserva.id)}><FaTrash /></button>
         </div>
+        <p className='pedido-importe'><b>Meza: </b> # {reserva.numeroMesa} </p>
       </>
     </div>
   );

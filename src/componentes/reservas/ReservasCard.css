@@ -9,6 +9,19 @@
   width: 100%;
 }
 
+.comun a{
+  color: var(--color1);
+}
+
+.reserva-importe{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.3rem 0 0 0.2rem;
+  border-top: 1px solid var(--color8);
+}
+
 .reservas-cantidad {
   width: 90%;
   text-align: end;
@@ -58,8 +71,7 @@
 }
 
 .reserva-encabezado,
-.pedido-reserva,
-.reserva-cuerpo {
+.pedido-reserva {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -78,7 +90,12 @@
 }
 
 .reserva-cuerpo {
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: start;
+  margin-bottom: 0.5rem;
 }
 
 .reserva-hora {
@@ -127,10 +144,6 @@
 }
 
 @media (min-width: 601px) {
-  .reserva-cuerpo {
-    display: flex;
-    flex-direction: row;
-  }
 
   .reserva-hora {
     font-size: 0.7em;
