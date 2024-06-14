@@ -7,11 +7,10 @@ import MenuCarrito from './MenuCarrito';
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import ModalReservas from '../reservas/ModalReservas';
-import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
 import { useNavigate } from 'react-router-dom';
 import { fetchPost } from '../funciones fetch/funciones';
 import { URL_PEDIDO } from '../../endPoints/endPoints';
-import ModalCarrito from '../modalCarrito/ModalCarrito';
+import ModalCarrito from './ModalCarrito';
 
 function Carrito(){
     const {datos, setDatos} = useContext(contexto);
