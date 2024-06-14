@@ -1,21 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext,  useState } from 'react';
 import './ReservasCard.css'; 
 import Subtitulo from '../subtitulo/Subtitulo';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import ConfirmModal from './ConfirmModal';
-import { BASE_URL } from '../../endPoints/endPoints';
+import {  URL_RESERVA } from '../../endPoints/endPoints';
 import { useAuth } from '../auth/AuthContext';
 import ReservasCard from './ReservasCard';
+import { contexto } from '../contexto/contexto';
+import { fetchGet } from '../funciones fetch/funciones';
 
 const ReservasList = () => {
   const { auth } = useAuth();
+  const {datos } = useContext(contexto);
   const { token } = auth || {};
 
   const [reservas, setReservas] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedReservaId, setSelectedReservaId] = useState(null);
 
-  useEffect(() => {
+  const reload = async () => {
+    try {
+        const data = await fetchGet(URL_RESERVA, localStorage.getItem('token'));
+        if (data) {
+          const sortedData = data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+          setReservas(sortedData);
+            return data;              
+        }
+    }catch (error) {
+        console.log(error);
+        return error;
+    }
+  }
+  
+  const fetchreserva = async () =>{
+    const pedidosFetch = await reload();
+}
+if (datos.userAct && reservas.length==0) fetchreserva();
+
+/*  useEffect(() => {
     if (token) {
       fetch(`${BASE_URL}/reserva`, {
         headers: {
@@ -68,7 +90,7 @@ const ReservasList = () => {
   const handleEdit = (id) => {
     // Lógica para editar la reserva
   };
-
+*/
   const reservasPorFecha = reservas.reduce((acc, reserva) => {
     const [year, month, day] = reserva.fecha.split('-');
     const fecha = new Date(year, month - 1, day).toLocaleDateString('es-ES', {
@@ -103,9 +125,7 @@ const ReservasList = () => {
                   <ReservasCard
                     key={reserva.id}
                     reserva={reserva}
-                    onClick={() => handleEdit(reserva.id)}
-                    onDelete={handleDelete}
-                    onEdit={handleEdit}
+                    reload={reload}
                   />
                 ))}
               </React.Fragment>
@@ -142,4 +162,15 @@ export default ReservasList;
                     onDelete={handleDelete}
                     onEdit={handleEdit}
                   />
-                  */
+
+
+<ReservasCard
+                    key={reserva.id}
+                    reserva={reserva}
+                    onClick={() => handleEdit(reserva.id)}
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
+                    reload={reload}
+                  />
+
+*/

@@ -45,6 +45,25 @@
     align-items: center;
 }
 
+.formulario-alerta{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.formulario-alerta input,
+.formulario-alerta label{
+    width: 100%;
+    text-align: start;
+}
+
+.renglonInput-alerta,
+.renglonInput-alerta select{
+    width: 100%;
+    border-radius: 8px;
+}
+
 @media (max-width: 600px) {
      .botonSiNo{
         padding: 0.6rem;

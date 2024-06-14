@@ -7,3 +7,4 @@ export const URL_PEDIDO = BASE_URL+'/pedido';
 export const URL_METODOPAGO = BASE_URL+'/metodoPago';
 export const URL_PEDIDO_PRODUCTO = BASE_URL+'/pedido-producto';
 export const URL_USUARIO = BASE_URL+'/usuario';
+export const URL_RESERVA = BASE_URL+'/reserva';
