@@ -1,14 +1,14 @@
 import './pedidosCard.css'
-function PedidoInternoCard({pedido}){
+function PedidoInternoCard({productos}){
     let importe = null;
     if (!importe) {
         importe=0;
-        pedido.pedidosProducto.map((producto)=>{
+        productos.map((producto)=>{
             importe=importe+producto.cantidad*producto.producto.price;
     })}
     return(
         <>
-            {pedido.pedidosProducto.map((producto)=>(
+            {productos.map((producto)=>(
                 <div className='pedido-producto-alerta' key={producto.producto.idProducto}>
                     <p><b>{producto.cantidad} </b></p>
                     <img src={producto.producto.img} alt={producto.producto.titulo} />
