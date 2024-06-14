@@ -43,17 +43,3 @@
     background-color: var(--color4);
     border-radius: 10px;
 }
-
-.modal-metodo-pago{
-    overflow: auto;
-    padding: 0.5rem 0.5rem;
-}
-
-.modal-metodo-pago h3{
-    color: var(--color6);
-    font-family: 'Castor One W01 Regular'; 
-}
-
-.formulario-modal{
-    max-width: 60vw;
-}

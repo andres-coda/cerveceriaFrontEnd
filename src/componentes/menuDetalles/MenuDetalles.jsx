@@ -19,13 +19,13 @@ function MenuDetalles({idProducto}) {
     const [ dato, setDatoLocal ] = useState(null);
     const [idTexto, setIdText] = useState(null);
     const navegate = useNavigate();
-    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===idProducto));
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.producto.idProducto===idProducto));
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const producto = await fetchGet(URL_PRODUCTO+'/'+idProducto, localStorage.getItem('token'));
                 if (producto) {
-                    setDatoLocal(producto);
+                    setDatoLocal((prev)=>({...prev, producto:producto}));
                     setIdText(producto.deleted ==false  ?  "eliminar": "reactivar");
                 }
             } catch (error) {
@@ -102,33 +102,33 @@ function MenuDetalles({idProducto}) {
     return (   
             <div className="transparente">
             {dato != null ? (
-                <div className={ !dato.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>
+                <div className={ !dato.producto.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>
                     {datos.userAct && datos.userAct.role ==="admin" && idTexto!=null ? (
-                                <MenuDetallesBotonera btnClick={btnClick} dato={dato} idTexto={idTexto}/>
+                                <MenuDetallesBotonera btnClick={btnClick} dato={dato.producto} idTexto={idTexto}/>
                         ) : (null)}
                     <div className='menuDetalle'>
                         <div className='menuCabecera'>
-                        <h3> { dato.categoria.nombre } </h3>
+                        <h3> { dato.producto.categoria.nombre } </h3>
                         </div>
-                        <h2> { dato.titulo } </h2>
+                        <h2> { dato.producto.titulo } </h2>
                         <div className='menuFotoDescripcion'>
-                            <img src={dato.img} alt={dato.titulo.nombre} />
+                            <img src={dato.producto.img} alt={dato.producto.titulo.nombre} />
                             <p className='menuParrafo'><b>DESCRIPCIÓN: </b></p>
-                            <Parrafo clase={"menuParrafo"} texto={dato.descripcion} />
+                            <Parrafo clase={"menuParrafo"} texto={dato.producto.descripcion} />
                             <p className='menuParrafo'><b>INGREDIENTES: </b></p>
-                            <Parrafo clase={"menuParrafo"} texto={dato.ingredientes}/>
+                            <Parrafo clase={"menuParrafo"} texto={dato.producto.ingredientes}/>
                         </div>
                         <div className='valoracionPrecio'>
-                            <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${dato.valoracion}`}/>
-                            <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${dato.price}`}/>
+                            <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${dato.producto.valoracion}`}/>
+                            <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${dato.producto.price}`}/>
                         </div>
                         <>
-                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato} />
+                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato.producto} />
                         </>
                     </div>
                     <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes/>}} btnClick={btnClick} titulo="cerrar"/>
                     { alerta.estado ? (
-                        <EliminarAlerta setAlerta={setAlerta} dato={dato} idTexto={idTexto}/>
+                        <EliminarAlerta setAlerta={setAlerta} dato={dato.producto} idTexto={idTexto}/>
                     ) : (null)}        
                 </div>
             ): (
