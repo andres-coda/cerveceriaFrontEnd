@@ -11,30 +11,19 @@ import { fetchGet } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
 import {  FaTimes } from 'react-icons/fa';
 import AnimatedSVG from '../animacion/AnimatedSVG';
+import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
+import { text } from '@fortawesome/fontawesome-svg-core';
+import MenuDetalleInterno from './menuDetalleInterno';
 
-function MenuDetalles({idProducto}) {
+function MenuDetalles({producto}) {
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
-    const [ dato, setDatoLocal ] = useState(null);
-    const [idTexto, setIdText] = useState(null);
+    const [ isOpen, setIsOpen ] = useState(false);
+    const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: producto.deleted?"reactivar":"eliminar", condicion:false});
     const navegate = useNavigate();
-    let indice = datos.carrito?.findIndex((carrito)=>(carrito.producto.idProducto===idProducto));
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const producto = await fetchGet(URL_PRODUCTO+'/'+idProducto, localStorage.getItem('token'));
-                if (producto) {
-                    setDatoLocal((prev)=>({...prev, producto:producto}));
-                    setIdText(producto.deleted ==false  ?  "eliminar": "reactivar");
-                }
-            } catch (error) {
-                console.error("Error al obtener el producto:", error);
-            }
-        };
-        fetchData();
-    }, []);
-    
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===producto.idProducto));
+   
     useEffect(()=>{
             if (indice!=-1) {
                 setCantidad(datos.carrito[indice].cantidad); 
@@ -43,11 +32,6 @@ function MenuDetalles({idProducto}) {
             } 
 
     }, [datos.carrito, indice]);
-
-    if (alerta.refresh) {
-        window.location.reload();
-        setAlerta((prev)=>({...prev, refresh:false}))
-    }
 
     const btnClick = async (e) => {
         const btn = e.currentTarget.id;
@@ -62,13 +46,13 @@ function MenuDetalles({idProducto}) {
                 if( !datos.userAct ) navegate('/login')
                 const newCarrito = datos.carrito.slice();
                 if (indice===-1){
-                    const newObjet = { ...dato, cantidad};
+                    const newObjet = { ...producto, cantidad};
                     newCarrito.push(newObjet);
                 } else {
                     newCarrito[indice].cantidad=cantidad;
                 }
-                const filterCarrito = newCarrito.filter((dato)=>{
-                    if(dato.cantidad>0) return dato;
+                const filterCarrito = newCarrito.filter((producto)=>{
+                    if(producto.cantidad>0) return producto;
                 })
                 setDatos((prev)=>({...prev, carrito:filterCarrito}));
                 navegate('/menu')
@@ -80,11 +64,12 @@ function MenuDetalles({idProducto}) {
                 setVista(false);
                 break;
             case "editar" :
-                setDatos((prev)=>({...prev, datoAEditar: dato}));
+                setDatos((prev)=>({...prev, datoAEditar: producto}));
                 navegate('/cargarmenu');
                 break;
             case "eliminar" :
-                setAlerta((prev)=>({...prev,estado:true}));
+                setIsOpen(true);
+                setTexto((prev)=>({...prev, proceso:true, texto:`Seguro que desea ${producto.deleted ? 'reactivar': 'eliminar'} el producto`}))
                 break
             case "reactivar" :
                 setAlerta((prev)=>({...prev,estado:true}));  
@@ -99,53 +84,63 @@ function MenuDetalles({idProducto}) {
         }
     }
 
-    return (   
-            <div className="transparente">
-            {dato != null ? (
-                <div className={ !dato.producto.deleted ? 'menuDetalleElementos' : 'menuDetalleElementosEliminado'}>
-                    {datos.userAct && datos.userAct.role ==="admin" && idTexto!=null ? (
-                                <MenuDetallesBotonera btnClick={btnClick} dato={dato.producto} idTexto={idTexto}/>
-                        ) : (null)}
-                    <div className='menuDetalle'>
-                        <div className='menuCabecera'>
-                        <h3> { dato.producto.categoria.nombre } </h3>
+    const onClose = ()=>{
+        setIsOpen(false)
+    }
+
+    const handleAlertaOpen = (e) =>{
+        const btn = e.currentTarget.id;
+        if (btn=='editar'){
+            console.log(btn);
+            setTexto((prev)=>({...prev, proceso:true, texto:`Seguro que desea editar el producto`}))
+        } else {
+            setTexto((prev)=>({...prev, proceso:true, texto:`Seguro que desea ${producto.deleted ? 'reactivar': 'eliminar'} el producto`}))
+            setIsOpen(true)
+        }
+    } 
+
+    return (         
+        <>
+            <div className={producto.deleted? 'menuDetalleEliminado':'menuDetalle'}>
+                <div className='nuevoDiseno'>
+                    <img src={producto.img} alt={producto.titulo.nombre} />
+                    <div className='nuevoDiseno-detalles'>
+                        <h2> { producto.titulo } </h2>
+                        <div className='nuevoDiseno-valoracion-precio'>
+                            <p>{`Valoración: ${producto.valoracion}`}</p>
+                            <h3> {`$${producto.price}`}</h3>
                         </div>
-                        <h2> { dato.producto.titulo } </h2>
-                        <div className='menuFotoDescripcion'>
-                            <img src={dato.producto.img} alt={dato.producto.titulo.nombre} />
-                            <p className='menuParrafo'><b>DESCRIPCIÓN: </b></p>
-                            <Parrafo clase={"menuParrafo"} texto={dato.producto.descripcion} />
-                            <p className='menuParrafo'><b>INGREDIENTES: </b></p>
-                            <Parrafo clase={"menuParrafo"} texto={dato.producto.ingredientes}/>
-                        </div>
-                        <div className='valoracionPrecio'>
-                            <Parrafo clase={"menuParrafo"} texto={`VARLORACION: ${dato.producto.valoracion}`}/>
-                            <Parrafo clase={"menuParrafo"} texto={`PRECIO: $${dato.producto.price}`}/>
-                        </div>
+                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={producto} />
+                        <p>{`${producto.descripcion}`}</p>
+                        <p id='ingredientes'>{`Ingredientes: ${producto.ingredientes}`}</p>
+                    </div>
+                </div>
+                <>
+                </>
+            </div>
+            {/* alerta.estado ? (
+                <EliminarAlerta setAlerta={setAlerta} dato={producto} idTexto={idTexto}/>
+            ) : (null)*/}
+            <AlertaGeneral 
+                texto={texto}
+                isOpen={isOpen}
+                onClose={onClose}
+                children={
+                    !texto.condicion ? (
                         <>
-                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={dato.producto} />
-                        </>
+                    <div>
+                        <MenuDetalleInterno producto={producto} />
                     </div>
-                    <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes/>}} btnClick={btnClick} titulo="cerrar"/>
-                    { alerta.estado ? (
-                        <EliminarAlerta setAlerta={setAlerta} dato={dato.producto} idTexto={idTexto}/>
-                    ) : (null)}        
-                </div>
-            ): (
-                <div className="menuDetalleElementos"> 
-                    <div className='menuDetalle'>
-                        <h3> Categoría </h3>
-                        <h2> <b>Menu ... </b></h2>
-                    <div className='menuFotoDescripcion'>
-                        <AnimatedSVG />
-                        <p className='menuParrafo'><b>DESCRIPCIÓN: ...</b></p>
-                        <p className='menuParrafo'><b>INGREDIENTES: ...</b></p>
+                    <div className='boton-alerta-pedido'>
+                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
+                        <Boton btn={{id:"cancelar", clase:"alerta", texto: "Cancelar"}} btnClick={onClose}/>
                     </div>
-                    </div>
-                    <Boton  btn={{id:`cerrar`, clase:`cerrar`, texto : <FaTimes />}} btnClick={btnClick} />
-                </div>
-            )}
-        </div>
+                    </>
+                    ):(null)
+                }    
+            />
+        </>   
+
     );
 };
 

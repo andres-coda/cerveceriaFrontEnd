@@ -1,0 +1,31 @@
+.detalle-interno{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 0 1rem;
+}
+
+.detalle-interno-contenido{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.detalle-interno img{
+    max-height: 10vh;
+    margin: 0;
+}
+
+.detalle-interno h4{
+    font-size: 1em;
+    margin: 0;
+    padding: 0 0.5rem;
+    text-align: start;
+}
+
+.detalle-interno p{
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0 0.5rem;
+}

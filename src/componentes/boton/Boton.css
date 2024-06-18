@@ -1,4 +1,4 @@
-.comun, .cerrar, .mas-menos, .alerta,.iconBtn, .iconGrande{
+.comun, .mas-menos, .alerta,.iconBtn, .iconGrande{
     border: 1px solid black;
     border-radius: 12px;
     box-shadow: 1px 1px 2px black;
@@ -19,7 +19,8 @@
 }
 
 .alerta {
-    min-width: 20vw;
+    min-width: 50%;
+    font-size: 0.9em;
 }
 
 .comun:hover, .alerta:hover, .iconBtn:hover, .iconGrande:hover {
@@ -31,14 +32,22 @@
     position: fixed;
     top: 8px;
     right: 8px;
-    background-color: rgb(138, 8, 8);
-    color: black;
-    padding: 0.1rem 0.4rem 0.2rem;
+    cursor: pointer;
 }
 
-.cerrar:hover{
+.icono, .cerrar{
+    background-color: transparent;
+    color: black;
+    padding: 0.1rem 0.4rem 0.2rem;
+    border: none;
+}
+
+.cerrar:hover, .icono:hover{
     box-shadow: 2px 2px 4px black;
-    background-color:  rgb(240, 49, 49);
+    background-color:  none;
+    
+    border: 1px solid black;
+    border-radius: 12px;
 }
 
 .iconBtn{
@@ -51,7 +60,7 @@
     font-size: 1.5em;
     background-color: var(--color4);
     margin: 0.5rem 0.2rem 1rem;
-    padding: 0.1rem 5rem;
+    padding: 0.1rem 2rem;
 }
 
 @media (max-width: 600px) {

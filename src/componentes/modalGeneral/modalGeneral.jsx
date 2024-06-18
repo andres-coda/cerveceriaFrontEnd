@@ -1,3 +1,4 @@
+import './modalGeneral.css'
 import { FaTimes } from "react-icons/fa";
 import Boton from "../boton/Boton";
 

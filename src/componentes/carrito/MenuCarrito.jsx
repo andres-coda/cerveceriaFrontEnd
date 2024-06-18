@@ -1,4 +1,3 @@
-import Parrafo from '../parrafo/Parrafo';
 import './MenuCarrito.css';
 
 function MenuCarrito({ menu, click}){
