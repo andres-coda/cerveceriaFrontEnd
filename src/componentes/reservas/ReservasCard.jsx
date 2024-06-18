@@ -9,7 +9,7 @@ import Boton from '../boton/Boton';
 import FormularioInput from '../formularioInput/FormularioInput';
 import { contexto } from '../contexto/contexto';
 
-const ReservasCard = ({ reserva, reload }) => {
+const ReservasCard = ({ reserva, reload, fieldsToShow }) => {
   const [isEdit, setIsEdit] = useState(false);
   const {datos} = useContext(contexto)
   const [isOpen, setIsOpen ] = useState(false);
@@ -130,26 +130,28 @@ const ReservasCard = ({ reserva, reload }) => {
   };
 
   return (
-      <>
-    <div className={!reserva.deleted ? "pedido-card" : "pedido-card-eliminado"}>
+    <>
+      <div className={!reserva.deleted ? "pedido-card" : "pedido-card-eliminado"}>
         <div className='pedido-encabezado'>
-          <p className={`pedido-hora ${reserva.usuario ? '' : 'unavailable'}`}>{reserva.usuario ? reserva.usuario.username : 'Usuario no disponible'}</p>
-          <p className='pedido-hora'>Hora de reserva: {formatoHora(reserva.fecha, reserva.hora)}</p>
-        </div>
-        <div className='pedido-cuerpo'>    
+          {fieldsToShow.includes('username') && <p className={`pedido-hora ${reserva.usuario ? '' : 'unavailable'}`}>{reserva.usuario ? reserva.usuario.username : 'Usuario no disponible'}</p>}
+          {fieldsToShow.includes('hora-encabezado') && <p className='pedido-hora'>Hora de reserva: {formatoHora(reserva.fecha, reserva.hora)}</p>}
+          {fieldsToShow.includes('fecha-encabezado') && <p className='fecha-encabezado'>{extraerFecha(reserva.fecha)}</p>}
+        </div>)
+        <div className='pedido-cuerpo'>
           <div className='reserva-cuerpo'>
-            <p>Nombre:  {reserva.usuario ? `${reserva.usuario.name} ${reserva.usuario.lastname}` : 'Nombre no disponible'}</p>
-            <p>Mail: {reserva.usuario ? reserva.usuario.email : 'Email no disponible'}</p>
-            <p>Personas:  {reserva.cantidad}</p>
-          </div>        
-        <div className='botonera-admin'>
-          <button id='pedido-edit' className='comun' onClick={(e)=> {e.stopPropagation(); onEdit(reserva)}}><FaEdit /></button>
-          <button id='pedido-deleted' className='comun' onClick={(e)=> {e.stopPropagation(); onDeleted(reserva)}}>{ !reserva.deleted ? <FaTrash/> : <FaUndo/> }</button>
+            {fieldsToShow.includes('nombre') && <p>Nombre: {reserva.usuario ? `${reserva.usuario.name} ${reserva.usuario.lastname}` : 'Nombre no disponible'}</p>}
+            {fieldsToShow.includes('mail') &&<p>Mail: {reserva.usuario ? reserva.usuario.email : 'Email no disponible'}</p>}
+            {fieldsToShow.includes('hora') &&<p>Hora: {reserva.hora}</p>}
+            {fieldsToShow.includes('personas') &&<p>Personas: {reserva.cantidad}</p>}
+          </div>
+          <div className='botonera-admin'>
+            {fieldsToShow.includes('edit') && <button id='pedido-edit' className='comun' onClick={(e) => { e.stopPropagation(); onEdit(reserva) }}><FaEdit /></button>}
+            {fieldsToShow.includes('delete') && <button id='pedido-deleted' className='comun' onClick={(e) => { e.stopPropagation(); onDeleted(reserva) }}>{!reserva.deleted ? <FaTrash /> : <FaUndo />}</button>}
+          </div>
         </div>
-        </div>
-        <p className='pedido-importe'><b>Meza: </b> # {reserva.numeroMesa} </p>
-    </div>
-    <AlertaGeneral
+        {fieldsToShow.includes('mesa') && <p className='pedido-importe'><b>Mesa: </b> # {reserva.numeroMesa} </p>}
+      </div>
+      <AlertaGeneral
         texto={texto}
         btnClick={btnClick}
         children={
@@ -161,7 +163,7 @@ const ReservasCard = ({ reserva, reload }) => {
               <p>Personas:  {reserva.cantidad}</p>
               <p>Fecha de reserva: {extraerFecha(reserva.fecha)} </p>
               <p>Hora de reserva: {formatoHora(reserva.fecha, reserva.hora)}</p>
-              <p className='pedido-importe'><b>Meza: </b> # {reserva.numeroMesa} </p>
+              <p className='pedido-importe'><b>Mesa: </b> # {reserva.numeroMesa} </p>
           </div>   
             <div className='boton-alerta-pedido'>
                 <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>

@@ -26,7 +26,7 @@ import ModalCarrito from "./componentes/carrito/ModalCarrito";
 import MostrarPedidos from "./componentes/pedidos/pedidos";
 import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
 import ReservasList from "./componentes/reservas/ReservasList";
-import Menu from "./componentes/menu/Menu";
+import ReservasRealizadas from "./componentes/reservas/ReservasRealizadas";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -69,6 +69,7 @@ function App() {
            <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/perfil' element={<ModalUsers />} />
           </Route>
+          <Route path='/reservasrealizadas' element={<ReservasRealizadas />} />
           <Route path='/pedidos' element={<MostrarPedidos/>} />
           <Route path='/pedidos-generales' element={<MostrarPedidosGenerales/>}/>
           <Route path='/listadoreservas' element={<ReservasList/>} />

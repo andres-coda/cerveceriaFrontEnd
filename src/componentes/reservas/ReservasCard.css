@@ -70,6 +70,16 @@
   box-shadow: 1px 1px 2px var(--color3);
 }
 
+.wrapper-realizadas{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+}
+
+.subtitulo{
+  font-family: 'Castor One W01 Regular';  
+}
 .reserva-encabezado,
 .pedido-reserva {
   display: flex;
