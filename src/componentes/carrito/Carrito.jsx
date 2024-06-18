@@ -3,15 +3,14 @@ import Subtitulo from '../subtitulo/Subtitulo';
 import MenuDetalles from '../menuDetalles/MenuDetalles';
 import { useContext, useEffect, useState } from 'react';
 import { contexto } from '../contexto/contexto';
-import MenuCarrito from '../menuCarrito/MenuCarrito';
+import MenuCarrito from './MenuCarrito';
 import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import ModalReservas from '../reservas/ModalReservas';
-import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
 import { useNavigate } from 'react-router-dom';
 import { fetchPost } from '../funciones fetch/funciones';
 import { URL_PEDIDO } from '../../endPoints/endPoints';
-import ModalCarrito from '../modalCarrito/ModalCarrito';
+import ModalCarrito from './ModalCarrito';
 
 function Carrito(){
     const {datos, setDatos} = useContext(contexto);
@@ -96,14 +95,17 @@ function Carrito(){
                     <div className='carrito'>
                         <Subtitulo clase={"subtitulo"} texto={"CARRITO"} />
                         {datos.carrito.map((dato)=>{
-                            subTotal= subTotal + dato.price * dato.cantidad;
-                            return <MenuCarrito key={dato.idProducto} menu={dato} click={btnClick}/> 
+                            subTotal= subTotal + dato.producto.price * dato.cantidad;
+                            return <MenuCarrito key={dato.producto.idProducto} menu={dato} click={btnClick}/> 
                         })}
-                        <Parrafo clase={"totalCarrito"} texto={`Total: $${total}`} />
-                        { datos.userAct ? (
-                        <Boton btn={{id:"comprar", clase: "comun", texto:"comprar"}} btnClick={btnClick} />) : (
-                            <Boton btn={{id:"login", clase: "comun", texto:"Login"}} btnClick={btnClick} />
-                        )}
+                        <div className='pie-carrito'>
+                            {/*<Parrafo clase={"totalCarrito"} texto={`Total: $${total}`} />*/}
+                            { datos.userAct ? (
+                                <Boton btn={{id:"comprar", clase: "comun", texto:`Realizar comprar por un total de: $${total}`}} btnClick={btnClick} />
+                            ) : (
+                                <Boton btn={{id:"login", clase: "comun", texto:"Login"}} btnClick={btnClick} />
+                            )}
+                        </div>
                     </div>
                 </>
             ) : ( 
@@ -111,7 +113,7 @@ function Carrito(){
                 <Subtitulo clase={"subtitulo"} texto={"CARRITO"} />
                 <Parrafo clase={"menuParrafo"} texto={`No hay productos agregados al carrito`} />
             </div>)}
-            {modal.metodoPago ? (<ModalCarrito setModal={setModal} />):(null)}
+            {modal.metodoPago ? (<ModalCarrito setModal={setModal} modal={modal}/>):(null)}
             <ModalReservas
                 isVisible={modal.modalVisible}
                 onClose={closeModal}

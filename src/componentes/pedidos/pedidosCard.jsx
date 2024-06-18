@@ -128,7 +128,7 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                     !texto.condicion ? (
                         <>
                     <div>
-                        <PedidoInternoCard pedido={pedido} />
+                        <PedidoInternoCard productos={pedido.pedidosProducto} />
                     </div>
                     <div className='boton-alerta-pedido'>
                         <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
@@ -146,7 +146,7 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                 children={
                     !texto.condicion ? (
                         <>
-                    <div>
+                    <div className="pedido-alerta-input">
                         <FormularioInput 
                             id={'detalle'}
                             value={detalle.detalle}
