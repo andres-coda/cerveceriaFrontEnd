@@ -53,11 +53,6 @@
 }
 
 
-.label-contacto {
-margin-left: 30px;
-  color: var(--color3);
-  width: 90%;
-}
 
 .form-contacto-sucursal input {
   height: 30px;
@@ -75,10 +70,13 @@ margin-left: 30px;
   margin: 5px;
 }
 
+
+
 .label-contacto {
-  height: 30px;
-  text-align:center;
-  margin: 0;
+    color: var(--color3);
+ width: 85%;
+ text-align: start;
+ margin: 0;
   font-weight: bold;
   font-size: 1.2em;
  

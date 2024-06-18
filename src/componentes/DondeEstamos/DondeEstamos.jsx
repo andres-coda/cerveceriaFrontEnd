@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import './DondeEstamos.css';
 import CardsSucursal from './CardsSucursal';
 import { contexto } from '../contexto/contexto';
@@ -17,7 +17,29 @@ const DondeEstamos = () => {
     const { datos } = useContext(contexto);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [sucursalPorEditar, setSucursalPorEditar] = useState(null);
-
+    useEffect(() => {
+        const captions = document.querySelectorAll('.caption');
+    
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animation = 'TitleMove 5s ease forwards';
+            } else {
+              entry.target.style.animation = 'none'; // Reiniciar la animación al salir del viewport
+            }
+          });
+        }, {
+          threshold: 0.1 // Iniciar la animación cuando el 10% del elemento es visible
+        });
+    
+        captions.forEach(caption => observer.observe(caption));
+    
+        return () => {
+          captions.forEach(caption => observer.unobserve(caption));
+        };
+      }, []);
+    
+  
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
@@ -28,36 +50,24 @@ const DondeEstamos = () => {
 
     return (
         <>
+<div className='conteiner-general'>
 
-            <div class="parallax-container">
+           
                 <div className="bgimg-1">
-                    <div className="caption-nosotros">
-                        <span className="border">¡Nos reinventamos!</span>
-                    </div>
+                <div className="caption">¡Nos Reinventamos!</div>       
                 </div>
-            </div>
-
-            <div className="section-1">
-                <h3>
-                    Somos Nosotros...Somos ustedes...
-                </h3>
+                    <div className="section-1">
+                <h3>Somos Nosotros...Somos ustedes... </h3>
                 <p className='paragrafh-nosotrosSomos'>
                     Porque cada linea de esta web, cada código, cada minuto empleado, cada momento en que la frustración
                     parecía ganar, siempre hubo un motivo para seguir. A pesar del cansancio y de nuestros compromisos,
                     podemos decir que todo valió la pena. Porque tenemos Green esperanza, tenemos Green Beer...🍻
                 </p>
             </div>
-
             <div className="bgimg-2">
-                <div className="caption">
-                </div>
+                <div className="caption"> ¡Te invitamos a Conocernos! </div>
             </div>
-            {/*                 {sucursalPorEditar != null ? <EditarSucursal sucursalPorEditar={sucursalPorEditar} /> : (null)}
- */}            <div className="section">
-                <h3 >
-                    ¡Te invitamos a Conocernos!
-                </h3>
-
+           <div className="section">  
                 <div>
                     {datos.sucursales.map(sucursal => (
                         <CardsSucursal key={sucursal.id} sucursal={sucursal} setSucursalPorEditar={setSucursalPorEditar} />
@@ -66,10 +76,8 @@ const DondeEstamos = () => {
             </div>
 
             <div className="bgimg-3">
-                <div className="caption-gastronomia">
-                    <span className='border' >Tenemos una amplia variedad gastronómica apta para todos los paladares</span>
-
-                </div>
+                   <div className="caption">Tenemos una aplia variedad gastronómica para todos los paladares </div>
+              
             </div>
             <div className="section-2">
 
@@ -79,7 +87,7 @@ const DondeEstamos = () => {
                             src={slides[currentSlide].image}
                             alt={slides[currentSlide].title}
                             className='slider-image'
-                        />
+                            />
                         <div className='slider-info'>
                             <h2>{slides[currentSlide].title}</h2>
                             <p>{slides[currentSlide].description}</p>
@@ -99,6 +107,7 @@ const DondeEstamos = () => {
                 </div>
                 <MapL />
             </div>
+</div>
         </>
     )
 }

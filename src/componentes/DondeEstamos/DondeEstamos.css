@@ -1,74 +1,72 @@
-.bgimg-1, .bgimg-2, .bgimg-3{
+.bgimg-1,
+.bgimg-2,
+.bgimg-3 {
   position: relative;
- background-attachment: fixed; 
-  background-position: center;
+  background-attachment: fixed;
+  background-position: top;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
 
 
 }
 
-.bgimg-1{
+.bgimg-1 {
   background-image: url('https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png');
- height: 100vh;
- width: 100%;
- object-fit: cover;
+  height: 100vh;
+
 }
 
 
-.bgimg-2{
+.bgimg-2 {
   background-image: url('https://www.zona4arg.com.ar/wp-content/uploads/2021/04/club-de-la-birra-diseno-360-1400x702.jpg');
-  min-height: 600px;
+  min-height: 700px;
   width: 100%;
 }
-.bgimg-3{
+
+.bgimg-3 {
   background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/7ZR6ZD2FRRC67ARSX2XWL7C5IQ.jpg');
   min-height: 100vh;
-  opacity: 50px;
- 
- 
-  
 }
-.caption-gastronomia {
-  position: absolute;
-  left: 0;
-  top: 40%;
-  width: 100%;
-  text-align: center;
-  color: black;
-  
-}
-.caption-nosotros {
-  position: absolute;
-  left: 0;
-  top: 15%;
-  width: 100%;
-  text-align: center;
-  color: black;
-  
-}
-.caption-nosotros .border {
-  background-color: #111;
-  color: white;
-  padding: 18px;
-  font-size: 2em; 
+
+.subtitulo-banner-nosotros span {
+  padding: 5px;
+  font-size: 1em;
 }
 
 .caption {
   position: absolute;
-  left: 0;
-  top: 50%;
   width: 100%;
-  text-align: center;
-  color: black;
-}
-.caption-gastronomia .border{
-  background-color: #111;
+  height: auto;
+  top: 20%;
+  animation: TitleMove 5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
   color: white;
   padding: 18px;
-  font-size: 2em;
- 
-  
+  font-size: 1.8em;
+
+
+}
+
+
+@keyframes TitleMove {
+  from {
+    bottom: 0px;
+   
+  }
+
+  to {
+    top: 600px;
+    background-color: rgba(0, 0, 0, 0.45);
+  }
+}
+
+
+.subtitulo-banner-gastronomia,
+.subtitulo-banner-nosotros {
+  color: white;
+  padding: 18px;
+  font-size: 1.8em;
 }
 
 
@@ -82,17 +80,21 @@
   flex-direction: column;
   padding: 0;
 }
+
 .section-2 h3 {
-transform: translate(50%);
- width: 50vw;
- font-family: Castor One W01 Regular;
-  
+  transform: translate(50%);
+  width: 50vw;
+  font-family: Castor One W01 Regular;
+  margin:0;
+
 }
-.paragrafh-nosotrosSomos{
+
+.paragrafh-nosotrosSomos {
   font-size: 1.5em;
   padding: 0 100px;
   margin: 30px;
 }
+
 .section {
   height: auto;
   display: flex;
@@ -109,25 +111,27 @@ transform: translate(50%);
   height: auto;
   display: flex;
   align-items: center;
-  
+
   flex-direction: column;
   padding: 10px;
 }
 
 
 
-.contenedor-logo-form{
+.contenedor-logo-form {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100vw;
+  margin-top: 0;
 }
+
 .contacto-container {
   position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
- width: 80%;
+  width: 80%;
 }
 
 
@@ -167,134 +171,162 @@ overflow-x: hidden;
 }
  */
 
- /*zoom logo*/
+/*zoom logo*/
 
 
 .zoom-image {
   width: 15vw;
- 
   top: 0;
   transition: transform 0.3s ease;
-}
+ }
 
 .spacer {
-  height: 200vh; /* Ajusta la altura para proporcionar suficiente espacio para hacer scroll */
+  height: 200vh;
+  /* Ajusta la altura para proporcionar suficiente espacio para hacer scroll */
 }
 
 @keyframes zoomInOut {
   0% {
     transform: scale(1);
-    transform: translate(-90% , 90%);
+    transform: translate(-100%, 200%);
   }
- 
+
   50% {
     transform: scale(1.5);
-  
+
   }
- 
+
   150% {
     transform: scale(1.5);
-   
+
   }
+
+
+}
+ .zoom-container {
+  animation: infinite zoomInOut 8s;
+}
  
-  
-}
-
-.zoom-container {
-  animation: infinite zoomInOut 8s ;
-}
-
 
 
 
 @media (max-width:600px) {
 
+  .bgimg-1,
+  .bgimg-2,
+  .bgimg-3 {
+    background-size: contain;
+    height: 40vh;
+  }
+
+
 
   .caption-nosotros {
-      padding-top: 0%;  
-       
+    padding-top: 0%;
+
   }
 
   .caption-nosotros .border {
     padding: 10px;
     font-size: 1.5em;
-  
-    
+
+
   }
-  .border span{
+
+  .subtitulo-banner-nosotros {
     padding: 5px;
-    font-size:2em ;
-    
-  }
-.contenedor-h3-contacto {
-  width: 100%;
-display: flex;
-  
-  }
-  .contenedor-h3-contacto h3{
-  font-size: 2em;
-  font-family: Castor One W01 Regular;
-  
-}
-
-.contenedor-logo-form{
-  flex-direction: row;
-}
- 
-.slider-image {
-  height: 40vh;
-  min-width: 100%;
-   
-}
-
-@media(min-width: 601px){
-  .contenedor-logo-form{
-    flex-direction: column;
-  }
-}
-
-
+    font-size: 2em;
+    position: relative;
 
   }
- 
-  @media (max-width:480px) {
- 
-  }
-  .slider-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 20px 0;
+
+  .contenedor-h3-contacto {
     width: 100%;
+    display: flex;
+
+  }
+
+  .contenedor-h3-contacto h3 {
+    font-size: 2em;
+    font-family: Castor One W01 Regular;
+
+  }
+
+  .contenedor-logo-form {
+    flex-direction: column;
+  }
+
+  .slider-image {
+    height: 40vh;
+    min-width: 100%;
+
+  }
+
+  @media(min-width: 601px) {
+    .contenedor-logo-form {
+      flex-direction: row;
+    }
+
+    .bgimg-1,
+    .bgimg-2,
+    .bgimg-3 {
+      background-size: contain;
+    }
+
+    .bgimg-1 img {
+
+      height: 100%;
+
+    }
+
+    .bgimg-1 {
+      background-image: url('https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png');
+      height: 100vh;
+
+    }
+
+  }
+
+
+
+}
+
+/*max-with: pantalla llega hasta un maximo indicado*/
+
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0 ;
+  width: 100%;
 }
 
 .slider {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    width: 80%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  width: 80%;
 }
 
 
 .slider-image {
   height: 50vh;
-    transition: transform 0.3s ease-out;
-   min-width: 60%;
-    max-width: 30%;
-    border-radius: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-   object-fit: cover;
-  
+  transition: transform 0.3s ease-out;
+  min-width: 60%;
+  max-width: 30%;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
+
 }
 
 
 
 .slider-info {
   color: var(--color3);
-   text-align: center;
-    margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
-
-
