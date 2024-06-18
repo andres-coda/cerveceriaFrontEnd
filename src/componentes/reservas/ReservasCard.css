@@ -9,6 +9,19 @@
   width: 100%;
 }
 
+.comun a{
+  color: var(--color1);
+}
+
+.reserva-importe{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.3rem 0 0 0.2rem;
+  border-top: 1px solid var(--color8);
+}
+
 .reservas-cantidad {
   width: 90%;
   text-align: end;
@@ -68,16 +81,14 @@
   font-family: 'Castor One W01 Regular';  
 }
 .reserva-encabezado,
-.pedido-reserva,
-.reserva-cuerpo {
+.pedido-reserva {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
 }
 
-.reserva-encabezado,
-.reserva-cuerpo {
+.reserva-encabezado {
   width: 100%;
   justify-content: space-between;
 }
@@ -87,8 +98,20 @@
   border-bottom: 1px solid var(--color8);
 }
 
-.reserva-cuerpo {
-  align-items: center;
+.reserva-cuerpo,
+.reserva-cuerpo-alerta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: start;
+  margin-bottom: 0.5rem;
+}
+
+.reserva-cuerpo-alerta p{
+  color: var(--color1);
+  padding: 0 2rem;
+  margin: 0.1rem 0;
 }
 
 .reserva-hora {
@@ -137,10 +160,6 @@
 }
 
 @media (min-width: 601px) {
-  .reserva-cuerpo {
-    display: flex;
-    flex-direction: row;
-  }
 
   .reserva-hora {
     font-size: 0.7em;
@@ -172,6 +191,10 @@
     margin: 0.2rem 0;
     text-align: left;
     padding-left: 1rem;
+  }
+  .reserva-cuerpo-alerta p{
+    font-size: 0.8em;
+    padding: 0 0.5rem;
   }
 }
 

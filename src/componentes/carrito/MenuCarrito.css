@@ -1,0 +1,96 @@
+.menuCarritoTarjeta{
+    display:  flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color9);
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.carrito-card-uno{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+
+.carrito-card-dos{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+
+
+.menuCarritoTarjeta img{
+    height: 100%;
+    border-radius: 8px;
+    width: 10rem;
+    object-fit: cover;
+}
+
+.menuCarritoTarjeta p{
+    color: var(--color4);
+}
+.menuCarritoTarjeta h5{
+    color: var(--color4);
+    text-align: start;
+}
+
+@media (min-width: 601px){
+    
+    .carrito-card-uno{
+        flex-direction: row;
+        align-items: center;
+        padding: 0;        
+    }
+
+    .carrito-card-dos{
+        flex-direction: row;
+        align-items: center;
+        padding: 0 1rem 0 1.5rem;
+    }
+
+    .menuCarritoTarjeta h5{
+        margin: 0 0.5rem;
+        font-size: 1.2em;
+    }
+
+    .menuCarritoTarjeta p{
+        font-size: 1.5em;
+        margin: 0 1rem;
+    }
+    
+}
+
+
+@media (max-width: 600px){
+    
+    .carrito-card-uno{
+        flex-direction: column;
+        align-items: start;
+        padding: 0 0.5rem;
+    }
+
+    .carrito-card-dos{
+        flex-direction: column;
+        align-items: start;
+        padding: 0;
+    }
+
+    .menuCarritoTarjeta h5{
+        margin: 0 0.5rem;
+        font-size: 0.8em;
+    }
+
+    .menuCarritoTarjeta p{
+        font-size: 1em;
+        margin: 0.5rem 0.5rem;
+    }
+    
+}
+
+.menuCarritoTarjeta:hover{
+    box-shadow: 1px 1px 2px var(--color4);
+}

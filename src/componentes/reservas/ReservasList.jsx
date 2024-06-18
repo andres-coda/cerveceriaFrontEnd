@@ -1,21 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext,  useState } from 'react';
 import './ReservasCard.css'; 
 import Subtitulo from '../subtitulo/Subtitulo';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import ConfirmModal from './ConfirmModal';
-import { BASE_URL } from '../../endPoints/endPoints';
+import {  URL_RESERVA } from '../../endPoints/endPoints';
 import { useAuth } from '../auth/AuthContext';
 import ReservasCard from './ReservasCard';
+import { contexto } from '../contexto/contexto';
+import { fetchGet } from '../funciones fetch/funciones';
 
 const ReservasList = () => {
   const { auth } = useAuth();
+  const {datos } = useContext(contexto);
   const { token } = auth || {};
 
   const [reservas, setReservas] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedReservaId, setSelectedReservaId] = useState(null);
 
-  useEffect(() => {
+  const reload = async () => {
+    try {
+        const data = await fetchGet(URL_RESERVA, localStorage.getItem('token'));
+        if (data) {
+          const sortedData = data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+          setReservas(sortedData);
+            return data;              
+        }
+    }catch (error) {
+        console.log(error);
+        return error;
+    }
+  }
+  
+  const fetchreserva = async () =>{
+    const pedidosFetch = await reload();
+}
+if (datos.userAct && reservas.length==0) fetchreserva();
+
+/*  useEffect(() => {
     if (token) {
       fetch(`${BASE_URL}/reserva`, {
         headers: {
@@ -68,7 +90,7 @@ const ReservasList = () => {
   const handleEdit = (id) => {
     // Lógica para editar la reserva
   };
-
+*/
   const reservasPorFecha = reservas.reduce((acc, reserva) => {
     const [year, month, day] = reserva.fecha.split('-');
     const fecha = new Date(year, month - 1, day).toLocaleDateString('es-ES', {
@@ -91,13 +113,14 @@ const ReservasList = () => {
 
   return (
     <div className='conteinerGeneral'>
+      <Subtitulo clase={"subtitulo"} texto={`Lista de reservas`} />
       {reservas != null && reservas.length > 0 ? (
         <>
-          <p className='reservas-cantidad'>{`${reservas.length} Reservas recibidas`}</p>
-          <div className="reservas-menu">
+          <p className='pedido-cantidad'>{`${reservas.length} Reservas recibidas`}</p>
+          <div className="pedidos-menu">
             {fechasOrdenadas.map(fecha => (
-              <div key={fecha} className="reservas-fecha-group">
-                <div className="fecha-bar">{fecha}</div>
+              <React.Fragment key={fecha}>
+                <p className="fecha-general">{fecha}</p>
                 {reservasPorFecha[fecha].map(reserva => (
                   <ReservasCard
                     key={reserva.id}
@@ -106,13 +129,12 @@ const ReservasList = () => {
                     fieldsToShow={['username', 'hora-encabezado', 'nombre', 'mail', 'personas', 'edit', 'delete', 'mesa']}
                   />
                 ))}
-              </div>
+              </React.Fragment>
             ))}
           </div>
         </>
       ) : (
         <>
-          <Subtitulo clase={"subtitulo"} texto={(reservas !== null) && `Lista de reservas realizadas`} />
           <AnimatedSVG />
         </>
       )}
@@ -128,3 +150,28 @@ const ReservasList = () => {
 };
 
 export default ReservasList;
+
+
+/*
+<div key={fecha} className="reservas-fecha-group">
+                <div className="fecha-bar">{fecha}</div>
+                {reservasPorFecha[fecha].map(reserva => (
+                  <ReservasCard
+                    key={reserva.id}
+                    reserva={reserva}
+                    onClick={() => handleEdit(reserva.id)}
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
+                  />
+
+
+<ReservasCard
+                    key={reserva.id}
+                    reserva={reserva}
+                    onClick={() => handleEdit(reserva.id)}
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
+                    reload={reload}
+                  />
+
+*/

@@ -21,9 +21,10 @@ select{
 .renglonInput select{
     text-align: left;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 0.1rem 0.5rem;
-    width: 90%;
+    max-width: 60vw;
+    width: 100%;
 }
 
 .renglon {

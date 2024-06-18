@@ -1,26 +1,33 @@
 .bgimg-1, .bgimg-2, .bgimg-3{
   position: relative;
-  background-attachment: fixed;
+ background-attachment: fixed; 
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+
 }
 
 .bgimg-1{
   background-image: url('https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png');
-  min-height: 100vh;
+ height: 100vh;
+ width: 100%;
+ object-fit: cover;
 }
 
 
 .bgimg-2{
   background-image: url('https://www.zona4arg.com.ar/wp-content/uploads/2021/04/club-de-la-birra-diseno-360-1400x702.jpg');
   min-height: 600px;
+  width: 100%;
 }
 .bgimg-3{
   background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/7ZR6ZD2FRRC67ARSX2XWL7C5IQ.jpg');
   min-height: 100vh;
   opacity: 50px;
-  display: flex;
+ 
+ 
+  
 }
 .caption-gastronomia {
   position: absolute;
@@ -30,6 +37,21 @@
   text-align: center;
   color: black;
   
+}
+.caption-nosotros {
+  position: absolute;
+  left: 0;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  color: black;
+  
+}
+.caption-nosotros .border {
+  background-color: #111;
+  color: white;
+  padding: 18px;
+  font-size: 2em; 
 }
 
 .caption {
@@ -51,29 +73,6 @@
 
 
 
-
-
-
-/*logo*/
-.logo-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-margin-top: 20px;
-}
-
-.logo-zoom {
-  transition: width 0.2s, height 0.2s;
-
-}
-
-.form-container {
-  flex-grow: 1;
-  /* Permite que el formulario ocupe el espacio restante */
-  margin-left: 20px;
-}
-
 /*primer section nosotros*/
 .section-1 {
   height: 30vh;
@@ -86,6 +85,7 @@ margin-top: 20px;
 .section-2 h3 {
 transform: translate(50%);
  width: 50vw;
+ font-family: Castor One W01 Regular;
   
 }
 .paragrafh-nosotrosSomos{
@@ -103,13 +103,7 @@ transform: translate(50%);
   padding: 0;
 }
 
-/* .section p,
-.section-sucursal p {
-  font-size: 1.5em;
-  color: var(--color3);
-  margin-top: 50px;
-  width: 90%;
-} */
+
 
 .section-sucursal {
   height: auto;
@@ -120,16 +114,14 @@ transform: translate(50%);
   padding: 10px;
 }
 
-/*contacto form*/
-.section-contacto {
-  height: auto;
-  margin-top: 20px;
+
+
+.contenedor-logo-form{
   display: flex;
   align-items: center;
-  flex-direction: column;
-  padding: 0;
+  justify-content: space-around;
+  width: 100vw;
 }
-
 .contacto-container {
   position: relative;
   display: flex;
@@ -138,57 +130,127 @@ transform: translate(50%);
  width: 80%;
 }
 
-/*h3*/
-.border {
 
-  color: var(--color2);
-  padding: 18px;
-  font-size: 3em;
-  font-family: Castor One W01 Regular;
-}
 
-/*mapa y card*/
-.section-mapa {
-  min-height: 80vh;
-  width: 100%;
-  position: relative;
-
-}
- 
-
-.card-map {
-  margin-top: 20px;
-  width: 70%;
-  height: auto;
+.contenedor-cards-sucursal {
   display: flex;
-
-}
-.parallax{
-  width: 90vw;
- height: 100vh;
-   margin-top: 0;
-  margin-bottom: 0;
-}
-@media(max-width:820px){
- .contacto-container{
-  flex-direction: column;
-  width: 100%;
- }
-
+  flex-wrap: wrap;
 }
 
-@media (max-width:780px) {
-  .border{
-    font-size:2em ;
+/* .wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.contenedor-cards-sucursal {
+  display: flex;
+overflow-x: hidden;
+   height: 50vh; 
+  width: 100%; 
+}
+
+.contenedor-cards-sucursal::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--color2);
+}
+
+.contenedor-cards-sucursal::-webkit-scrollbar-thumb {
+  background-color: var(--color4);
+}
+
+.scroll-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 10px;
+}
+ */
+
+ /*zoom logo*/
+
+
+.zoom-image {
+  width: 15vw;
+ 
+  top: 0;
+  transition: transform 0.3s ease;
+}
+
+.spacer {
+  height: 200vh; /* Ajusta la altura para proporcionar suficiente espacio para hacer scroll */
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+    transform: translate(-90% , 90%);
+  }
+ 
+  50% {
+    transform: scale(1.5);
+  
+  }
+ 
+  150% {
+    transform: scale(1.5);
+   
+  }
+ 
+  
+}
+
+.zoom-container {
+  animation: infinite zoomInOut 8s ;
+}
+
+
+
+
+@media (max-width:600px) {
+
+
+  .caption-nosotros {
+      padding-top: 0%;  
+       
   }
 
- .logo-container {
-  order: -1;
+  .caption-nosotros .border {
+    padding: 10px;
+    font-size: 1.5em;
+  
+    
+  }
+  .border span{
+    padding: 5px;
+    font-size:2em ;
+    
+  }
+.contenedor-h3-contacto {
+  width: 100%;
+display: flex;
+  
+  }
+  .contenedor-h3-contacto h3{
+  font-size: 2em;
+  font-family: Castor One W01 Regular;
+  
 }
+
+.contenedor-logo-form{
+  flex-direction: row;
+}
+ 
 .slider-image {
   height: 40vh;
   min-width: 100%;
    
+}
+
+@media(min-width: 601px){
+  .contenedor-logo-form{
+    flex-direction: column;
+  }
 }
 
 
@@ -227,12 +289,11 @@ transform: translate(50%);
   
 }
 
-.slider-image:hover {
-    transform: scale(1.1);
-}
+
 
 .slider-info {
-    text-align: center;
+  color: var(--color3);
+   text-align: center;
     margin-top: 10px;
 }
 

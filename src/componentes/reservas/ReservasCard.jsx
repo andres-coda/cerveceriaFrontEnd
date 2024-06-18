@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useState } from 'react';
 import './ReservasCard.css';
 import { FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { fetchDelete, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
 import { URL_RESERVA } from '../../endPoints/endPoints';
 import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
@@ -233,3 +234,10 @@ const ReservasCard = ({ reserva, reload, fieldsToShow }) => {
 };
 
 export default ReservasCard;
+
+
+
+/*
+<button className='comun'><Link to={`reservas/editar/${reserva.id}`} ><FaEdit /></Link></button>
+<button className='comun' onClick={() => onDelete(reserva.id)}><FaTrash /></button>
+*/

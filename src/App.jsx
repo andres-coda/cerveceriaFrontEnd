@@ -22,7 +22,7 @@ import PrivateRoute from "./componentes/privateRoute/PrivateRoute";
 import { AuthProvider } from "./componentes/auth/AuthContext";
 import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
 import MenuDetalles from "./componentes/menuDetalles/MenuDetalles";
-import ModalCarrito from "./componentes/modalCarrito/ModalCarrito";
+import ModalCarrito from "./componentes/carrito/ModalCarrito";
 import MostrarPedidos from "./componentes/pedidos/pedidos";
 import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
 import ReservasList from "./componentes/reservas/ReservasList";

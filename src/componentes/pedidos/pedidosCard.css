@@ -14,9 +14,20 @@
     padding: 0.5rem;
 }
 
-
 .pedido-card-eliminado{
-    border: 1px solid var(--color4);
+    position: relative; 
+    overflow: hidden;
+}
+
+.pedido-card-eliminado::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color6); 
+    z-index: 1;
 }
 
 .pedido-card-eliminado p,
@@ -53,6 +64,17 @@
 .pedido-producto-alerta,
 .pedido-cuerpo{
     align-items: center; 
+}
+
+.pedido-alerta-input{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+#detalle{
+    width: 100%;
 }
 
 .pedido-producto-alerta p{
@@ -101,6 +123,16 @@
     color: var(--color4);
 }
 
+#pedido-edit,
+#pedido-deleted{
+    position: relative;
+    z-index: 2;
+}
+
+#pedido-edit:hover,
+#pedido-deleted:hover{
+    z-index: 2;
+}
 
 
 @media(min-width: 601px){
@@ -120,6 +152,11 @@
     .pedido-producto p,
     .pedido-producto-alerta p{
         font-size: 1.1em;
+    }
+    .botonera-admin{
+        display: flex;
+        flex-direction: column;
+        margin: 0 0.5rem;
     }
 }
 
@@ -142,5 +179,10 @@
     .pedido-producto p,
     .pedido-producto-alerta p{
         font-size: 0.8em;
+    }
+
+    .botonera-admin{
+        display: flex;
+        flex-direction: row;
     }
 }
