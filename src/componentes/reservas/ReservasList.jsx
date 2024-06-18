@@ -102,9 +102,8 @@ const ReservasList = () => {
                   <ReservasCard
                     key={reserva.id}
                     reserva={reserva}
-                    onClick={() => handleEdit(reserva.id)}
-                    onDelete={handleDelete}
-                    onEdit={handleEdit}
+                    reload={reload}
+                    fieldsToShow={['username', 'hora-encabezado', 'nombre', 'mail', 'personas', 'edit', 'delete', 'mesa']}
                   />
                 ))}
               </div>

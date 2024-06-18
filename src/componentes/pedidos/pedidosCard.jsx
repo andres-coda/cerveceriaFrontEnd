@@ -135,42 +135,4 @@ function PedidosCard({pedido}) {
 	)
 }
 
-export default PedidosCard;
-
-
-/*
-"name": "Marta",
-    "lastname": "Pérez Martínez",
-    "username": "josefina",
-    "email": "extraño@tubarrio.com",
-    "password": "enpijama",
-    "age": 30,
-    "direccion": "Calle Peatonal 987",
-    "role": "admin",
-    "id": 2,
-    "deleted": false,
-    "pedidos": [
-        {
-            "fecha": "2024-02-25T03:00:00.000Z",
-            "detalle": "modificando la prueba",
-            "id": 12,
-            "deleted": false,
-            "pedidosProducto": [
-                {
-                    "cantidad": 2,
-                    "producto": {
-                        "titulo": "ravioles con salsa blanca",
-                        "img": "https://cocinerosargentinos.com/content/recipes/500x500/ravioles-de-papa-y-cebolla.1639.jpg",
-                        "descripcion": "El secreto esta en la salsa de la abuela esta muy buena",
-                        "ingredientes": "paz y mucha ciencia, pero pegados",
-                        "price": 2500,
-                        "valoracion": 5,
-                        "idProducto": 1,
-                        "deleted": false
-                    },
-                    "id": 4,
-                    "deleted": false
-                }
-            ]
-        },
-				*/
+export default PedidosCard; 

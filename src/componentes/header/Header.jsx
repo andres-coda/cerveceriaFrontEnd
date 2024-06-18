@@ -141,6 +141,13 @@ function Header() {
                   >
                   Mis pedidos
                   </NavLink>
+                  <NavLink
+                    className='drop-item'
+                    to={`/reservasrealizadas`}
+                    onClick={closeMenuDropdown}
+                  >
+                  Mis reservas
+                  </NavLink>
                   <NavLink className='drop-item' onClick={() => { closeUserDropdown(); logout(); }}>Logout</NavLink>
                 </div>
               </NavDropdown>
