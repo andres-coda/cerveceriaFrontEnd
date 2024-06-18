@@ -126,6 +126,7 @@ if (datos.userAct && reservas.length==0) fetchreserva();
                     key={reserva.id}
                     reserva={reserva}
                     reload={reload}
+                    fieldsToShow={['username', 'hora-encabezado', 'nombre', 'mail', 'personas', 'edit', 'delete', 'mesa']}
                   />
                 ))}
               </React.Fragment>
