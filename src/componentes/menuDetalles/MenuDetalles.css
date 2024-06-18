@@ -3,18 +3,19 @@
     top: 0;
     left: 0;
     transform: translate(0%, 0%);
-    z-index: 9980;
+    z-index: 9970;
     width: 100%;
     height: 100%;
-    background-color: #1410109a;
+    background-color: var(--color6);
 }
 
-.menuDetalleElementos{
+.menuDetalleElementos,
+.menuDetalleElementosEliminado{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 9990;
+    z-index: 9972;
     float: inline-start;
     min-width: 210px;
     width: 60%;
@@ -25,16 +26,23 @@
     justify-content: center;
     align-content: center;
     margin: auto;
-    background-color: #F1F1EF;
-    color: #1D1D1B;
+    color: var(--color1);
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 2px 2px 4px black;
 }
 
+.menuDetalleElementosEliminado {    
+    background-color: var(--color5);
+}
+
+.menuDetalleElementos {    
+    background-color: var(--color2);
+}
+
 .menuDetalle{
     overflow: auto;
-    padding: 1rem 0.5rem;
+    padding: 0.5rem 0.5rem;
 }
 
 .menuDetalle  h2{
@@ -44,59 +52,74 @@
 }
 
 .menuDetalle h3{
-    font-size: 0.7em;
+    font-size: 0.9em;
     margin: 2px;
     text-align: start;
-    color: #c19f71;
+    color: var(--color4);
+    text-shadow: 
+        -1px -1px 0 var(--color1),  
+        1px -1px 0 var(--color1),
+        -1px  1px 0 var(--color1),
+        1px  1px 0 var(--color1);
+    width: 50%;
 }
 
 .menuDetalle::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    background-color:  #F1F1EF;
+    background-color:  var(--color2);
     border-radius: 10px;
 }
 
 .menuDetalle::-webkit-scrollbar-thumb {
-    background-color: #c19f71;
+    background-color: var(--color4);
     border-radius: 10px;
 }
 
 .menuFotoDescripcion, .valoracionPrecio{
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-content: center;
     padding: 0.5rem;
 }
 
+.valoracionPrecio{
+    flex-wrap: wrap;
+}
+.menuFotoDescripcion{
+    flex-direction: column;
+    align-items: center;
+}
+
 .menuFotoDescripcion  img{
+    margin: 0 1rem 1rem 1rem;
     max-width: 90%;
     max-height: 40%;
-    margin-right: 0.5rem;
     border-radius: 5px;
+}
+
+.valoracionPrecio p{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
 }
 
 .menuFotoDescripcion p{
     background-color: transparent;
     border: none;
     box-shadow: none;
+    width: 90%;
+    text-align: start;
+    margin: 0.2rem 0 ;
 }
 
-.botonesMasMenos{
-    display: inline-flex;
-}
-
-.total{
-    padding-top: 1.5rem;
+.menuCabecera {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }
 
-.total p{
-    display: inline-flex;
-}
+
+/*menu detalle aux*/
 
 
 

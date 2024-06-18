@@ -4,11 +4,12 @@
     align-items: center;
     justify-content: center;
     color: var(--color3);
+    width: 90%;
 }
 
 .cargarMenu .formulario{
     margin-top: 2rem;
     padding: 1rem;
     width: 90%;
-    max-width: 550px;
 }
+

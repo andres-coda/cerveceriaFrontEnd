@@ -1,0 +1,54 @@
+.botonesMasMenos{
+    display: inline-flex;
+}
+
+.total{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.total p{
+    display: inline-flex;
+}
+
+.botoneraAdministrador{
+    position: fixed;
+    top:  8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 2.5rem 0;
+    padding: 0;
+}
+
+
+/*
+
+//MenuDetallesAux
+
+.botonesMasMenos{
+    display: inline-flex;
+}
+
+.total{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.total p{
+    display: inline-flex;
+}
+
+.botoneraAdministrador{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0 1em 0 0;
+    padding: 0 1rem 0 0;
+}
+
+
+*/

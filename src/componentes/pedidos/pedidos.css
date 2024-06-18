@@ -1,0 +1,25 @@
+.pedidos-menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pedido-cantidad{
+    width: 90%;
+    text-align: end;
+    font-size: 0.7em;
+    color: var(--color4);
+}
+
+.fecha-general{
+    width: 90%;
+    text-align: start;
+    background-color: var(--color7);
+    color: var(--color1);
+    padding: 0.3rem 1rem;
+    margin-top: 1rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-weight: bold;
+
+}

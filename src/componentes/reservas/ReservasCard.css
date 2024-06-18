@@ -1,0 +1,215 @@
+.reservas-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.reservas-list {
+  width: 100%;
+}
+
+.comun a{
+  color: var(--color1);
+}
+
+.reserva-importe{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.3rem 0 0 0.2rem;
+  border-top: 1px solid var(--color8);
+}
+
+.reservas-cantidad {
+  width: 90%;
+  text-align: end;
+  font-size: 0.7em;
+  color: var(--color4);
+}
+
+.reservas-fecha-group {
+  width: 90%;
+}
+
+.fecha-bar {
+  width: 100%;
+  text-align: start;
+  background-color: var(--color7);
+  color: var(--color1);
+  padding: 0.3rem 1rem;
+  margin-top: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-weight: bold;
+}
+
+/* Estilos ReservasCard */
+
+.reserva-card,
+.reserva-card-eliminado {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color9);
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  align-items: start;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.reserva-card-eliminado{
+  border: 1px solid var(--color4);
+  background-color:var(--color7);
+  
+}
+
+.reserva-card {
+  box-shadow: 1px 1px 2px var(--color3);
+}
+
+.wrapper-realizadas{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+}
+
+.subtitulo{
+  font-family: 'Castor One W01 Regular';  
+}
+.reserva-encabezado,
+.pedido-reserva {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.reserva-encabezado {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.reserva-encabezado {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color8);
+}
+
+.reserva-cuerpo,
+.reserva-cuerpo-alerta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: start;
+  margin-bottom: 0.5rem;
+}
+
+.reserva-cuerpo-alerta p{
+  color: var(--color1);
+  padding: 0 2rem;
+  margin: 0.1rem 0;
+}
+
+.reserva-hora {
+  font-size: 0.7em;
+  color: var(--color4);
+}
+
+.reserva-hora.unavailable {
+  color: red; 
+}
+.reserva-acciones {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.btn-eliminar,
+.btn-editar {
+  width: 40px;
+  background: var(--color3);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: var(--color4);
+  border-radius: 10px;
+}
+.btn-editar:hover {
+  background-color: var(--color4);
+  border-radius: 10px;
+}
+
+.btn-editar {  
+  margin-right: 0.5em;
+}
+
+.reserva-error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (min-width: 601px) {
+
+  .reserva-hora {
+    font-size: 0.7em;
+  }
+}
+
+@media (max-width: 600px) {
+  .reserva-cuerpo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .reserva-hora {
+    font-size: 0.8em;
+  }
+
+  .pedido-reserva {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .pedido-reserva p {
+    width: 100%;
+    margin: 0.2rem 0;
+    text-align: left;
+    padding-left: 1rem;
+  }
+  .reserva-cuerpo-alerta p{
+    font-size: 0.8em;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .reserva-encabezado {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .reserva-hora {
+    width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+    margin: 0.2rem 0;
+  }
+}

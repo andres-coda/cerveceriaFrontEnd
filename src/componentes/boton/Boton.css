@@ -1,27 +1,39 @@
-.comun, .cerrar, .mas-menos{
+.comun, .cerrar, .mas-menos, .alerta,.iconBtn, .iconGrande{
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 1px 1px 2px black;
-    padding: 0.2rem 0.8rem;
-    margin: 0.2rem 0.3rem;
     cursor: pointer;
 }
 
-.comun, .mas-menos{
-    background-color: #c19f71;
+.comun, .mas-menos, .alerta, .iconBtn{
+    background-color: var(--color4);
+    padding: 0.1rem 0.4rem 0.2rem;
 }
 
-.comun:hover, .mas-menos:hover {
+.mas-menos, .alerta, .iconBtn{
+    margin: 0rem 0.2rem;
+}
+
+.comun{
+    margin: 0.1rem 0;
+}
+
+.alerta {
+    min-width: 20vw;
+}
+
+.comun:hover, .alerta:hover, .iconBtn:hover, .iconGrande:hover {
     box-shadow: 2px 2px 4px black;
-    background-color:  #F1D69D;
+    background-color:  var(--color3);
 }
 
 .cerrar{
     position: fixed;
-    top: 5px;
-    right: 5px;
+    top: 8px;
+    right: 8px;
     background-color: rgb(138, 8, 8);
     color: black;
+    padding: 0.1rem 0.4rem 0.2rem;
 }
 
 .cerrar:hover{
@@ -29,7 +41,21 @@
     background-color:  rgb(240, 49, 49);
 }
 
-.mas-menos{
-    font-size: 1.4em;
-    font-weight: bold;
+.iconBtn{
+    font-size: 0.8em;
+    margin: 0.5rem 0;
+    color: var(--color1);
+}
+
+.iconGrande {
+    font-size: 1.5em;
+    background-color: var(--color4);
+    margin: 0.5rem 0.2rem 1rem;
+    padding: 0.1rem 5rem;
+}
+
+@media (max-width: 600px) {
+    .comun, .cerrar, .alerta {
+        font-size: 0.8em;
+    }
 }

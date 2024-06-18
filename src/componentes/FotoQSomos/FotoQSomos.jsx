@@ -1,9 +1,9 @@
 import React from 'react'
 
-function FotoQSomos({props}){
+function FotoQSomos({props,id}){
   return (
     <div>
-             <img src={props}  />
+             <img src={props} id={id} />
 
     </div>
   )

@@ -10,11 +10,47 @@
     color: black;
 }
 
-.quienesSomos{
+.menuPrecio,
+.menuPrecioEliminado {
+    font-size: 0.9em;
+    text-align: center;
+    background-color: var(--color4);
+    padding: 0.2rem 1rem;
+    margin: 0;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: var(--color1);
+}
+
+.menuPrecio{
+    background-color: var(--color4);
+}
+
+.menuPrecioEliminado {
+    background-color: var(--color7);
+}
+
+.sucursales-paragrafh {
     display: flex;
     justify-content: space-between;
     border: none;
-    background-color: #F1F1EF;
     box-shadow: none;
     font-size: 1.2em;   
+   
+}
+
+.alertaParrafo{
+    background-color:transparent;
+    margin: 1rem;
+    margin-right: 3rem;
+    border-bottom: 1px solid var(--color8);
+    box-shadow: none;
+    font-size: 1em;
+    color: var(--color1);
+}
+
+@media (max-width: 600px) {
+    .alertaParrafo{
+        font-size: 0.8em;
+    }
 }

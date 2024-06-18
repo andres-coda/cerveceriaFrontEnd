@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'selima';
+  src: url('./assets/fonts/selima_.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Castor One W01 Regular';
+  src: url('./assets/fonts/Castor One W01 Regular.otf') format('opentype');
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -15,7 +24,14 @@
   
   --color1:#1D1D1B;
   --color2:#F1F1EF;
-  --color3: #F1D69d;
+  --color3: #d1ab75;
+  --color4:  #c19f71;
+  --color5:  #d37f70c9;
+  --color6: #1d1d1b96;
+  --color7: #c1a071bb;
+  --color8: #adadadaf;
+  --color9: #242422;
+
 } 
 
  body {

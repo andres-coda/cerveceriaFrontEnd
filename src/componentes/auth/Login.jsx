@@ -6,73 +6,75 @@ import "./LogReg.css";
 import Alerta from "../alerta/alerta";
 import Subtitulo from "../subtitulo/Subtitulo";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 
 function Login() {
-  const { datos } = useContext(contexto);
-  const navegate = useNavigate()
-  const [login, setLogin] = useState({});
+  const { datos} = useContext(contexto);  
+  const navigate = useNavigate()
+  const { login, fetchProfile} = useAuth();
+  const [loginData, setLoginData] = useState({email: '', password: '', role: 'user'});
   const [mensaje, setMensaje] = useState({});
-  const { email, password } = login;
+  const { email, password, role } = loginData;
 
   const onChan = (e) => {
-    setLogin({
-      ...login,
+    setLoginData({
+      ...loginData,
       [e.target.name]: e.target.value
     })
   };
 
   const registro = (e) => {
     e.preventDefault();
-    navegate("/registro");
+    navigate("/registro");
+    console.log(datos.usuarioActivo);
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if ([email, password].includes("")) {
+    if ([email, password, role].includes("")) {
       setMensaje({
         msj: "Los campos deben completarse",
         error: true
       });
       return;
     }
-    
-    //Logueo con la base de datos? POST?
-   
 
-    if (datos.usuario.some((user) => (user.email === email && user.password === password))) {
+    try {
+      const token = await login(email, password, role);
+      await fetchProfile(token);
       setMensaje({
-        msj: "Inicio de sesión exitoso",
+        msj: "Iniciaste sesión con éxito",
         error: false
       });
-
-    } else {
+      navigate('/');
+    } catch (error) {
       setMensaje({
-        msj: "El usuario o la contraseña son incorrectas",
+        msj: error.message,
         error: true
       });
     }
-
   };
 
-  return (
-    <div className="conteinerGeneral login">
-      <Subtitulo clase={"subtitulo"} texto={"Iniciar Sesión"} />
-      <hr />
-      <form onSubmit={handleSubmit} className="formulario">
-        <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico "} onChan={onChan} />
-        <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan} />
+  
+return (
+  <div className="conteinerGeneral">
+      <div className="login">
+        <Subtitulo clase={"subtitulo"} texto={"Iniciar Sesión"} />
+        <form onSubmit={handleSubmit} className="formulario">
+          <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico "} onChan={onChan} />
+          <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan}  />
+          <div className="botonera" >
+            <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar Sesión" }} btnClick={handleSubmit} />
+            <Boton btn={{ id: "enviar", clase: "comun", texto: "Registro" }} btnClick={registro} />
+          </div>
 
-        <div className="botonera" >
-          <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar Sesión" }} btnClick={handleSubmit} />
-          <Boton btn={{ id: "enviar", clase: "comun", texto: "Registro" }} btnClick={registro} />
-        </div>
-
-      </form >
-      {
-        mensaje.msj && <Alerta mensaje={mensaje} />
-      }
-    </div >
-  );
-}
+        </form >
+        {
+          mensaje.msj && <Alerta mensaje={mensaje} />
+        }
+      </div >
+  </div>
+);
+};
 
 export default Login;

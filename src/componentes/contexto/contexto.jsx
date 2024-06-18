@@ -1,53 +1,115 @@
 import { createContext, useEffect, useState } from "react";
+//import { useAuth } from "../auth/AuthContext";
+import { fetchGet } from "../funciones fetch/funciones";
+import { URL_CATEGORIA, URL_METODOPAGO, URL_PRODUCTO, URL_SUCURSAL, URL_TIPO } from "../../endPoints/endPoints";
+
+
 export const contexto = createContext({});
-const URL_MENU = 'http://localhost:3000/menu';
-const URL_USER = 'http://localhost:3000/users';
 export const ProveedorContexto = ({children}) => {
-    const [ datos, setDatos ] = useState ({data:[], carrito:[], categorias:[], tipo:[], usuario:[], usuarioActivo: {usuario:"perfil"}});
-    useEffect(()=>{
-        fetch(URL_USER)
-        .catch(error =>{
-            console.error(`Error en el fetch: `, error);
-            throw error;
-        })
-        .then(res=> res.json())
-        .then(users =>{
-            setDatos((prev)=>({...prev, usuario: users}));
-        })
-        .catch(error => {
-            console.error(`Error al obtener los datos: `, error);
-        });
-    },[]);
-    useEffect(()=>{
-        fetch(URL_MENU)
-        .catch(error =>{
-            console.error(`Error en el fetch: `, error);
-            throw error;
-        })
-        .then(res=> res.json())
-        .then(data =>{
-            let arrayCategorias = data.reduce((unicaCategoria, item)=>{
-                if (!unicaCategoria.includes(item.category)) {
-                    unicaCategoria.push(item.category);
+    const [ auth, setAuth ] = useState ({});
+    const [sucursales, setSucursales] = useState([]);
+    const [ datos, setDatos ] = useState ({
+        carrito:[], 
+        tipo:[], 
+        usuario:[], 
+        usuarioActivo: {
+            usuario:{user: "login"}, 
+            administrador: false
+        }, 
+        datoAEditar: null, 
+        productos:[], 
+        sucursales: [],
+        categoria: [], 
+        refresh : true, 
+        refreshSucursal: true,
+        userAct: null,
+        metodoPago:null
+    });
+    
+    useEffect(() => {
+        if (datos.refresh) {
+            const fetchData = async () => {
+                try {
+                    const token = localStorage.getItem('token');
+                    const [productos, categoria, tipo] = await Promise.all([
+                        fetchGet(URL_PRODUCTO, token),
+                        fetchGet(URL_CATEGORIA, token),
+                        fetchGet(URL_TIPO, token)
+                    ]);
+                    setDatos(prev => ({
+                        ...prev,
+                        productos,
+                        categoria,
+                        tipo,
+                        refresh: false
+                    }));
+                } catch (error) {
+                    console.error("Error fetching data", error);
                 }
-                return unicaCategoria;
-            },[]);
-            let arrayTipo = data.reduce((unicoTipo, item)=>{
-                if (!unicoTipo.includes(item.tipo)) {
-                    unicoTipo.push(item.tipo);
+            };
+            fetchData();
+        }
+    }, [datos.refresh]);
+    useEffect(() => {
+        if (datos.refreshSucursal) { 
+            const fetchSucursales = async () =>{
+                try {
+                    console.log("Fetching sucursales...");
+                    const res = await fetchGet(URL_SUCURSAL, localStorage.getItem('token'));
+                    if (res) {
+                        setSucursales(res);
+                        setDatos(prev => ({
+                            ...prev,
+                            sucursales: res,
+                            refreshSucursal: false
+                        }));
+                    }
+                } catch (error) {
+                    console.error("Error fetching sucursales", error);
                 }
-                return unicoTipo;
-            },[]);
-            setDatos((prev)=>({...prev, data, categorias:arrayCategorias, tipo:arrayTipo}));
-        })
-        .catch(error => {
-            console.error(`Error al obtener los datos: `, error);
-        });
-    },[]);
+            };
+            fetchSucursales();
+        }
+    }, [datos.refreshSucursal]);
+
+    useEffect(() => {
+        const fetchMetodosPago = async () =>{
+            try {
+                console.log("Fetching metodos de pago...");
+                const res = await fetchGet(URL_METODOPAGO, localStorage.getItem('token'));
+                if (res) {
+                    setDatos((prev) => ({
+                        ...prev,
+                        metodoPago:res
+                    }));
+                }
+            } catch (error) {
+                console.error("Error fetching sucursales", error);
+            }
+        }
+        fetchMetodosPago();
+    }, []);
+
 
     return (
-        <contexto.Provider value={{datos, setDatos } } >
+        <contexto.Provider value={{datos, setDatos, sucursales } } >
             { children }
         </contexto.Provider>
     )
 }
+
+/*
+fetch(URL_SUCURSALES)
+            .then(res => res.json())
+            .then(sucursales => {
+                if (Array.isArray(sucursales)) {
+                    setSucursales(sucursales);
+                    setDatos((prev)=>({...prev, sucursales, refreshSucursal:false}));
+                } else {
+                    console.error("La respuesta de sucursales no es un array:", sucursales);
+                }
+            })
+            .catch(error => {
+                console.error(`Error al obtener los datos de sucursales: `, error);
+            });
+        setDatos((prev)({...prev, refreshSucursal:false}));*/

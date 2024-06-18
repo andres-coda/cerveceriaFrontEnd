@@ -1,0 +1,118 @@
+/* Contacto.css */
+
+.contenedor {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 90vh;
+  min-width: 40%;
+
+
+}
+
+
+
+/* Confirmación de mensaje enviado */
+.mensaje-Enviado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1D1D1Bff;
+  border: 5px solid var(--color3);
+  border-radius: 10px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+}
+
+.mensaje-Enviado p {
+  margin: 5px 0;
+  color: var(--color3);
+  font-size: clamp(0.5rem, 1rem, 1.2rem);
+}
+
+
+/* Otros estilos */
+.form-contacto-sucursal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+ 
+
+
+}
+
+
+
+.form-contacto-sucursal input {
+  height: 30px;
+  width: 85%;
+  border-radius: 10px;
+  border-color: black 2px;
+  margin: 5px;
+}
+
+.form-contacto-sucursal textarea {
+  min-height: 30vh;
+  width: 85%;
+  border-radius: 10px;
+  border-color: black 2px;
+  margin: 5px;
+}
+
+
+
+.label-contacto {
+    color: var(--color3);
+ width: 85%;
+ text-align: start;
+ margin: 0;
+  font-weight: bold;
+  font-size: 1.2em;
+ 
+}
+
+
+/*boton*/
+.contacto {
+  width:20vw;
+  padding: 10px;
+  margin: 10px;
+}
+
+.error {
+  padding: 5px;
+  border-radius: 10px;
+  color: red;
+  font-weight: bold;
+  margin: 10px 80px 10px 80px;
+}
+
+@media (max-width: 768px) {
+  .contenedor {
+  margin: 0;
+    height: 90vh;
+    width: 60%;
+   
+  }
+  .error {
+    font-size: 0.8em;
+   
+  }
+
+  .form-contacto-sucursal textarea {
+    min-height: 20vh;
+    width: 85%;
+  }
+}
+
