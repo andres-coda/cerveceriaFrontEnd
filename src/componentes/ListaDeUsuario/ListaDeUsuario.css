@@ -1,0 +1,49 @@
+.containerTarjetasUsuarios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.tarjeta-usuario {
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
+    margin: 0.5rem 1rem;
+    background-color: var(--color9);
+    border-radius: 8px;
+}
+
+.tarjeta-usuario img {
+    width: 12vw;
+    height: 20vh;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.usuario-detalle {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 0.5rem 1rem;
+    width: 100%;
+}
+
+.usuario-detalle p {
+    margin: 0;
+    text-align: start;
+}
+
+.botonera-usuario {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.tarjeta-usuario:hover {
+    box-shadow: 1px 1px 1px 1px var(--color3);
+    cursor: pointer;
+}
