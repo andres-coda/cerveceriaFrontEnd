@@ -6,9 +6,9 @@ import MenuDetalles from '../menuDetalles/MenuDetalles';
 import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
 import { contexto } from '../contexto/contexto';
 
-function MenuTarjeta( { dato, reload } ){
+function MenuTarjeta( { dato } ){
     const [isOpen, setIsOpen] = useState(false);
-    const { datos, setDatos} = useContext(contexto);
+    const { setDatos} = useContext(contexto);
     const clickTarjeta=()=>{
         setDatos((prev)=>({...prev, productoActual:dato}))
         setIsOpen(true)
@@ -27,7 +27,7 @@ function MenuTarjeta( { dato, reload } ){
             isOpen={isOpen}
             onClose={onClose}
             children={
-                <MenuDetalles reload={reload}/>
+                <MenuDetalles modalClose={onClose}/>
             }
         />
         </>

@@ -33,6 +33,7 @@
 .usuario-detalle p {
     margin: 0;
     text-align: start;
+    color: var(--color4);
 }
 
 .botonera-usuario {

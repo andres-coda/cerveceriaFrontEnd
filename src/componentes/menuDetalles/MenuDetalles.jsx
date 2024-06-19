@@ -18,7 +18,7 @@ import { idText } from 'typescript';
 import MenuFormulario from './menuFormulario';
 import ModalGeneral from '../modalGeneral/modalGeneral';
 
-function MenuDetalles({ reload}) {
+function MenuDetalles({ modalClose}) {
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
@@ -26,7 +26,7 @@ function MenuDetalles({ reload}) {
     const [ isEdit, setIsEdit ] = useState(false);
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: datos.productoActual.deleted?"reactivar":"eliminar", condicion:false});
     const navegate = useNavigate();
-    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===datos.productoActual.idProducto));
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.producto.idProducto===datos.productoActual.idProducto));
     const [menu, setMenu] = useState({
         titulo: "" || datos.productoActual.titulo,
         categoria:"" || datos.productoActual.categoria,
@@ -43,7 +43,6 @@ function MenuDetalles({ reload}) {
             } else {
                 setCantidad(0);
             } 
-
     }, [datos.carrito, indice]);
 
     const reloadProducto= async(id) =>{
@@ -70,7 +69,7 @@ function MenuDetalles({ reload}) {
                 if( !datos.userAct ) navegate('/login')
                 const newCarrito = datos.carrito.slice();
                 if (indice===-1){
-                    const newObjet = { ...datos.productoActual, cantidad};
+                    const newObjet = { producto:{...datos.productoActual}, cantidad};
                     newCarrito.push(newObjet);
                 } else {
                     newCarrito[indice].cantidad=cantidad;
@@ -79,8 +78,7 @@ function MenuDetalles({ reload}) {
                     if(producto.cantidad>0) return producto;
                 })
                 setDatos((prev)=>({...prev, carrito:filterCarrito}));
-                console.log(datos.carrito);
-                navegate('/menu')
+                modalClose()
                 break;
             case "cerrar" :
                     navegate('/menu')
