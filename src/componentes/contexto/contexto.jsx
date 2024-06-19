@@ -18,6 +18,7 @@ export const ProveedorContexto = ({children}) => {
         }, 
         datoAEditar: null, 
         productos:[], 
+        productoActual:null,
         sucursales: [],
         categoria: [], 
         refresh : true, 

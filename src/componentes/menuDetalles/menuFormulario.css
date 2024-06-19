@@ -1,0 +1,37 @@
+.formulario-menu{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: 60vh;
+    padding: 0 0.5rem 1rem 0.5rem;
+}
+
+.formulario-menu img{
+    max-width: 50vw;
+    max-height: 30vh;
+    border-radius: 8px;
+    margin: 0.5rem;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.formulario-menu button{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.formulario-menu input{
+    width: 100%;
+}
+
+.formulario-menu::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color:  var(--color2);
+    border-radius: 10px;
+  }
+  
+  .formulario-menu::-webkit-scrollbar-thumb {
+    background-color: var(--color4);
+    border-radius: 10px;
+  }

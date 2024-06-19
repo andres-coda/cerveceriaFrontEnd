@@ -27,6 +27,7 @@ import MostrarPedidos from "./componentes/pedidos/pedidos";
 import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
 import ReservasList from "./componentes/reservas/ReservasList";
 import ReservasRealizadas from "./componentes/reservas/ReservasRealizadas";
+import Menu from "./componentes/menu/Menu";
 
 function App() {
   const { datos } = useContext(contexto);

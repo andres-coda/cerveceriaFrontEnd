@@ -1,12 +1,15 @@
+import { useContext } from 'react';
 import './menuDetalleInterno.css'
-function MenuDetalleInterno({producto}){
+import { contexto } from '../contexto/contexto';
+function MenuDetalleInterno(){
+    const {datos} = useContext(contexto)
     return(
         <div className="detalle-interno">
-            <img src={producto.img} alt={producto.titulo}/>
+            <img src={datos.productoActual.img} alt={datos.productoActual.titulo}/>
             <div className="detalle-interno-contenido">
-                <h4>{producto.titulo}</h4>
-                <p>categoría: {producto.categoria.nombre}</p>
-                <p>${producto.price}</p>
+                <h4>{datos.productoActual.titulo}</h4>
+                <p>categoría: {datos.productoActual.categoria.nombre}</p>
+                <p>${datos.productoActual.price}</p>
             </div>
         </div>
     )

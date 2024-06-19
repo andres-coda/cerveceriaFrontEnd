@@ -7,23 +7,36 @@ import {  useNavigate } from 'react-router-dom';
 import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAdministrador';
 import { contexto } from '../contexto/contexto';
 import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
-import { fetchGet } from '../funciones fetch/funciones';
+import { fetchDelete, fetchGet, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
-import {  FaTimes } from 'react-icons/fa';
+import {  FaEdit, FaTimes, FaTrash, FaUndo } from 'react-icons/fa';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
 import { text } from '@fortawesome/fontawesome-svg-core';
 import MenuDetalleInterno from './menuDetalleInterno';
+import { idText } from 'typescript';
+import MenuFormulario from './menuFormulario';
+import ModalGeneral from '../modalGeneral/modalGeneral';
 
-function MenuDetalles({producto}) {
+function MenuDetalles({ reload}) {
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
     const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
     const [ isOpen, setIsOpen ] = useState(false);
-    const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: producto.deleted?"reactivar":"eliminar", condicion:false});
+    const [ isEdit, setIsEdit ] = useState(false);
+    const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: datos.productoActual.deleted?"reactivar":"eliminar", condicion:false});
     const navegate = useNavigate();
-    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===producto.idProducto));
-   
+    let indice = datos.carrito?.findIndex((carrito)=>(carrito.idProducto===datos.productoActual.idProducto));
+    const [menu, setMenu] = useState({
+        titulo: "" || datos.productoActual.titulo,
+        categoria:"" || datos.productoActual.categoria,
+        img: "" || datos.productoActual.img,
+        descripcion: "" || datos.productoActual.descripcion,
+        ingredientes: "" || datos.productoActual.ingredientes,
+        price:"" || datos.productoActual.price,
+        valoracion: "" || datos.productoActual.valoracion,
+        tipo: "" || datos.productoActual.tipo,
+    });
     useEffect(()=>{
             if (indice!=-1) {
                 setCantidad(datos.carrito[indice].cantidad); 
@@ -32,6 +45,17 @@ function MenuDetalles({producto}) {
             } 
 
     }, [datos.carrito, indice]);
+
+    const reloadProducto= async(id) =>{
+        const respuestaGeneral = await fetchGet(URL_PRODUCTO, localStorage.getItem('token'));
+        if (respuestaGeneral) {
+            const res = await fetchGet(URL_PRODUCTO+'/'+id, localStorage.getItem('token'));
+            if (res) {
+                setDatos((prev)=>({...prev,productos:respuestaGeneral, productoActual:res}))
+            }
+            return res;
+        }
+    }
 
     const btnClick = async (e) => {
         const btn = e.currentTarget.id;
@@ -46,7 +70,7 @@ function MenuDetalles({producto}) {
                 if( !datos.userAct ) navegate('/login')
                 const newCarrito = datos.carrito.slice();
                 if (indice===-1){
-                    const newObjet = { ...producto, cantidad};
+                    const newObjet = { ...datos.productoActual, cantidad};
                     newCarrito.push(newObjet);
                 } else {
                     newCarrito[indice].cantidad=cantidad;
@@ -55,25 +79,9 @@ function MenuDetalles({producto}) {
                     if(producto.cantidad>0) return producto;
                 })
                 setDatos((prev)=>({...prev, carrito:filterCarrito}));
+                console.log(datos.carrito);
                 navegate('/menu')
                 break;
-            case "original" :
-                setVista(true);
-                break;
-            case "volver" :
-                setVista(false);
-                break;
-            case "editar" :
-                setDatos((prev)=>({...prev, datoAEditar: producto}));
-                navegate('/cargarmenu');
-                break;
-            case "eliminar" :
-                setIsOpen(true);
-                setTexto((prev)=>({...prev, proceso:true, texto:`Seguro que desea ${producto.deleted ? 'reactivar': 'eliminar'} el producto`}))
-                break
-            case "reactivar" :
-                setAlerta((prev)=>({...prev,estado:true}));  
-                break
             case "cerrar" :
                     navegate('/menu')
                 break;
@@ -84,43 +92,107 @@ function MenuDetalles({producto}) {
         }
     }
 
+    const eliminarProducto = async (idProducto) => {
+        try {
+            const res = await fetchDelete(URL_PRODUCTO+'/'+idProducto, localStorage.getItem('token'));
+            if (res==true) {
+                const reloadLocal= await reloadProducto(idProducto);
+                if (reloadLocal) {
+                    setTexto((prev)=>({...prev, idTexto:'reactivar', texto: "El producto fue eliminado con exito", proceso :true, condicion:true}));
+                }
+            }
+
+        } catch (error) {
+            setTexto((prev)=>({...prev, texto: `El producto no pudo ser borrado: ${error.message}`, proceso :true, condicion:true}));
+        }
+    }
+
+    const reactivarProducto = async (idProducto) =>{
+        try {
+            const res = await fetchPatCh(URL_PRODUCTO+'/'+idProducto, localStorage.getItem('token'));
+            if (res==true) {
+                const reloadLocal = await reloadProducto(idProducto);
+                if (reloadLocal) setTexto((prev)=>({...prev, idTexto:'eliminar', texto: "El producto fue reactivado con exito", proceso :true, condicion:true}));
+            }
+        } catch (error) {
+            setTexto((prev)=>({...prev, texto: `El producto no pudo ser reactivado: ${error.message}`, proceso :true, condicion:true}));
+        }
+    }
+
+    const handleEliminarReactivar = (e) => {
+        const btn=e.target.id;
+        setTexto((prev)=>({...prev, proceso: false, texto:"procesando..."}))
+        if (btn =='eliminar') {
+            eliminarProducto(datos.productoActual.idProducto)
+        } else {
+            reactivarProducto(datos.productoActual.idProducto)
+        }
+    }
+
+    const handleEditar = async (e) => {
+        e.preventDefault();
+        setTexto((prev)=>({...prev, proceso: false, texto:"procesando...", condicion:true}))
+        try {
+            const res = await fetchPut(URL_PRODUCTO+'/'+datos.productoActual.idProducto, localStorage.getItem('token'), menu);
+            if (res) {
+                const reloadLocal = await reloadProducto(datos.productoActual.idProducto);
+                if (reloadLocal) setTexto((prev)=>({...prev, texto: "El producto fue editado con exito", proceso :true, condicion:true}));
+            }
+        }catch(error){
+            setTexto((prev)=>({...prev, texto: `El producto no pudo ser editado: ${error.message}`, proceso :true, condicion:true}));
+        }
+
+    }
     const onClose = ()=>{
+        setTexto((prev)=>({...prev, proceso :false, condicion:false}));
         setIsOpen(false)
+    }
+
+    const onCloseEdit = ()=>{
+        setTexto((prev)=>({...prev, proceso :false, condicion:false}));
+        setIsEdit(false)
     }
 
     const handleAlertaOpen = (e) =>{
         const btn = e.currentTarget.id;
         if (btn=='editar'){
-            console.log(btn);
+            setIsEdit(true)
             setTexto((prev)=>({...prev, proceso:true, texto:`Seguro que desea editar el producto`}))
         } else {
-            setTexto((prev)=>({...prev, proceso:true, texto:`Seguro que desea ${producto.deleted ? 'reactivar': 'eliminar'} el producto`}))
+            setTexto((prev)=>({...prev, proceso:true, texto:`Seguro que desea ${datos.productoActual.deleted ? 'reactivar': 'eliminar'} el producto`}))
             setIsOpen(true)
         }
     } 
 
     return (         
         <>
-            <div className={producto.deleted? 'menuDetalleEliminado':'menuDetalle'}>
+            <div className={datos.productoActual.deleted? 'menuDetalleEliminado':'menuDetalle'}>
+                {datos.userAct && datos.userAct.role ==="admin"?(
+                    <div className='botoneraAdministrador'>
+                        <button id='editar' className='icono' onClick={handleAlertaOpen} title='editar'><FaEdit/></button>
+                        <button id={texto.idTexto} className='icono' onClick={handleAlertaOpen} title='eliminar'>{
+                            texto.idTexto== 'eliminar' ? <FaTrash/> : <FaUndo/> }
+                        </button>
+                    </div>
+                ):(
+                    null
+                )}
                 <div className='nuevoDiseno'>
-                    <img src={producto.img} alt={producto.titulo.nombre} />
+                    <img src={datos.productoActual.img} alt={datos.productoActual.titulo} />
                     <div className='nuevoDiseno-detalles'>
-                        <h2> { producto.titulo } </h2>
+                        <h2> { datos.productoActual.titulo } </h2>
                         <div className='nuevoDiseno-valoracion-precio'>
-                            <p>{`Valoración: ${producto.valoracion}`}</p>
-                            <h3> {`$${producto.price}`}</h3>
+                            <p>{`Valoración: ${datos.productoActual.valoracion}`}</p>
+                            <h3> {`$${datos.productoActual.price}`}</h3>
                         </div>
-                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} dato={producto} />
-                        <p>{`${producto.descripcion}`}</p>
-                        <p id='ingredientes'>{`Ingredientes: ${producto.ingredientes}`}</p>
+                        <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} />
+                        <p>{`${datos.productoActual.descripcion}`}</p>
+                        <p id='ingredientes'>{`Ingredientes: ${datos.productoActual.ingredientes}`}</p>
                     </div>
                 </div>
                 <>
                 </>
             </div>
-            {/* alerta.estado ? (
-                <EliminarAlerta setAlerta={setAlerta} dato={producto} idTexto={idTexto}/>
-            ) : (null)*/}
             <AlertaGeneral 
                 texto={texto}
                 isOpen={isOpen}
@@ -129,15 +201,40 @@ function MenuDetalles({producto}) {
                     !texto.condicion ? (
                         <>
                     <div>
-                        <MenuDetalleInterno producto={producto} />
+                        <MenuDetalleInterno />
                     </div>
                     <div className='boton-alerta-pedido'>
-                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
+                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={handleEliminarReactivar}/>
                         <Boton btn={{id:"cancelar", clase:"alerta", texto: "Cancelar"}} btnClick={onClose}/>
                     </div>
                     </>
                     ):(null)
                 }    
+            />
+            {/*<AlertaGeneral 
+                texto={texto}
+                isOpen={isEdit}
+                onClose={onCloseEdit}
+                children={
+                    !texto.condicion ? (
+                        <MenuFormulario menu={menu} setMenu={setMenu} btnClick={handleEditar} />
+                    ):(null)
+                }
+            />*/}
+            <ModalGeneral 
+               isOpen={isEdit}
+               onClose={onCloseEdit}
+               children={
+                <>
+                   <p className='alertaParrafo'> {`Editar ${datos.productoActual.titulo}`} </p>
+                   {!texto.condicion ? (
+                       <MenuFormulario menu={menu} setMenu={setMenu} btnClick={handleEditar} />
+                   ):(
+
+                    <AnimatedSVG/>
+                   )}
+                </>
+               }
             />
         </>   
 

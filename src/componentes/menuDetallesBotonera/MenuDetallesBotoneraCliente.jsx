@@ -4,7 +4,7 @@ import Parrafo from '../parrafo/Parrafo';
 import './MenuDetallesBotonera.css'
 import { contexto } from '../contexto/contexto';
 import { FaCartPlus, FaMinus, FaPlus} from 'react-icons/fa';
-function MenuDetallesBotoneraCliente({btnClick, cantidad, dato}){
+function MenuDetallesBotoneraCliente({btnClick, cantidad }){
     const {datos}= useContext(contexto)
     return(
         <>      
@@ -16,7 +16,7 @@ function MenuDetallesBotoneraCliente({btnClick, cantidad, dato}){
             </div>
             <div className='total'>
                 <Parrafo clase={'menuCantidad'} texto={'Total: '} />
-                <Parrafo clase={"menuCantidad"} texto={`$${cantidad*Number(dato.price)}`} />
+                <Parrafo clase={"menuCantidad"} texto={`$${cantidad*Number(datos.productoActual.price)}`} />
             </div>           
             <Boton btn={{id:"aceptar", clase:"iconGrande", texto: <FaCartPlus/>}} btnClick={btnClick} titulo="agregar al carrito"/>
             </div>     

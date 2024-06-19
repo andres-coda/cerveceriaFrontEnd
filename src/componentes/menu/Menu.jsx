@@ -6,9 +6,22 @@ import { Link, useNavigate } from 'react-router-dom';
 import MenuTarjeta from '../menuTarjeta/MenuTarjeta';
 
 function Menu({categoria}){
-  const { datos} = useContext(contexto);
+  const { datos, setDatos} = useContext(contexto);
   const [productosOrdenados, setProductosOrdenados] = useState([]);
-  const navegate = useNavigate()
+  const navegate = useNavigate();
+
+  const reload = async () => {
+    try {
+        const productoFetch = await fetchGet(URL_PEDIDO, localStorage.getItem('token'));
+        if (productoFetch) {
+            setDatos((prev)=>({...prev,productos:productoFetch}));
+            return productoFetch;              
+        }
+    }catch (error) {
+        console.log(error);
+        return error;
+    }
+  }   
   
   useEffect(() => {
     const sortProductosPorCategoria = (productos) => {
@@ -54,11 +67,13 @@ function Menu({categoria}){
             </Link>
             <div className='menuCategoria'>
               {productosOrdenados[categoriaNombre].map((producto) => (
+                <>
                 <MenuTarjeta 
                   key={producto.idProducto}
                   dato={producto}
-                  click={btnClick}
-                />
+                  reload={reload}
+                  />
+                </>
               ))}
             </div>
           </div>

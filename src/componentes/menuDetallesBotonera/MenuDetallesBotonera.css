@@ -1,6 +1,6 @@
 .botoneraCliente{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
     align-items: center;
@@ -28,17 +28,28 @@
     top:  8px;
     right: 8px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-end;
-    margin: 2.5rem 0;
+    margin: 0 2.5rem;
     padding: 0;
 }
 .menuCantidad{
     display: flex;
     justify-content: center;
     margin: auto 0.2rem;
-    width: 3.5rem;
+    min-width: 3.5rem;
 }
+
+@media(max-width:900px){
+    .total p{
+        font-size: 0.8em;
+    }
+    .menuCantidad{
+        font-size: 0.8em;
+        min-width:2rem;
+    }
+}
+
 
 
 

@@ -1,13 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import ModalGeneral from '../modalGeneral/modalGeneral';
 import Parrafo from '../parrafo/Parrafo';
 import './MenuTarjeta.css'
 import MenuDetalles from '../menuDetalles/MenuDetalles';
 import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
+import { contexto } from '../contexto/contexto';
 
-function MenuTarjeta( { dato, click } ){
+function MenuTarjeta( { dato, reload } ){
     const [isOpen, setIsOpen] = useState(false);
+    const { datos, setDatos} = useContext(contexto);
     const clickTarjeta=()=>{
+        setDatos((prev)=>({...prev, productoActual:dato}))
         setIsOpen(true)
     }
     const onClose=()=>{
@@ -24,7 +27,7 @@ function MenuTarjeta( { dato, click } ){
             isOpen={isOpen}
             onClose={onClose}
             children={
-                <MenuDetalles producto={dato}/>
+                <MenuDetalles reload={reload}/>
             }
         />
         </>
