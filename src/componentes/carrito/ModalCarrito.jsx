@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './Modal.css';
 import { contexto } from '../contexto/contexto';
 import { URL_PEDIDO, URL_PEDIDO_PRODUCTO } from '../../endPoints/endPoints';
 import ModalPago from '../reservas/ModalPago';

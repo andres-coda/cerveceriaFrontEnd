@@ -1,15 +1,26 @@
+.botoneraCliente{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    align-items: center;
+    margin: 0rem 0.2rem;
+}
 .botonesMasMenos{
     display: inline-flex;
+    flex-direction: row;
+    justify-content: start;
 }
 
 .total{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .total p{
     display: inline-flex;
+    margin: 0;
 }
 
 .botoneraAdministrador{
@@ -17,11 +28,29 @@
     top:  8px;
     right: 8px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-end;
-    margin: 2.5rem 0;
+    margin: 0 2.5rem;
     padding: 0;
 }
+.menuCantidad{
+    display: flex;
+    justify-content: center;
+    margin: auto 0.2rem;
+    min-width: 3.5rem;
+}
+
+@media(max-width:900px){
+    .total p{
+        font-size: 0.8em;
+    }
+    .menuCantidad{
+        font-size: 0.8em;
+        min-width:2rem;
+    }
+}
+
+
 
 
 /*

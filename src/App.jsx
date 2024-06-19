@@ -28,6 +28,7 @@ import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
 import ReservasList from "./componentes/reservas/ReservasList";
 import ReservasRealizadas from "./componentes/reservas/ReservasRealizadas";
 import ListaDeUsuario from "./componentes/ListaDeUsuario/ListaDeUsuario";
+import Menu from "./componentes/menu/Menu";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -52,7 +53,7 @@ function App() {
             )
           })):(null)}
           <Route path='/' element={<Home />}/>
-          <Route path='/menu' element={<MenuAux categoria={undefined}/>}/>
+          <Route path='/menu' element={<Menu categoria={undefined}/>}/>
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/metodopago' element={<ModalCarrito />}/>

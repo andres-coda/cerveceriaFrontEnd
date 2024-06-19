@@ -1,57 +1,28 @@
-.transparente{
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(0%, 0%);
-    z-index: 9970;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color6);
-}
-
-.menuDetalleElementos,
-.menuDetalleElementosEliminado{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9972;
-    float: inline-start;
-    min-width: 210px;
-    width: 60%;
-    max-height: 80vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    margin: auto;
-    color: var(--color1);
-    border: 1px solid black;
-    border-radius: 10px;
-    box-shadow: 2px 2px 4px black;
-}
-
-.menuDetalleElementosEliminado {    
+.menuDetalleEliminado {
     background-color: var(--color5);
 }
 
-.menuDetalleElementos {    
+.menuDetalle{
     background-color: var(--color2);
 }
 
-.menuDetalle{
+.menuDetalle,
+.menuDetalleEliminado{
     overflow: auto;
     padding: 0.5rem 0.5rem;
+    border-radius: 8px;
+    
 }
 
-.menuDetalle  h2{
+.menuDetalle  h2,
+.menuDetalleEliminado h2{
     font-size: 1.1em;
     margin: 1rem;
     text-align: center;
 }
 
-.menuDetalle h3{
+.menuDetalle h3,
+.menuDetalleEliminado h3{
     font-size: 0.9em;
     margin: 2px;
     text-align: start;
@@ -64,14 +35,16 @@
     width: 50%;
 }
 
-.menuDetalle::-webkit-scrollbar {
+.menuDetalle::-webkit-scrollbar,
+.menuDetalleEliminado::-webkit-scrollbar {
     width: 8px;
     height: 8px;
     background-color:  var(--color2);
     border-radius: 10px;
 }
 
-.menuDetalle::-webkit-scrollbar-thumb {
+.menuDetalle::-webkit-scrollbar-thumb,
+.menuDetalleEliminado::-webkit-scrollbar-thumb {
     background-color: var(--color4);
     border-radius: 10px;
 }
@@ -121,6 +94,57 @@
 
 /*menu detalle aux*/
 
+.nuevoDiseno{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 0;
+    margin: 0;
+}
+
+.nuevoDiseno img{
+    max-width: 20vw;
+    height: 70vh;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin: 0.5rem;
+    object-fit: cover;
+}
+
+.nuevoDiseno-detalles{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    margin: 0.5rem 0.5rem 0 0.5rem;
+    overflow: hidden;
+}
+.nuevoDiseno-detalles p,
+.nuevoDiseno-detalles h2{
+    padding: 0 0.2rem;
+    margin: 1rem 0;
+    text-align: justify;
+}
 
 
+.nuevoDiseno-detalles h3{
+    text-align: center;
+    font-size: 2em;
+}
+
+#ingredientes{
+    font-size: small;
+}
+
+
+.nuevoDiseno-detalles h2{
+    font-size: 2em;
+}
+
+.nuevoDiseno-valoracion-precio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
 

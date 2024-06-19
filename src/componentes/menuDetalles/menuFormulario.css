@@ -1,0 +1,74 @@
+.formulario-menu{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    height: 60vh;
+    padding: 0 0.5rem 1rem 0.5rem;
+}
+
+.formulario-menu img{
+    max-width: 50vw;
+    max-height: 30vh;
+    border-radius: 8px;
+    margin: 0.5rem;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.formulario-menu button{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.formulario-menu input{
+    width: 100%;
+}
+
+.carga-imagen{
+    margin: 0.5rem;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 3rem;
+    width: 100%;
+}
+
+.carga-imagen-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color3);
+    color: var(--color1);
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .carga-imagen-label:hover{
+      background-color: var(--color4);
+      box-shadow: 1px 1px 1px var(--color1);
+  }
+
+  #imagen {
+    position: relative;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+  }
+
+
+
+.formulario-menu::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color:  var(--color2);
+    border-radius: 10px;
+  }
+  
+  .formulario-menu::-webkit-scrollbar-thumb {
+    background-color: var(--color4);
+    border-radius: 10px;
+  }
