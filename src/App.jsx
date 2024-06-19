@@ -27,6 +27,7 @@ import MostrarPedidos from "./componentes/pedidos/pedidos";
 import MostrarPedidosGenerales from "./componentes/pedidos/pedidosGenerales";
 import ReservasList from "./componentes/reservas/ReservasList";
 import ReservasRealizadas from "./componentes/reservas/ReservasRealizadas";
+import ListaDeUsuario from "./componentes/ListaDeUsuario/ListaDeUsuario";
 import Menu from "./componentes/menu/Menu";
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
            <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/perfil' element={<ModalUsers />} />
           </Route>
+          <Route path='/listadeusuarios' element={<ListaDeUsuario/>}/>
           <Route path='/reservasrealizadas' element={<ReservasRealizadas />} />
           <Route path='/pedidos' element={<MostrarPedidos/>} />
           <Route path='/pedidos-generales' element={<MostrarPedidosGenerales/>}/>

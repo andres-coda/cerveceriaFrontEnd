@@ -116,6 +116,6 @@ function MenuCargar(){
         }
         </>
     );
-};
+}
 
 export default MenuCargar;
