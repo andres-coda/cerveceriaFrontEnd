@@ -9,6 +9,7 @@ import FormularioInput from "../formularioInput/FormularioInput";
 import ModalGeneral from "../modalGeneral/modalGeneral";
 import MenuDetalles from "../menuDetalles/MenuDetalles";
 import { contexto } from "../contexto/contexto";
+import { Alert } from "react-bootstrap";
 
 function PedidosCard({children, pedido, reload, textoAlerta}) {
     const { setDatos } = useContext(contexto)
@@ -16,7 +17,8 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
     const [isOpen, setIsOpen ] = useState(false);
     const [ productoOpen, setProductoOpen] = useState(false)
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false});
-    const [detalle, setDetalle] = useState({detalle: pedido ? pedido.detalle : ''})
+    const [detalle, setDetalle] = useState({detalle: pedido ? pedido.detalle : ''});
+    const [isAlerta, setIsAlerta] = useState(false);
     let importe = null;
     if (!importe) {
         importe=0;
@@ -97,14 +99,20 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
     }
 
     const handleProductoOpen= (producto) =>{
-        setDatos((prev)=>({...prev, productoActual:producto}));
-        setProductoOpen(true);
+        if (!producto.deleted) {
+            setDatos((prev)=>({...prev, productoActual:producto}));
+            setProductoOpen(true);
+        } else {
+            setTexto((prev)=>({...prev, texto: `El producto ya no se encuentra disponible`, proceso :true, condicion:true}))
+            setIsAlerta(true)
+        }
     }
 
     const onClose = () =>{
         setTexto((prev)=>({...prev,proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false}));
         setIsOpen(false);
         setIsEdit(false);
+        setIsAlerta(false)
     }
 
     const productoClose= () =>{
@@ -186,6 +194,12 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                 }
                 isOpen={isEdit}
                 onClose={onClose}
+            />
+            <AlertaGeneral 
+                texto={texto}
+                onClose={onClose}
+                children={null}
+                isOpen={isAlerta}
             />
         </>
     )
