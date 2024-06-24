@@ -113,6 +113,10 @@
     border-top: 1px solid var(--color8);
 }
 
+.pedido-importe{
+    margin-top: 0.2rem;
+}
+
 .pedido-importe-alerta{
     color: var(--color1);
     padding-right: 1rem;
@@ -132,6 +136,15 @@
 #pedido-edit:hover,
 #pedido-deleted:hover{
     z-index: 2;
+}
+
+.pedido-producto{
+    cursor: pointer;
+}
+
+.pedido-producto:hover{
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px var(--color4);
 }
 
 

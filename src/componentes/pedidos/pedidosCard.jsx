@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchDelete, fetchPatCh, fetchPut } from "../funciones fetch/funciones";
 import AlertaGeneral from "../eliminarAlerta/AlertaGeneral";
 import PedidoInternoCard from "./pedidoInternoCard";
@@ -6,10 +6,15 @@ import Boton from "../boton/Boton";
 import { FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { URL_PEDIDO } from "../../endPoints/endPoints";
 import FormularioInput from "../formularioInput/FormularioInput";
+import ModalGeneral from "../modalGeneral/modalGeneral";
+import MenuDetalles from "../menuDetalles/MenuDetalles";
+import { contexto } from "../contexto/contexto";
 
 function PedidosCard({children, pedido, reload, textoAlerta}) {
+    const { setDatos } = useContext(contexto)
     const [isEdit, setIsEdit] = useState(false);
     const [isOpen, setIsOpen ] = useState(false);
+    const [ productoOpen, setProductoOpen] = useState(false)
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false});
     const [detalle, setDetalle] = useState({detalle: pedido ? pedido.detalle : ''})
     let importe = null;
@@ -91,10 +96,20 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
         }
     }
 
+    const handleProductoOpen= (producto) =>{
+        setDatos((prev)=>({...prev, productoActual:producto}));
+        setProductoOpen(true);
+    }
+
     const onClose = () =>{
         setTexto((prev)=>({...prev,proceso:false, texto:"procesando...", idTexto: pedido.deleted?"reactivar":"eliminar", condicion:false}));
         setIsOpen(false);
         setIsEdit(false);
+    }
+
+    const productoClose= () =>{
+        setDatos((prev)=>({...prev, productoActual:null}));
+        setProductoOpen(false);
     }
 
     return (
@@ -106,7 +121,7 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
             <div className='pedido-cuerpo'>
                 <div className='pedido-productos-content' >
                     {pedido.pedidosProducto.map((producto)=>(
-                        <div className='pedido-producto' key={`${pedido.id}-producto-${producto.producto.idProducto}`}>
+                        <div className='pedido-producto' key={`${pedido.id}-producto-${producto.producto.idProducto}`} onClick={()=>handleProductoOpen(producto.producto)}>
                             <p><b>{producto.cantidad} </b></p>
                             <img src={producto.producto.img} alt={producto.producto.titulo} />
                             <p> {producto.producto.titulo} </p>
@@ -121,6 +136,13 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
             </div>
             <p className='pedido-importe'><b>Importe: </b> ${importe} </p>
 		</div>
+            <ModalGeneral
+                isOpen={productoOpen}
+                onClose={productoClose}
+                children={
+                    <MenuDetalles modalClose={productoClose}/>
+                }
+            />
             <AlertaGeneral
                 texto={texto}
                 btnClick={btnClick}
