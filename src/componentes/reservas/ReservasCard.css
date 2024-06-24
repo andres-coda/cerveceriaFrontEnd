@@ -73,7 +73,7 @@
 .wrapper-realizadas{
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
   align-items: center;
 }
 

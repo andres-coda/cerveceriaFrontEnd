@@ -1,7 +1,22 @@
+import { useState, useContext } from 'react';
 import './MenuCarrito.css';
+import { contexto } from '../contexto/contexto';
+import ModalGeneral from '../modalGeneral/modalGeneral';
+import MenuDetalles from '../menuDetalles/MenuDetalles';
 
-function MenuCarrito({ menu, click}){
+function MenuCarrito({ menu }){
+    const {setDatos} = useContext(contexto)
+    const [isOpen, setIsOpen] = useState(false);
+    const onClose = () => {
+        setIsOpen(false);
+    }
+
+    const click = () => {
+        setDatos((prev)=>({...prev, productoActual:menu.producto}))
+        setIsOpen(true);
+    }
     return(
+        <>
         <div className='menuCarritoTarjeta' onClick={click} id={menu.producto.idProducto}>
             <img src={menu.producto.img} alt={menu.producto.titulo} /> 
             <div className='carrito-card-uno'>
@@ -12,6 +27,14 @@ function MenuCarrito({ menu, click}){
                 <p>{`$${menu.producto.price*menu.cantidad}`}</p>
             </div> 
         </div>
+        <ModalGeneral
+            isOpen={isOpen}
+            onClose={onClose}
+            children={
+                <MenuDetalles modalClose={onClose}/>
+            }
+        />
+        </>
     );
 };
 
