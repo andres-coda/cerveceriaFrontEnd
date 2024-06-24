@@ -3,7 +3,6 @@ import ModalGeneral from '../modalGeneral/modalGeneral';
 import Parrafo from '../parrafo/Parrafo';
 import './MenuTarjeta.css'
 import MenuDetalles from '../menuDetalles/MenuDetalles';
-import MenuDetallesAux from '../menuDetalles/MenuDetallesAux';
 import { contexto } from '../contexto/contexto';
 
 function MenuTarjeta( { dato } ){

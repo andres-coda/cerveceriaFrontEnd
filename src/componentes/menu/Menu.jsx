@@ -2,13 +2,12 @@ import { useContext, useEffect, useState} from 'react';
 import './Menu.css';
 import { contexto } from '../contexto/contexto';
 import Subtitulo from '../subtitulo/Subtitulo';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MenuTarjeta from '../menuTarjeta/MenuTarjeta';
 
 function Menu({categoria}){
   const { datos, setDatos} = useContext(contexto);
   const [productosOrdenados, setProductosOrdenados] = useState([]);
-  const navegate = useNavigate();
 
   const reload = async () => {
     try {
@@ -36,11 +35,11 @@ function Menu({categoria}){
 
     const agruparProductosPorCategoria = (productos) => {
       return productos.reduce((acc, producto) => {
-        const categoriaNombre = producto.categoria.nombre;
+        const categoriaNombre = categoria ? categoria.nombre : producto.categoria.nombre;
         if (!acc[categoriaNombre]) {
           acc[categoriaNombre] = [];
-        }
-        acc[categoriaNombre].push(producto);
+        } 
+        if (categoriaNombre.toLowerCase()=== producto.categoria.nombre.toLowerCase())   acc[categoriaNombre].push(producto);
         return acc;
       }, {});
     };
@@ -49,31 +48,25 @@ function Menu({categoria}){
     const productosPorCategoria = agruparProductosPorCategoria(productosOrdenados);
 
     setProductosOrdenados(productosPorCategoria);
-  }, [datos.productos]);
+  }, [datos.productos, categoria]);
 
-  const btnClick = async (e) => {
-    const btn = e.currentTarget.id;
-    navegate(`/menu/${btn}`)
-  }
   
   return (
     <div className='conteinerGeneral'>
           <Subtitulo clase={"subtitulo"} texto={categoria!==undefined ? categoria.nombre : "Carta completa"} />
         <div className='menu'>
         {Object.keys(productosOrdenados).map((categoriaNombre, index) => (
-          <div className='menuCatYTitulo' key={`categoria-${index}`}>
+          <div className='menuCatYTitulo' key={`categoria-${categoriaNombre}-${index}`}>
             <Link to={`/menu/${categoriaNombre}`}>
               <h4>{categoriaNombre.toLowerCase()}</h4>
             </Link>
             <div className='menuCategoria'>
               {productosOrdenados[categoriaNombre].map((producto) => (
-                <>
                 <MenuTarjeta 
                   key={producto.idProducto}
                   dato={producto}
                   reload={reload}
                   />
-                </>
               ))}
             </div>
           </div>
