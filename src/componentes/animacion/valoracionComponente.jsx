@@ -7,7 +7,7 @@ import { RiBeerLine } from "react-icons/ri";
 function ValoracionComponent({ valoracion }) {
   return (
     <div className='producto-valoracion' >
-      {[...Array(10)].map((_, index) => (
+      {[...Array(5)].map((_, index) => (
         <>
         {index+1<=valoracion ? (
             <RiBeerFill key={index}/>
