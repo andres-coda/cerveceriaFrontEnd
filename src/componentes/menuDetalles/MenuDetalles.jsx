@@ -12,6 +12,7 @@ import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
 import MenuDetalleInterno from './menuDetalleInterno';
 import MenuFormulario from './menuFormulario';
 import ModalGeneral from '../modalGeneral/modalGeneral';
+import ValoracionComponent from '../animacion/valoracionComponente';
 
 function MenuDetalles({ modalClose}) {
     const { datos, setDatos } = useContext(contexto);
@@ -174,7 +175,8 @@ function MenuDetalles({ modalClose}) {
                     <div className='nuevoDiseno-detalles'>
                         <h2> { datos.productoActual.titulo } </h2>
                         <div className='nuevoDiseno-valoracion-precio'>
-                            <p>{`Valoración: ${datos.productoActual.valoracion}`}</p>
+                            <p>{`Valoración:`}</p>
+                            <ValoracionComponent valoracion={datos.productoActual.valoracion}/>
                             <h3> {`$${datos.productoActual.price}`}</h3>
                         </div>
                         <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} />
