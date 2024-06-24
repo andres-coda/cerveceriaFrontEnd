@@ -38,17 +38,17 @@ function App() {
         <Routes>
           {Array.isArray(datos.productos) ? ( datos.productos.map((dato)=>{
             return (
-              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetalles idProducto={dato.idProducto}/>} key={dato.idProducto}/>
+              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetalles idProducto={dato.idProducto}/>} key={`producto-${dato.idProducto}`}/>
             )
           })):(null)}
           {Array.isArray(datos.categoria) ? ( datos.categoria.map((categorias)=>{
             return (
-              <Route path={`/menu/${categorias.nombre}`} element={<Menu categoria={categorias}/>} key={categorias.idCategoria}/>
+              <Route path={`/menu/${categorias.nombre}`} element={<Menu categoria={categorias}/>} key={`categoria-${categorias.idCategoria}`}/>
             )
           })):(null)}
           {Array.isArray(datos.tipo) ? (datos.tipo.map((tipo)=>{
             return (
-              <Route path={`/menu/${tipo.nombre}`} element={<Menu categoria={tipo}/>} key={tipo.idNombre}/>
+              <Route path={`/menu/${tipo.nombre}`} element={<Menu categoria={tipo}/>} key={`tipo-${tipo.idNombre}`}/>
             )
           })):(null)}
           <Route path='/' element={<Home />}/>

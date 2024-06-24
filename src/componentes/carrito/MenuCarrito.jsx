@@ -9,6 +9,7 @@ function MenuCarrito({ menu }){
     const [isOpen, setIsOpen] = useState(false);
     const onClose = () => {
         setIsOpen(false);
+        setDatos((prev)=>({...prev, productoActual:null}))
     }
 
     const click = () => {

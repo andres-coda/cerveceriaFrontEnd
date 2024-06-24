@@ -56,19 +56,17 @@ function Menu({categoria}){
           <Subtitulo clase={"subtitulo"} texto={categoria!==undefined ? categoria.nombre : "Carta completa"} />
         <div className='menu'>
         {Object.keys(productosOrdenados).map((categoriaNombre, index) => (
-          <div className='menuCatYTitulo' key={`categoria-${index}`}>
+          <div className='menuCatYTitulo' key={`categoria-${categoriaNombre}-${index}`}>
             <Link to={`/menu/${categoriaNombre}`}>
               <h4>{categoriaNombre.toLowerCase()}</h4>
             </Link>
             <div className='menuCategoria'>
               {productosOrdenados[categoriaNombre].map((producto) => (
-                <>
                 <MenuTarjeta 
                   key={producto.idProducto}
                   dato={producto}
                   reload={reload}
                   />
-                </>
               ))}
             </div>
           </div>
