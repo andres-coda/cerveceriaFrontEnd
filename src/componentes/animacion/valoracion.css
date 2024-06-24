@@ -1,0 +1,18 @@
+.valoracion-aprobada{
+    color: var(--color4);
+} 
+
+.valoracion-vacia{
+    background-color: transparent;
+}
+
+.producto-valoracion{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    background-color: var(--color2);
+    padding: 0 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--color1);
+}
