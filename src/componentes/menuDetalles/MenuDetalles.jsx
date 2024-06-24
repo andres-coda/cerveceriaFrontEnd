@@ -19,6 +19,7 @@ function MenuDetalles({ modalClose}) {
     const [ cantidad, setCantidad ] = useState(0);
     const [ isOpen, setIsOpen ] = useState(false);
     const [ isEdit, setIsEdit ] = useState(false);
+    const [ isEditAlerta, setIsEditAlerta ] = useState(false)
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: datos.productoActual.deleted?"reactivar":"eliminar", condicion:false});
     const navegate = useNavigate();
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.producto.idProducto===datos.productoActual.idProducto));
@@ -124,15 +125,16 @@ function MenuDetalles({ modalClose}) {
 
     const handleEditar = async (e) => {
         e.preventDefault();
-        setTexto((prev)=>({...prev, proceso: false, texto:"procesando...", condicion:true}))
+        setTexto((prev)=>({...prev, proceso: false, texto:"procesando...", condicion:true}));
+        setIsEditAlerta(true)
         try {
             const res = await fetchPut(URL_PRODUCTO+'/'+datos.productoActual.idProducto, localStorage.getItem('token'), menu);
             if (res) {
                 const reloadLocal = await reloadProducto(datos.productoActual.idProducto);
-                if (reloadLocal) setTexto((prev)=>({...prev, texto: "El producto fue editado con exito", proceso :true, condicion:true}));
+                if (reloadLocal) setTexto((prev)=>({...prev, texto: "El producto fue editado con exito", proceso :true, condicion:false}));
             }
         }catch(error){
-            setTexto((prev)=>({...prev, texto: `El producto no pudo ser editado: ${error.message}`, proceso :true, condicion:true}));
+            setTexto((prev)=>({...prev, texto: `El producto no pudo ser editado: ${error.message}`, proceso :true, condicion:false}));
         }
 
     }
@@ -143,7 +145,8 @@ function MenuDetalles({ modalClose}) {
 
     const onCloseEdit = ()=>{
         setTexto((prev)=>({...prev, proceso :false, condicion:false}));
-        setIsEdit(false)
+        setIsEdit(false);
+        setIsEditAlerta(false);
     }
 
     const handleAlertaOpen = (e) =>{
@@ -205,28 +208,23 @@ function MenuDetalles({ modalClose}) {
                     ):(null)
                 }    
             />
-            {/*<AlertaGeneral 
+            {<AlertaGeneral 
                 texto={texto}
-                isOpen={isEdit}
+                isOpen={isEditAlerta}
                 onClose={onCloseEdit}
                 children={
-                    !texto.condicion ? (
-                        <MenuFormulario menu={menu} setMenu={setMenu} btnClick={handleEditar} />
-                    ):(null)
+                    null
                 }
-            />*/}
+            />}
             <ModalGeneral 
                isOpen={isEdit}
                onClose={onCloseEdit}
                children={
                 <>
                    <p className='alertaParrafo'> {`Editar ${datos.productoActual.titulo}`} </p>
-                   {!texto.condicion ? (
+                 
                        <MenuFormulario menu={menu} setMenu={setMenu} btnClick={handleEditar} />
-                   ):(
-
-                    <AnimatedSVG/>
-                   )}
+                   
                 </>
                }
             />
