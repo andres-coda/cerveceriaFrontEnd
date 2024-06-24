@@ -1,27 +1,21 @@
 import { useContext, useEffect, useState } from 'react'
 import './MenuDetalles.css'
-import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import MenuDetallesBotoneraCliente from '../menuDetallesBotonera/MenuDetallesBotoneraCliente';
 import {  useNavigate } from 'react-router-dom';
-import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAdministrador';
 import { contexto } from '../contexto/contexto';
-import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
 import { fetchDelete, fetchGet, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
-import {  FaEdit, FaTimes, FaTrash, FaUndo } from 'react-icons/fa';
+import {  FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
-import { text } from '@fortawesome/fontawesome-svg-core';
 import MenuDetalleInterno from './menuDetalleInterno';
-import { idText } from 'typescript';
 import MenuFormulario from './menuFormulario';
 import ModalGeneral from '../modalGeneral/modalGeneral';
 
 function MenuDetalles({ modalClose}) {
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
-    const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
     const [ isOpen, setIsOpen ] = useState(false);
     const [ isEdit, setIsEdit ] = useState(false);
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: datos.productoActual.deleted?"reactivar":"eliminar", condicion:false});
