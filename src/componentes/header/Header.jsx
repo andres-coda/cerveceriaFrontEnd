@@ -65,7 +65,7 @@ function Header() {
       </div>
       <nav id="navbar" className={`navbar ${clicked ? 'active' : ''}`}>
         <ul>
-        <li><NavLink to="/dondeestamos">NOSOTROS</NavLink></li>
+        <li><NavLink to="/dondeestamos">Nosotros</NavLink></li>
         <NavDropdown
             id="nav-dropdown-dark-example"
             title="Carta"
@@ -101,16 +101,19 @@ function Header() {
             >
               <div className='back-drop'>
                 <li>
-                  <NavLink to={`/cargarsucursales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon " />Agregar Sucursales</NavLink>
+                  <NavLink className='drop-item' to={`/cargarsucursales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon " />Agregar Sucursales</NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/cargarmenu`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Agregar producto</NavLink>
+                  <NavLink className='drop-item' to={`/cargarmenu`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Agregar producto</NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/pedidos-generales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Ver pedidos recibidos</NavLink>
+                  <NavLink className='drop-item' to={`/pedidos-generales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar recibidos</NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/listadoreservas`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar Reservas</NavLink>
+                  <NavLink className='drop-item' to={`/listadoreservas`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar reservas</NavLink>
+                </li>
+                <li>
+                  <NavLink className='drop-item' to={`/listadeusuarios`} onClick={closeAdminDropdown}><FaPlusCircle className="icon " />Administrar usuarios</NavLink>
                 </li>
               </div>
             </NavDropdown>
@@ -130,10 +133,12 @@ function Header() {
                 show={userDropdownOpen}
               >
                 <div className='back-drop'>
+                  {/*
                   <div className='profile'>{`Nombre: ${(auth.user.name) || ''} ${(auth.user.lastname) || ''}`}</div>
                   <div className='profile'>{`Email: ${(auth.user.email) || ''}`}</div>
                   <div className='profile'>{`Rol: ${(auth.user.role) || ''}`}</div>
                   <div className='profile'>{`Pedidos: ${pedidosCount}`}</div>
+                  */}
                   <NavLink
                     className='drop-item'
                     to={`/pedidos`}
@@ -148,7 +153,7 @@ function Header() {
                   >
                   Mis reservas
                   </NavLink>
-                  <NavLink className='drop-item' onClick={() => { closeUserDropdown(); logout(); }}>Logout</NavLink>
+                  <NavLink to={`/`} className='drop-item' onClick={() => { closeUserDropdown(); logout(); }}>Logout</NavLink>
                 </div>
               </NavDropdown>
             </div>

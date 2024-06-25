@@ -62,7 +62,6 @@ function MenuDetalles({ modalClose}) {
                 setCantidad((prev)=>(prev+=1));
                 break;
             case "aceptar":
-                if( !datos.userAct ) navegate('/login')
                 const newCarrito = datos.carrito.slice();
                 if (indice===-1){
                     const newObjet = { producto:{...datos.productoActual}, cantidad};
