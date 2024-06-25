@@ -47,7 +47,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
- 
+
 
 
 }
@@ -73,19 +73,19 @@
 
 
 .label-contacto {
-    color: var(--color3);
- width: 85%;
- text-align: start;
- margin: 0;
-  font-weight: bold;
+  color: var(--color3);
+  width: 85%;
+  text-align: start;
+  margin: 0;
   font-size: 1.2em;
- 
+  font-family: 'Monstserrat';
+
 }
 
 
 /*boton*/
 .contacto {
-  width:20vw;
+  width: 20vw;
   padding: 10px;
   margin: 10px;
 }
@@ -100,14 +100,15 @@
 
 @media (max-width: 768px) {
   .contenedor {
-  margin: 0;
+    margin: 0;
     height: 90vh;
     width: 60%;
-   
+
   }
+
   .error {
     font-size: 0.8em;
-   
+
   }
 
   .form-contacto-sucursal textarea {
@@ -115,4 +116,3 @@
     width: 85%;
   }
 }
-

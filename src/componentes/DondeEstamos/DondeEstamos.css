@@ -48,19 +48,20 @@
 }
 
 .caption {
+   animation: TitleMove 5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+
+}
+
+.caption ,.caption-2 , .caption-3{
   position: absolute;
   width: 100%;
   height: auto;
   top: 20%;
-  animation: TitleMove 5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
   color: white;
   padding: 18px;
   font-size: 1.8em;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-
 }
 
 
@@ -79,11 +80,10 @@
 
 
 .paragrafh-nosotrosSomos {
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding: 0 100px;
   margin: 30px;
   color: var(--color3);
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .section {
@@ -320,5 +320,4 @@ opacity: 1;
   color: var(--color3);
   text-align: center;
   margin-top: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

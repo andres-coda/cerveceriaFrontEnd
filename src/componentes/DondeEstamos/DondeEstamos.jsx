@@ -5,6 +5,7 @@ import { contexto } from '../contexto/contexto';
 import Contacto from '../Contacto/Contacto';
 import MapL from '../Mapa/MapaLeaflet';
 import Subtitulo from '../subtitulo/Subtitulo';
+import Parrafo from '../parrafo/Parrafo';
 
 // Array de imágenes
 const slides = [
@@ -80,13 +81,11 @@ rootMargin:'40%'
                 </div>
                     <div className="section-1">
                         <Subtitulo texto={'Somos Nosotros...Somos ustedes... '}/>
-                           <p className='paragrafh-nosotrosSomos'>
-                    Hace dos décadas Green nació de la mano de nuestros padres. Hoy seguimos reinventando esta pasión que une a tres familias.
-                    Tenemos todo lo que precisas y sobre todo tenemos Green esperanza, tenemos Green Beer...
-                </p>
+                        <Parrafo clase={'paragrafh-nosotrosSomos'}
+                        texto={'Hace dos décadas Green nació de la mano de nuestros padres.Hoy seguimos reinventando esta pasión que une a tres familias.Tenemos todo lo que precisas y sobre todo tenemos Green esperanza, tenemos Green Beer...'}/>
             </div>
             <div className="bgimg-2">
-                <div className="caption"> ¡Te invitamos a Conocernos! </div>
+                <div className="caption-2"> ¡Te invitamos a Conocernos! </div>
             </div>
            <div className="section">  
                 <div>
@@ -97,7 +96,7 @@ rootMargin:'40%'
             </div>
 
             <div className="bgimg-3">
-                   <div className="caption">Tenemos una amplia variedad gastronómica para todos los paladares </div>
+                   <div className="caption-3">Tenemos una amplia variedad gastronómica para todos los paladares </div>
               
             </div>
             <div className="section-2">
@@ -111,14 +110,15 @@ rootMargin:'40%'
                             />
                         <div className='slider-info'>
                             <h2>{slides[currentSlide].title}</h2>
-                            <p>{slides[currentSlide].description}</p>
-                        </div>
+                            <Parrafo texto={slides[currentSlide].description}/>
+                             </div>
                     </div>
                 </div>
+              
                 <div className='contenedor-h3-contacto'>
                     <Subtitulo texto={'Pongámonos en contacto... '}/>
                  </div>
-                <div className='section' >
+                    <div className='section' >
                     <div className='contenedor-logo-form'>
                         <div className="zoom-container">
                             <img src='./src/assets/Logo.png' alt='logo' className="zoom-image" />

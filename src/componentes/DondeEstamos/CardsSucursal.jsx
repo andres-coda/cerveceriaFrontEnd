@@ -130,6 +130,7 @@ import Modal from '../modal/modal';
 import AlertSucursal from '../alertSucursal/AlertSucursal';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import './CardsSucursal.css';  // Archivo CSS para los estilos
+import Parrafo from '../parrafo/Parrafo';
 
 const CardsSucursal = ({ sucursal }) => {
     const [alerta, setAlerta] = useState({ estado: false, tipo: '', idTexto: '', mensaje: '' });
