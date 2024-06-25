@@ -63,15 +63,15 @@ function MenuFormulario({ setMenu, menu, btnClick}){
             {menu.img != "" ? (
                 <>
                 <img src={menu.img} alt={menu.titulo}/>
-                <div class="carga-imagen">
-                    <label for="imagen" class="carga-imagen-label">Seleccionar nueva imágen</label>
+                <div className="carga-imagen">
+                    <label htmlFor="imagen" className="carga-imagen-label">Seleccionar nueva imágen</label>
                     <input id="imagen" type="file" onChange={handleFileChange}/>
                 </div>
                 </>
             ):(
                 <>
-                <div class="carga-imagen">
-                    <label for="imagen" class="carga-imagen-label">Seleccionar una imágen</label>
+                <div className="carga-imagen">
+                    <label htmlFor="imagen" className="carga-imagen-label">Seleccionar una imágen</label>
                     <input id="imagen" type="file" onChange={handleFileChange}/>
                 </div>
                 </>

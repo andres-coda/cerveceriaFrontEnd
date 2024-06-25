@@ -1,29 +1,25 @@
 import { useContext, useEffect, useState } from 'react'
 import './MenuDetalles.css'
-import Parrafo from '../parrafo/Parrafo';
 import Boton from '../boton/Boton';
 import MenuDetallesBotoneraCliente from '../menuDetallesBotonera/MenuDetallesBotoneraCliente';
 import {  useNavigate } from 'react-router-dom';
-import MenuDetallesBotonera from '../menuDetallesBotonera/MenuDetallesBotoneraAdministrador';
 import { contexto } from '../contexto/contexto';
-import EliminarAlerta from '../eliminarAlerta/EliminarAlerta';
 import { fetchDelete, fetchGet, fetchPatCh, fetchPut } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
-import {  FaEdit, FaTimes, FaTrash, FaUndo } from 'react-icons/fa';
+import {  FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
-import { text } from '@fortawesome/fontawesome-svg-core';
 import MenuDetalleInterno from './menuDetalleInterno';
-import { idText } from 'typescript';
 import MenuFormulario from './menuFormulario';
 import ModalGeneral from '../modalGeneral/modalGeneral';
+import ValoracionComponent from '../animacion/valoracionComponente';
 
 function MenuDetalles({ modalClose}) {
     const { datos, setDatos } = useContext(contexto);
     const [ cantidad, setCantidad ] = useState(0);
-    const [ alerta, setAlerta ] = useState({estado:false, refresh:false});
     const [ isOpen, setIsOpen ] = useState(false);
     const [ isEdit, setIsEdit ] = useState(false);
+    const [ isEditAlerta, setIsEditAlerta ] = useState(false)
     const [texto, setTexto ] = useState({proceso:false, texto:"procesando...", idTexto: datos.productoActual.deleted?"reactivar":"eliminar", condicion:false});
     const navegate = useNavigate();
     let indice = datos.carrito?.findIndex((carrito)=>(carrito.producto.idProducto===datos.productoActual.idProducto));
@@ -66,7 +62,6 @@ function MenuDetalles({ modalClose}) {
                 setCantidad((prev)=>(prev+=1));
                 break;
             case "aceptar":
-                if( !datos.userAct ) navegate('/login')
                 const newCarrito = datos.carrito.slice();
                 if (indice===-1){
                     const newObjet = { producto:{...datos.productoActual}, cantidad};
@@ -129,15 +124,16 @@ function MenuDetalles({ modalClose}) {
 
     const handleEditar = async (e) => {
         e.preventDefault();
-        setTexto((prev)=>({...prev, proceso: false, texto:"procesando...", condicion:true}))
+        setTexto((prev)=>({...prev, proceso: false, texto:"procesando...", condicion:true}));
+        setIsEditAlerta(true)
         try {
             const res = await fetchPut(URL_PRODUCTO+'/'+datos.productoActual.idProducto, localStorage.getItem('token'), menu);
             if (res) {
                 const reloadLocal = await reloadProducto(datos.productoActual.idProducto);
-                if (reloadLocal) setTexto((prev)=>({...prev, texto: "El producto fue editado con exito", proceso :true, condicion:true}));
+                if (reloadLocal) setTexto((prev)=>({...prev, texto: "El producto fue editado con exito", proceso :true, condicion:false}));
             }
         }catch(error){
-            setTexto((prev)=>({...prev, texto: `El producto no pudo ser editado: ${error.message}`, proceso :true, condicion:true}));
+            setTexto((prev)=>({...prev, texto: `El producto no pudo ser editado: ${error.message}`, proceso :true, condicion:false}));
         }
 
     }
@@ -148,7 +144,8 @@ function MenuDetalles({ modalClose}) {
 
     const onCloseEdit = ()=>{
         setTexto((prev)=>({...prev, proceso :false, condicion:false}));
-        setIsEdit(false)
+        setIsEdit(false);
+        setIsEditAlerta(false);
     }
 
     const handleAlertaOpen = (e) =>{
@@ -180,7 +177,8 @@ function MenuDetalles({ modalClose}) {
                     <div className='nuevoDiseno-detalles'>
                         <h2> { datos.productoActual.titulo } </h2>
                         <div className='nuevoDiseno-valoracion-precio'>
-                            <p>{`Valoración: ${datos.productoActual.valoracion}`}</p>
+                            <p>{`Valoración:`}</p>
+                            <ValoracionComponent valoracion={datos.productoActual.valoracion}/>
                             <h3> {`$${datos.productoActual.price}`}</h3>
                         </div>
                         <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} />
@@ -209,28 +207,23 @@ function MenuDetalles({ modalClose}) {
                     ):(null)
                 }    
             />
-            {/*<AlertaGeneral 
+            {<AlertaGeneral 
                 texto={texto}
-                isOpen={isEdit}
+                isOpen={isEditAlerta}
                 onClose={onCloseEdit}
                 children={
-                    !texto.condicion ? (
-                        <MenuFormulario menu={menu} setMenu={setMenu} btnClick={handleEditar} />
-                    ):(null)
+                    null
                 }
-            />*/}
+            />}
             <ModalGeneral 
                isOpen={isEdit}
                onClose={onCloseEdit}
                children={
                 <>
                    <p className='alertaParrafo'> {`Editar ${datos.productoActual.titulo}`} </p>
-                   {!texto.condicion ? (
+                 
                        <MenuFormulario menu={menu} setMenu={setMenu} btnClick={handleEditar} />
-                   ):(
-
-                    <AnimatedSVG/>
-                   )}
+                   
                 </>
                }
             />

@@ -6,6 +6,10 @@
   font-family: 'Castor One W01 Regular';
   src: url('./assets/fonts/Castor One W01 Regular.otf') format('opentype');
 }
+@font-face {
+  font-family: 'Montserrat-VariableFont_wght';
+  src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf');
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

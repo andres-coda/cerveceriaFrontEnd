@@ -17,7 +17,6 @@ import DondeEstamos  from './componentes/DondeEstamos/DondeEstamos';
 import Reservas from './componentes/reservas/Reservas';
 import EditarReserva from './componentes/reservas/EditarReservas';
 import ModalUsers from "./componentes/modalUsers/ModalUsers";
-import MenuAux from "./componentes/menu/MenuAux";
 import PrivateRoute from "./componentes/privateRoute/PrivateRoute";
 import { AuthProvider } from "./componentes/auth/AuthContext";
 import AddSucursal from "./componentes/DondeEstamos/AddSucursal";
@@ -29,6 +28,7 @@ import ReservasList from "./componentes/reservas/ReservasList";
 import ReservasRealizadas from "./componentes/reservas/ReservasRealizadas";
 import ListaDeUsuario from "./componentes/ListaDeUsuario/ListaDeUsuario";
 import Menu from "./componentes/menu/Menu";
+import NoAutorizado from "./componentes/privateRoute/noAutorizado";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -39,17 +39,17 @@ function App() {
         <Routes>
           {Array.isArray(datos.productos) ? ( datos.productos.map((dato)=>{
             return (
-              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetalles idProducto={dato.idProducto}/>} key={dato.idProducto}/>
+              <Route path={`/menu/${dato.idProducto}`} element={<MenuDetalles idProducto={dato.idProducto}/>} key={`producto-${dato.idProducto}`}/>
             )
           })):(null)}
           {Array.isArray(datos.categoria) ? ( datos.categoria.map((categorias)=>{
             return (
-              <Route path={`/menu/${categorias.nombre}`} element={<MenuAux categoria={categorias}/>} key={categorias.idCategoria}/>
+              <Route path={`/menu/${categorias.nombre}`} element={<Menu categoria={categorias}/>} key={`categoria-${categorias.idCategoria}`}/>
             )
           })):(null)}
           {Array.isArray(datos.tipo) ? (datos.tipo.map((tipo)=>{
             return (
-              <Route path={`/menu/${tipo.nombre}`} element={<MenuAux categoria={tipo}/>} key={tipo.idNombre}/>
+              <Route path={`/menu/${tipo.nombre}`} element={<Menu categoria={tipo}/>} key={`tipo-${tipo.idNombre}`}/>
             )
           })):(null)}
           <Route path='/' element={<Home />}/>
@@ -77,6 +77,7 @@ function App() {
           <Route path='/pedidos-generales' element={<MostrarPedidosGenerales/>}/>
           <Route path='/listadoreservas' element={<ReservasList/>} />
           <Route path='listadoreservas/reservas/editar/:id' element={<EditarReserva />} />
+          <Route path='unauthorized' element={<NoAutorizado />} />
         </Routes>
       <Footer />
     </AuthProvider>  

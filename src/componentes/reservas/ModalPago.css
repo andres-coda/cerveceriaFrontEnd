@@ -19,6 +19,13 @@
   overflow: auto;
 }
 
+.modalPago .cerrar{
+  color: var(--color2);
+}
+.modalPago .cerrar:hover{
+  border: 1px solid var(--color2);
+}
+
 .line-modal-pago {
   height: 2px;
   background-color: var(--color3);

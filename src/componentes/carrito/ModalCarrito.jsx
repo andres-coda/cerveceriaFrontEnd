@@ -106,6 +106,7 @@ function ModalCarrito ({setModal, modal}) {
     }
 
     const onClose = (e) =>{
+        setModal((prev)=>({...prev,metodoPago:false}))
         setIsOpen(false);
       };
 

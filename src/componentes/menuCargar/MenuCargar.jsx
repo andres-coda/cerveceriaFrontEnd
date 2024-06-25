@@ -1,13 +1,10 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import './MenuCargar.css'
-import FormularioInput from '../formularioInput/FormularioInput';
-import Boton from '../boton/Boton';
 import Subtitulo from '../subtitulo/Subtitulo';
 import { contexto } from '../contexto/contexto';
 import { useNavigate } from 'react-router-dom';
-import { fetchGet, fetchPost, fetchPut } from '../funciones fetch/funciones';
+import { fetchGet, fetchPost } from '../funciones fetch/funciones';
 import { URL_PRODUCTO } from '../../endPoints/endPoints';
-import CargarAlerta from '../eliminarAlerta/CargarAlerta';
 import MenuFormulario from '../menuDetalles/menuFormulario';
 import AlertaGeneral from '../eliminarAlerta/AlertaGeneral';
 import MenuDetalleInterno from '../menuDetalles/menuDetalleInterno';

@@ -12,7 +12,7 @@ function Carrito(){
     const {datos} = useContext(contexto);
     const navegate = useNavigate();
     const [total, setTotal] = useState(0);
-    const [ menuDetalle, setMenuDetalle ] = useState(undefined);
+    const [ menuDetalle ] = useState(undefined);
     const [modal, setModal ] = useState({
         modalVisible: false,
         metodoPago: false
@@ -31,9 +31,6 @@ function Carrito(){
             break;
             default:
                 console.log(btn);
-                console.log(datos.productos);
-                const producto = datos.productos.find((dato)=> Number(dato.idProducto)===Number(btn));
-                setMenuDetalle(producto);
             break;
 
         }
@@ -57,7 +54,7 @@ function Carrito(){
                         <Subtitulo clase={"subtitulo"} texto={"CARRITO"} />
                         {datos.carrito.map((dato)=>{
                             subTotal= subTotal + dato.producto.price * dato.cantidad;
-                            return <MenuCarrito key={dato.producto.idProducto} menu={dato} click={btnClick}/> 
+                            return <MenuCarrito key={dato.producto.idProducto} menu={dato}/> 
                         })}
                         <div className='pie-carrito'>
                             {/*<Parrafo clase={"totalCarrito"} texto={`Total: $${total}`} />*/}
@@ -75,10 +72,13 @@ function Carrito(){
                 <Parrafo clase={"menuParrafo"} texto={`No hay productos agregados al carrito`} />
             </div>)}
             {modal.metodoPago ? (
+                <>
                 <ModalCarrito 
                     setModal={setModal} 
                     modal={modal}
-                />):(null)}
+                    />
+                </>
+                ):(null)}
         </div>
     );
 };
