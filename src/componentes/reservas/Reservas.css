@@ -10,12 +10,6 @@
    
 }
 
-.formulario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80vw;
-}
 
 .reservas p{
     background-color: transparent;
@@ -30,9 +24,6 @@
     max-width: 280px;
 }
 
-.reservas input {
-    border-radius: 0.5rem;
-}
 
 .button-reservas{
     border: 1px solid black !important;
@@ -44,6 +35,12 @@
     color: black !important;
     background-color: #c19f71;
     width: max-content;
+}
+
+.reservas .formulario .renglonInput input ,
+.reservas .formulario .renglonInput select {
+    width: 100%;
+    max-width: none;
 }
 
 .button-reservas:hover {

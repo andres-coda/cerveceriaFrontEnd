@@ -4,6 +4,11 @@
     src: url('../../assets/fonts/Castor One W01 Regular.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'Montserrat-VariableFont_wght';
+    src: url('./assets/fonts/Montserrat-VariableFont_wght.ttf');
+  }
+
 /*-- Desktop Navigation --*/
 
 /*-- Header --*/
@@ -55,7 +60,7 @@
         list-style: none;
         justify-content: space-evenly;
         align-items: center;
-        font-family: 'Castor One W01 Regular';        
+        font-family: 'Montserrat-VariableFont_wght';        
     }
 
     .navbar li {
@@ -71,7 +76,7 @@
     .navbar a:focus {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
         padding: 0 3px;
         font-size: clamp(1rem, 1vw + 0.5rem, 2rem);
         font-weight: 400;
@@ -237,7 +242,7 @@
     .drop-item {
         font-size: 4vw;
         text-transform: none;
-        color: white;
+        color: var(--color2);
         font-weight: 200;
         text-decoration: none;
         margin-left: 3vw;
@@ -258,7 +263,7 @@
         overflow-y: visible;
         transition: 0.3s;
         z-index: 9969;
-        font-family: 'Castor One W01 Regular';
+        font-family: 'Montserrat-VariableFont_wght';
         font-size: 5vw;
         font-weight: 100;
         color: white;
