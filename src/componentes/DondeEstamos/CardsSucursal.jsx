@@ -274,15 +274,16 @@ const CardsSucursal = ({ sucursal }) => {
             {/*btn-icon contenedor botones iconos administración */}
             <div className='btn-icon'>
                 {sucursal && sucursal.deleted ? (
-                    <div>
+                    <>
                         <button onClick={reactivarSucursal} title='Reactivar Surcursal Eliminada' className='icon-button'><FaUndo /></button>
-                    </div>
+                    </>
                 ) : (
                     datos.userAct && datos.userAct.role === "admin" && (
-                        <div>
+                        <>
                             <button onClick={startEditing} title='Editar Surcursal' className='icon-button'><FaEdit /></button>
                             <button onClick={DeleteSucursal} title='Eliminar Surcursal' className='icon-button'><FaTrash /></button>
-                        </div>
+                        </>
+                       
                     )
                 )}
             </div>

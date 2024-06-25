@@ -4,6 +4,7 @@ import CardsSucursal from './CardsSucursal';
 import { contexto } from '../contexto/contexto';
 import Contacto from '../Contacto/Contacto';
 import MapL from '../Mapa/MapaLeaflet';
+import Subtitulo from '../subtitulo/Subtitulo';
 
 // Array de imágenes
 const slides = [
@@ -29,7 +30,7 @@ const DondeEstamos = () => {
             }
           });
         }, {
-          threshold: 0.1 // Iniciar la animación cuando el 10% del elemento es visible
+          threshold: 0.5 // Iniciar la animación cuando el 10% del elemento es visible
         });
     
         captions.forEach(caption => observer.observe(caption));
@@ -39,7 +40,28 @@ const DondeEstamos = () => {
         };
       }, []);
     
-  
+      useEffect(() => {
+        const zoomContainer= document.querySelectorAll('.zoom-container');
+    
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animation = 'zoomInOut 5s ease forwards';
+            } else {   
+              entry.target.style.animation = 'none'; // Reiniciar la animación al salir del viewport
+            }
+          });
+        }, {
+rootMargin:'40%'
+        });
+    
+        zoomContainer.forEach(zoomContainer => observer.observe(zoomContainer));
+    
+        return () => {
+            zoomContainer.forEach(zoomContainer => observer.unobserve(zoomContainer));
+        };
+      }, []);
+    
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
@@ -50,18 +72,17 @@ const DondeEstamos = () => {
 
     return (
         <>
-<div className='conteiner-general'>
+<div className='conteiner-General'>
 
            
                 <div className="bgimg-1">
                 <div className="caption">¡Nos Reinventamos!</div>       
                 </div>
                     <div className="section-1">
-                <h3>Somos Nosotros...Somos ustedes... </h3>
-                <p className='paragrafh-nosotrosSomos'>
-                    Porque cada linea de esta web, cada código, cada minuto empleado, cada momento en que la frustración
-                    parecía ganar, siempre hubo un motivo para seguir. A pesar del cansancio y de nuestros compromisos,
-                    podemos decir que todo valió la pena. Porque tenemos Green esperanza, tenemos Green Beer...🍻
+                        <Subtitulo texto={'Somos Nosotros...Somos ustedes... '}/>
+                           <p className='paragrafh-nosotrosSomos'>
+                    Hace dos décadas Green nació de la mano de nuestros padres. Hoy seguimos reinventando esta pasión que une a tres familias.
+                    Tenemos todo lo que precisas y sobre todo tenemos Green esperanza, tenemos Green Beer...
                 </p>
             </div>
             <div className="bgimg-2">
@@ -76,7 +97,7 @@ const DondeEstamos = () => {
             </div>
 
             <div className="bgimg-3">
-                   <div className="caption">Tenemos una aplia variedad gastronómica para todos los paladares </div>
+                   <div className="caption">Tenemos una amplia variedad gastronómica para todos los paladares </div>
               
             </div>
             <div className="section-2">
@@ -95,8 +116,8 @@ const DondeEstamos = () => {
                     </div>
                 </div>
                 <div className='contenedor-h3-contacto'>
-                    <h3 > Pongámonos en contacto...   </h3>
-                </div>
+                    <Subtitulo texto={'Pongámonos en contacto... '}/>
+                 </div>
                 <div className='section' >
                     <div className='contenedor-logo-form'>
                         <div className="zoom-container">

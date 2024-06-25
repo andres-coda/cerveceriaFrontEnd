@@ -6,14 +6,12 @@
  cursor: pointer;
 }
 
-.imagen {
-  width: 50%;
-}
+
 /*img del form*/
 
 .card-img-form {
   width: 100%;
-  height: 60vh;
+  height: 30vh;
   margin-top:5vh;
 }
 
@@ -58,22 +56,14 @@
 /*h3 cards redes*/
 .card-overlay h3 {
   text-align: start;
-  font-size: 1.2em;
+  font-size: 0.8em;
   padding-left: 8px;
   font-family: 'Castor One W01 Regular';
   color: var(--color1);
 
 }
 
-.cards-h3 {
-  margin: 0px;
-  padding: 0px;
-}
 
-.icon-button:hover {
-  background-color: var(--color3);
-  color: var(--color1);
-}
 
 /*contenedor card*/
 .container-all-cards {
@@ -85,25 +75,19 @@
 
 /* Cards sucursal */
 .cards-sucursal {
-  flex-grow: 1;
-  /* Permitir que las tarjetas crezcan */
-  flex-shrink: 1;
-  /* Permitir que las tarjetas se encojan */
-  width: 550px;
-  height: 350px;
+  width: 250px;
+  height: 150px;
   min-width: 250px;
   min-height: 250px;
-  margin: 15px;
+  margin: 10px;
   padding: 0px;
   border-radius: 10px;
   text-align: center;
   position: relative;
   display: inline-flex;
 
-
-
-
 }
+
 
 .cards-sucursal input,
 .card-sucursal label {
@@ -124,20 +108,6 @@
   text-align: left;
   width: 80%;
   font-size: 0.7em;
-}
-
-
-
-/* contairner botones iconos editar, borrar y restaurar vista admin*/
-.btn-icon {
-  display: flex;
-  justify-content: space-around;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20vw;
-  margin: 10px;
 }
 
 
@@ -191,37 +161,64 @@
 .cards-sucursal h1,
 .cards-sucursalEliminada h1 {
   color: var(--color1);
-  font-size: 1.8em;
+  font-size: 1.3em;
   margin-bottom: 10px;
-
   font-family: 'Castor One W01 Regular';
 }
 
-
+.cards-sucursalEliminada img{
+  width: 250px;
+  height: 150px;
+  min-width: 250px;
+  min-height: 250px;
+  margin: 10px;
+  padding: 0px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  display: inline-flex;
+  opacity: 60%;
+}
 
 /*iconos de redes*/
 .icon {
-  margin: 6px;
+  margin-left: 2px;
   color: var(--color4);
+  font-size: 1em;
+}
+/* Container botones iconos editar, borrar y restaurar vista admin */
+.btn-icon {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5vw;
+  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total */
 }
 
-/*iconos de botones edit, remove, restore*/
-
-
+/* Iconos de botones edit, remove, restore */
 .icon-button {
-  width: 40px;
-  background: var(--color2);
-  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 60%;
+  max-width: 50px; 
+  max-height: 50px; 
+  border-radius: 5px;
   cursor: pointer;
-  padding: 5px;
-  margin-top: 10px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .icon-button:hover {
   background-color: var(--color3);
-  border-radius: 10px;
+  border-radius: 7px;
 }
+
+
+
 
 @media (max-width: 768px) {
 
