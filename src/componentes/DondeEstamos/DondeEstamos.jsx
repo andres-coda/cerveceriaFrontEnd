@@ -80,7 +80,7 @@ rootMargin:'40%'
                 <div className="caption">¡Nos Reinventamos!</div>       
                 </div>
                     <div className="section-1">
-                        <Subtitulo texto={'Somos Nosotros...Somos ustedes... '}/>
+                        <Subtitulo  texto={'Somos Nosotros...Somos ustedes... '}/>
                         <Parrafo clase={'paragrafh-nosotrosSomos'}
                         texto={'Hace dos décadas Green nació de la mano de nuestros padres.Hoy seguimos reinventando esta pasión que une a tres familias.Tenemos todo lo que precisas y sobre todo tenemos Green esperanza, tenemos Green Beer...'}/>
             </div>
@@ -102,17 +102,17 @@ rootMargin:'40%'
             <div className="section-2">
 
                 <div className='slider-container'>
-                    <div className='slider'>
+                  
                         <img
                             src={slides[currentSlide].image}
                             alt={slides[currentSlide].title}
                             className='slider-image'
                             />
+                  
                         <div className='slider-info'>
                             <h2>{slides[currentSlide].title}</h2>
                             <Parrafo texto={slides[currentSlide].description}/>
                              </div>
-                    </div>
                 </div>
               
                 <div className='contenedor-h3-contacto'>
@@ -135,26 +135,5 @@ rootMargin:'40%'
 
 export default DondeEstamos;
 
-{/* 
- const contenedorRef = useRef(null);
 
-const scrollLeft = () => {
-    contenedorRef.current.scrollBy({ left: -100, behavior: 'smooth' });
-};
 
-const scrollRight = () => {
-    contenedorRef.current.scrollBy({ top: 100, behavior: 'smooth' });
-};
-
-<div className='contenedor-cards-sucursal' ref={contenedorRef}>
- {datos.sucursales.map(sucursal => (
-     <CardsSucursal key={sucursal.id} sucursal={sucursal} setSucursalPorEditar={setSucursalPorEditar} />
- ))}
-</div>
-</div>
-<button onClick={scrollLeft} className="scroll-button">
- <FontAwesomeIcon icon={faChevronLeft} />
-</button>
-<button onClick={scrollRight} className="scroll-button">
- <FontAwesomeIcon icon={faChevronRight} />
-</button> */}

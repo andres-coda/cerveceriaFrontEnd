@@ -203,7 +203,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: auto;
   height: 60%;
   max-width: 50px; 
   max-height: 50px; 
@@ -221,7 +221,7 @@
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
 
 
   .card-overlay h3 {
@@ -232,7 +232,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 601px) {
   .card-overlay h3 {
     font-size: 1em;
     margin-bottom: 5px;
