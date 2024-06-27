@@ -130,6 +130,7 @@ import Modal from '../modal/modal';
 import AlertSucursal from '../alertSucursal/AlertSucursal';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import './CardsSucursal.css';  // Archivo CSS para los estilos
+import Parrafo from '../parrafo/Parrafo';
 
 const CardsSucursal = ({ sucursal }) => {
     const [alerta, setAlerta] = useState({ estado: false, tipo: '', idTexto: '', mensaje: '' });
@@ -274,15 +275,16 @@ const CardsSucursal = ({ sucursal }) => {
             {/*btn-icon contenedor botones iconos administración */}
             <div className='btn-icon'>
                 {sucursal && sucursal.deleted ? (
-                    <div>
+                    <>
                         <button onClick={reactivarSucursal} title='Reactivar Surcursal Eliminada' className='icon-button'><FaUndo /></button>
-                    </div>
+                    </>
                 ) : (
                     datos.userAct && datos.userAct.role === "admin" && (
-                        <div>
+                        <>
                             <button onClick={startEditing} title='Editar Surcursal' className='icon-button'><FaEdit /></button>
                             <button onClick={DeleteSucursal} title='Eliminar Surcursal' className='icon-button'><FaTrash /></button>
-                        </div>
+                        </>
+                       
                     )
                 )}
             </div>

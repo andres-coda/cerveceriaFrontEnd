@@ -1,9 +1,24 @@
+.conteiner-General{
+  margin-top: 10vh;
+  margin-bottom: 16vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 77vh;
+  padding: 0.1rem;
+  justify-content: start;
+  margin-left: 0;
+  margin-right: 0;
+  width: 99vw;
+ 
+  
+}
 .bgimg-1,
 .bgimg-2,
 .bgimg-3 {
   position: relative;
   background-attachment: fixed;
-  background-position: top;
+  background-position: 0 30%;
   background-repeat: no-repeat;
   background-size: 100% auto;
 
@@ -19,13 +34,13 @@
 
 .bgimg-2 {
   background-image: url('https://www.zona4arg.com.ar/wp-content/uploads/2021/04/club-de-la-birra-diseno-360-1400x702.jpg');
-  min-height: 700px;
+height: 700px;
   width: 100%;
 }
 
 .bgimg-3 {
   background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/7ZR6ZD2FRRC67ARSX2XWL7C5IQ.jpg');
-  min-height: 100vh;
+ height: 100vh;
 }
 
 .subtitulo-banner-nosotros span {
@@ -33,47 +48,47 @@
   font-size: 1em;
 }
 
-.caption {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  top: 20%;
-  animation: TitleMove 5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  color: white;
-  padding: 18px;
-  font-size: 1.8em;
-
-
-}
 
 
 @keyframes TitleMove {
   from {
     bottom: 0px;
-   
+    
   }
-
+  
   to {
-    top: 600px;
+    top: 500px;
     background-color: rgba(0, 0, 0, 0.45);
   }
 }
 
+.caption {
+   animation: TitleMove 5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  top: 10%;
 
-.subtitulo-banner-gastronomia,
-.subtitulo-banner-nosotros {
+}
+
+.caption ,.caption-2 , .caption-3{
+  position: absolute;
+  width: 100%;
+  height: auto;
   color: white;
-  padding: 18px;
+  padding: 10px;
   font-size: 1.8em;
 }
+.caption-2 , .caption-3{
+  top:500px;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
 
 
 
 /*primer section nosotros*/
 .section-1 {
-  height: 30vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -81,18 +96,13 @@
   padding: 0;
 }
 
-.section-2 h3 {
-  transform: translate(50%);
-  width: 50vw;
-  font-family: Castor One W01 Regular;
-  margin:0;
 
-}
 
 .paragrafh-nosotrosSomos {
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding: 0 100px;
   margin: 30px;
+  color: var(--color3);
 }
 
 .section {
@@ -111,7 +121,6 @@
   height: auto;
   display: flex;
   align-items: center;
-
   flex-direction: column;
   padding: 10px;
 }
@@ -189,57 +198,105 @@ overflow-x: hidden;
   0% {
     transform: scale(1);
     transform: translate(-100%, 200%);
+    opacity: 0;
   }
 
   50% {
     transform: scale(1.5);
-
+opacity: 1;
   }
 
   150% {
     transform: scale(1.5);
-
+opacity: 1;
   }
 
 
 }
  .zoom-container {
-  animation: infinite zoomInOut 8s;
+  animation: zoomInOut 8s;
+}
+
+/*max-with: pantalla llega hasta un maximo indicado*/
+
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0 ;
+  width: 100%;
+  height: auto;
+}
+
+
+
+.slider-image {
+  height: 40vh;
+  transition: transform 0.3s ease-out;
+  width: 60%;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
+
+
+}
+
+
+
+.slider-info {
+  color: var(--color3);
+  text-align: center;
+  margin-top: 10px;
 }
  
 
-
-
 @media (max-width:600px) {
-
-  .bgimg-1,
-  .bgimg-2,
-  .bgimg-3 {
-    background-size: contain;
+  /*img parallax*/
+  .bgimg-1 {
+    background-size:contain;
+    background-position: 0 20%;
     height: 40vh;
+   
+  }
+  .bgimg-2{
+    height: 80vh;
+  }
+  @keyframes TitleMove {
+    from {
+      bottom: 0px;
+      
+    }
+    
+    to {
+      top: 200px;
+      
+    }
   }
 
-
-
-  .caption-nosotros {
-    padding-top: 0%;
-
+/*parrafo nosotros*/
+  .paragrafh-nosotrosSomos  {
+    font-size: 1rem;
+    text-align: justify;
+    width: 100%;
+    padding: 0 20px;
   }
 
-  .caption-nosotros .border {
-    padding: 10px;
-    font-size: 1.5em;
-
-
+ /*titulo parallax*/
+  .caption-2 , .caption-3{
+    top:300px;
+   
+  }
+  
+  /*carrusel comida*/
+  .slider-image {
+    width: 60vw;
+    height: 30vh ;
   }
 
-  .subtitulo-banner-nosotros {
-    padding: 5px;
-    font-size: 2em;
-    position: relative;
-
-  }
-
+ 
   .contenedor-h3-contacto {
     width: 100%;
     display: flex;
@@ -256,12 +313,8 @@ overflow-x: hidden;
     flex-direction: column;
   }
 
-  .slider-image {
-    height: 40vh;
-    min-width: 100%;
 
-  }
-
+  
   @media(min-width: 601px) {
     .contenedor-logo-form {
       flex-direction: row;
@@ -270,63 +323,33 @@ overflow-x: hidden;
     .bgimg-1,
     .bgimg-2,
     .bgimg-3 {
-      background-size: contain;
+      background-size: cover;
+      background-position: center ;
     }
 
-    .bgimg-1 img {
-
-      height: 100%;
-
-    }
-
+   
     .bgimg-1 {
-      background-image: url('https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png');
       height: 100vh;
 
+    }
+    @keyframes TitleMove {
+      from {
+        bottom: 0px;
+        
+      }
+      
+      to {
+        top: 10px;
+      
+      }
+    }
+    .caption{
+      top: 200px;
+      font-size:0.8em ;
     }
 
   }
 
 
 
-}
-
-/*max-with: pantalla llega hasta un maximo indicado*/
-
-
-.slider-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 20px 0 ;
-  width: 100%;
-}
-
-.slider {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  width: 80%;
-}
-
-
-.slider-image {
-  height: 50vh;
-  transition: transform 0.3s ease-out;
-  min-width: 60%;
-  max-width: 30%;
-  border-radius: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  object-fit: cover;
-
-}
-
-
-
-.slider-info {
-  color: var(--color3);
-  text-align: center;
-  margin-top: 10px;
 }
