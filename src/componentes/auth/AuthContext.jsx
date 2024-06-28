@@ -21,7 +21,6 @@ export const AuthProvider = ({ children}) => {
 
 
   const login = async (email, password, role= auth.user ) => {
-    console.log('Sending data:', { email, password, role }); 
     
     const response = await fetch(`${BASE_URL}/auth/login`, {
       method: 'POST',

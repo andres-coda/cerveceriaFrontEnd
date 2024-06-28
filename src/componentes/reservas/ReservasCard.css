@@ -77,9 +77,7 @@
   align-items: center;
 }
 
-.subtitulo{
-  font-family: 'Castor One W01 Regular';  
-}
+
 .reserva-encabezado,
 .pedido-reserva {
   display: flex;
