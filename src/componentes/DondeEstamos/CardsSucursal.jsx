@@ -1,122 +1,3 @@
-/* import React, { useContext, useState } from 'react';
-import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
-import { CiLocationOn } from 'react-icons/ci';
-import { contexto } from '../contexto/contexto';
-import './CardsSucursal.css';  // Archivo CSS para los estilos
-import AlertSucursal from '../alertSucursal/AlertSucursal';
-import { fetchDelete, fetchPatCh } from '../funciones fetch/funciones';
-import { URL_SUCURSAL } from '../../endPoints/endPoints';
-
-const CardsSucursal = ({ sucursal, setSucursalPorEditar}) => {
-    const { datos } = useContext(contexto);
-    const [isEditing, setIsEditing] = useState(false);
-    const [alerta, setAlerta] = useState({ estado: false, tipo: '', idTexto: '', mensaje: '' });
-
-  
-
-    const DeleteSucursal = () => {
-        setAlerta({ estado: true, tipo: 'eliminar', idTexto: 'eliminar', mensaje: '¿Seguro que quiere eliminar esta sucursal?' });
-    };
-
-    const reactivarSucursal = () => {
-        setAlerta({ estado: true, tipo: 'reactivar', idTexto: 'reactivar', mensaje: '¿Seguro que quiere restaurar la eliminación de esta sucursal?' });
-    };
-
-    const startEditing = () => {
-        setSucursalPorEditar({
-            imagen: sucursal.imagen,
-            nombre: sucursal.nombre,
-            direccion: sucursal.direccion,
-            telefono: sucursal.telefono,
-            email: sucursal.email,
-            instagram: sucursal.instagram,
-            facebook: sucursal.facebook
-        });
-        setAlerta({ estado: true, tipo: 'editar', idTexto: 'editar', mensaje: '¿Seguro que quiere editar esta sucursal?' });
-    };
-
-    const handleAlertAction = async (action) => {
-        switch (action) {
-            case 'editar':
-                setIsEditing();
-                setAlerta({ estado: false, tipo: '', idTexto: '' });
-                break;
-            case 'eliminar':
-                try {
-                    const response = await fetchDelete(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'));
-                    if (response) {
-                        setDatos((prev) => ({ ...prev, refreshSucursal: true }));
-                    }
-                } catch (error) {
-                    console.error('Error al eliminar sucursal:', error);
-                }
-                setAlerta({ estado: false, tipo: '', idTexto: '' });
-                break;
-            case 'reactivar':
-                try {
-                    const response = await fetchPatCh(`${URL_SUCURSAL}/${sucursal.id}`, localStorage.getItem('token'));
-                    if (response) {
-                        setDatos((prev) => ({ ...prev, refreshSucursal: true }));
-                    }
-                } catch (error) {
-                    alert('Error al restaurar la sucursal:', error);
-                }
-                setAlerta({ estado: false, tipo: '', idTexto: '' });
-                break;
-            case 'cancelar':
-            default:
-                setAlerta({ estado: false, tipo: '', idTexto: '' });
-                break;
-        }
-    };    
-    return (
-        //cards-sucursal contenedor total
-        <div className={`cards-sucursal ${sucursal.deleted ? 'cards-sucursalEliminada' : ''}`}>
-                     
-                      <div className='card-container'>
-                    <div className='card-img-container'>
-                        <img className='card-img' src={sucursal.imagen} alt={sucursal.nombre} />
-                        <div className='card-overlay'>
-                            <h1 className='card-h1'>{sucursal.nombre}</h1>
-                            <h3 className='card-h3'><CiLocationOn className='icon' />{sucursal.direccion}</h3>
-                            <h3 className='card-h3'><FaWhatsapp className='icon' />{sucursal.telefono}</h3>
-                            <h3 className='card-h3'><FaMailBulk className='icon' />{sucursal.email}</h3>
-                            <h3 className='card-h3'><FaInstagram className='icon' />{sucursal.instagram}</h3>
-                            <h3 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h3>
-                        </div>
-                    </div>
-                </div>
-           
-            <div className='btn-icon'>
-                {sucursal && sucursal.deleted ? (
-                    <div>
-                        <button onClick={reactivarSucursal} title='Reactivar Surcursal Eliminada' className='icon-button'><FaUndo /></button>
-                    </div>
-                ) : (
-                    datos.userAct && datos.userAct.role === "admin" && (
-                        <div className='button-icon-container-edit-remove'>
-                            <button onClick={startEditing} title='Editar Surcursal' className='icon-button'><FaEdit /></button>
-                            <button onClick={DeleteSucursal} title='Eliminar Surcursal' className='icon-button'><FaTrash /></button>
-                        </div>
-                    )
-                )}
-            </div>
-            {alerta.estado && (
-                <AlertSucursal
-                    setAlerta={setAlerta}
-                    idTexto={alerta.idTexto}
-                    handleAlertAction={handleAlertAction}
-                    mensaje={alerta.mensaje}
-                />
-            )}
-        </div>
-    );
-};
-
-export default CardsSucursal;
-
- */
-
 import React, { useContext, useState } from 'react';
 import { FaFacebook, FaWhatsapp, FaInstagram, FaMailBulk, FaEdit, FaTrash, FaUndo } from 'react-icons/fa';
 import { CiLocationOn } from 'react-icons/ci';
@@ -130,7 +11,6 @@ import Modal from '../modal/modal';
 import AlertSucursal from '../alertSucursal/AlertSucursal';
 import AnimatedSVG from '../animacion/AnimatedSVG';
 import './CardsSucursal.css';  // Archivo CSS para los estilos
-import Parrafo from '../parrafo/Parrafo';
 
 const CardsSucursal = ({ sucursal }) => {
     const [alerta, setAlerta] = useState({ estado: false, tipo: '', idTexto: '', mensaje: '' });
@@ -184,7 +64,8 @@ const CardsSucursal = ({ sucursal }) => {
     };
 
     const DeleteSucursal = () => {
-        setAlerta({ estado: true, tipo: 'eliminar', idTexto: 'eliminar', mensaje: '¿Seguro que quiere eliminar esta sucursal?' });
+        setAlerta({ estado: true, tipo: 'eliminar', 
+    idTexto: 'eliminar', mensaje: '¿Seguro que quiere eliminar esta sucursal?' });
     };
 
     const reactivarSucursal = () => {
@@ -263,11 +144,11 @@ const CardsSucursal = ({ sucursal }) => {
                             {/*card.overlay contenedor cuando hace hover vista usuario y admin*/}
                         <div className='card-overlay'>
                             <h1 className='card-h1'>{sucursal.nombre}</h1>
-                            <h3 className='card-h3'><CiLocationOn className='icon' />{sucursal.direccion}</h3>
-                            <h3 className='card-h3'><FaWhatsapp className='icon' />{sucursal.telefono}</h3>
-                            <h3 className='card-h3'><FaMailBulk className='icon' />{sucursal.email}</h3>
-                            <h3 className='card-h3'><FaInstagram className='icon' />{sucursal.instagram}</h3>
-                            <h3 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h3>
+                            <h2 className='card-h3'><CiLocationOn className='icon' />{sucursal.direccion}</h2>
+                            <h2 className='card-h3'><FaWhatsapp className='icon' />{sucursal.telefono}</h2>
+                            <h2 className='card-h3'><FaMailBulk className='icon' />{sucursal.email}</h2>
+                            <h2 className='card-h3'><FaInstagram className='icon' />{sucursal.instagram}</h2>
+                            <h2 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h2>
                         </div>
                     </div>
                 </div>

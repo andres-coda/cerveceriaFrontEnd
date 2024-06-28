@@ -51,12 +51,13 @@
 
 }
 
+.card-overlay h1 {
+  padding: 5px;
+}
 
-
-/*h3 cards redes*/
-.card-overlay h3 {
+/*h2 cards redes*/
+.card-overlay h2 {
   text-align: start;
-  font-size: 0.7rem;
   padding-left: 8px;
   font-family: 'Montserrat';
   color: var(--color1);
@@ -224,24 +225,25 @@
 @media (max-width: 600px) {
 
 
-  .card-overlay h3 {
+  .card-overlay h2 {
     text-align: start;
     font-size: 0.8em;
 
 
   }
 }
-
+/*mas grande de 600px*/
 @media (min-width: 601px) {
-  .card-overlay h3 {
-    font-size: 1em;
+  .card-overlay h2 {
+    font-size: 0.8em;
     margin-bottom: 5px;
-    letter-spacing: normal;
+  
   }
 
   .cards-sucursal h1 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin-bottom: 5px;
+    
 
   }
 
