@@ -59,7 +59,7 @@
 .card-overlay h2 {
   text-align: start;
   padding-left: 8px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat-VariableFont_wght';
   color: var(--color1);
 
 }
@@ -164,7 +164,7 @@
   color: var(--color1);
   font-size: 1.3em;
   margin-bottom: 10px;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat-VariableFont_wght';
 }
 
 .cards-sucursalEliminada img{
