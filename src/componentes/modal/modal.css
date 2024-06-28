@@ -1,56 +1,6 @@
-/* .contenedor-sucursal-modal-edit{
-  display: flex;
-  justify-content: center;
-  margin-top:0px;
-  margin-left: 0px;
-  
-  z-index: 10000;
-  width: 100vw;
-  height:250vh;
-  
-  } */
-/*   .modal-overlay-sucursal {
-    position: absolute;
-  background-color: var(--color6);
-   margin: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  z-index: 12000; /* Asegúrate de que este valor sea mayor que el de la navbar 
-  transform: translate(60%, -50%);
-  max-height: 250vh;
-
-}
-
-.modal-content-sucursal {
-  background-color: var(--color2);
-  padding: 20px;
-  border-radius: 8px;
-  height: 70vh;
-  width: 40vw; 
-  max-height: 100vh; 
-  overflow-y: auto; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  flex-wrap: nowrap; 
-}
-.modal-close-sucursal {
-  position:absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
- */
 
 /* modal.css */
-.contenedor-sucursal-modal-edit{
 
- z-index: 10000;
-}
 .modal-overlay-sucursal {
   position: fixed;
   top: 0;
@@ -105,4 +55,11 @@
 .modal-content-sucursal::-webkit-scrollbar-thumb {
   background-color: var(--color4);
   border-radius: 10px;
+}
+
+@media(max-width: 600px){
+  .modal-content-sucursal {
+     width: 25%;
+  }
+  
 }

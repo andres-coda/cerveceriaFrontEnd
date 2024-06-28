@@ -83,6 +83,9 @@ rootMargin:'40%'
                         <Subtitulo  texto={'Somos Nosotros...Somos ustedes... '}/>
                         <Parrafo clase={'paragrafh-nosotrosSomos'}
                         texto={'Hace dos décadas Green nació de la mano de nuestros padres.Hoy seguimos reinventando esta pasión que une a tres familias.Tenemos todo lo que precisas y sobre todo tenemos Green esperanza, tenemos Green Beer...'}/>
+                       <Parrafo clase={'paragrafh-nosotrosSomos'}
+                        texto={'Desde 1943 se encuentra en el barrio de Villa Ortúzar. Su ambiente es familiar, de bodegón, con un énfasis en las cervezas de barril, que vienen en distintas medidas (imperial, balón, florero, jarra, avión) y con reconocidas y abundantes picadas. También cuenta con platos a la carta como las rabas o la ensalada de calamares, además de carnes a la parrilla, pastas, y cocina típica porteña que se mantiene a través de los tiempos'}/>
+
             </div>
             <div className="bgimg-2">
                 <div className="caption-2"> ¡Te invitamos a Conocernos! </div>
@@ -96,7 +99,8 @@ rootMargin:'40%'
             </div>
 
             <div className="bgimg-3">
-                   <div className="caption-3">Tenemos una amplia variedad gastronómica para todos los paladares </div>
+                   <div className="caption-3">Tenemos una amplia variedad gastronómica para todos los paladares.
+                   </div>
               
             </div>
             <div className="section-2">

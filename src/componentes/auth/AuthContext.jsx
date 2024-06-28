@@ -57,13 +57,13 @@ export const AuthProvider = ({ children}) => {
 
     const data = await response.json();
     setAuth((prevAuth) => ({ ...prevAuth, user: data })); 
-    setDatos((prev)=>({...prev,userAct:data, refresh:true}))   
+    setDatos((prev)=>({...prev,userAct:data, refresh:true,  refreshSucursal: true}))   
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
-    setDatos((prev)=>({...prev,userAct:null, token:null, refresh:true}))
+    setDatos((prev)=>({...prev,userAct:null, token:null, refresh:true,  refreshSucursal: true}))
     navigate('/');  
   };
 
