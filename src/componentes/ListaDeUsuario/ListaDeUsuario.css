@@ -1,3 +1,10 @@
+.contenedor-all-usuarios{
+    width: 30vw;
+    background-color: var(--color9);
+    margin: 0.5rem 1rem;
+    border-radius: 10px;
+   
+}
 .containerTarjetasUsuarios {
     display: flex;
     flex-wrap: wrap;
@@ -7,18 +14,14 @@
 .tarjeta-usuario {
     display: flex;
     flex-direction: row;
-    width: 30vw;
-    margin: 0.5rem 1rem;
-    background-color: var(--color9);
-    border-radius: 8px;
 }
 
 .tarjeta-usuario img {
     width: 12vw;
     height: 20vh;
     object-fit: cover;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+  
+  
 }
 
 .usuario-detalle {
@@ -26,12 +29,12 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    padding: 0.5rem 1rem;
+    padding: 0.2rem ;
     width: 100%;
 }
 
 .usuario-detalle p {
-    margin: 0;
+    margin: 3px;
     text-align: start;
     color: var(--color4);
 }
@@ -41,10 +44,37 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: 0.5rem;
+    background-color: var(--color3);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
 }
 
-.tarjeta-usuario:hover {
+.div-decoracion-usuario-superior {
+   height: 8px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--color3);
+}
+
+
+.contenedor-all-usuarios:hover {
     box-shadow: 1px 1px 1px 1px var(--color3);
     cursor: pointer;
+}
+
+@media(max-width: 600px){
+    .contenedor-all-usuarios{
+        width: 60vw;
+    }
+
+    .tarjeta-usuario img {
+        width: 22vw;
+        height: 20vh;    
+    }
+
+    .usuario-detalle p {
+     font-size: 0.8rem;
+    }
 }

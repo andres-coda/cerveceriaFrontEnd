@@ -91,11 +91,11 @@ rootMargin:'40%'
                 <div className="caption-2"> ¡Te invitamos a Conocernos! </div>
             </div>
            <div className="section">  
-                <div>
+                <>
                     {datos.sucursales.map(sucursal => (
                         <CardsSucursal key={sucursal.id} sucursal={sucursal} setSucursalPorEditar={setSucursalPorEditar} />
                     ))}
-                </div>
+                </>
             </div>
 
             <div className="bgimg-3">
@@ -120,7 +120,7 @@ rootMargin:'40%'
                 </div>
               
                 <div className='contenedor-h3-contacto'>
-                    <Subtitulo texto={'Pongámonos en contacto... '}/>
+                    <Subtitulo className={'subtitulo-contacto'} texto={'Pongámonos en contacto... '}/>
                  </div>
                     <div className='section' >
                     <div className='contenedor-logo-form'>
