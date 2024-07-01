@@ -205,8 +205,9 @@
     }
 
     .header .logoHeader img {
-        width: 15vw;
+        width: 10vw;
         margin-left: 5vw;
+        border-radius: 100%;
     }
 
     .navbar {
