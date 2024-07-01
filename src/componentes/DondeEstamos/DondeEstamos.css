@@ -67,6 +67,7 @@ height: 700px;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
   top: 10%;
+  background-color: rgba(0, 0, 0, 0.45);
 
 }
 
@@ -75,7 +76,7 @@ height: 700px;
   width: 100%;
   height: auto;
   color: white;
-  padding: 10px;
+  padding: 5px;
   font-size: 1.8em;
 }
 .caption-2 , .caption-3{
@@ -88,7 +89,7 @@ height: 700px;
 
 /*primer section nosotros*/
 .section-1 {
-  height: 50vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -144,55 +145,19 @@ height: 700px;
 }
 
 
-
 .contenedor-cards-sucursal {
   display: flex;
   flex-wrap: wrap;
 }
 
-/* .wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.contenedor-cards-sucursal {
-  display: flex;
-overflow-x: hidden;
-   height: 50vh; 
-  width: 100%; 
-}
-
-.contenedor-cards-sucursal::-webkit-scrollbar {
-  width: 10px;
-  background-color: var(--color2);
-}
-
-.contenedor-cards-sucursal::-webkit-scrollbar-thumb {
-  background-color: var(--color4);
-}
-
-.scroll-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  padding: 10px;
-}
- */
-
 /*zoom logo*/
-
-
 .zoom-image {
   width: 15vw;
   top: 0;
   transition: transform 0.3s ease;
  }
 
-.spacer {
-  height: 200vh;
-  /* Ajusta la altura para proporcionar suficiente espacio para hacer scroll */
-}
+
 
 @keyframes zoomInOut {
   0% {
@@ -203,7 +168,7 @@ overflow-x: hidden;
 
   50% {
     transform: scale(1.5);
-opacity: 1;
+    opacity: 1;
   }
 
   150% {
@@ -261,8 +226,8 @@ opacity: 1;
     height: 40vh;
    
   }
-  .bgimg-2{
-    height: 80vh;
+  .bgimg-2, .bgimg-3{
+    height: 40vh;
   }
   @keyframes TitleMove {
     from {
@@ -278,15 +243,19 @@ opacity: 1;
 
 /*parrafo nosotros*/
   .paragrafh-nosotrosSomos  {
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: justify;
     width: 100%;
     padding: 0 20px;
   }
 
  /*titulo parallax*/
+ .caption{
+  font-size: 1.4rem;
+ }
   .caption-2 , .caption-3{
-    top:300px;
+    top:100px;
+    font-size: 1.4rem;
    
   }
   .section-1 {
@@ -317,8 +286,18 @@ opacity: 1;
     flex-direction: column;
   }
 
+.contenedor-h3-contacto h1{
+  font-size: 1.5rem;
+}
 
-  
+.slider-info h2{
+  font-size: 1.4rem;
+}
+
+.slider-info p{
+  font-size: 0.8rem;
+}
+}
   @media(min-width: 601px) {
     .contenedor-logo-form {
       flex-direction: row;
@@ -336,24 +315,12 @@ opacity: 1;
       height: 100vh;
 
     }
-    @keyframes TitleMove {
-      from {
-        bottom: 0px;
-        
-      }
-      
-      to {
-        top: 10px;
-      
-      }
-    }
+   
     .caption{
       top: 200px;
-      font-size:0.8em ;
-    }
+          }
 
   }
 
 
 
-}
