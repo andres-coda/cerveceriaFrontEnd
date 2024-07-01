@@ -113,6 +113,26 @@ const Reservas = ({ reservaEdit }) => {
     setCamposCompletos(areAllInputsFilled);
   };
 
+  const sendConfirmationEmail = async (email, subject, message) => {
+    try {
+      const response = await fetch(`${BASE_URL}/email/send`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ email, subject, message }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al enviar el correo de confirmación');
+      }
+    } catch (error) {
+      console.error('Error al enviar el correo:', error);
+      throw error;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isEditMode) {
@@ -134,6 +154,8 @@ const Reservas = ({ reservaEdit }) => {
         numeroMesa: parseInt(numeroMesa),
         idUsuario: parseInt(userId),
         idMetodoPago: parseInt(idMetodoPago),
+        subject: "Actualizacion de Reserva",
+        message: `Estimado/a: ${nombre} ${apellido},\n\nSu reserva ha sido confirmada para el dia ${fecha} a las ${hora} horas.\n\nGracias por su preferencia.\n\nSaludos Cordiales,\nEl equipo de Cervecería Green Beer`
       };
 
       const response = await fetch(`${BASE_URL}/reserva/${id}`, {
@@ -151,6 +173,7 @@ const Reservas = ({ reservaEdit }) => {
 
       setIsEditConfirmationVisible(false);
       setIsModalReservaVisible(true);
+      await sendConfirmationEmail(email, requestBody.subject, requestBody.message);
       setTimeout(() => navigate('/listadoreservas'), 5000); 
     } catch (error) {
       console.error(error);
@@ -158,7 +181,7 @@ const Reservas = ({ reservaEdit }) => {
   };
 
   const handlePagoSubmit = async (formData) => {
-    const { fecha, hora, cantidad, numeroMesa, idMetodoPago } = formulario;
+    const { fecha, hora, cantidad, numeroMesa, idMetodoPago, email, nombre, apellido } = formulario;
     const requestBody = {
       fecha,
       hora,
@@ -166,8 +189,11 @@ const Reservas = ({ reservaEdit }) => {
       numeroMesa: parseInt(numeroMesa),
       idUsuario: parseInt(userId),
       idMetodoPago: parseInt(idMetodoPago),
+      email,
+      subject: "Confirmación de Reserva",
+      message: `Estimado/a: ${nombre} ${apellido},\n\nSu reserva ha sido confirmada para el ${fecha} a las ${hora} horas.\n\nGracias por su preferencia.\n\nSaludos Cordiales,\nEl equipo de Cervecería Green Beer`
     };
-
+  
     try {
       const response = await fetch(`${BASE_URL}/reserva`, {
         method: 'POST',
@@ -177,14 +203,16 @@ const Reservas = ({ reservaEdit }) => {
         },
         body: JSON.stringify(requestBody),
       });
-
+  
       if (!response.ok) {
         throw new Error('Error al enviar los datos de la reserva');
-      }
-
+      }  
+      
+      await sendConfirmationEmail(email, requestBody.subject, requestBody.message);
+  
       setIsModalPagoVisible(false);
       setIsModalReservaVisible(true);
-      setTimeout(() => navigate('/listadoreservas'), 5000); 
+      setTimeout(() => navigate('/'), 5000);
     } catch (error) {
       console.error(error);
     }
