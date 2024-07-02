@@ -136,7 +136,7 @@ const ReservasCard = ({ reserva, reload, fieldsToShow }) => {
           {fieldsToShow.includes('username') && <p className={`pedido-hora ${reserva.usuario ? '' : 'unavailable'}`}>{reserva.usuario ? reserva.usuario.username : 'Usuario no disponible'}</p>}
           {fieldsToShow.includes('hora-encabezado') && <p className='pedido-hora'>Hora de reserva: {formatoHora(reserva.fecha, reserva.hora)}</p>}
           {fieldsToShow.includes('fecha-encabezado') && <p className='fecha-encabezado'>{extraerFecha(reserva.fecha)}</p>}
-        </div>)
+        </div>
         <div className='pedido-cuerpo'>
           <div className='reserva-cuerpo'>
             {fieldsToShow.includes('nombre') && <p>Nombre: {reserva.usuario ? `${reserva.usuario.name} ${reserva.usuario.lastname}` : 'Nombre no disponible'}</p>}
