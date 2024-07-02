@@ -7,6 +7,7 @@
     max-width: 600px;
     width: 60vw;
     background-color: var(--color9);
+    border-radius: 8px;
 }
 
 .perfil img {
