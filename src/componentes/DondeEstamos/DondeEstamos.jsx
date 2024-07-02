@@ -73,9 +73,7 @@ rootMargin:'40%'
 
     return (
         <>
-<div className='conteiner-General'>
-
-           
+<div className='conteiner-General'>      
                 <div className="bgimg-1">
                 <div className="caption">¡Nos Reinventamos!</div>       
                 </div>

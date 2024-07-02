@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Subtitulo from '../subtitulo/Subtitulo'
 import { URL_USUARIO } from '../../endPoints/endPoints'
 import './ListaDeUsuario.css'
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import { CiLocationOn } from 'react-icons/ci';
 import { RiUserSettingsLine } from "react-icons/ri";
-import { FaRegAddressCard } from 'react-icons/fa';
+import { FaRegAddressCard,FaUserPlus } from 'react-icons/fa';
+import { contexto } from '../contexto/contexto';
+import { useNavigate } from 'react-router-dom';
+import { MdTableBar,MdFastfood } from "react-icons/md";
 
 function ListaDeUsuario() {
     const [usuarios, setUsuarios] = useState(null);
+    const navegate = useNavigate();
+    const { setDatos } = useContext(contexto);
     const arreglo = ['https://i.pinimg.com/736x/63/4e/bf/634ebf954f6eaac31977ffaf2cea8cd7.jpg',
         'https://i.pinimg.com/236x/09/4c/a6/094ca6e512e1305df5acbff3d8447079.jpg',
         'https://i.pinimg.com/236x/60/cf/60/60cf6095630a2af374e19364e6878838.jpg',
@@ -53,21 +58,34 @@ function ListaDeUsuario() {
 
     }, []); // Ejecutar una sola vez al montar el componente
 
+    const handlePedidos = (usuario) => {
+        setDatos((prev) => ({ ...prev, pedidosUsuarioActual: usuario }))
+        console.log(usuario);
+        navegate('/pedidosusuarios')
+
+    }
+
+    const handleReservas = (usuario)=>{
+        setDatos((prev) => ({ ...prev, pedidosUsuarioActual: usuario }))
+        console.log(usuario);
+        navegate('/reservasusuarios')
+    }
     return (
         <div className='conteinerGeneral'>
             <Subtitulo texto={'Lista de usuarios'} />
             <div className='containerTarjetasUsuarios'>
+                
                 {usuarios ? usuarios.map((user, index) => (
                     <>
                         <div className='contenedor-all-usuarios'>
-                            <div className='div-decoracion-usuario-superior'></div>
                             <div className='tarjeta-usuario'>
                                 <img src={arreglo[index % arreglo.length]} alt={user.username} />
                                 <div className='usuario-detalle'>
-                                    <p> <IoPersonCircleOutline />{user.username} </p>
-                                    <p> <FaRegAddressCard /> {user.name}, {user.lastname} </p>
-                                    <p> <CiLocationOn /> {user.direccion}</p>
-                                    <p> <RiUserSettingsLine /> {user.role}</p>
+                                    <p> <IoPersonCircleOutline />  {user.username} </p>
+                                    <p> <FaRegAddressCard />  {user.name}, {user.lastname} </p>
+                                    <p> <CiLocationOn />  {user.direccion}</p>
+                                    <p> <RiUserSettingsLine />  {user.role}</p>
+                                    <p><FaUserPlus />  Ver más</p>
                                 </div>
 
                             </div>
@@ -75,7 +93,7 @@ function ListaDeUsuario() {
                                 <button className='comun'> {`Pedidos: ${user.pedidos.length}`}</button>
                                 <button className='comun'> {`Reservas: ${user.reservas.length}`}</button>
                             </div>
-                        </div>
+                       </div>
                     </>
                 )) : null}
             </div>

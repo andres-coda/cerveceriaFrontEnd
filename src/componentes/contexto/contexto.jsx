@@ -24,7 +24,8 @@ export const ProveedorContexto = ({children}) => {
         refresh : true, 
         refreshSucursal: true,
         userAct: null,
-        metodoPago:null
+        metodoPago:null,
+        pedidosUsuarioActual:null
     });
     
     useEffect(() => {
