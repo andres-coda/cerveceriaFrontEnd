@@ -90,8 +90,8 @@ function ListaDeUsuario() {
 
                             </div>
                             <div className='botonera-usuario'>
-                                <button className='comun'> {`Pedidos: ${user.pedidos.length}`}</button>
-                                <button className='comun'> {`Reservas: ${user.reservas.length}`}</button>
+                                <button className='comun' onClick={()=>handlePedidos(user)}><MdFastfood />  {user.reservas.length}</button>
+                                <button className='comun' onClick={()=>handleReservas(user)}><MdTableBar />  {user.pedidos.length}</button>
                             </div>
                        </div>
                     </>

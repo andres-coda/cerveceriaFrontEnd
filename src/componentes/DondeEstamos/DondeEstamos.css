@@ -1,4 +1,4 @@
-.conteiner-General{
+.conteiner-General {
   margin-top: 10vh;
   margin-bottom: 16vh;
   overflow: hidden;
@@ -10,9 +10,11 @@
   margin-left: 0;
   margin-right: 0;
   width: 99vw;
- 
-  
+
+
 }
+
+/*div img fondo* parallax*/
 .bgimg-1,
 .bgimg-2,
 .bgimg-3 {
@@ -21,41 +23,31 @@
   background-position: 0 30%;
   background-repeat: no-repeat;
   background-size: 100% auto;
-
-
 }
 
 .bgimg-1 {
   background-image: url('https://www.lammsbraeu.de/hs-fs/hubfs/mail_images/2023/2023%20-%2008%20-%20B2C%20Bier/Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png?width=768&height=396&name=Brauereif%C3%BChrung%20nach%20der%20Zwicklprobe.png');
   height: 100vh;
-
 }
-
 
 .bgimg-2 {
   background-image: url('https://www.zona4arg.com.ar/wp-content/uploads/2021/04/club-de-la-birra-diseno-360-1400x702.jpg');
-height: 700px;
+  height: 700px;
   width: 100%;
 }
 
 .bgimg-3 {
   background-image: url('https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/7ZR6ZD2FRRC67ARSX2XWL7C5IQ.jpg');
- height: 100vh;
+  height: 100vh;
 }
-
-.subtitulo-banner-nosotros span {
-  padding: 5px;
-  font-size: 1em;
-}
-
 
 
 @keyframes TitleMove {
   from {
     bottom: 0px;
-    
+
   }
-  
+
   to {
     top: 500px;
     background-color: rgba(0, 0, 0, 0.45);
@@ -63,7 +55,7 @@ height: 700px;
 }
 
 .caption {
-   animation: TitleMove 5s;
+  animation: TitleMove 5s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
   top: 10%;
@@ -71,7 +63,9 @@ height: 700px;
 
 }
 
-.caption ,.caption-2 , .caption-3{
+.caption,
+.caption-2,
+.caption-3 {
   position: absolute;
   width: 100%;
   height: auto;
@@ -79,13 +73,12 @@ height: 700px;
   padding: 5px;
   font-size: 1.8em;
 }
-.caption-2 , .caption-3{
-  top:500px;
+
+.caption-2,
+.caption-3 {
+  top: 500px;
   background-color: rgba(0, 0, 0, 0.45);
 }
-
-
-
 
 /*primer section nosotros*/
 .section-1 {
@@ -97,11 +90,9 @@ height: 700px;
   padding: 0;
 }
 
-
-
 .paragrafh-nosotrosSomos {
-  font-size: 1.2em;
-  padding: 0 100px;
+  font-size: 1.5em;
+  padding: 0 200px;
   margin: 30px;
   color: var(--color3);
 }
@@ -116,18 +107,6 @@ height: 700px;
   padding: 0;
 }
 
-
-
-.section-sucursal {
-  height: auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px;
-}
-
-
-
 .contenedor-logo-form {
   display: flex;
   align-items: center;
@@ -136,26 +115,13 @@ height: 700px;
   margin-top: 0;
 }
 
-.contacto-container {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 80%;
-}
-
-
-.contenedor-cards-sucursal {
-  display: flex;
-  flex-wrap: wrap;
-}
 
 /*zoom logo*/
 .zoom-image {
   width: 15vw;
   top: 0;
   transition: transform 0.3s ease;
- }
+}
 
 
 
@@ -173,12 +139,13 @@ height: 700px;
 
   150% {
     transform: scale(1.5);
-opacity: 1;
+    opacity: 1;
   }
 
 
 }
- .zoom-container {
+
+.zoom-container {
   animation: zoomInOut 8s;
 }
 
@@ -190,7 +157,7 @@ opacity: 1;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px 0 ;
+  margin: 20px 0;
   width: 100%;
   height: auto;
 }
@@ -205,71 +172,74 @@ opacity: 1;
   margin-top: 20px;
   margin-bottom: 20px;
   object-fit: cover;
-
-
 }
-
-
 
 .slider-info {
   color: var(--color3);
   text-align: center;
   margin-top: 10px;
 }
- 
+
 
 @media (max-width:600px) {
-  /*img parallax*/
+
+  /*img div parallax*/
   .bgimg-1 {
-    background-size:contain;
+    background-size: contain;
     background-position: 0 20%;
     height: 40vh;
-   
+
   }
-  .bgimg-2, .bgimg-3{
+
+  .bgimg-2,
+  .bgimg-3 {
     height: 40vh;
   }
+
   @keyframes TitleMove {
     from {
       bottom: 0px;
-      
+
     }
-    
+
     to {
       top: 200px;
-      
+
     }
   }
 
-/*parrafo nosotros*/
-  .paragrafh-nosotrosSomos  {
+  /*parrafo nosotros*/
+  .paragrafh-nosotrosSomos {
     font-size: 0.8rem;
     text-align: justify;
     width: 100%;
     padding: 0 20px;
   }
 
- /*titulo parallax*/
- .caption{
-  font-size: 1.4rem;
- }
-  .caption-2 , .caption-3{
-    top:100px;
+  /*titulo parallax*/
+  .caption {
     font-size: 1.4rem;
-   
   }
+
+  .caption-2,
+  .caption-3 {
+    top: 100px;
+    font-size: 1.4rem;
+
+  }
+
   .section-1 {
     height: 60vh;
-   
+
   }
-  
+
   /*carrusel comida*/
   .slider-image {
     width: 60vw;
-    height: 30vh ;
+    height: 30vh;
   }
 
- 
+
   .contenedor-h3-contacto {
     width: 100%;
     display: flex;
@@ -286,41 +256,40 @@ opacity: 1;
     flex-direction: column;
   }
 
-.contenedor-h3-contacto h1{
-  font-size: 1.5rem;
+  .contenedor-h3-contacto h1 {
+    font-size: 1.5rem;
+  }
+
+  /*titulo y subti de */
+  .slider-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .slider-info p {
+    font-size: 0.8rem;
+  }
 }
 
-.slider-info h2{
-  font-size: 1.4rem;
-}
+@media(min-width: 601px) {
+  .contenedor-logo-form {
+    flex-direction: row;
+  }
 
-.slider-info p{
-  font-size: 0.8rem;
-}
-}
-  @media(min-width: 601px) {
-    .contenedor-logo-form {
-      flex-direction: row;
-    }
-
-    .bgimg-1,
-    .bgimg-2,
-    .bgimg-3 {
-      background-size: cover;
-      background-position: center ;
-    }
-
-   
-    .bgimg-1 {
-      height: 100vh;
-
-    }
-   
-    .caption{
-      top: 200px;
-          }
-
+  .bgimg-1,
+  .bgimg-2,
+  .bgimg-3 {
+    background-size: cover;
+    background-position: center;
   }
 
 
+  .bgimg-1 {
+    height: 100vh;
 
+  }
+
+  .caption {
+    top: 200px;
+  }
+
+}
