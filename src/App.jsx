@@ -29,6 +29,8 @@ import ReservasRealizadas from "./componentes/reservas/ReservasRealizadas";
 import ListaDeUsuario from "./componentes/ListaDeUsuario/ListaDeUsuario";
 import Menu from "./componentes/menu/Menu";
 import NoAutorizado from "./componentes/privateRoute/noAutorizado";
+import MostrarPedidosUsuario from "./componentes/ListaDeUsuario/MostrarPedidoUsuario";
+import MostrarReservasUsuarios from "./componentes/ListaDeUsuario/MostrarReservaUsuario";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -78,6 +80,8 @@ function App() {
           <Route path='/listadoreservas' element={<ReservasList/>} />
           <Route path='listadoreservas/reservas/editar/:id' element={<EditarReserva />} />
           <Route path='unauthorized' element={<NoAutorizado />} />
+          <Route path='pedidosusuarios' element={<MostrarPedidosUsuario/>}/>
+          <Route path='reservasusuarios' element={<MostrarReservasUsuarios/>}/>
         </Routes>
       <Footer />
     </AuthProvider>  

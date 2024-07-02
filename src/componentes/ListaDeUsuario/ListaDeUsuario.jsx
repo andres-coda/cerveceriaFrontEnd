@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Subtitulo from '../subtitulo/Subtitulo'
 import { URL_USUARIO } from '../../endPoints/endPoints'
 import './ListaDeUsuario.css'
@@ -6,9 +6,13 @@ import { IoPersonCircleOutline } from 'react-icons/io5';
 import { CiLocationOn } from 'react-icons/ci';
 import { RiUserSettingsLine } from "react-icons/ri";
 import { FaRegAddressCard } from 'react-icons/fa';
+import { contexto } from '../contexto/contexto';
+import { useNavigate } from 'react-router-dom';
 
 function ListaDeUsuario() {
     const [usuarios, setUsuarios] = useState(null);
+    const navegate = useNavigate();
+    const { setDatos } = useContext(contexto);
     const arreglo = ['https://i.pinimg.com/736x/63/4e/bf/634ebf954f6eaac31977ffaf2cea8cd7.jpg',
         'https://i.pinimg.com/236x/09/4c/a6/094ca6e512e1305df5acbff3d8447079.jpg',
         'https://i.pinimg.com/236x/60/cf/60/60cf6095630a2af374e19364e6878838.jpg',
@@ -53,6 +57,18 @@ function ListaDeUsuario() {
 
     }, []); // Ejecutar una sola vez al montar el componente
 
+    const handlePedidos = (usuario) => {
+        setDatos((prev) => ({ ...prev, pedidosUsuarioActual: usuario }))
+        console.log(usuario);
+        navegate('/pedidosusuarios')
+
+    }
+
+    const handleReservas = (usuario)=>{
+        setDatos((prev) => ({ ...prev, pedidosUsuarioActual: usuario }))
+        console.log(usuario);
+        navegate('/reservasusuarios')
+    }
     return (
         <div className='conteinerGeneral'>
             <Subtitulo texto={'Lista de usuarios'} />
@@ -72,8 +88,8 @@ function ListaDeUsuario() {
 
                             </div>
                             <div className='botonera-usuario'>
-                                <button className='comun'> {`Pedidos: ${user.pedidos.length}`}</button>
-                                <button className='comun'> {`Reservas: ${user.reservas.length}`}</button>
+                                <button className='comun' onClick={() => handlePedidos(user)}> {`Pedidos: ${user.pedidos.length}`}</button>
+                                <button className='comun' onClick={()=> handleReservas(user)}> {`Reservas: ${user.reservas.length}`}</button>
                             </div>
                         </div>
                     </>
