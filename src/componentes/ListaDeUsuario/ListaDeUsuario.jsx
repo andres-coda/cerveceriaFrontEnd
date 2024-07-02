@@ -5,7 +5,8 @@ import './ListaDeUsuario.css'
 import { IoPersonCircleOutline } from 'react-icons/io5';
 import { CiLocationOn } from 'react-icons/ci';
 import { RiUserSettingsLine } from "react-icons/ri";
-import { FaRegAddressCard } from 'react-icons/fa';
+import { FaRegAddressCard,FaUserPlus } from 'react-icons/fa';
+import { MdTableBar,MdFastfood } from "react-icons/md";
 
 function ListaDeUsuario() {
     const [usuarios, setUsuarios] = useState(null);
@@ -57,25 +58,26 @@ function ListaDeUsuario() {
         <div className='conteinerGeneral'>
             <Subtitulo texto={'Lista de usuarios'} />
             <div className='containerTarjetasUsuarios'>
+                
                 {usuarios ? usuarios.map((user, index) => (
                     <>
                         <div className='contenedor-all-usuarios'>
-                            <div className='div-decoracion-usuario-superior'></div>
                             <div className='tarjeta-usuario'>
                                 <img src={arreglo[index % arreglo.length]} alt={user.username} />
                                 <div className='usuario-detalle'>
-                                    <p> <IoPersonCircleOutline />{user.username} </p>
-                                    <p> <FaRegAddressCard /> {user.name}, {user.lastname} </p>
-                                    <p> <CiLocationOn /> {user.direccion}</p>
-                                    <p> <RiUserSettingsLine /> {user.role}</p>
+                                    <p> <IoPersonCircleOutline />  {user.username} </p>
+                                    <p> <FaRegAddressCard />  {user.name}, {user.lastname} </p>
+                                    <p> <CiLocationOn />  {user.direccion}</p>
+                                    <p> <RiUserSettingsLine />  {user.role}</p>
+                                    <p><FaUserPlus />  Ver más</p>
                                 </div>
 
                             </div>
                             <div className='botonera-usuario'>
-                                <button className='comun'> {`Pedidos: ${user.pedidos.length}`}</button>
-                                <button className='comun'> {`Reservas: ${user.reservas.length}`}</button>
+                                <button className='comun'  title='Pedidos'> <MdFastfood />{user.pedidos.length}</button>
+                                <button className='comun' title='Reservas'> <MdTableBar /> {user.reservas.length}</button>
                             </div>
-                        </div>
+                       </div>
                     </>
                 )) : null}
             </div>
