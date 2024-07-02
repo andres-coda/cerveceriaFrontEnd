@@ -31,6 +31,7 @@ import Menu from "./componentes/menu/Menu";
 import NoAutorizado from "./componentes/privateRoute/noAutorizado";
 import MostrarPedidosUsuario from "./componentes/ListaDeUsuario/MostrarPedidoUsuario";
 import MostrarReservasUsuarios from "./componentes/ListaDeUsuario/MostrarReservaUsuario";
+import Perfil from "./componentes/auth/Perfil";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -73,6 +74,7 @@ function App() {
            <Route path="/perfil" element={<PrivateRoute roles={['user', 'admin']} />}>
             <Route path='/perfil' element={<ModalUsers />} />
           </Route>
+          <Route path='/miperfil' element={<Perfil />} />
           <Route path='/listadeusuarios' element={<ListaDeUsuario/>}/>
           <Route path='/reservasrealizadas' element={<ReservasRealizadas />} />
           <Route path='/pedidos' element={<MostrarPedidos/>} />

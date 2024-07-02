@@ -13,7 +13,7 @@ import { MdTableBar,MdFastfood } from "react-icons/md";
 function ListaDeUsuario() {
     const [usuarios, setUsuarios] = useState(null);
     const navegate = useNavigate();
-    const { setDatos } = useContext(contexto);
+    const { datos,setDatos } = useContext(contexto);
     const arreglo = ['https://i.pinimg.com/736x/63/4e/bf/634ebf954f6eaac31977ffaf2cea8cd7.jpg',
         'https://i.pinimg.com/236x/09/4c/a6/094ca6e512e1305df5acbff3d8447079.jpg',
         'https://i.pinimg.com/236x/60/cf/60/60cf6095630a2af374e19364e6878838.jpg',
@@ -79,7 +79,7 @@ function ListaDeUsuario() {
                     <>
                         <div className='contenedor-all-usuarios'>
                             <div className='tarjeta-usuario'>
-                                <img src={arreglo[index % arreglo.length]} alt={user.username} />
+                                <img src={datos.imgPerfil[index % datos.imgPerfil.length]} alt={user.username} />
                                 <div className='usuario-detalle'>
                                     <p> <IoPersonCircleOutline />  {user.username} </p>
                                     <p> <FaRegAddressCard />  {user.name}, {user.lastname} </p>

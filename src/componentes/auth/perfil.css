@@ -1,0 +1,32 @@
+.perfil{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    color: var(--color4);
+    max-width: 600px;
+    width: 60vw;
+    background-color: var(--color9);
+}
+
+.perfil img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.perfil-detalles{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-align: start;
+    padding: 1rem;
+}
+
+.perfil-detalles h3,
+.perfil-detalles h4,
+.perfil-detalles h5,
+.perfil-detalles p {
+    padding: 0 1rem;
+}
