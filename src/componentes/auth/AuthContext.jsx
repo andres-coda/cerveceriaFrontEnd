@@ -21,7 +21,6 @@ export const AuthProvider = ({ children}) => {
 
 
   const login = async (email, password, role= auth.user ) => {
-    console.log('Sending data:', { email, password, role }); 
     
     const response = await fetch(`${BASE_URL}/auth/login`, {
       method: 'POST',
@@ -65,7 +64,7 @@ export const AuthProvider = ({ children}) => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
     setDatos((prev)=>({...prev,userAct:null, token:null, refresh:true,  refreshSucursal: true}))
-    navigate('/');  
+    navigate('/login');  
   };
 
   return (

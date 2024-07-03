@@ -54,3 +54,19 @@
         font-size: 0.8em;
     }
 }
+
+.masked-password {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    font-family: 'Courier New', Courier, monospace; 
+    letter-spacing: 2px; 
+}
+.masked-password p{
+    display: inline;
+}
+
+.iconPass{
+    cursor: pointer;
+}
