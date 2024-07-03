@@ -85,7 +85,6 @@ function ListaDeUsuario() {
                                     <p> <FaRegAddressCard />  {user.name}, {user.lastname} </p>
                                     <p> <CiLocationOn />  {user.direccion}</p>
                                     <p> <RiUserSettingsLine />  {user.role}</p>
-                                    <p><FaUserPlus />  Ver más</p>
                                 </div>
 
                             </div>
