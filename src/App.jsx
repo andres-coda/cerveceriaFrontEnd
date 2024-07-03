@@ -32,6 +32,7 @@ import NoAutorizado from "./componentes/privateRoute/noAutorizado";
 import MostrarPedidosUsuario from "./componentes/ListaDeUsuario/MostrarPedidoUsuario";
 import MostrarReservasUsuarios from "./componentes/ListaDeUsuario/MostrarReservaUsuario";
 import Perfil from "./componentes/auth/Perfil";
+import PasswordIcons from "./componentes/auth/Iconos";
 
 function App() {
   const { datos } = useContext(contexto);
@@ -83,6 +84,7 @@ function App() {
           <Route path='listadoreservas/reservas/editar/:id' element={<EditarReserva />} />
           <Route path='unauthorized' element={<NoAutorizado />} />
           <Route path='pedidosusuarios' element={<MostrarPedidosUsuario/>}/>
+          <Route path='/iconos' element={<PasswordIcons/>}/>
           <Route path='reservasusuarios' element={<MostrarReservasUsuarios/>}/>
         </Routes>
       <Footer />

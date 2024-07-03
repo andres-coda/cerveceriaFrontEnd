@@ -1,26 +1,44 @@
 .perfil{
     display: flex;
-    flex-direction: row;
-    justify-content: start;
+    flex-direction: column;
+    justify-content: center;
     align-items: start;
     color: var(--color4);
     max-width: 600px;
     width: 60vw;
     background-color: var(--color9);
     border-radius: 8px;
+    margin: 0.5rem 0;
 }
 
 .perfil img {
     width: 200px;
     height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
+    object-fit: contain;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.perfil-cabecera{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start; 
+}
+
+.perfil-detalles-cabecera{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: start;
+    padding: 1rem;
+    margin: auto;
 }
 
 .perfil-detalles{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: space-between;
     text-align: start;
     padding: 1rem;
 }
@@ -28,6 +46,67 @@
 .perfil-detalles h3,
 .perfil-detalles h4,
 .perfil-detalles h5,
-.perfil-detalles p {
+.perfil-detalles p,
+.perfil-detalles-cabecera h4,
+.perfil-detalles-cabecera h5,
+.perfil-detalles-cabecera p {
     padding: 0 1rem;
+    width: 90%;
+    margin: 0 auto;
+    text-align: start;
+}
+
+.perfil-detalles-cabecera h3{
+    text-align: start;
+    padding: 0;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+.perfil-detalles-cabecera h4{
+    font-size: 1.2em;
+}
+
+.perfil-detalles-cabecera h5{
+    font-size: 1em;
+}
+
+.perfil-detalles ul{
+    margin: 0;
+    padding: 0;
+}
+
+.perfil-detalles li,
+.perfil-detalles-cabecera li{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem 0;
+    margin: 0.2rem 0;
+}
+
+.iconos{
+    color: var(--color4);
+}
+
+.icon-perfil{
+    text-align: start;
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.seleccionable{
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.seleccionable:hover{
+    border-radius: 50px;
+    box-shadow: 1px 1px 1px var(--color3);
 }

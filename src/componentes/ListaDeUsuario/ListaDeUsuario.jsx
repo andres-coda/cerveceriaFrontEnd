@@ -76,8 +76,7 @@ function ListaDeUsuario() {
             <div className='containerTarjetasUsuarios'>
                 
                 {usuarios ? usuarios.map((user, index) => (
-                    <>
-                        <div className='contenedor-all-usuarios'>
+                        <div className='contenedor-all-usuarios' key={`lista-usuarios-${index}`}>
                             <div className='tarjeta-usuario'>
                                 <img src={datos.imgPerfil[index % datos.imgPerfil.length]} alt={user.username} />
                                 <div className='usuario-detalle'>
@@ -93,8 +92,7 @@ function ListaDeUsuario() {
                                 <button className='comun' onClick={()=>handlePedidos(user)}><MdFastfood />  {user.reservas.length}</button>
                                 <button className='comun' onClick={()=>handleReservas(user)}><MdTableBar />  {user.pedidos.length}</button>
                             </div>
-                       </div>
-                    </>
+                       </div>                   
                 )) : null}
             </div>
         </div>
