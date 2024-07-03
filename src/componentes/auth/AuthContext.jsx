@@ -64,7 +64,7 @@ export const AuthProvider = ({ children}) => {
     localStorage.removeItem('token');
     setAuth({ token: null, user: null });
     setDatos((prev)=>({...prev,userAct:null, token:null, refresh:true,  refreshSucursal: true}))
-    navigate('/');  
+    navigate('/login');  
   };
 
   return (
