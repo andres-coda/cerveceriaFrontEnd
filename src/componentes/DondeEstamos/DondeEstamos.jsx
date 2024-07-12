@@ -123,7 +123,7 @@ rootMargin:'40%'
                     <div className='section' >
                     <div className='contenedor-logo-form'>
                         <div className="zoom-container">
-                            <img src='./src/assets/Logo.png' alt='logo' className="zoom-image" />
+                            <img src='dist\assets\Logo-c36d10d5.png' alt='logo' className="zoom-image" />
                         </div>
                         <Contacto />
                     </div>
