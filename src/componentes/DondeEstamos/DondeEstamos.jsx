@@ -6,6 +6,7 @@ import Contacto from '../Contacto/Contacto';
 import MapL from '../Mapa/MapaLeaflet';
 import Subtitulo from '../subtitulo/Subtitulo';
 import Parrafo from '../parrafo/Parrafo';
+import logo from "../../assets/Logo.png";
 
 // Array de imágenes
 const slides = [
@@ -123,7 +124,7 @@ rootMargin:'40%'
                     <div className='section' >
                     <div className='contenedor-logo-form'>
                         <div className="zoom-container">
-                            <img src='dist\assets\Logo-c36d10d5.png' alt='logo' className="zoom-image" />
+                            <img src={logo} alt='logo' className="zoom-image" />
                         </div>
                         <Contacto />
                     </div>
