@@ -107,7 +107,7 @@ function Header() {
                   <NavLink className='drop-item' to={`/cargarmenu`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Agregar producto</NavLink>
                 </li>
                 <li>
-                  <NavLink className='drop-item' to={`/pedidos-generales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar recibidos</NavLink>
+                  <NavLink className='drop-item' to={`/pedidos-generales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar pedidos</NavLink>
                 </li>
                 <li>
                   <NavLink className='drop-item' to={`/listadoreservas`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar reservas</NavLink>
