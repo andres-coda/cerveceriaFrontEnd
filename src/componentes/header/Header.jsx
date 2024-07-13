@@ -43,8 +43,8 @@ function Header() {
     }
   }, [clicked]);
 
-  const handleClick = () => {
-    setClicked(!clicked);
+  const handleClick = (click) => {
+    setClicked(click);
   };
 
   // const isCartaSectionActive = location.pathname.startsWith('/menu');
@@ -65,7 +65,9 @@ function Header() {
       </div>
       <nav id="navbar" className={`navbar ${clicked ? 'active' : ''}`}>
         <ul>
-        <li><NavLink to="/dondeestamos">Nosotros</NavLink></li>
+        <li>
+          <NavLink to="/dondeestamos" onClick={() => {handleClick(false);}}>Nosotros</NavLink>
+        </li>
         <NavDropdown
             id="nav-dropdown-dark-example"
             title="Carta"
@@ -74,13 +76,13 @@ function Header() {
             show={menuDropdownOpen}
           >
             <div className='back-drop'>
-              <NavLink className='drop-item' to="/menu" onClick={closeMenuDropdown}>Carta Completa</NavLink>
+              <NavLink className='drop-item' to="/menu" onClick={() => {closeMenuDropdown();handleClick(false);}}>Carta Completa</NavLink>
               {Array.isArray(datos.categoria) && datos.categoria.map((categoria) => (
                 categoria.productos.length > 0 && (
                   <NavLink
                     className='drop-item'
                     to={`/menu/${categoria.nombre}`}
-                    onClick={closeMenuDropdown}
+                    onClick={() => {closeMenuDropdown();handleClick(false);}}
                     key={categoria.idCategoria}
                   >
                     {categoria.nombre.charAt(0).toUpperCase() + categoria.nombre.slice(1).toLowerCase()}
@@ -89,7 +91,7 @@ function Header() {
               ))}
             </div>
           </NavDropdown>
-          <li><NavLink to="/reservas">Reservas</NavLink></li>
+          <li><NavLink to="/reservas" onClick={() => {handleClick(false);}}>Reservas</NavLink></li>
           {/* <li><NavLink to="/reservas">Reservas</NavLink></li> */}
           {user && user.role === "admin" ? (
             <NavDropdown
@@ -100,21 +102,16 @@ function Header() {
               show={adminDropdownOpen}
             >
               <div className='back-drop'>
-                <li>
-                  <NavLink className='drop-item' to={`/cargarsucursales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon " />Agregar Sucursales</NavLink>
-                </li>
-                <li>
-                  <NavLink className='drop-item' to={`/cargarmenu`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Agregar producto</NavLink>
-                </li>
-                <li>
-                  <NavLink className='drop-item' to={`/pedidos-generales`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar pedidos</NavLink>
-                </li>
-                <li>
-                  <NavLink className='drop-item' to={`/listadoreservas`} onClick={closeAdminDropdown}><FaPlusCircle className="icon" />Administrar reservas</NavLink>
-                </li>
-                <li>
-                  <NavLink className='drop-item' to={`/listadeusuarios`} onClick={closeAdminDropdown}><FaPlusCircle className="icon " />Administrar usuarios</NavLink>
-                </li>
+                  <NavLink className='drop-item' to={`/cargarsucursales`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon " />Agregar Sucursales</NavLink>
+
+                  <NavLink className='drop-item' to={`/cargarmenu`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon" />Agregar producto</NavLink>
+    
+                  <NavLink className='drop-item' to={`/pedidos-generales`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon" />Administrar pedidos</NavLink>
+          
+                  <NavLink className='drop-item' to={`/listadoreservas`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon" />Administrar reservas</NavLink>
+           
+                  <NavLink className='drop-item' to={`/listadeusuarios`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon " />Administrar usuarios</NavLink>
+               
               </div>
             </NavDropdown>
           ) : null}
@@ -133,30 +130,24 @@ function Header() {
                 show={userDropdownOpen}
               >
                 <div className='back-drop'>
-                  {/*
-                  <div className='profile'>{`Nombre: ${(auth.user.name) || ''} ${(auth.user.lastname) || ''}`}</div>
-                  <div className='profile'>{`Email: ${(auth.user.email) || ''}`}</div>
-                  <div className='profile'>{`Rol: ${(auth.user.role) || ''}`}</div>
-                  <div className='profile'>{`Pedidos: ${pedidosCount}`}</div>
-                  */}
                   <NavLink
                     className='drop-item'
                     to={`/pedidos`}
-                    onClick={closeMenuDropdown}
+                    onClick={() => { closeUserDropdown();handleClick(false);}}
                   >
                   Mis pedidos
                   </NavLink>
                   <NavLink
                     className='drop-item'
                     to={`/reservasrealizadas`}
-                    onClick={closeMenuDropdown}
+                    onClick={() => { closeUserDropdown();handleClick(false);}}
                   >
                   Mis reservas
                   </NavLink>
                   <NavLink
                     className='drop-item'
                     to={`/miperfil`}
-                    onClick={closeMenuDropdown}
+                    onClick={() => { closeUserDropdown(); handleClick(false); }}
                   >
                   Mi perfil
                   </NavLink>
@@ -165,7 +156,7 @@ function Header() {
               </NavDropdown>
             </div>
           ) : (
-            <li><NavLink to="/login"><MdOutlineLockPerson className='iconLogin' />Login</NavLink></li>
+            <NavLink to="/login"><MdOutlineLockPerson className='iconLogin' />Login</NavLink>
           )}
           {datos?.carrito?.length > 0 ? (
           <div className={`cart-icon active `}>
@@ -179,12 +170,9 @@ function Header() {
           )}
         </ul>
       </nav>
-      {/* <div className={`cart-icon active `}>
-        <NavLink to="/carrito" className='cart'><FaShoppingCart  /></NavLink>
-        <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
-      </div> */}
+
       <div className="burguer">
-        <BurguerButton clicked={clicked} handleClick={handleClick} />
+        <BurguerButton clicked={clicked} handleClick={()=>handleClick(true)} />
       </div>
     </div>
   );

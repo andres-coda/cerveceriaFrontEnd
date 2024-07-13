@@ -23,7 +23,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #1D1D1Bff;
+        background: var(--color6);
         transition: all 0.5s;
         z-index: 9969;
         height: auto;
@@ -80,7 +80,7 @@
         padding: 0 3px;
         font-size: clamp(1rem, 1vw + 0.5rem, 2rem);
         font-weight: 400;
-        color: white;
+        color: var(--color2);
         white-space: nowrap;
         transition: 0.3s;
         position: relative;
@@ -91,8 +91,8 @@
     }
 
     .navbar a.active {
-        color: #1D1D1Bff;
-        background: #F1D69d;
+        color: var(--color1);;
+background: var(--color31);
         opacity: .80;
     }
 
@@ -104,13 +104,13 @@
     .navbar.active,
     .navbar.active:focus,
     .navbar li:hover>a {
-        color: #1D1D1Bff;
-        background: #F1D69d;
+        color: var(--color1);;
+background: var(--color31);
         opacity: .80;
     }
 
     .back-drop {
-        background: #1D1D1Bff;
+        background: var(--color6);
     }
 
     .navbar .dropdown ul {
@@ -123,8 +123,8 @@
         z-index: 9969;
         opacity: 0;
         visibility: hidden;
-        background: #c19f71;
-        box-shadow: 0px 0px 30px #1D1D1Bff;
+        background: var(--color4);;
+        box-shadow: 0px 0px 30px var(--color1);;
         transition: 0.3s;
         border-radius: 4px;
     }
@@ -153,7 +153,7 @@
     }
 
     .cart {
-        color: white;
+        color: var(--color2);
         font-size: clamp(0.5rem, 1.5rem, 2rem);
         border-radius: 30px;
         padding: 5px 15px;
@@ -161,8 +161,8 @@
     }
 
     .cart:hover {
-        color: #1D1D1Bff;
-        background: #F1D69d;
+        color: var(--color1);;
+background: var(--color31);
     }
 
     .cart-item-count {
@@ -180,7 +180,7 @@
     .icon {
     font-size: 1.2rem; /* Ajusta el tamaño del ícono */
     margin: 0 10px; /* Espacio entre el ícono y el texto */
-    color: #ffffff; /* Color del ícono */
+    color: var(--color2); /* Color del ícono */
     }
 }
 
@@ -195,7 +195,7 @@
         display: flex;
         width: 100vw;
         height: 8vh;
-        background: #1D1D1Bff;
+        background: var(--color6);
         position: fixed;
         top: 0;
         left: 0;
@@ -222,8 +222,8 @@
     }
 
     .navbar a.active {
-        color: #1D1D1Bff !important;
-        background: #F1D69d;
+        color: var(--color1) !important;
+        background: var(--color31);
         opacity: .80;
         border-radius: 50px;
         padding: 1vw;
@@ -237,7 +237,7 @@
     .back-drop {
         display: flex;
         flex-direction: column;
-        background: #1D1D1Bff;
+        background: var(--color6);
     }
 
     .drop-item {
@@ -250,6 +250,7 @@
     }
 
     .navbar ul {
+         list-style-type: none;
         position: absolute;
         display: flex;
         flex-direction: column;
@@ -259,37 +260,37 @@
         inset: 0;
         padding: 10px 0 10px 30px;
         margin: 0;
-        background: #1D1D1Bff;
-        box-shadow: 0px 0px 10px #c19f71;
+        background: var(--color6);
+        box-shadow: 0px 0px 10px var(--color4);;
         overflow-y: visible;
         transition: 0.3s;
         z-index: 9969;
         font-family: 'Montserrat-VariableFont_wght';
         font-size: 5vw;
         font-weight: 100;
-        color: white;
+        color: var(--color2);
     }
 
     .navbar li>a {
-        color: white;
+        color: var(--color2);
         text-decoration: none;
     }
 
     .cart {
         font-size: 4.5vw;
-        color: white;
+        color: var(--color2);
         border-radius: 30px;
         padding: 5px 15px;
         cursor: pointer;
     }
 
     .cart:hover {
-        color: #1D1D1Bff;
-        background: #F1D69d;
+        color: var(--color1);;
+background: var(--color31);
     }
 
     .cart-item-count {
         font-size: 3.5vw;
-        color: white;
+        color: var(--color2);
     }
 }
