@@ -97,7 +97,7 @@
 
 .item .des {
   text-shadow: 8px 8px 12px rgb(15, 15, 15);
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 20px 0;
   opacity: 0;
   animation: showcontent 1s ease-in-out 0.3s 1 forwards;
@@ -116,6 +116,8 @@
     height: 50vh;
  
   }
+
+  
   
   .item {
     width: 5rem;
@@ -129,7 +131,7 @@
   }
 
   .item .name {
-    font-size: 2em;
+    font-size: 1.2em;
   
    
   }
