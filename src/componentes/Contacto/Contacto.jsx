@@ -44,15 +44,30 @@ function Contacto() {
 
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
-      setMensajeEnviado(true);
-      console.log(formData);
+      try {
+        const response = await fetch('http://localhost:3000/email/send', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ...formData, email: 'greenbeercerveceria@gmail.com' }),
+        });
+  
+        if (response.ok) {
+          setMensajeEnviado(true);
+          console.log('Correo enviado correctamente.');
+        } else {
+          console.error('Hubo un error al enviar el correo.');
+        }
+      } catch (error) {
+        console.error('Error sending email:', error);
+      }
     } else {
-
-      return 'por favor complete todos los campos'
+      setErrors('Por favor, complete todos los campos.');
     }
   };
 

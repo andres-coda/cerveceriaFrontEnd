@@ -65,9 +65,7 @@ function Header() {
       </div>
       <nav id="navbar" className={`navbar ${clicked ? 'active' : ''}`}>
         <ul>
-        <li>
-          <NavLink to="/dondeestamos" onClick={() => {handleClick(false);}}>Nosotros</NavLink>
-        </li>
+        <li><NavLink to="/dondeestamos" onClick={() => { setNosotrosDropdownOpen(false); setClicked(false) }}>Nosotros</NavLink></li>
         <NavDropdown
             id="nav-dropdown-dark-example"
             title="Carta"
@@ -76,13 +74,13 @@ function Header() {
             show={menuDropdownOpen}
           >
             <div className='back-drop'>
-              <NavLink className='drop-item' to="/menu" onClick={() => {closeMenuDropdown();handleClick(false);}}>Carta Completa</NavLink>
+              <NavLink className='drop-item' to="/menu" onClick={() => { closeMenuDropdown(); setClicked(false) }}>Carta Completa</NavLink>
               {Array.isArray(datos.categoria) && datos.categoria.map((categoria) => (
                 categoria.productos.length > 0 && (
                   <NavLink
                     className='drop-item'
                     to={`/menu/${categoria.nombre}`}
-                    onClick={() => {closeMenuDropdown();handleClick(false);}}
+                    onClick={() => { closeMenuDropdown(); setClicked(false) }}
                     key={categoria.idCategoria}
                   >
                     {categoria.nombre.charAt(0).toUpperCase() + categoria.nombre.slice(1).toLowerCase()}
@@ -91,7 +89,7 @@ function Header() {
               ))}
             </div>
           </NavDropdown>
-          <li><NavLink to="/reservas" onClick={() => {handleClick(false);}}>Reservas</NavLink></li>
+          <li><NavLink to="/reservas" onClick={() => { setClicked(false) }}>Reservas</NavLink></li>
           {/* <li><NavLink to="/reservas">Reservas</NavLink></li> */}
           {user && user.role === "admin" ? (
             <NavDropdown
@@ -102,16 +100,21 @@ function Header() {
               show={adminDropdownOpen}
             >
               <div className='back-drop'>
-                  <NavLink className='drop-item' to={`/cargarsucursales`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon " />Agregar Sucursales</NavLink>
-
-                  <NavLink className='drop-item' to={`/cargarmenu`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon" />Agregar producto</NavLink>
-    
-                  <NavLink className='drop-item' to={`/pedidos-generales`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon" />Administrar pedidos</NavLink>
-          
-                  <NavLink className='drop-item' to={`/listadoreservas`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon" />Administrar reservas</NavLink>
-           
-                  <NavLink className='drop-item' to={`/listadeusuarios`} onClick={() => {closeAdminDropdown();handleClick(false);}}><FaPlusCircle className="icon " />Administrar usuarios</NavLink>
-               
+                <li>
+                  <NavLink className='drop-item' to={`/cargarsucursales`} onClick={() => { closeAdminDropdown(); setClicked(false) }}><FaPlusCircle className="icon " />Agregar Sucursales</NavLink>
+                </li>
+                <li>
+                  <NavLink className='drop-item' to={`/cargarmenu`} onClick={() => { closeAdminDropdown(); setClicked(false) }}><FaPlusCircle className="icon" />Agregar producto</NavLink>
+                </li>
+                <li>
+                  <NavLink className='drop-item' to={`/pedidos-generales`} onClick={() => { closeAdminDropdown(); setClicked(false) }}><FaPlusCircle className="icon" />Administrar pedidos</NavLink>
+                </li>
+                <li>
+                  <NavLink className='drop-item' to={`/listadoreservas`}  onClick={() => { closeAdminDropdown(); setClicked(false) }}><FaPlusCircle className="icon" />Administrar reservas</NavLink>
+                </li>
+                <li>
+                  <NavLink className='drop-item' to={`/listadeusuarios`} onClick={() => { closeAdminDropdown(); setClicked(false) }}><FaPlusCircle className="icon " />Administrar usuarios</NavLink>
+                </li>
               </div>
             </NavDropdown>
           ) : null}
@@ -133,30 +136,30 @@ function Header() {
                   <NavLink
                     className='drop-item'
                     to={`/pedidos`}
-                    onClick={() => { closeUserDropdown();handleClick(false);}}
+                    onClick={() => { closeMenuDropdown(); setClicked(false) }}
                   >
                   Mis pedidos
                   </NavLink>
                   <NavLink
                     className='drop-item'
                     to={`/reservasrealizadas`}
-                    onClick={() => { closeUserDropdown();handleClick(false);}}
+                    onClick={() => { closeMenuDropdown(); setClicked(false) }}
                   >
                   Mis reservas
                   </NavLink>
                   <NavLink
                     className='drop-item'
                     to={`/miperfil`}
-                    onClick={() => { closeUserDropdown(); handleClick(false); }}
+                    onClick={() => { closeMenuDropdown(); setClicked(false) }}
                   >
                   Mi perfil
                   </NavLink>
-                  <NavLink to={`/`} className='drop-item' onClick={() => { closeUserDropdown(); logout(); }}>Logout</NavLink>
+                  <NavLink to={`/`} className='drop-item' onClick={() => { closeUserDropdown(); logout(); setClicked(false); }}>Logout</NavLink>
                 </div>
               </NavDropdown>
             </div>
           ) : (
-            <NavLink to="/login"><MdOutlineLockPerson className='iconLogin' />Login</NavLink>
+            <li><NavLink to="/login" onClick={() => { setClicked(false) }}><MdOutlineLockPerson className='iconLogin' />Login</NavLink></li>
           )}
           {datos?.carrito?.length > 0 ? (
           <div className={`cart-icon active `}>

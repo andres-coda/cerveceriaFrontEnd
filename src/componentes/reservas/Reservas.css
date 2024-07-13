@@ -37,6 +37,10 @@
     width: max-content;
 }
 
+.formulario input:disabled {
+    background-color: #c19f71; 
+}
+
 .reservas .formulario .renglonInput input ,
 .reservas .formulario .renglonInput select {
     width: 100%;

@@ -92,7 +92,7 @@
 
     .navbar a.active {
         color: var(--color1);;
-background: var(--color31);
+background: var(--color3);
         opacity: .80;
     }
 
@@ -162,7 +162,7 @@ background: var(--color31);
 
     .cart:hover {
         color: var(--color1);;
-background: var(--color31);
+        background: var(--color31);
     }
 
     .cart-item-count {
@@ -258,7 +258,7 @@ background: var(--color31);
         align-items: start;
         height: 50vh;
         inset: 0;
-        padding: 10px 0 10px 30px;
+        padding: 10px 0 10px 10px;
         margin: 0;
         background: var(--color6);
         box-shadow: 0px 0px 10px var(--color4);;
@@ -269,6 +269,12 @@ background: var(--color31);
         font-size: 5vw;
         font-weight: 100;
         color: var(--color2);
+        color: white;
+        list-style: none;
+    }
+
+    .iconLogin {
+        margin-right: 4px;
     }
 
     .navbar li>a {
