@@ -175,7 +175,7 @@ function Header() {
       </nav>
 
       <div className="burguer">
-        <BurguerButton clicked={clicked} handleClick={()=>handleClick(true)} />
+      <BurguerButton clicked={clicked} handleClick={handleClick} />
       </div>
     </div>
   );
