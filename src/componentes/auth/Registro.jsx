@@ -103,8 +103,8 @@ function Registro() {
                 <FormularioInput id={`repetir`} tipo={`password`} texto={"Repetir Contraseña "} onChan={onChan} />
                 
                 <div className="botonera" >
-                    <Boton btn={{ id: "enviar", clase: "comun", texto: "Registrase" }} btnClick={handleSubmit} />
-                    <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar sesión" }} btnClick={btnLogin} />
+                    <Boton btn={{ id: "inicio", clase: "comun", texto: "Iniciar sesión" }} btnClick={btnLogin} />
+                    <Boton btn={{ id: "registro", clase: "comun", texto: "Registrase" }} btnClick={handleSubmit} />
                 </div>
             </form>
             {

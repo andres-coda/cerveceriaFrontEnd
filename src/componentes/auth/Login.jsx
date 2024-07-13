@@ -64,8 +64,8 @@ return (
           <FormularioInput id={`email`} tipo={`email`} texto={"Correo Electrónico "} onChan={onChan} />
           <FormularioInput id={`password`} tipo={`password`} texto={"Contraseña "} onChan={onChan}  />
           <div className="botonera" >
-            <Boton btn={{ id: "enviar", clase: "comun", texto: "Iniciar Sesión" }} btnClick={handleSubmit} />
-            <Boton btn={{ id: "enviar", clase: "comun", texto: "Registro" }} btnClick={registro} />
+            <Boton btn={{ id: "registro", clase: "comun", texto: "Registro" }} btnClick={registro} />
+            <Boton btn={{ id: "login", clase: "comun", texto: "Iniciar Sesión" }} btnClick={handleSubmit} />
           </div>
 
         </form >

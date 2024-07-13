@@ -7,17 +7,16 @@
     width: 100%;
     height: 100%;
     background-color: var(--color6);
+    overflow: hidden;
 }
 
 .modalFondo {
     position: fixed;
-    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9972;
     float: inline-start;
     min-width: 250px;
-    max-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,6 +26,7 @@
     border: 1px solid black;
     border-radius: 8px;
     box-shadow: 2px 2px 4px black;   
+    overflow: auto;
     background-color: var(--color2);
 }
 
@@ -59,11 +59,15 @@
 @media(max-width: 600px){
     .modalFondo{
         width: 90%;
+        top: 45%;
+        height: 70vh;
     }
 }
 
 @media(min-width: 601px){
     .modalFondo{
         width: 70%;
+        max-height: 80vh;
+        top: 50%;
     }
 }
