@@ -161,8 +161,8 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                         <PedidoInternoCard productos={pedido.pedidosProducto} />
                     </div>
                     <div className='boton-alerta-pedido'>
-                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
                         <Boton btn={{id:"cancelar", clase:"alerta", texto: "Cancelar"}} btnClick={onClose}/>
+                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
                     </div>
                     </>
                     ):(null)
@@ -186,8 +186,8 @@ function PedidosCard({children, pedido, reload, textoAlerta}) {
                         />
                     </div>
                     <div className='boton-alerta-pedido'>
-                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
                         <Boton btn={{id:"cancelar", clase:"alerta", texto: "Cancelar"}} btnClick={onClose}/>
+                        <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
                     </div>
                     </>
                     ):(null)
