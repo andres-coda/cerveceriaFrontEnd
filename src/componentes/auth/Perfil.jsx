@@ -67,9 +67,8 @@ function Perfil(){
         <div className="perfil">
           <div className="perfil-detalles">
             <ul>
-              <li><FaRegEnvelope  className="icon-perfil"/> <p>{perfil.email}</p>
-                <MdLockOpen className="icon-perfil"/><PassParrafo password={perfil.password}/>
-              </li>
+              <li><FaRegEnvelope  className="icon-perfil"/> <p>{perfil.email}</p></li>
+              <li><MdLockOpen className="icon-perfil"/><PassParrafo password={perfil.password}/></li>
             </ul>
           </div>
         </div>

@@ -125,7 +125,7 @@ function Header() {
                 title={
                   <>
                     <IoPersonCircleOutline className='iconLogin' />
-                    {user.username.charAt(0).toUpperCase() + user.username.slice(1).toLowerCase()}
+                    {user.username?.charAt(0).toUpperCase() + user.username?.slice(1).toLowerCase()}
                   </>
                 }
                 menuVariant="dark"
