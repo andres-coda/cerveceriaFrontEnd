@@ -10,15 +10,13 @@ export const data = [
       id: 2,
       imgUrl:
         "https://thecookandthewine.files.wordpress.com/2019/04/cerveza-artesanal_opt.jpg",
-      desc: "El componente más importante del producto acabado son nuestras manos..",
-      name: "El esfuerzo de lo natural",
+        name: "Calidad en cada detalle",
     },
     {
       id: 3,
       imgUrl:
         "https://soldepiedra.com.ar/wp-content/uploads/2017/11/tomar-cervezas-artesanales-cordoba.jpg",
-      desc: "Historias que unen a tres generaciones",
-      name: "Una variedad, una historia",
+         name: "Una variedad, una historia",
     },
     {
       id: 4,
