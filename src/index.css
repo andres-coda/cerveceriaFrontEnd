@@ -26,12 +26,18 @@
   --color1:#1D1D1B;
   --color2:#F1F1EF;
   --color3: #d1ab75;
+  --color31:#F1D69d;
   --color4:  #c19f71;
   --color5:  #d37f70c9;
   --color6: #1d1d1b96;
   --color7: #c1a071bb;
   --color8: #adadadaf;
   --color9: #242422;
+
+  --font-family: 'Montserrat-VariableFont_wght';
+  --transition-fast: 0.3s;
+  --transition-slow: 0.5s;
+  --z-index-high: 9969;
 
 } 
 
