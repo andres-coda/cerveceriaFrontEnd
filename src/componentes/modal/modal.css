@@ -20,8 +20,8 @@
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
-  width: 35%; /* Para que se ajuste a pantallas más pequeñas */
- height: 80vh; /* Máxima altura del modal */
+  width: 50vw; /* Para que se ajuste a pantallas más pequeñas */
+  height: 80vh; /* Máxima altura del modal */
   overflow-y: auto; /* Barra de desplazamiento vertical */
 }
 
@@ -59,8 +59,8 @@
 
 @media(max-width: 600px){
   .modal-content-sucursal {
-     width: 50vh;
-     height: 60vh;
+     width: 90vw;
+     height: 68vh;
   }
   
 }
