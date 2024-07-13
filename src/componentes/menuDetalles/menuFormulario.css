@@ -72,3 +72,10 @@
     background-color: var(--color4);
     border-radius: 10px;
   }
+
+  @media(max-width:600px){
+    .carga-imagen-label{
+      font-size: 0.8em;
+      padding: 5px;
+    }
+  }

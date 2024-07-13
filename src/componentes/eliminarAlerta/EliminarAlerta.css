@@ -16,7 +16,7 @@
     transform: translate(-50%, -50%);
     z-index: 9992;
     float: inline-start;
-    width: 60%;
+    width: 60vw;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -32,16 +32,16 @@
 .boton-alerta-pedido{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    padding: 1rem 2rem;
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 0;
     align-items: center;
 }
 
 .botonSiNo{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding: 1rem 2rem;
+    justify-content: space-between;
+    padding: 1rem 1rem;
     align-items: center;
 }
 
@@ -67,5 +67,9 @@
 @media (max-width: 600px) {
      .botonSiNo{
         padding: 0.6rem;
+    }
+
+    .alertaEliminar{
+        width: 90vw;
     }
 }

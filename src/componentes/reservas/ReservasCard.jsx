@@ -166,8 +166,8 @@ const ReservasCard = ({ reserva, reload, fieldsToShow }) => {
               <p className='pedido-importe'><b>Mesa: </b> # {reserva.numeroMesa} </p>
           </div>   
             <div className='boton-alerta-pedido'>
-                <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
                 <Boton btn={{id:"cancelar", clase:"alerta", texto: "Cancelar"}} btnClick={onClose}/>
+                <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
             </div>
             </>
           ) : (null)
@@ -220,8 +220,8 @@ const ReservasCard = ({ reserva, reload, fieldsToShow }) => {
                 onChan={onChange}
               />
             <div className='boton-alerta-pedido'>
-                <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
                 <Boton btn={{id:"cancelar", clase:"alerta", texto: "Cancelar"}} btnClick={onClose}/>
+                <Boton btn={{id:texto.idTexto, clase:"alerta", texto: texto.idTexto}} btnClick={btnClick}/>
             </div>
             </form>
             ):(null)
