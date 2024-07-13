@@ -187,13 +187,13 @@
   .bgimg-1 {
     background-size: contain;
     background-position: 0 20%;
-    height: 40vh;
+    height: 30vh;
 
   }
 
   .bgimg-2,
   .bgimg-3 {
-    height: 40vh;
+    height: 30vh;
   }
 
   @keyframes TitleMove {
@@ -203,34 +203,43 @@
     }
 
     to {
-      top: 200px;
+      top: 160px;
 
     }
   }
 
   /*parrafo nosotros*/
   .paragrafh-nosotrosSomos {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-align: justify;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 25px;
+    margin: 10px;
   }
 
   /*titulo parallax*/
   .caption {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
-  .caption-2,
-  .caption-3 {
+  .caption-2  {
     top: 100px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+  }
 
+  .caption-3 {
+    font-size: 1rem;
+    top: 80px;
+    padding: 20px;
   }
 
   .section-1 {
-    height: 60vh;
+    height: 40vh;
 
+  }
+
+  .section-1 h1{
+    font-size: 1.2rem;
   }
 
   /*carrusel comida*/
@@ -257,16 +266,22 @@
   }
 
   .contenedor-h3-contacto h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   /*titulo y subti de */
   .slider-info h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    padding: 0 10px;
   }
 
   .slider-info p {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+  }
+
+  .zoom-image {
+    width: 35vw;
+   
   }
 }
 

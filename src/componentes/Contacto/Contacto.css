@@ -101,11 +101,17 @@
 @media (max-width: 768px) {
   .contenedor {
     margin: 0;
-    height: 90vh;
+    height: 70vh;
     width: 60%;
 
   }
 
+  .label-contacto {
+    font-size: 0.8rem;
+  
+  
+  }
+  
   .error {
     font-size: 0.8em;
 
@@ -114,5 +120,9 @@
   .form-contacto-sucursal textarea {
     min-height: 20vh;
     width: 85%;
+  }
+
+  .mensaje-Enviado{
+    width: 80vw;
   }
 }
