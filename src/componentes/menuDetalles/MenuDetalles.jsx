@@ -177,8 +177,10 @@ function MenuDetalles({ modalClose}) {
                     <div className='nuevoDiseno-detalles'>
                         <h2> { datos.productoActual.titulo } </h2>
                         <div className='nuevoDiseno-valoracion-precio'>
+                            <div className='valoracion-p-val'>
                             <p>{`Valoración:`}</p>
                             <ValoracionComponent valoracion={datos.productoActual.valoracion}/>
+                            </div>
                             <h3> {`$${datos.productoActual.price}`}</h3>
                         </div>
                         <MenuDetallesBotoneraCliente btnClick={btnClick} cantidad={cantidad} />
