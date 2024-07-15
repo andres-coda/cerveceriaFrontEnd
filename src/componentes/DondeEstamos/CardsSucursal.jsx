@@ -140,15 +140,15 @@ const CardsSucursal = ({ sucursal }) => {
                 //card-container contenedor vista de usuario y admin
                 <div className='card-container'>
                     <div className='card-img-container'>
-                        <img className='card-img' src={sucursal.imagen} alt={sucursal.nombre} />
-                            {/*card.overlay contenedor cuando hace hover vista usuario y admin*/}
+                    <h1 className='card-h1'>{sucursal.nombre}</h1>
+                    <img className='card-img' src={sucursal.imagen} alt={sucursal.nombre} />
+                    {/*card.overlay contenedor cuando hace hover vista usuario y admin*/}
                         <div className='card-overlay'>
-                            <h1 className='card-h1'>{sucursal.nombre}</h1>
                             <h2 className='card-h3'><CiLocationOn className='icon' />{sucursal.direccion}</h2>
                             <h2 className='card-h3'><FaWhatsapp className='icon' />{sucursal.telefono}</h2>
-                            <h2 className='card-h3'><FaMailBulk className='icon' />{sucursal.email}</h2>
                             <h2 className='card-h3'><FaInstagram className='icon' />{sucursal.instagram}</h2>
                             <h2 className='card-h3'><FaFacebook className='icon' />{sucursal.facebook}</h2>
+                            <h2 className='card-h3'><FaMailBulk className='icon' />{sucursal.email}</h2>
                         </div>
                     </div>
                 </div>

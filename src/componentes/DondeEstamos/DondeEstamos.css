@@ -81,21 +81,6 @@
 }
 
 /*primer section nosotros*/
-.section-1 {
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-  flex-direction: column;
-  padding: 0;
-}
-
-.paragrafh-nosotrosSomos {
-  font-size: 1.5em;
-  padding: 0 200px;
-  margin: 30px;
-  color: var(--color3);
-}
 
 .section {
   height: auto;
@@ -207,14 +192,15 @@
 
     }
   }
-
+ 
   /*parrafo nosotros*/
   .paragrafh-nosotrosSomos {
+    color: var(--color3);
     font-size: 0.7rem;
     text-align: justify;
     width: 100%;
     padding: 0 25px;
-    margin: 10px;
+    margin: 10px ;
   }
 
   /*titulo parallax*/
@@ -239,7 +225,9 @@
   }
 
   .section-1 h1{
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-top: 20px;
+  
   }
 
   /*carrusel comida*/
@@ -306,5 +294,21 @@
   .caption {
     top: 200px;
   }
+  .section-1 {
+    height: 40vh;
+    display: flex;
+    justify-content: justify;
+    margin-top: 20px;
+    flex-direction: column;
+    padding: 0;
+  }
+  
+  .paragrafh-nosotrosSomos {
+    font-size: 1em;
+    padding: 0 40px;
+   margin: 5px;
+    color: var(--color3);
+  }
+  
 
 }
