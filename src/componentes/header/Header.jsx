@@ -163,7 +163,7 @@ function Header() {
           )}
           {datos?.carrito?.length > 0 ? (
           <div className={`cart-icon active `}>
-            <NavLink to="/carrito" className='cart'>
+            <NavLink to="/carrito" className='cart' onClick={() => { setClicked(false) }}>
               <FaShoppingCart />
               <span className="cart-item-count">{datos?.carrito?.length || 0}</span>
             </NavLink>
